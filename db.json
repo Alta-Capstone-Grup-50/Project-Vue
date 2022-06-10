@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "nama": "Chandra",
+      "email": "json1@server",
+      "tingkat": "1",
+      "password": "1234",
+      "id": 1
+    },
+    {
+      "nama": "Chandra",
+      "email": "json@server",
+      "tingkat": "0",
+      "password": "1234",
+      "id": 2
+    }
+  ]
+}
