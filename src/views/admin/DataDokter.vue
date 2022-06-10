@@ -73,7 +73,7 @@
 </template>
 <script>
 export default {
-  name: 'LoginPage',
+  name: 'DataDokterPage',
   methods:{
     logout()
     {
