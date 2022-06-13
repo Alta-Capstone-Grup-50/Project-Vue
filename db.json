@@ -14,5 +14,151 @@
       "password": "1234",
       "id": 2
     }
+  ],
+  "patients": [
+    {
+      "id": 1,
+      "nik": "3507131606000004",
+      "name": "Mochammad Syafiuddin",
+      "address": "4517 Washington Ave. Manchester, Kentucky 39495",
+      "gender": "P",
+      "phone": "(406) 555-0120",
+      "placeOfBirth": "New York",
+      "dateOfBirth": "2022-06-15",
+      "disease": "",
+      "handling": ""
+    },
+    {
+      "id": 2,
+      "nik": "3507131606000004",
+      "name": "Jane Cooper",
+      "address": "4517 Washington Ave. Manchester, Kentucky 39495",
+      "gender": "P",
+      "phone": "(406) 555-0120",
+      "placeOfBirth": "New York",
+      "dateOfBirth": "2022-06-15",
+      "disease": "Gigi",
+      "handling": "Rawat Jalan"
+    },
+    {
+      "id": 3,
+      "nik": "3507131606000004",
+      "name": "Ainun Rizki Abdillah",
+      "address": "4517 Washington Ave. Manchester, Kentucky 39495",
+      "gender": "P",
+      "phone": "(406) 555-0120",
+      "placeOfBirth": "New York",
+      "dateOfBirth": "2022-06-15",
+      "disease": "",
+      "handling": ""
+    },
+    {
+      "id": 4,
+      "nik": "3507131606000004",
+      "name": "Maria Imaculata",
+      "address": "Jl. Sultan Agung 46 RT.06 RW.03 Kepanjen Malang",
+      "gender": "P",
+      "phone": "089698289699",
+      "placeOfBirth": "New York",
+      "dateOfBirth": "2022-06-15",
+      "disease": "",
+      "handling": ""
+    },
+    {
+      "id": 5,
+      "nik": "3507131606000004",
+      "name": "Hedara Putri",
+      "address": "Jl. Sultan Agung 46 RT.06 RW.03 Kepanjen Malang",
+      "gender": "P",
+      "phone": "089698289699",
+      "placeOfBirth": "New York",
+      "dateOfBirth": "2022-06-15",
+      "disease": "",
+      "handling": ""
+    },
+    {
+      "id": 6,
+      "nik": "3507131606000004",
+      "name": "Alvindo Tri Jatmiko",
+      "address": "4517 Washington Ave. Manchester, Kentucky 39495",
+      "gender": "L",
+      "phone": "(406) 555-0120",
+      "placeOfBirth": "New York",
+      "dateOfBirth": "2022-06-15",
+      "disease": "",
+      "handling": ""
+    },
+    {
+      "id": 7,
+      "nik": "3507131606000004",
+      "name": "Abdul Malik Siddiq",
+      "address": "4517 Washington Ave. Manchester, Kentucky 39495",
+      "gender": "L",
+      "phone": "(406) 555-0120",
+      "placeOfBirth": "New York",
+      "dateOfBirth": "2022-06-15",
+      "disease": "",
+      "handling": ""
+    },
+    {
+      "id": 8,
+      "nik": "3507131606000004",
+      "name": "Rizki Firmansyah",
+      "address": "Jl. Sultan Agung 46 RT.06 RW.03 Kepanjen Malang",
+      "gender": "L",
+      "phone": "089698289699",
+      "placeOfBirth": "New York",
+      "dateOfBirth": "2022-06-15",
+      "disease": "",
+      "handling": ""
+    },
+    {
+      "id": 9,
+      "nik": "3507131606000004",
+      "name": "Fadwa Nazirah",
+      "address": "Jl. Sultan Agung 46 RT.06 RW.03 Kepanjen Malang",
+      "gender": "P",
+      "phone": "089698289699",
+      "placeOfBirth": "New York",
+      "dateOfBirth": "2022-06-15",
+      "disease": "",
+      "handling": ""
+    },
+    {
+      "id": 10,
+      "nik": "3507131606000004",
+      "name": "Yudha Pamungkas",
+      "address": "4517 Washington Ave. Manchester, Kentucky 39495",
+      "gender": "L",
+      "phone": "(406) 555-0120",
+      "placeOfBirth": "New York",
+      "dateOfBirth": "2022-06-15",
+      "disease": "",
+      "handling": ""
+    },
+    {
+      "id": 11,
+      "nik": "3507131606000004",
+      "name": "Andiny Nabila",
+      "address": "4517 Washington Ave. Manchester, Kentucky 39495",
+      "gender": "L",
+      "phone": "(406) 555-0120",
+      "placeOfBirth": "New York",
+      "dateOfBirth": "2022-06-15",
+      "disease": "",
+      "handling": ""
+    },
+    {
+      "nik": "195150600111018",
+      "name": "Change",
+      "address": "Jombang",
+      "gender": "L",
+      "phone": "08100",
+      "placeOfBirth": "Jonggol",
+      "dateOfBirth": "2019-06-28",
+      "disease": "",
+      "handling": "",
+      "id": 15
+    }
   ]
 }
