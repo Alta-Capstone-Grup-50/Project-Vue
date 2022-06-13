@@ -3,6 +3,8 @@ import VuerRouter from "vue-router";
 import LoginPage from "@/views/LoginPage";
 import DataDokter from "@/views/admin/DataDokter";
 import HomeDokter from "@/views/dokter/HomeDokter";
+import DataPasien from '@/views/admin/DataPasien.vue'
+
 Vue.use(VuerRouter);
 
 const routes = [
@@ -21,6 +23,11 @@ const routes = [
     path: "/DataDokter",
     name: "DataDokter",
     component : DataDokter,
+  },
+  {
+    path: "/DataPasien",
+    name: "DataPasien",
+    component : DataPasien,
   },
 ];
 const router = new VuerRouter({
