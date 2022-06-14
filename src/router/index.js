@@ -4,6 +4,7 @@ import LoginPage from "@/views/LoginPage";
 import DataDokter from "@/views/admin/DataDokter";
 import HomeDokter from "@/views/dokter/HomeDokter";
 import DataPasien from '@/views/admin/DataPasien.vue'
+import TestPage from '@/views/TestPage.vue'
 
 Vue.use(VuerRouter);
 
@@ -28,6 +29,11 @@ const routes = [
     path: "/DataPasien",
     name: "DataPasien",
     component : DataPasien,
+  },
+  {
+    path: "/TestPage",
+    name: "TestPage",
+    component : TestPage,
   },
 ];
 const router = new VuerRouter({
