@@ -654,6 +654,8 @@ import axios from 'axios'
           this.phoneState = null
           this.placeOfBirthState = null
           this.dateOfBirthState = null
+
+          this.editMode = false
         },
 
         selectionHandeOk(){
@@ -662,7 +664,6 @@ import axios from 'axios'
             } else {
                 this.handleOkEditPatient()
             }
-            this.editMode = false
         },
 
         handleOkAddPatient(bvModalEvent) {
@@ -702,6 +703,7 @@ import axios from 'axios'
             this.$nextTick(() => {
                 this.$bvModal.hide('detail-modal-prevent-closing')
             })
+            this.editMode = false
         },
         changeEditMode() {
           this.editMode = true
