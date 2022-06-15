@@ -1,9 +1,9 @@
 <template>
   <b-container>
-    <b-row>
+    <b-row class="w-100" align-h="between">
 
       <h1>Data Pasien</h1>
-      <b-col lg="6" class="my-1">
+      <b-col cols="4">
         <b-form-group
           label="Filter"
           label-for="filter-input"
@@ -18,22 +18,25 @@
               v-model="filter"
               type="search"
               placeholder="Type to Search"
+              class="mb-2"
             ></b-form-input>
 
             <b-input-group-append>
-              <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
+              <!-- <b-button :disabled="!filter" @click="filter = ''">Clear</b-button> -->
             </b-input-group-append>
           </b-input-group>
         </b-form-group>
       </b-col>
 
-      <b-col lg="6" sm="5" md="6" class="my-1">
-        <b-button
-        v-b-modal.add-modal-prevent-closing
-        variant="primary"
-        >
-        Tambah Pasien
-        </b-button>
+      <b-col cols="4" class="col2">
+        <div class="d-flex justify-content-end btn-tambah-pasien">
+          <b-button
+          v-b-modal.add-modal-prevent-closing
+          variant="primary"
+          >
+          Tambah Pasien
+          </b-button>
+        </div>
 
         <b-modal
           id="add-modal-prevent-closing"
@@ -210,9 +213,6 @@
     >
 
     <!-- Detail View Mode -->
-      <p>Index Number : {{ indexNumber }}</p>
-      <p>Detail Patient : {{ detailPatient }}</p>
-      <p>Index Delete : {{ indexSelected }}</p>
       <form v-if="editMode === false" ref="form" @submit.stop.prevent="handleSubmitAddPatient()">
       <!-- Input NIK -->
       <b-form-group
@@ -714,3 +714,6 @@ import axios from 'axios'
     },
   }
 </script>
+  
+<style scoped>
+</style>
