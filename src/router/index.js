@@ -3,6 +3,8 @@ import VuerRouter from "vue-router";
 import HomeAdmin from "@/views/admin/HomeAdmin";
 import DataDokter from "@/views/admin/DataDokter";
 import HomeDokter from "@/views/dokter/HomeDokter";
+import DataPasien from '@/views/admin/DataPasien.vue'
+import TestPage from '@/views/TestPage.vue'
 import Default from "@/layout/default.vue";
 import LoginPage from "@/views/LoginPage";
 
@@ -15,6 +17,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
+
 
 Vue.use(VuerRouter);
 
@@ -46,6 +49,16 @@ const routes = [
     path:"/LoginPage",
     name:"LoginPage",
     component: LoginPage,
+  },
+  {
+    path: "/DataPasien",
+    name: "DataPasien",
+    component : DataPasien,
+  },
+  {
+    path: "/TestPage",
+    name: "TestPage",
+    component : TestPage,
   },
 ];
 const router = new VuerRouter({
