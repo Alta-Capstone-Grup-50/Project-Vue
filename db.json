@@ -1,18 +1,13 @@
 {
   "users": [
     {
-      "nama": "Chandra",
-      "email": "json1@server",
-      "tingkat": "1",
-      "password": "1234",
+      "sip": "19301103 195903 1 01712",
+      "nama": "Chan Can",
+      "gender": "L",
+      "spesialis": "Jant",
+      "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
+      "str": "1821303554327688",
       "id": 1
-    },
-    {
-      "nama": "Chandra",
-      "email": "json@server",
-      "tingkat": "0",
-      "password": "1234",
-      "id": 2
     }
   ]
 }

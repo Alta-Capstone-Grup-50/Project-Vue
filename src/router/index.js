@@ -3,6 +3,7 @@ import VuerRouter from "vue-router";
 import LoginPage from "@/views/LoginPage";
 import DataDokter from "@/views/admin/DataDokter";
 import HomeDokter from "@/views/dokter/HomeDokter";
+
 Vue.use(VuerRouter);
 
 const routes = [
