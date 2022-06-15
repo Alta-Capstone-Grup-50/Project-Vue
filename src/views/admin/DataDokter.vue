@@ -342,7 +342,14 @@
     },
     mounted() {
       this.load()
+      {
+        let user= localStorage.getItem('admin-info');
+          if(!user){
+            this.$router.push({name:"LoginPage"})
+          }
+      }
     },
+    
     methods: {
       testIndex(item) {
         console.log(this.detailDokter.indexOf(item))
@@ -362,7 +369,7 @@
         this.currentPage = 1
       },
       async load() {
-            const response = await axios.get(`http://localhost:3000/users`)
+            const response = await axios.get(`http://localhost:3000/dokter`)
             this.dokter = response.data
             
             // Set the initial number of patients
@@ -375,7 +382,7 @@
         },
         async addDokter() {
           try {
-              await axios.post(`http://localhost:3000/users`, this.form)
+              await axios.post(`http://localhost:3000/dokter`, this.form)
               this.load()
           } catch (error) {
               console.log(error)
@@ -384,7 +391,7 @@
         async deleteDokter(indexId) {
             if (confirm('Apakah Anda Akan Menghapus Data Ini?') == true) {
                 try {
-                    await axios.delete(`http://localhost:3000/users/` + indexId)
+                    await axios.delete(`http://localhost:3000/dokter/` + indexId)
                     this.load()
                 } catch (error) {
                     console.log(error)
@@ -397,7 +404,7 @@
         },
         async updateDokter() {
             try {
-                await axios.put(`http://localhost:3000/users/` + this.indexSelected, {
+                await axios.put(`http://localhost:3000/dokter/` + this.indexSelected, {
                     sip: this.detailDokter.sip,
                     nama: this.detailDokter.nama,
                     gender: this.detailDokter.gender,

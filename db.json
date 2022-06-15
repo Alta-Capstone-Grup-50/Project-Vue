@@ -3,11 +3,34 @@
     {
       "sip": "19301103 195903 1 01712",
       "nama": "Chan Can",
+      "email": "json1@server",
+      "password": "1234",
       "gender": "L",
+      "tingkat": "1",
       "spesialis": "Jant",
       "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
       "str": "1821303554327688",
       "id": 1
+    }
+  ],
+  "dokter": [
+    {
+      "sip": "19301103 195903 1 01712",
+      "nama": "Trisna Chandra",
+      "gender": "L",
+      "spesialis": "Mata",
+      "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
+      "str": "1821303554327688",
+      "id": 1
+    },
+    {
+      "sip": "19301103 195903 1 01712",
+      "nama": "Trisna Chandra",
+      "gender": "L",
+      "spesialis": "Mata",
+      "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
+      "str": "1821303554327688",
+      "id": 2
     }
   ]
 }
