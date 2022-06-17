@@ -180,6 +180,10 @@
       class="text-center"
     >
 
+      <template v-slot:cell(no)="row">
+        {{ row.index + 1 }}
+      </template>
+
       <template #cell(disease)="row">
         <p v-if="row.item.disease === ''">--</p>
         <p v-else>{{ row.item.disease }}</p>
@@ -528,7 +532,7 @@ import axios from 'axios'
 
         items: [],
         fields: [
-          { key: 'id', label: 'ID'},
+          { key: 'no', label: 'No'},
           { key: 'nik', label: 'NIK'},
           { key: 'name', label: 'Nama'},
           { key: 'address', label: 'Alamat'},
@@ -540,7 +544,6 @@ import axios from 'axios'
         totalRows: 1,
         currentPage: 1,
         perPage: 10,
-        pageOptions: [5, 10, 15, { value: 100, text: "Show a lot" }],
         filter: null,
         filterOn: [],
         infoModal: {
