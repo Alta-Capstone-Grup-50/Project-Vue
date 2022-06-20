@@ -3,6 +3,11 @@ import VuerRouter from "vue-router";
 import HomeAdmin from "@/views/admin/HomeAdmin";
 import DataDokter from "@/views/admin/DataDokter";
 import HomeDokter from "@/views/dokter/HomeDokter";
+
+import HomePage from "@/views/HomePage";
+import ManageAccount from "@/views/ManageAccount";
+import AddAccount from "@/views/AddAccount";
+
 import DataPasien from '@/views/admin/DataPasien.vue'
 import TestPage from '@/views/TestPage.vue'
 import Default from "@/layout/default.vue";
@@ -17,6 +22,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
+
 
 
 Vue.use(VuerRouter);
@@ -51,6 +57,21 @@ const routes = [
     component: LoginPage,
   },
   {
+
+    path: "/HomePage",
+    name: "HomePage",
+    component: HomePage,
+  },
+  {
+    path: "/HomeDokter",
+    name: "HomeDokter",
+    component: HomeDokter,
+  },
+  {
+    path: "/DataDokter",
+    name: "DataDokter",
+    component: DataDokter,
+
     path: "/DataPasien",
     name: "DataPasien",
     component : DataPasien,
@@ -58,8 +79,18 @@ const routes = [
   {
     path: "/TestPage",
     name: "TestPage",
-    component : TestPage,
+
   },
+  {
+    path: "/ManageAccount",
+    name: "ManageAccount",
+    component: ManageAccount,
+  },
+  {
+    path: "/AddAccount",
+    name: "AddAccount",
+    component: AddAccount,
+  }
 ];
 const router = new VuerRouter({
     mode:"history",
