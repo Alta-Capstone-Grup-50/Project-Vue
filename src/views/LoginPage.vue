@@ -1,11 +1,5 @@
 <template>
 <body>
-    <b-navbar toggleable="lg" type="dark" variant="info" sticky fixed="top">
-      <b-container>
-        <b-navbar-brand class="ml-4" href="#">Kelompok 50</b-navbar-brand>
-        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-      </b-container>
-    </b-navbar>
     <b-container>
         <b-row>
             <b-col cols="12" md="6">
@@ -110,7 +104,6 @@ export default {
       let user= localStorage.getItem('user-info');
       if(user){
         this.$router.push({name:"DataDokter"})
-        
       } 
     }
 };
