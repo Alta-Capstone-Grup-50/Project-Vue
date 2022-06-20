@@ -1,49 +1,30 @@
 <template>
-<b-container>
-    <div class="d-flex justify-content-start">
-        <button type="button" class="btn btn-secondary">Secondary</button>
-        <button type="button" class="btn btn-secondary">Secondary</button>
-    </div>
-    <div class="d-flex justify-content-end">
-        <button type="button" class="btn btn-secondary">Secondary</button>
-        <button type="button" class="btn btn-secondary">Secondary</button>
-    </div>
-    <div class="d-flex justify-content-center">
-        <button type="button" class="btn btn-secondary">Secondary</button>
-        <button type="button" class="btn btn-secondary">Secondary</button>
-    </div>
-    <div class="d-flex justify-content-between">
-        <button type="button" class="btn btn-secondary">Secondary</button>
-        <button type="button" class="btn btn-secondary">Secondary</button>
-    </div>
-    <div class="d-flex justify-content-around">
-        <button type="button" class="btn btn-secondary">Secondary</button>
-        <button type="button" class="btn btn-secondary">Secondary</button>
-    </div>
-    <div class="d-flex justify-content-evenly">
-        <button type="button" class="btn btn-secondary">Secondary</button>
-        <button type="button" class="btn btn-secondary">Secondary</button>
-    </div>
-
-    <div class="row justify-content-between">
-        <div class="col-4">
-            One of two columns
-        </div>
-        <div class="col-4">
-            One of two columns
-        </div>
-    </div>
-</b-container>
+  <div>
+    <label for="example-datepicker">Choose a date</label>
+    <b-form-datepicker
+    :date-format-options="{ year: 'numeric', day: '2-digit', month: 'long', weekday: 'long' }" 
+    id="example-datepicker" 
+    v-model="value" 
+    class="mb-2"
+    @context="selectCalender"
+    ></b-form-datepicker>
+    <p>Value: '{{ value }}'</p>
+    <p>Context: {{ selectedCalendar }}</p>
+  </div>
 </template>
 
 <script>
-export default {
-    name: 'TestPageView',
-    components:{
+  export default {
+    data() {
+      return {
+        value: '',
+        selectedCalendar: null
+      }
+    },
+    methods: {
+      selectCalender(ctx) {
+        this.selectedCalendar = ctx.selectedFormatted
+      }
     }
-}
+  }
 </script>
-
-<style>
-
-</style>

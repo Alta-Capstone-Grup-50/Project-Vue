@@ -35,7 +35,6 @@
   ],
   "patients": [
     {
-      "id": 1,
       "nik": "3507131606000004",
       "name": "Mochammad Syafiuddin",
       "address": "4517 Washington Ave. Manchester, Kentucky 39495",
@@ -44,10 +43,13 @@
       "placeOfBirth": "New York",
       "dateOfBirth": "2022-06-15",
       "disease": "",
-      "handling": ""
+      "handling": "",
+      "jadwalRawat": "2022-06-17",
+      "noAntri": "",
+      "ketRawat": "Asam Lambung sembuh",
+      "id": 1
     },
     {
-      "id": 2,
       "nik": "3507131606000004",
       "name": "Jane Cooper",
       "address": "4517 Washington Ave. Manchester, Kentucky 39495",
@@ -56,10 +58,13 @@
       "placeOfBirth": "New York",
       "dateOfBirth": "2022-06-15",
       "disease": "Gigi",
-      "handling": "Rawat Jalan"
+      "handling": "Rawat Jalan",
+      "jadwalRawat": "2022-06-01",
+      "noAntri": "",
+      "ketRawat": "Komplikasi Jantung",
+      "id": 2
     },
     {
-      "id": 3,
       "nik": "3507131606000004",
       "name": "Ainun Rizki Abdillah",
       "address": "4517 Washington Ave. Manchester, Kentucky 39495",
@@ -68,10 +73,13 @@
       "placeOfBirth": "New York",
       "dateOfBirth": "2022-06-15",
       "disease": "",
-      "handling": ""
+      "handling": "",
+      "jadwalRawat": "2022-06-15",
+      "noAntri": "",
+      "ketRawat": "",
+      "id": 3
     },
     {
-      "id": 4,
       "nik": "3507131606000004",
       "name": "Maria Imaculata",
       "address": "Jl. Sultan Agung 46 RT.06 RW.03 Kepanjen Malang",
@@ -80,7 +88,11 @@
       "placeOfBirth": "New York",
       "dateOfBirth": "2022-06-15",
       "disease": "",
-      "handling": ""
+      "handling": "",
+      "jadwalRawat": "2022-07-01",
+      "noAntri": "",
+      "ketRawat": "",
+      "id": 4
     },
     {
       "id": 5,
@@ -92,7 +104,10 @@
       "placeOfBirth": "New York",
       "dateOfBirth": "2022-06-15",
       "disease": "",
-      "handling": ""
+      "handling": "",
+      "jadwalRawat": "",
+      "noAntri": "",
+      "ketRawat": ""
     },
     {
       "id": 6,
@@ -104,7 +119,10 @@
       "placeOfBirth": "New York",
       "dateOfBirth": "2022-06-15",
       "disease": "",
-      "handling": ""
+      "handling": "",
+      "jadwalRawat": "",
+      "noAntri": "",
+      "ketRawat": ""
     },
     {
       "id": 7,
@@ -116,7 +134,10 @@
       "placeOfBirth": "New York",
       "dateOfBirth": "2022-06-15",
       "disease": "",
-      "handling": ""
+      "handling": "",
+      "jadwalRawat": "",
+      "noAntri": "",
+      "ketRawat": ""
     },
     {
       "id": 8,
@@ -128,7 +149,10 @@
       "placeOfBirth": "New York",
       "dateOfBirth": "2022-06-15",
       "disease": "",
-      "handling": ""
+      "handling": "",
+      "jadwalRawat": "",
+      "noAntri": "",
+      "ketRawat": ""
     },
     {
       "id": 9,
@@ -140,7 +164,10 @@
       "placeOfBirth": "New York",
       "dateOfBirth": "2022-06-15",
       "disease": "",
-      "handling": ""
+      "handling": "",
+      "jadwalRawat": "",
+      "noAntri": "",
+      "ketRawat": ""
     },
     {
       "id": 10,
@@ -152,7 +179,10 @@
       "placeOfBirth": "New York",
       "dateOfBirth": "2022-06-15",
       "disease": "",
-      "handling": ""
+      "handling": "",
+      "jadwalRawat": "",
+      "noAntri": "",
+      "ketRawat": ""
     },
     {
       "id": 11,
@@ -164,7 +194,10 @@
       "placeOfBirth": "New York",
       "dateOfBirth": "2022-06-15",
       "disease": "",
-      "handling": ""
+      "handling": "",
+      "jadwalRawat": "",
+      "noAntri": "",
+      "ketRawat": ""
     },
     {
       "nik": "3507131606000004",
@@ -176,7 +209,10 @@
       "dateOfBirth": "2022-06-15",
       "disease": "",
       "handling": "",
-      "id": 12
+      "id": 12,
+      "jadwalRawat": "",
+      "noAntri": "",
+      "ketRawat": ""
     },
     {
       "nik": "3507131606000004",
@@ -188,7 +224,10 @@
       "dateOfBirth": "2022-06-15",
       "disease": "",
       "handling": "",
-      "id": 13
+      "id": 13,
+      "jadwalRawat": "",
+      "noAntri": "",
+      "ketRawat": ""
     },
     {
       "nik": "3507131606000004",
@@ -200,7 +239,10 @@
       "dateOfBirth": "2022-06-15",
       "disease": "",
       "handling": "",
-      "id": 14
+      "id": 14,
+      "jadwalRawat": "",
+      "noAntri": "",
+      "ketRawat": ""
     },
     {
       "nik": "3507131606000004",
@@ -212,7 +254,10 @@
       "dateOfBirth": "2022-06-15",
       "disease": "",
       "handling": "",
-      "id": 15
+      "id": 15,
+      "jadwalRawat": "",
+      "noAntri": "",
+      "ketRawat": ""
     }
   ]
 }

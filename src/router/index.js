@@ -3,7 +3,8 @@ import VuerRouter from "vue-router";
 import HomeAdmin from "@/views/admin/HomeAdmin";
 import DataDokter from "@/views/admin/DataDokter";
 import HomeDokter from "@/views/dokter/HomeDokter";
-import DataPasien from '@/views/admin/DataPasien.vue'
+import DataPasien from '@/views/admin/DataPasien.vue';
+import PasienRawatJalan from '@/views/admin/PasienRawatJalan.vue'
 import TestPage from '@/views/TestPage.vue'
 import Default from "@/layout/default.vue";
 import LoginPage from "@/views/LoginPage";
@@ -54,6 +55,11 @@ const routes = [
     path: "/DataPasien",
     name: "DataPasien",
     component : DataPasien,
+  },
+  {
+    path: "/PasienRawatJalan",
+    name: "PasienRawatJalan",
+    component : PasienRawatJalan,
   },
   {
     path: "/TestPage",
