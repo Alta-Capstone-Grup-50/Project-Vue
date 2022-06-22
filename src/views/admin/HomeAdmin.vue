@@ -1,50 +1,77 @@
 <template>
-<body>
-    <b-navbar toggleable="lg" type="dark" variant="light" class="shadow" sticky fixed="top">
-      <b-container>
-        <b-navbar-brand class="ml-4" href="#"><img src="https://i.postimg.cc/CKjq1Vg7/logo-klinik-1.png" alt="Responsive image"></b-navbar-brand>
-        <b-navbar-toggle target="nav-collapse">
-          <b-navbar-nav class="ml-auto">
-            <b-nav-form>
-              <b-button size="sm" v-on:click="logout" class="my-2 my-sm-0" type="logout">Logout</b-button>
-            </b-nav-form>
-          </b-navbar-nav>
-        </b-navbar-toggle>
-      </b-container>
-    </b-navbar>
-    <b-container>
-    <div>
-      <h4 class="text-secondary poppins mt-5"><strong>Admin</strong></h4>
-    </div>
+  <div>
+    <b-container class="mt-3">
+      <div>
+        <b-img src="https://i.postimg.cc/wBYm6Dvv/beautiful-shot-ponte-vecchio-florence-tuscany-italy-1.png" rounded class="mt-5 shadow" fluid alt="Responsive image"></b-img>
+      </div>
+      
+      <b-row class="d-flex justify-content-center mt-5">
+        <b-col cols="12" md="4">
+          <div>
+            <b-card
+              title="Card Title"
+              img-src="https://picsum.photos/600/300/?image=25"
+              img-alt="Image"
+              img-top
+              tag="article"
+              style="max-width: 20rem;"
+              class="mb-2"
+            >
+              <b-card-text>
+                Some quick example text to build on the card title and make up the bulk of the card's content.
+              </b-card-text>
+
+              <b-button href="#" variant="primary">Go somewhere</b-button>
+            </b-card>
+          </div>
+        </b-col>
+        <b-col cols="12" md="4">
+          <div>
+            <b-card
+              title="Card Title"
+              img-src="https://picsum.photos/600/300/?image=25"
+              img-alt="Image"
+              img-top
+              tag="article"
+              style="max-width: 20rem;"
+              class="mb-2"
+            >
+              <b-card-text>
+                Some quick example text to build on the card title and make up the bulk of the card's content.
+              </b-card-text>
+
+              <b-button href="#" variant="primary">Go somewhere</b-button>
+            </b-card>
+          </div>
+        </b-col>
+        <b-col cols="12" md="4">
+          <div>
+            <b-card
+              title="Card Title"
+              img-src="https://picsum.photos/600/300/?image=25"
+              img-alt="Image"
+              img-top
+              tag="article"
+              style="max-width: 20rem;"
+              class="mb-2"
+            >
+              <b-card-text>
+                Some quick example text to build on the card title and make up the bulk of the card's content.
+              </b-card-text>
+
+              <b-button href="#" variant="primary">Go somewhere</b-button>
+            </b-card>
+          </div>
+        </b-col>
+      </b-row>
     </b-container>
-</body>
+  </div>
 </template>
+
 <script>
-export default {
-  name: 'AdminPage',
-  methods:{
-    logout()
-    {
-      localStorage.clear();
-      this.$router.push({name:"LoginPage"})
-    }
-  },
-  mounted()
-  {
-    let user= localStorage.getItem('admin-info');
-      if(!user){
-        this.$router.push({name:"LoginPage"})
-      }
-  }
-  
-}
+
 </script>
+
 <style>
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap');
-.poppins{
-    font-family: 'Poppins', sans-serif;
-}
-
 
 </style>

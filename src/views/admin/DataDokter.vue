@@ -1,24 +1,24 @@
 <template>
   <b-container class="mt-5">
+    <h3><strong>Data Dokter</strong></h3>
     <!-- User Interface controls -->
-    <div>
+    <div class="mt-2 d-flex">
         <b-form-group
           label-for="filter-input"
           label-align-sm="right"
-          label-size="sm"
-          class="w-25"
+          label-size="md"
+          class="w-25 shadow rounded"
         >
-          <b-input-group size="sm">
+          <b-input-group>
             <b-form-input
               id="filter-input"
               v-model="filter"
               type="search"
-              placeholder="Type to Search"
+              placeholder="Cari Disini"
             ></b-form-input>
           </b-input-group>
         </b-form-group>
     </div>
-
     <!-- Main table element -->
     <b-table
       :items="dokter"
@@ -26,19 +26,24 @@
       :current-page="currentPage"
       :per-page="perPage"
       :filter="filter"
-      striped 
+      striped hover
+      borderless
+      class="mt-3 shadow text-center rounded"
+      thead-class="bg-info text-white"
       responsive
       :filter-included-fields="filterOn"
       show-empty
-      small
       @filtered="onFiltered"
     >
+      <template v-slot:cell(index)="row">
+        {{ row.index + 1 }}
+      </template>
       <template #cell(dokter)="row">
-        {{ row.item.dokter }} {{ row.item.last }}
+       {{ row.item.dokter + 1 }} {{ row.item.dokter }} {{ row.item.last }}
       </template>
 
       <template #cell(actions)="row">
-        <b-link size="sm" @click="getIndex(row.item)" v-b-modal.detail-modal-prevent-closing>
+        <b-link class="text-decoration-none text-muted" size="sm" @click="getIndex(row.item)" v-b-modal.detail-modal-prevent-closing>
           Detail
         </b-link>
       </template>
@@ -57,17 +62,12 @@
     <b-modal
     id="detail-modal-prevent-closing"
     ref="modal"
-    title="Detail Data Pasien Rawat Jalan"
+    title="Data Dokter"
     @show="resetModal"
     @hidden="resetModal"
     @ok="handleOkEditDokter"
-    size="xl"
+    size="md"
     >
-
-    <!-- Detail View Mode -->
-      <p>Index Number : {{ indexNumber }}</p>
-      <p>Detail Patient : {{ detailDokter }}</p>
-      <p>Index Delete : {{ indexSelected }}</p>
       <form v-if="editMode === false" ref="form" @submit.stop.prevent="handleSubmitAddDokter()">
       <!-- Data SIP -->
       <b-form-group
@@ -269,16 +269,17 @@
     <template #modal-footer="{ ok }">
       <b-button 
       v-if="editMode === false"
-      v-b-modal.detail-modal-prevent-closing 
-      size="lg" 
-      variant="secondary" 
+      v-b-modal.detail-modal-prevent-closing  
+      squared
+      class="text-white"
+      variant="warning" 
       @click="changeEditMode()">
           Edit
       </b-button>
-      <b-button v-else size="lg" variant="danger" @click="deleteDokter(indexSelected)">
+      <b-button v-else variant="danger" squared @click="deleteDokter(indexSelected)">
           Delete
       </b-button>
-      <b-button size="lg" variant="success" @click="ok()">
+      <b-button variant="primary" squared @click="ok()">
           Simpan
       </b-button>
     </template>
@@ -318,7 +319,8 @@
         ],
         items: [],
         fields: [
-          { key: 'id', label: 'No'},
+          
+          { key: 'index', label: 'No'},
           { key: 'sip', label: 'SIP'},
           { key: 'nama', label: 'Nama'},
           { key: 'spesialis', label: 'Spesialis'},

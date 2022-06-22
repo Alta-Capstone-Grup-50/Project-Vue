@@ -11,55 +11,144 @@
       "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
       "str": "1821303554327688",
       "id": 1
-    }
-  ],
-  "dokter": [
-    {
-      "sip": "19301103 195903 1 01712",
-      "nama": "Trisna Chandra",
-      "gender": "L",
-      "spesialis": "Mata",
-      "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
-      "str": "1821303554327688",
-      "id": 1
     },
     {
       "sip": "19301103 195903 1 01712",
-      "nama": "Trisna Chandra",
+      "nama": "Chan Can",
+      "email": "json@server",
+      "password": "1234",
       "gender": "L",
-      "spesialis": "Mata",
+      "tingkat": "1",
+      "spesialis": "Jant",
       "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
       "str": "1821303554327688",
       "id": 2
     }
   ],
-  "patients": [
+  "dokter": [
     {
-      "id": 1,
-      "nik": "3507131606000004",
-      "name": "Mochammad Syafiuddin",
-      "address": "4517 Washington Ave. Manchester, Kentucky 39495",
+      "sip": "19301103 195903 1 0171287",
+      "nama": "Trisna Chandra Lskn",
       "gender": "P",
-      "phone": "(406) 555-0120",
-      "placeOfBirth": "New York",
-      "dateOfBirth": "2022-06-15",
-      "disease": "",
-      "handling": ""
+      "spesialis": "Mata Jantung l",
+      "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
+      "str": "1821303554327688",
+      "id": 2
     },
     {
-      "id": 2,
+      "sip": "19301103 195903 1 01712",
+      "nama": "Trisna Chandra",
+      "gender": "L",
+      "spesialis": "Mata",
+      "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
+      "str": "1821303554327688",
+      "id": 3
+    },
+    {
+      "sip": "19301103 195903 1 01712",
+      "nama": "Trisna Chandra'pojihy",
+      "gender": "L",
+      "spesialis": "Mata",
+      "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
+      "str": "1821303554327688",
+      "id": 5
+    },
+    {
+      "sip": "19301103 195903 1 0171287",
+      "nama": "Trisna Chandra",
+      "gender": "L",
+      "spesialis": "Mata",
+      "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
+      "str": "1821303554327688",
+      "id": 6
+    },
+    {
+      "sip": "19301103 195903 1 01712",
+      "nama": "Trisna Chandra",
+      "gender": "L",
+      "spesialis": "Mata",
+      "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
+      "str": "1821303554327688",
+      "id": 7
+    },
+    {
+      "sip": "19301103 195903 1 01712",
+      "nama": "Trisna Chandra",
+      "gender": "L",
+      "spesialis": "Mata",
+      "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
+      "str": "1821303554327688",
+      "id": 8
+    },
+    {
+      "sip": "19301103 195903 1 01712",
+      "nama": "Trisna Chandra",
+      "gender": "L",
+      "spesialis": "Mata",
+      "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
+      "str": "1821303554327688",
+      "id": 243
+    },
+    {
+      "sip": "19301103 195903 1 01712",
+      "nama": "Trisna Chandra",
+      "gender": "L",
+      "spesialis": "Mata",
+      "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
+      "str": "1821303554327688",
+      "id": 2433
+    },
+    {
+      "sip": "19301103 195903 1 01712",
+      "nama": "Trisna Chandra",
+      "gender": "L",
+      "spesialis": "Mata",
+      "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
+      "str": "1821303554327688",
+      "id": 212
+    },
+    {
+      "sip": "19301103 195903 1 01712",
+      "nama": "Trisna Chandra",
+      "gender": "L",
+      "spesialis": "Mata",
+      "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
+      "str": "1821303554327688",
+      "id": 2332
+    },
+    {
+      "sip": "19301103 195903 1 01712",
+      "nama": "Trisna Chandra",
+      "gender": "L",
+      "spesialis": "Mata",
+      "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
+      "str": "1821303554327688",
+      "id": 24345
+    },
+    {
+      "sip": "19301103 195903 1 01712",
+      "nama": "Trisna Chandra",
+      "gender": "L",
+      "spesialis": "Mata",
+      "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
+      "str": "1821303554327688",
+      "id": 245
+    }
+  ],
+  "patients": [
+    {
       "nik": "3507131606000004",
-      "name": "Jane Cooper",
+      "name": "Jane Cooper Steven",
       "address": "4517 Washington Ave. Manchester, Kentucky 39495",
       "gender": "P",
       "phone": "(406) 555-0120",
       "placeOfBirth": "New York",
       "dateOfBirth": "2022-06-15",
       "disease": "Gigi",
-      "handling": "Rawat Jalan"
+      "handling": "Rawat Jalan",
+      "id": 2
     },
     {
-      "id": 3,
       "nik": "3507131606000004",
       "name": "Ainun Rizki Abdillah",
       "address": "4517 Washington Ave. Manchester, Kentucky 39495",
@@ -68,7 +157,8 @@
       "placeOfBirth": "New York",
       "dateOfBirth": "2022-06-15",
       "disease": "",
-      "handling": ""
+      "handling": "",
+      "id": 3
     },
     {
       "id": 4,

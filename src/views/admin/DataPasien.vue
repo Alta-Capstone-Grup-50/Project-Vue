@@ -1,43 +1,34 @@
 <template>
-  <b-container>
-    <b-row class="w-100" align-h="between">
+  <b-container class="mt-5">
+  <h3><strong>Data Pasien</strong></h3>
+      <div class="d-flex">
 
-      <h1>Data Pasien</h1>
-      <b-col cols="4">
-        <b-form-group
-          label="Filter"
-          label-for="filter-input"
-          label-cols-sm="3"
-          label-align-sm="right"
-          label-size="sm"
-          class="mb-0"
-        >
-          <b-input-group size="sm">
-            <b-form-input
-              id="filter-input"
-              v-model="filter"
-              type="search"
-              placeholder="Type to Search"
-              class="mb-2"
-            ></b-form-input>
+          <b-form-group
+            label-for="filter-input"
+            label-align-sm="right"
+            label-size="md"
+            class="w-25 shadow rounded"
+          >
+            <b-input-group>
+              <b-form-input
+                id="filter-input"
+                v-model="filter"
+                type="search"
+                placeholder="Cari Disini"
+              ></b-form-input>
+            </b-input-group>
+          </b-form-group>
 
-            <b-input-group-append>
-              <!-- <b-button :disabled="!filter" @click="filter = ''">Clear</b-button> -->
-            </b-input-group-append>
-          </b-input-group>
-        </b-form-group>
-      </b-col>
-
-      <b-col cols="4" class="col2">
-        <div class="d-flex justify-content-end btn-tambah-pasien">
-          <b-button
+        <div class="ms-auto">
+        <b-button
           v-b-modal.add-modal-prevent-closing
           variant="primary"
+          class="shadow"
           >
           Tambah Pasien
           </b-button>
         </div>
-
+      </div>
         <b-modal
           id="add-modal-prevent-closing"
           ref="modal"
@@ -160,10 +151,8 @@
 
           </form>
           </b-modal>
-      </b-col>
 
 
-    </b-row>
 
     <!-- Main table element -->
     <b-table
@@ -172,14 +161,18 @@
       :current-page="currentPage"
       :per-page="perPage"
       :filter="filter"
+      striped hover
+      borderless
+      class="mt-3 shadow text-center rounded"
+      thead-class="bg-info text-white"
+      responsive
       :filter-included-fields="filterOn"
-      stacked="md"
       show-empty
-      small
       @filtered="onFiltered"
-      class="text-center"
     >
-
+      <template v-slot:cell(index)="row">
+        {{ row.index + 1 }}
+      </template>
       <template #cell(disease)="row">
         <p v-if="row.item.disease === ''">--</p>
         <p v-else>{{ row.item.disease }}</p>
@@ -191,13 +184,12 @@
       </template>
 
       <template #cell(actions)="row">
-        <b-button 
+        <b-link class="text-decoration-none text-muted"
         v-b-modal.detail-modal-prevent-closing 
         size="sm" 
-        @click="getIndex(row.item)" 
-        class="mr-1">
+        @click="getIndex(row.item)">
           Detail
-        </b-button>
+        </b-link>
       </template>
 
     </b-table>
@@ -528,7 +520,7 @@ import axios from 'axios'
 
         items: [],
         fields: [
-          { key: 'id', label: 'ID'},
+          { key: 'index', label: 'No'},
           { key: 'nik', label: 'NIK'},
           { key: 'name', label: 'Nama'},
           { key: 'address', label: 'Alamat'},
@@ -539,7 +531,7 @@ import axios from 'axios'
         ],
         totalRows: 1,
         currentPage: 1,
-        perPage: 10,
+        perPage: 5,
         pageOptions: [5, 10, 15, { value: 100, text: "Show a lot" }],
         filter: null,
         filterOn: [],

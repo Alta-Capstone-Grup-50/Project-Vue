@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Navbar />
     <b-container class="py-5">
       <p class="text-danger fs-4">Info Terkini</p>
 
@@ -59,11 +58,7 @@
 </template>
 
 <script>
-import Navbar from "@/components/Navbar.vue";
-export default {
-  name: "HomePage",
-  components: { Navbar },
-};
+
 </script>
 
 <style>

@@ -9,7 +9,6 @@ import ManageAccount from "@/views/ManageAccount";
 import AddAccount from "@/views/AddAccount";
 
 import DataPasien from '@/views/admin/DataPasien.vue'
-import TestPage from '@/views/TestPage.vue'
 import Default from "@/layout/default.vue";
 import LoginPage from "@/views/LoginPage";
 
@@ -39,20 +38,30 @@ const routes = [
         component: HomeAdmin,
       },
       {
-        path:"/",
+        path:"/DataDokter",
         name:"DataDokter",
         component: DataDokter,
+      },
+      {
+        path: "/DataPasien",
+        name: "DataPasien",
+        component : DataPasien,
       },
       {
         path:"/HomeDokter",
         name:"HomeDokter",
         component: HomeDokter,
+      },
+      {
+        path: "/AddAccount",
+        name: "AddAccount",
+        component: AddAccount,
       }
     ]
     
   },
   {
-    path:"/LoginPage",
+    path:"/",
     name:"LoginPage",
     component: LoginPage,
   },
@@ -62,20 +71,7 @@ const routes = [
     name: "HomePage",
     component: HomePage,
   },
-  {
-    path: "/HomeDokter",
-    name: "HomeDokter",
-    component: HomeDokter,
-  },
-  {
-    path: "/DataDokter",
-    name: "DataDokter",
-    component: DataDokter,
 
-    path: "/DataPasien",
-    name: "DataPasien",
-    component : DataPasien,
-  },
   {
     path: "/TestPage",
     name: "TestPage",
@@ -86,11 +82,7 @@ const routes = [
     name: "ManageAccount",
     component: ManageAccount,
   },
-  {
-    path: "/AddAccount",
-    name: "AddAccount",
-    component: AddAccount,
-  }
+  
 ];
 const router = new VuerRouter({
     mode:"history",
