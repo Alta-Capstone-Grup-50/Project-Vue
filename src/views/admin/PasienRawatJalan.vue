@@ -250,6 +250,22 @@
         ></b-form-datepicker>
         </b-form-group>
 
+        <!-- No Antri of Birth -->
+        <b-form-group
+        label="No Antri"
+        label-for="noAntri-input"
+        invalid-feedback="No Antri is required"
+        :state="noAntriState"
+        >
+        <b-form-input
+            id="noAntri-input"
+            v-model="detailPatient.noAntri"
+            :state="noAntriState"
+            required
+            disabled
+        ></b-form-input>
+        </b-form-group>
+
       </form>
 
     <!-- Detail Edit Mode -->
@@ -382,6 +398,22 @@
           required
         ></b-form-datepicker>
         </b-form-group>
+
+        <!-- No Antri of Birth -->
+        <b-form-group
+        label="No Antri"
+        label-for="noAntri-input"
+        invalid-feedback="No Antri is required"
+        :state="noAntriState"
+        >
+        <b-form-input
+            id="noAntri-input"
+            v-model="detailPatient.noAntri"
+            :state="noAntriState"
+            required
+        ></b-form-input>
+        </b-form-group>
+        
       </form>
 
     <template #modal-footer="{ ok }">
