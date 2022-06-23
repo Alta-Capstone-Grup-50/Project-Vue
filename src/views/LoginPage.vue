@@ -84,18 +84,18 @@ export default {
    async submit(){
       let result = await axios.get(`https://62b483cfda3017eabb0c415b.mockapi.io/user`,this.login)
       console.warn(result)
-      if(result.status==200 && result.data.length>0 && result.data[0].tingkat==1)
+      if(result.status==200 && result.data[0].tingkat==1)
      {
        
        localStorage.setItem("admin-info",JSON.stringify(result.data[0]))
-       this.$router.push({name:"DataDokter"})
+       this.$router.push({name:"HomeAdmin"})
        this.showError = false
-     } else if (result.status==200 && result.data.length>0 && result.data[0].tingkat==0) {
+     } else if (result.status==200 && result.data[0].tingkat==0) {
        localStorage.setItem("user-info",JSON.stringify(result.data[0]))
        this.$router.push({name:"HomeDokter"})
        this.showError = false
 
-     } else (result.status==200 && result.data.length==0) 
+     } else (result.status==201) 
      {
          this.showError = true
       }
