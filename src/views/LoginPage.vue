@@ -82,7 +82,7 @@ export default {
   },
   methods: {
    async submit(){
-      let result = await axios.post(`https://api-capstone-heroku.herokuapp.com/login`,this.login)
+      let result = await axios.get(`https://62b483cfda3017eabb0c415b.mockapi.io/user`,this.login)
       console.warn(result)
       if(result.status==200 && result.data.length>0 && result.data[0].tingkat==1)
      {

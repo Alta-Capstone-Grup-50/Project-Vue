@@ -3,7 +3,7 @@ import VuerRouter from "vue-router";
 import HomeAdmin from "@/views/admin/HomeAdmin";
 import DataDokter from "@/views/admin/DataDokter";
 import HomeDokter from "@/views/dokter/HomeDokter";
-
+import DataPerawat from "@/views/admin/DataPerawat"
 import HomePage from "@/views/HomePage";
 import ManageAccount from "@/views/ManageAccount";
 import AddAccount from "@/views/AddAccount";
@@ -46,6 +46,11 @@ const routes = [
         path: "/DataPasien",
         name: "DataPasien",
         component : DataPasien,
+      },
+      {
+        path: "/DataPerawat",
+        name: "DataPerawat",
+        component : DataPerawat,
       },
       {
         path:"/HomeDokter",
