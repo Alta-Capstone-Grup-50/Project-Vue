@@ -321,6 +321,42 @@
           disabled
         ></b-form-datepicker>
         </b-form-group>
+
+        <!-- Input Jenis Penyakit -->
+        <b-form-group
+        label="Jenis Penyakit"
+        label-for="disease-input"
+        invalid-feedback="Jenis Penyakit is required"
+        :state="diseaseState"
+        >
+        <b-form-input
+            id="placeOfBirth-input"
+            v-model="detailPatient.disease"
+            :state="diseaseState"
+            required
+            disabled
+        ></b-form-input>
+        </b-form-group>
+
+        <!-- Input Radio Jenis Penanganan -->
+        <b-form-group
+        label="Jenis Penanganan"
+        label-for="handling-input"
+        invalid-feedback="Jenis Penanganan is required"
+        :state="handlingState"
+        >
+        <b-form-radio-group
+            id="btn-radios-2"
+            v-model="detailPatient.handling"
+            :options="optionsHandling"
+            button-variant="outline-primary"
+            size="md"
+            name="radio-btn-outline"
+            buttons
+            required
+            disabled
+        ></b-form-radio-group>
+        </b-form-group>
       </form>
 
     <!-- Detail Edit Mode -->
@@ -337,6 +373,7 @@
           v-model="detailPatient.nik"
           :state="nikState"
           required
+          disabled
       ></b-form-input>
       </b-form-group>
 
@@ -352,7 +389,7 @@
             v-model="detailPatient.name"
             :state="nameState"
             required
-
+            disabled
         ></b-form-input>
         </b-form-group>
 
@@ -368,7 +405,7 @@
             v-model="detailPatient.address"
             :state="addressState"
             required
-
+            disabled
         ></b-form-input>
         </b-form-group>
 
@@ -388,7 +425,7 @@
             name="radio-btn-outline"
             buttons
             required
-
+            disabled
         ></b-form-radio-group>
         </b-form-group>
 
@@ -404,7 +441,7 @@
             v-model="detailPatient.phone"
             :state="phoneState"
             required
-
+            disabled
         ></b-form-input>
         </b-form-group>
 
@@ -420,7 +457,7 @@
             v-model="detailPatient.placeOfBirth"
             :state="placeOfBirthState"
             required
-
+            disabled
         ></b-form-input>
         </b-form-group>
 
@@ -436,8 +473,44 @@
           v-model="detailPatient.dateOfBirth"
           :state="dateOfBirthState"
           required
+          disabled
         ></b-form-datepicker>
         </b-form-group>
+
+        <!-- Input Jenis Penyakit -->
+        <b-form-group
+        label="Jenis Penyakit"
+        label-for="disease-input"
+        invalid-feedback="Jenis Penyakit is required"
+        :state="diseaseState"
+        >
+        <b-form-input
+            id="placeOfBirth-input"
+            v-model="detailPatient.disease"
+            :state="diseaseState"
+            required
+        ></b-form-input>
+        </b-form-group>
+
+        <!-- Input Radio Jenis Penanganan -->
+        <b-form-group
+        label="Jenis Penanganan"
+        label-for="handling-input"
+        invalid-feedback="Jenis Penanganan is required"
+        :state="handlingState"
+        >
+        <b-form-radio-group
+            id="btn-radios-2"
+            v-model="detailPatient.handling"
+            :options="optionsHandling"
+            button-variant="outline-primary"
+            size="md"
+            name="radio-btn-outline"
+            buttons
+            required
+        ></b-form-radio-group>
+        </b-form-group>
+
       </form>
 
     <template #modal-footer="{ ok }">
@@ -512,10 +585,16 @@ import axios from 'axios'
         phoneState: null,
         placeOfBirthState: null,
         dateOfBirthState: null,
+        diseaseState: null,
+        handlingState: null,
         selected: '',
         options: [
             { text: 'Laki-laki', value: 'L' },
             { text: 'Perempuan', value: 'P' },
+        ],
+        optionsHandling: [
+            { text: 'Rawat Jalan', value: 'Rawat Jalan' },
+            { text: 'Rawat Inap', value: 'Rawat Inap' },
         ],
 
         items: [],
@@ -563,7 +642,7 @@ import axios from 'axios'
       },
 
         async load() {
-            const response = await axios.get(`https://62b483cfda3017eabb0c415b.mockapi.io/patients`)
+            const response = await axios.get(`http://localhost:3000/patients`)
             this.patients = response.data
             
             // Set the initial number of patients
@@ -578,7 +657,7 @@ import axios from 'axios'
 
         async addPatient() {
           try {
-              await axios.post(`https://62b483cfda3017eabb0c415b.mockapi.io/patients`, this.form)
+              await axios.post(`http://localhost:3000/patients`, this.form)
               this.load()
           } catch (error) {
               console.log(error)
@@ -587,7 +666,7 @@ import axios from 'axios'
         async deletePatient(indexId) {
             if (confirm('Apakah Anda Akan Menghapus Data Ini?') == true) {
                 try {
-                    await axios.delete(`https://62b483cfda3017eabb0c415b.mockapi.io/patients/` + indexId)
+                    await axios.delete(`http://localhost:3000/patients/` + indexId)
                     this.load()
                 } catch (error) {
                     console.log(error)
@@ -601,7 +680,7 @@ import axios from 'axios'
 
         async updatePatient() {
             try {
-                await axios.put(`https://62b483cfda3017eabb0c415b.mockapi.io/patients/` + this.indexSelected, {
+                await axios.put(`http://localhost:3000/patients/` + this.indexSelected, {
                     nik: this.detailPatient.nik,
                     name: this.detailPatient.name,
                     address: this.detailPatient.address,
