@@ -563,7 +563,7 @@ import axios from 'axios'
       },
 
         async load() {
-            const response = await axios.get(`https://62b483cfda3017eabb0c415b.mockapi.io/patients`)
+            const response = await axios.get(`http://localhost:3000/patients`)
             this.patients = response.data
             
             // Set the initial number of patients
@@ -578,7 +578,7 @@ import axios from 'axios'
 
         async addPatient() {
           try {
-              await axios.post(`https://62b483cfda3017eabb0c415b.mockapi.io/patients`, this.form)
+              await axios.post(`http://localhost:3000/patients`, this.form)
               this.load()
           } catch (error) {
               console.log(error)
@@ -587,7 +587,7 @@ import axios from 'axios'
         async deletePatient(indexId) {
             if (confirm('Apakah Anda Akan Menghapus Data Ini?') == true) {
                 try {
-                    await axios.delete(`https://62b483cfda3017eabb0c415b.mockapi.io/patients/` + indexId)
+                    await axios.delete(`http://localhost:3000/patients` + indexId)
                     this.load()
                 } catch (error) {
                     console.log(error)
@@ -601,7 +601,7 @@ import axios from 'axios'
 
         async updatePatient() {
             try {
-                await axios.put(`https://62b483cfda3017eabb0c415b.mockapi.io/patients/` + this.indexSelected, {
+                await axios.put(`http://localhost:3000/patients` + this.indexSelected, {
                     nik: this.detailPatient.nik,
                     name: this.detailPatient.name,
                     address: this.detailPatient.address,
