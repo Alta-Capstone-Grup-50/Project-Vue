@@ -9,6 +9,7 @@ import ManageAccount from "@/views/ManageAccount";
 import AddAccount from "@/views/AddAccount";
 
 import DataPasien from '@/views/admin/DataPasien.vue'
+import DataPasienDokter from '@/views/dokter/DataPasien.vue'
 import Default from "@/layout/default.vue";
 import LoginPage from "@/views/LoginPage";
 
@@ -56,7 +57,12 @@ const routes = [
         path: "/AddAccount",
         name: "AddAccount",
         component: AddAccount,
-      }
+      },
+      {
+        path: "/DataPasienDokter",
+        name: "DataPasienDokter",
+        component: DataPasienDokter,
+      },
     ]
     
   },
