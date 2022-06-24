@@ -1,40 +1,58 @@
 <template>
-<nav class="navbar navbar-expand-lg navbar-light shadow bg-light" sticky fixed="top">
-  <b-container>
-    <a class="navbar-brand" href="#">
-      <img src="https://i.postimg.cc/CKjq1Vg7/logo-klinik-1.png">
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <b-navbar-nav class="ms-auto mb-2 mb-lg-0">
-        <b-nav-item ><router-link class="text-decoration-none text-black" to="/HomeAdmin"><strong>Home</strong></router-link></b-nav-item>
-        <b-nav-item ><router-link class="text-decoration-none text-black" to="/DataPasien"><strong>Data Pasien</strong></router-link></b-nav-item>
-        <b-nav-item ><router-link class="text-decoration-none text-black" to="/DataRawatJalan"><strong>Data Rawat Jalan</strong></router-link></b-nav-item>
-        <b-nav-item ><router-link class="text-decoration-none text-black" to="/DataDokter"><strong>Data Tenaga Kesehatan</strong></router-link></b-nav-item>
-        <b-button size="sm" v-on:click="logout" type="logout" class="btn btn-warning text-white">Logout</b-button>
-      </b-navbar-nav>
-    </div>
-  </b-container>
-</nav>
+  <div>
+    <b-navbar toggleable="md" type="light" variant="light">
+      <b-container>
+        <b-navbar-brand href="#">
+          <img src="@/assets/logo klinik 1.png" />
+        </b-navbar-brand>
+
+        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+        <b-collapse id="nav-collapse" is-nav>
+          <b-navbar-nav class="ms-auto">
+            <b-nav-item href="#">Home</b-nav-item>
+            <b-nav-item href="#">Data Pasien</b-nav-item>
+            <b-nav-item href="#">Data Rawat Jalan</b-nav-item>
+            <b-nav-item href="#">Data Tenaga Kesehatan</b-nav-item>
+            <b-nav-item href="#">Manage Account</b-nav-item>
+            <b-nav-item-dropdown
+              class="border dropdown-rounded bg-info"
+              right
+            >
+              <!-- Using 'button-content' slot -->
+              <template #button-content>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  style="height: 25px; width: 25px"
+                  class="text-white"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </template>
+              <b-dropdown-item href="#">Profile</b-dropdown-item>
+              <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+            </b-nav-item-dropdown>
+          </b-navbar-nav>
+        </b-collapse>
+      </b-container>
+    </b-navbar>
+  </div>
 </template>
+
 <script>
 export default {
-  name: 'NavbarPage',
-  methods:{
-    logout()
-    {
-      localStorage.clear();
-      this.$router.push({name:"LoginPage"})
-    }
-  },
-  components: {
-
-  },
+  name: "NavbarHome",
 };
 </script>
+
 <style>
-
+.dropdown-rounded {
+  border-radius: 10px !important;
+}
 </style>
-
