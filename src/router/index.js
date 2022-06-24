@@ -84,6 +84,11 @@ const routes = [
   },
 
   {
+    path: "/PasienRawatJalan",
+    name: "PasienRawatJalan",
+    component : PasienRawatJalan,
+  },
+  {
     path: "/TestPage",
     name: "TestPage",
 

@@ -19,6 +19,7 @@
   </b-container>
 </nav>
 </template>
+
 <script>
 export default {
   name: 'NavbarPage',
@@ -34,7 +35,9 @@ export default {
   },
 };
 </script>
+
 <style>
-
+.dropdown-rounded {
+  border-radius: 10px !important;
+}
 </style>
-

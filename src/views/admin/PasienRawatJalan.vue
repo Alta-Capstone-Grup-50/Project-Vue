@@ -1,42 +1,18 @@
 <template>
-  <b-container class="mt-5">
-  <h3><strong>Data Pasien</strong></h3>
-      <div class="d-flex">
+  <div>
+    <navbar />
+    <b-container>
+      <b-row class="w-100" align-h="between">
 
+        <h1>Data Pasien Rawat Jalan</h1>
+        <b-col cols="4">
           <b-form-group
+            label="Filter"
             label-for="filter-input"
+            label-cols-sm="3"
             label-align-sm="right"
-            label-size="md"
-            class="w-25 shadow rounded"
-          >
-            <b-input-group>
-              <b-form-input
-                id="filter-input"
-                v-model="filter"
-                type="search"
-                placeholder="Cari Disini"
-              ></b-form-input>
-            </b-input-group>
-          </b-form-group>
-
-        <div class="ms-auto">
-        <b-button
-          v-b-modal.add-modal-prevent-closing
-          variant="primary"
-          class="shadow"
-          >
-          Tambah Pasien
-          </b-button>
-        </div>
-      </div>
-        <b-modal
-          id="add-modal-prevent-closing"
-          ref="modal"
-          title="Tambah Data Pasien Rawat Jalan"
-          @show="resetModal"
-          @hidden="resetModal"
-          @ok="handleOkAddPatient"
-          size="xl"
+            label-size="sm"
+            class="mb-0"
           >
             <b-input-group size="sm">
               <b-form-input
@@ -54,186 +30,46 @@
           </b-form-group>
         </b-col>
 
-        <b-col cols="4" class="col2">
-          <div class="d-flex justify-content-end btn-tambah-pasien">
-            <b-button
-            v-b-modal.add-modal-prevent-closing
-            variant="primary"
-            >
-            Tambah Pasien
-            </b-button>
-          </div>
+      </b-row>
 
-          <b-modal
-            id="add-modal-prevent-closing"
-            ref="modal"
-            title="Tambah Data Pasien Rawat Jalan"
-            @show="resetModal"
-            @hidden="resetModal"
-            @ok="handleOkAddPatient"
-            size="xl"
-            >
-            <form ref="form" @submit.stop.prevent="handleSubmitAddPatient()">
-
-              <!-- Input NIK -->
-              <b-form-group
-              label="NIK"
-              label-for="nik-input"
-              invalid-feedback="NIK is required"
-              :state="nikState"
-              >
-              <b-form-input
-                  id="nik-input"
-                  v-model="form.nik"
-                  :state="nikState"
-                  required
-              ></b-form-input>
-              </b-form-group>
-
-                <!-- Input Name -->
-                <b-form-group
-                label="Name"
-                label-for="name-input"
-                invalid-feedback="Name is required"
-                :state="nameState"
-                >
-                <b-form-input
-                    id="name-input"
-                    v-model="form.name"
-                    :state="nameState"
-                    required
-                ></b-form-input>
-                </b-form-group>
-
-                <!-- Input Address -->
-                <b-form-group
-                label="Address"
-                label-for="address-input"
-                invalid-feedback="Address is required"
-                :state="addressState"
-                >
-                <b-form-input
-                    id="address-input"
-                    v-model="form.address"
-                    :state="addressState"
-                    required
-                ></b-form-input>
-                </b-form-group>
-
-                <!-- Input Radio Gender -->
-                <b-form-group
-                label="Jenis Kelamin"
-                label-for="gender-input"
-                invalid-feedback="Jenis Kelamin is required"
-                :state="genderState"
-                >
-                <b-form-radio-group
-                    id="btn-radios-2"
-                    v-model="form.gender"
-                    :options="options"
-                    button-variant="outline-primary"
-                    size="md"
-                    name="radio-btn-outline"
-                    buttons
-                    required
-                ></b-form-radio-group>
-                </b-form-group>
-
-                <!-- Input Phone -->
-                <b-form-group
-                label="Phone"
-                label-for="phone-input"
-                invalid-feedback="Phone is required"
-                :state="phoneState"
-                >
-                <b-form-input
-                    id="phone-input"
-                    v-model="form.phone"
-                    :state="phoneState"
-                    required
-                ></b-form-input>
-                </b-form-group>
-
-                <!-- Input Place of Birth -->
-                <b-form-group
-                label="Place of Birth"
-                label-for="placeOfBirth-input"
-                invalid-feedback="Place of Birth is required"
-                :state="placeOfBirthState"
-                >
-                <b-form-input
-                    id="placeOfBirth-input"
-                    v-model="form.placeOfBirth"
-                    :state="placeOfBirthState"
-                    required
-                ></b-form-input>
-                </b-form-group>
-    
-                <!-- Input Date of Birth -->
-                <b-form-group
-                label="Date of Birth"
-                label-for="dateOfBirth-input"
-                invalid-feedback="Date of Birth is required"
-                :state="dateOfBirthState"
-                required
-              ></b-form-datepicker>
-              </b-form-group>
-
-          </form>
-          </b-modal>
-
-
-
-    <!-- Main table element -->
-    <b-table
-      :items="patients"
-      :fields="fields"
-      :current-page="currentPage"
-      :per-page="perPage"
-      :filter="filter"
-      striped hover
-      borderless
-      class="mt-3 shadow text-center rounded"
-      thead-class="bg-info text-white"
-      responsive
-      :filter-included-fields="filterOn"
-      show-empty
-      @filtered="onFiltered"
-    >
-      <template v-slot:cell(index)="row">
-        {{ row.index + 1 }}
-      </template>
-      <template #cell(disease)="row">
-        <p v-if="row.item.disease === ''">--</p>
-        <p v-else>{{ row.item.disease }}</p>
-      </template>
-
-      <template #cell(handling)="row">
-        <p v-if="row.item.handling === ''">--</p>
-        <p v-else>{{ row.item.handling }}</p>
-      </template>
-
-      <template #cell(actions)="row">
-        <b-link class="text-decoration-none text-muted"
-        v-b-modal.detail-modal-prevent-closing 
-        size="sm" 
-        @click="getIndex(row.item)">
-          Detail
-        </b-link>
-      </template>
+      <!-- Main table element -->
+      <b-table
+        :items="patients"
+        :fields="fields"
+        :current-page="currentPage"
+        :per-page="perPage"
+        :filter="filter"
+        :filter-included-fields="filterOn"
+        stacked="md"
+        show-empty
+        small
+        @filtered="onFiltered"
+        class="text-center"
+      >
 
         <template v-slot:cell(no)="row">
           {{ row.index + 1 }}
         </template>
 
-        <template #cell(disease)="row">
-          <p v-if="row.item.disease === ''">--</p>
-          <p v-else>{{ row.item.disease }}</p>
+        <template #cell(jadwalRawat)="row">
+          <p v-if="row.item.jadwalRawat === ''">--</p>
+          <p v-else>{{ row.item.jadwalRawat }}</p>
         </template>
 
-        <template #cell(handling)="row">
-          <p v-if="row.item.handling === ''">--</p>
-          <p v-else>{{ row.item.handling }}</p>
+        <template #cell(noAntri)="row">
+          <p v-if="row.item.noAntri === ''">--</p>
+          <p v-else>{{ row.item.noAntri }}</p>
+        </template>
+
+        <template #cell(ketRawat)="row">
+          <b-button 
+          v-b-modal.keteranganPasien-modal-prevent-closing 
+          size="sm" 
+          @click="getIndex(row.item)" 
+          class="mr-1"
+          variant="success">
+            Ket
+          </b-button>
         </template>
 
         <template #cell(actions)="row">
@@ -248,6 +84,30 @@
 
       </b-table>
 
+      <!-- Modal Keterangan Pasien -->
+      <b-modal
+      id="keteranganPasien-modal-prevent-closing"
+      ref="modal"
+      title="Keterangan Dokter"
+      @show="resetModal"
+      @hidden="resetModal"
+      @ok="resetModal"
+      size="xl"
+      >
+      <!-- Detail View Mode -->
+        <b-form-group>
+        <b-form-textarea
+          rows="8"
+          id="ketRawat-input"
+          v-model="detailPatient.ketRawat"
+          :state="ketRawatState"
+          disabled
+        ></b-form-textarea>
+
+        </b-form-group>
+      </b-modal>
+
+      <!-- Modal Detail Pasien -->
       <b-modal
       id="detail-modal-prevent-closing"
       ref="modal"
@@ -375,6 +235,39 @@
             disabled
           ></b-form-datepicker>
           </b-form-group>
+
+          <!-- Input Jadwal Rawat Jalan -->
+          <b-form-group
+          label="Jadwal Rawat Jalan"
+          label-for="jadwalRawat-input"
+          invalid-feedback="Jadwal Rawat is required"
+          :state="jadwalRawatState"
+          >
+          <b-form-datepicker
+            id="jadwalRawat-datepicker"
+            v-model="detailPatient.jadwalRawat"
+            :state="jadwalRawatState"
+            required
+            disabled
+          ></b-form-datepicker>
+          </b-form-group>
+
+          <!-- No Antri of Birth -->
+          <b-form-group
+          label="No Antri"
+          label-for="noAntri-input"
+          invalid-feedback="No Antri is required"
+          :state="noAntriState"
+          >
+          <b-form-input
+              id="noAntri-input"
+              v-model="detailPatient.noAntri"
+              :state="noAntriState"
+              required
+              disabled
+          ></b-form-input>
+          </b-form-group>
+
         </form>
 
       <!-- Detail Edit Mode -->
@@ -492,6 +385,37 @@
             required
           ></b-form-datepicker>
           </b-form-group>
+
+          <!-- Input Jadwal Rawat Jalan -->
+          <b-form-group
+          label="Jadwal Rawat Jalan"
+          label-for="jadwalRawat-input"
+          invalid-feedback="Jadwal Rawat is required"
+          :state="jadwalRawatState"
+          >
+          <b-form-datepicker
+            id="jadwalRawat-datepicker"
+            v-model="detailPatient.jadwalRawat"
+            :state="jadwalRawatState"
+            required
+          ></b-form-datepicker>
+          </b-form-group>
+
+          <!-- No Antri of Birth -->
+          <b-form-group
+          label="No Antri"
+          label-for="noAntri-input"
+          invalid-feedback="No Antri is required"
+          :state="noAntriState"
+          >
+          <b-form-input
+              id="noAntri-input"
+              v-model="detailPatient.noAntri"
+              :state="noAntriState"
+              required
+          ></b-form-input>
+          </b-form-group>
+
         </form>
 
       <template #modal-footer="{ ok }">
@@ -512,6 +436,7 @@
       </template>
       </b-modal>
 
+      <!-- Pagination -->
       <b-col sm="7" md="6" class="mx-auto">
           <b-pagination
             v-model="currentPage"
@@ -529,14 +454,14 @@
 </template>
 
 <script>
-import axios from 'axios'
-import navbar from '@/components/navbar.vue'
+  import axios from 'axios'
+  import navbar from '@/components/navbar.vue'
 
   export default {
-    name: 'VuetifyPage',
+    name:'VuetifyPage',
     components: {
-      navbar
-    },
+        navbar
+      },
     data() {
       return {
         patients: [],
@@ -553,17 +478,12 @@ import navbar from '@/components/navbar.vue'
           placeOfBirth: '',
           dateOfBirth: '',
           disease: '',
-          handling: ''
+          handling: '',
+          jadwalRawat: '',
+          noAntri: '',
+          ketRawat: ''
         },
-        editForm: {
-            nik: '',
-            name: '',
-            address: '',
-            gender:'',
-            phone: '',
-            placeOfBirth: '',
-            dateOfBirth: '',
-        },
+
         nikState: null,
         nameState: null,
         addressState: null,
@@ -571,6 +491,12 @@ import navbar from '@/components/navbar.vue'
         phoneState: null,
         placeOfBirthState: null,
         dateOfBirthState: null,
+        diseaseState: null,
+        handlingState: null,
+        jadwalRawatState: null,
+        noAntriState: null,
+        ketRawatState: null,
+
         selected: '',
         options: [
             { text: 'Laki-laki', value: 'L' },
@@ -579,26 +505,27 @@ import navbar from '@/components/navbar.vue'
 
         items: [],
         fields: [
-          { key: 'index', label: 'No'},
+          { key: 'no', label: 'No'},
           { key: 'nik', label: 'NIK'},
           { key: 'name', label: 'Nama'},
           { key: 'address', label: 'Alamat'},
           { key: 'gender', label: 'Jenis Kelamin'},
-          { key: 'disease', label: 'Jenis Penyakit'},
-          { key: 'handling', label: 'Jenis Penanganan'},
+          { key: 'jadwalRawat', label: 'Jadwal Rawat Jalan'},
+          { key: 'noAntri', label: 'Nomer Antrian'},
+          { key: 'ketRawat', label: 'Ket. Rawat Jalan'},
           { key: 'actions', label: 'Actions' }
         ],
         totalRows: 1,
         currentPage: 1,
-        perPage: 5,
-        pageOptions: [5, 10, 15, { value: 100, text: "Show a lot" }],
+        perPage: 10,
         filter: null,
         filterOn: [],
         infoModal: {
           id: 'info-modal',
           title: '',
           content: ''
-        }
+        },
+        context: null,
       }
     },
 
@@ -646,7 +573,7 @@ import navbar from '@/components/navbar.vue'
         async deletePatient(indexId) {
             if (confirm('Apakah Anda Akan Menghapus Data Ini?') == true) {
                 try {
-                    await axios.delete(`http://localhost:3000/patients` + indexId)
+                    await axios.delete(`http://localhost:3000/patients/` + indexId)
                     this.load()
                 } catch (error) {
                     console.log(error)
@@ -660,7 +587,7 @@ import navbar from '@/components/navbar.vue'
 
         async updatePatient() {
             try {
-                await axios.put(`http://localhost:3000/patients` + this.indexSelected, {
+                await axios.put(`http://localhost:3000/patients/` + this.indexSelected, {
                     nik: this.detailPatient.nik,
                     name: this.detailPatient.name,
                     address: this.detailPatient.address,
@@ -669,7 +596,10 @@ import navbar from '@/components/navbar.vue'
                     placeOfBirth: this.detailPatient.placeOfBirth,
                     dateOfBirth: this.detailPatient.dateOfBirth,
                     disease: this.detailPatient.disease,
-                    handling: this.detailPatient.handling
+                    handling: this.detailPatient.handling,
+                    jadwalRawat: this.detailPatient.jadwalRawat,
+                    noAntri: this.detailPatient.noAntri,
+                    ketRawat: this.detailPatient.ketRawat
                 })
                 this.load()
             } catch (error) {
@@ -758,6 +688,10 @@ import navbar from '@/components/navbar.vue'
         },
         changeEditMode() {
           this.editMode = true
+        },
+
+        onContext(ctx) {
+          this.context = ctx
         }
     },
     mounted() {
