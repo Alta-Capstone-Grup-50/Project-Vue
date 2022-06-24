@@ -1,18 +1,42 @@
 <template>
-  <div>
-    <navbar />
-    <b-container>
-      <b-row class="w-100" align-h="between">
+  <b-container class="mt-5">
+  <h3><strong>Data Pasien</strong></h3>
+      <div class="d-flex">
 
-        <h1>Data Pasien</h1>
-        <b-col cols="4">
           <b-form-group
-            label="Filter"
             label-for="filter-input"
-            label-cols-sm="3"
             label-align-sm="right"
-            label-size="sm"
-            class="mb-0"
+            label-size="md"
+            class="w-25 shadow rounded"
+          >
+            <b-input-group>
+              <b-form-input
+                id="filter-input"
+                v-model="filter"
+                type="search"
+                placeholder="Cari Disini"
+              ></b-form-input>
+            </b-input-group>
+          </b-form-group>
+
+        <div class="ms-auto">
+        <b-button
+          v-b-modal.add-modal-prevent-closing
+          variant="primary"
+          class="shadow"
+          >
+          Tambah Pasien
+          </b-button>
+        </div>
+      </div>
+        <b-modal
+          id="add-modal-prevent-closing"
+          ref="modal"
+          title="Tambah Data Pasien Rawat Jalan"
+          @show="resetModal"
+          @hidden="resetModal"
+          @ok="handleOkAddPatient"
+          size="xl"
           >
             <b-input-group size="sm">
               <b-form-input
@@ -151,36 +175,52 @@
                 label-for="dateOfBirth-input"
                 invalid-feedback="Date of Birth is required"
                 :state="dateOfBirthState"
-                >
-                <b-form-datepicker
-                  id="dateOfBirth-datepicker"
-                  v-model="form.dateOfBirth"
-                  :state="dateOfBirthState"
-                  required
-                ></b-form-datepicker>
-                </b-form-group>
+                required
+              ></b-form-datepicker>
+              </b-form-group>
 
-            </form>
-            </b-modal>
-        </b-col>
+          </form>
+          </b-modal>
 
 
-      </b-row>
 
-      <!-- Main table element -->
-      <b-table
-        :items="patients"
-        :fields="fields"
-        :current-page="currentPage"
-        :per-page="perPage"
-        :filter="filter"
-        :filter-included-fields="filterOn"
-        stacked="md"
-        show-empty
-        small
-        @filtered="onFiltered"
-        class="text-center"
-      >
+    <!-- Main table element -->
+    <b-table
+      :items="patients"
+      :fields="fields"
+      :current-page="currentPage"
+      :per-page="perPage"
+      :filter="filter"
+      striped hover
+      borderless
+      class="mt-3 shadow text-center rounded"
+      thead-class="bg-info text-white"
+      responsive
+      :filter-included-fields="filterOn"
+      show-empty
+      @filtered="onFiltered"
+    >
+      <template v-slot:cell(index)="row">
+        {{ row.index + 1 }}
+      </template>
+      <template #cell(disease)="row">
+        <p v-if="row.item.disease === ''">--</p>
+        <p v-else>{{ row.item.disease }}</p>
+      </template>
+
+      <template #cell(handling)="row">
+        <p v-if="row.item.handling === ''">--</p>
+        <p v-else>{{ row.item.handling }}</p>
+      </template>
+
+      <template #cell(actions)="row">
+        <b-link class="text-decoration-none text-muted"
+        v-b-modal.detail-modal-prevent-closing 
+        size="sm" 
+        @click="getIndex(row.item)">
+          Detail
+        </b-link>
+      </template>
 
         <template v-slot:cell(no)="row">
           {{ row.index + 1 }}
@@ -539,7 +579,7 @@ import navbar from '@/components/navbar.vue'
 
         items: [],
         fields: [
-          { key: 'no', label: 'No'},
+          { key: 'index', label: 'No'},
           { key: 'nik', label: 'NIK'},
           { key: 'name', label: 'Nama'},
           { key: 'address', label: 'Alamat'},
@@ -550,7 +590,8 @@ import navbar from '@/components/navbar.vue'
         ],
         totalRows: 1,
         currentPage: 1,
-        perPage: 10,
+        perPage: 5,
+        pageOptions: [5, 10, 15, { value: 100, text: "Show a lot" }],
         filter: null,
         filterOn: [],
         infoModal: {
@@ -605,7 +646,7 @@ import navbar from '@/components/navbar.vue'
         async deletePatient(indexId) {
             if (confirm('Apakah Anda Akan Menghapus Data Ini?') == true) {
                 try {
-                    await axios.delete(`http://localhost:3000/patients/` + indexId)
+                    await axios.delete(`http://localhost:3000/patients` + indexId)
                     this.load()
                 } catch (error) {
                     console.log(error)
@@ -619,7 +660,7 @@ import navbar from '@/components/navbar.vue'
 
         async updatePatient() {
             try {
-                await axios.put(`http://localhost:3000/patients/` + this.indexSelected, {
+                await axios.put(`http://localhost:3000/patients` + this.indexSelected, {
                     nik: this.detailPatient.nik,
                     name: this.detailPatient.name,
                     address: this.detailPatient.address,

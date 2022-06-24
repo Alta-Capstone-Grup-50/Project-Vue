@@ -11,7 +11,7 @@
                             <strong><b-form-group label="Username" class="mt-2">
                                 <b-form-input
                                 id="input-1"
-                                v-model="email"
+                                v-model="login.email"
                                 name="username"
                                 class="forminput mt-3"
                                 required></b-form-input>
@@ -20,7 +20,7 @@
                             <strong><b-form-group label="Password" class="mt-2">
                                 <b-form-input
                                 id="input-2"
-                                v-model="password"
+                                v-model="login.password"
                                 type="password"
                                 name="password"
                                 class="forminput mt-3"
@@ -73,27 +73,29 @@ export default {
   components: {},
   data() {
     return {
-      email: "",
-      password: "",
+       login:{
+        email: "",
+        password: "",
+       },
       showError: false
     };
   },
   methods: {
    async submit(){
-      let result = await axios.get(`http://localhost:3000/users?email=${this.email}&password=${this.password}`)
+      let result = await axios.get(`https://62b483cfda3017eabb0c415b.mockapi.io/user`,this.login)
       console.warn(result)
-      if(result.status==200 && result.data.length>0 && result.data[0].tingkat==1)
+      if(result.status==200 && result.data[0].tingkat==1)
      {
        
        localStorage.setItem("admin-info",JSON.stringify(result.data[0]))
-       this.$router.push({name:"DataDokter"})
+       this.$router.push({name:"HomeAdmin"})
        this.showError = false
-     } else if (result.status==200 && result.data.length>0 && result.data[0].tingkat==0) {
+     } else if (result.status==200 && result.data[0].tingkat==0) {
        localStorage.setItem("user-info",JSON.stringify(result.data[0]))
        this.$router.push({name:"HomeDokter"})
        this.showError = false
 
-     } else (result.status==200 && result.data.length==0) 
+     } else (result.status==201) 
      {
          this.showError = true
       }

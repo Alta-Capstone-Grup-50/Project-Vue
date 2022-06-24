@@ -1,50 +1,48 @@
 <template>
-<body>
-    <b-navbar toggleable="lg" type="dark" variant="light" class="shadow" sticky fixed="top">
-      <b-container>
-        <b-navbar-brand class="ml-4" href="#"><img src="https://i.postimg.cc/CKjq1Vg7/logo-klinik-1.png" alt="Responsive image"></b-navbar-brand>
-        <b-navbar-toggle target="nav-collapse">
-          <b-navbar-nav class="ml-auto">
-            <b-nav-form>
-              <b-button size="sm" v-on:click="logout" class="my-2 my-sm-0" type="logout">Logout</b-button>
-            </b-nav-form>
-          </b-navbar-nav>
-        </b-navbar-toggle>
-      </b-container>
-    </b-navbar>
-    <b-container>
-    <div>
-      <h4 class="text-secondary poppins mt-5"><strong>Admin</strong></h4>
-    </div>
+  <div>
+    <b-container class="mt-3">
+      <div>
+        <b-img src="https://i.postimg.cc/wBYm6Dvv/beautiful-shot-ponte-vecchio-florence-tuscany-italy-1.png" rounded class="mt-5 shadow" fluid alt="Responsive image"></b-img>
+      </div>
+      <div class="container mt-5 mb-5">
+        <div class="row">
+          <div class="col">
+            <div class="card" style="width: 18rem;">
+              <img src="https://i.postimg.cc/rpXF7vBX/Frame-12-1.png" class="card-img-top" alt="">
+              <div class="card-body text-center">
+                <p class="card-text text-center"><router-link class="text-decoration-none text-black" to="/DataPasien"><strong>Data Pasien</strong></router-link></p>
+                <a href="#" class="btn btn-primary"><router-link class="text-decoration-none text-white" to="/DataPasien"><strong>Lebih Lanjut</strong></router-link></a>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" style="width: 18rem;">
+              <img src="https://i.postimg.cc/rpXF7vBX/Frame-12-1.png" class="card-img-top" alt="">
+              <div class="card-body text-center">
+                <p class="card-text text-center"><router-link class="text-decoration-none text-black" to="/DataDokter"><strong>Data Dokter</strong></router-link></p>
+                <a href="#" class="btn btn-primary"><router-link class="text-decoration-none text-white" to="/DataDokter"><strong>Lebih Lanjut</strong></router-link></a>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" style="width: 18rem;">
+              <img src="https://i.postimg.cc/rpXF7vBX/Frame-12-1.png" class="card-img-top" alt="">
+              <div class="card-body text-center">
+                <p class="card-text text-center"><router-link class="text-decoration-none text-black" to="/DataPerawat"><strong>Data Perawat</strong></router-link></p>
+                <a href="#" class="btn btn-primary"><router-link class="text-decoration-none text-white" to="/DataPerawat"><strong>Lebih Lanjut</strong></router-link></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </b-container>
-</body>
+  </div>
 </template>
+
 <script>
-export default {
-  name: 'AdminPage',
-  methods:{
-    logout()
-    {
-      localStorage.clear();
-      this.$router.push({name:"LoginPage"})
-    }
-  },
-  mounted()
-  {
-    let user= localStorage.getItem('admin-info');
-      if(!user){
-        this.$router.push({name:"LoginPage"})
-      }
-  }
-  
-}
+
 </script>
+
 <style>
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap');
-.poppins{
-    font-family: 'Poppins', sans-serif;
-}
-
 
 </style>

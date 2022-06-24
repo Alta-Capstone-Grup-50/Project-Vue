@@ -1,6 +1,6 @@
 <template>
   <b-container class="mt-5">
-    <h3><strong>Data Dokter</strong></h3>
+    <h3><strong>Data Perawat</strong></h3>
     <!-- User Interface controls -->
     <div class="mt-2 d-flex">
         <b-form-group
@@ -21,7 +21,7 @@
     </div>
     <!-- Main table element -->
     <b-table
-      :items="dokter"
+      :items="perawat"
       :fields="fields"
       :current-page="currentPage"
       :per-page="perPage"
@@ -38,8 +38,8 @@
       <template v-slot:cell(index)="row">
         {{ row.index + 1 }}
       </template>
-      <template #cell(dokter)="row">
-       {{ row.item.dokter + 1 }} {{ row.item.dokter }} {{ row.item.last }}
+      <template #cell(perawat)="row">
+       {{ row.item.perawat + 1 }} {{ row.item.perawat }} {{ row.item.perawat }}
       </template>
 
       <template #cell(actions)="row">
@@ -62,24 +62,24 @@
     <b-modal
     id="detail-modal-prevent-closing"
     ref="modal"
-    title="Data Dokter"
+    title="Data Perawat"
     @show="resetModal"
     @hidden="resetModal"
-    @ok="handleOkEditDokter"
+    @ok="handleOkEditPerawat"
     size="md"
     >
-      <form v-if="editMode === false" ref="form" @submit.stop.prevent="handleSubmitAddDokter()">
+      <form v-if="editMode === false" ref="form" @submit.stop.prevent="handleSubmitAddPerawat()">
       <!-- Data SIP -->
       <b-form-group
-      label="SIP"
-      label-for="sip-input"
-      invalid-feedback="SIP is required"
-      :state="sipState"
+      label="SIPP"
+      label-for="sipp-input"
+      invalid-feedback="SIPP is required"
+      :state="sippState"
       >
       <b-form-input
-          id="sip-input"
-          v-model="detailDokter.sip"
-          :state="sipState"
+          id="sipp-input"
+          v-model="detailPerawat.sipp"
+          :state="sippState"
           required
           disabled
       ></b-form-input>
@@ -94,7 +94,7 @@
         >
         <b-form-input
             id="nama-input"
-            v-model="detailDokter.nama"
+            v-model="detailPerawat.nama"
             :state="namaState"
             required
             disabled
@@ -110,7 +110,7 @@
         >
         <b-form-radio-group
             id="btn-radios-2"
-            v-model="detailDokter.gender"
+            v-model="detailPerawat.gender"
             :options="options"
             class="mb-3"
             required
@@ -120,15 +120,15 @@
 
         <!-- Data Spesialis -->
         <b-form-group
-        label="Spesialis"
-        label-for="spesialis-input"
-        invalid-feedback="Spesialis is required"
-        :state="spesialisState"
+        label="Bagian"
+        label-for="bagian-input"
+        invalid-feedback="Bagian is required"
+        :state="bagianState"
         >
         <b-form-input
-            id="spesialis-input"
-            v-model="detailDokter.spesialis"
-            :state="spesialisState"
+            id="bagian-input"
+            v-model="detailPerawat.bagian"
+            :state="bagianState"
             required
             disabled
         ></b-form-input>
@@ -143,7 +143,7 @@
         >
         <b-form-input
             id="jadwal-input"
-            v-model="detailDokter.jadwal"
+            v-model="detailPerawat.jadwal"
             :state="jadwalState"
             required
             disabled
@@ -152,15 +152,15 @@
 
         <!-- Data STRh -->
         <b-form-group
-        label="Nomor STR"
-        label-for="str-input"
-        invalid-feedback="Place of Birth is required"
-        :state="strState"
+        label="Jabatan"
+        label-for="jabatan-input"
+        invalid-feedback="Jabatan is required"
+        :state="jabatanState"
         >
         <b-form-input
-            id="placeOfBirth-input"
-            v-model="detailDokter.str"
-            :state="strState"
+            id="jabatan-input"
+            v-model="detailPerawat.jabatan"
+            :state="jabatanState"
             required
             disabled
         ></b-form-input>
@@ -168,18 +168,18 @@
       </form>
 
     <!-- Detail Edit Mode -->
-      <form v-else ref="form" @submit.stop.prevent="handleSubmitAddDokter()">
+      <form v-else ref="form" @submit.stop.prevent="handleSubmitAddPerawat()">
       <!-- SIP -->
       <b-form-group
-      label="SIP"
-      label-for="sip-input"
-      invalid-feedback="SIP is required"
-      :state="sipState"
+      label="SIPP"
+      label-for="sipp-input"
+      invalid-feedback="SIPP is required"
+      :state="sippState"
       >
       <b-form-input
-          id="sip-input"
-          v-model="detailDokter.sip"
-          :state="sipState"
+          id="sipp-input"
+          v-model="detailPerawat.sipp"
+          :state="sippState"
           required
       ></b-form-input>
       </b-form-group>
@@ -193,7 +193,7 @@
         >
         <b-form-input
             id="name-input"
-            v-model="detailDokter.nama"
+            v-model="detailPerawat.nama"
             :state="namaState"
             required
 
@@ -209,7 +209,7 @@
         >
         <b-form-radio-group
             id="gender-input"
-            v-model="detailDokter.gender"
+            v-model="detailPerawat.gender"
             :options="options"
             size="md"
             required
@@ -219,15 +219,15 @@
 
         <!-- Spesialis -->
         <b-form-group
-        label="Spesialis"
-        label-for="spesialis-input"
-        invalid-feedback="Spesialis is required"
-        :state="spesialisState"
+        label="Bagian"
+        label-for="bagian-input"
+        invalid-feedback="Bagian is required"
+        :state="bagianState"
         >
         <b-form-input
             id="spesialis-input"
-            v-model="detailDokter.spesialis"
-            :state="spesialisState"
+            v-model="detailPerawat.bagian"
+            :state="bagianState"
             required
 
         ></b-form-input>
@@ -242,7 +242,7 @@
         >
         <b-form-input
             id="jadwal-input"
-            v-model="detailDokter.jadwal"
+            v-model="detailPerawat.jadwal"
             :state="jadwalState"
             required
 
@@ -251,15 +251,15 @@
 
         <!-- STR -->
         <b-form-group
-        label="STR"
-        label-for="str-input"
-        invalid-feedback="STR is required"
-        :state="strState"
+        label="Jabatan"
+        label-for="jabatan-input"
+        invalid-feedback="Jabatan is required"
+        :state="jabatanState"
         >
         <b-form-input
-            id="str-input"
-            v-model="detailDokter.str"
-            :state="strState"
+            id="jabatan-input"
+            v-model="detailPerawat.jabatan"
+            :state="jabatanState"
             required
 
         ></b-form-input>
@@ -276,7 +276,7 @@
       @click="changeEditMode()">
           Edit
       </b-button>
-      <b-button v-else variant="danger" squared @click="deleteDokter(indexSelected)">
+      <b-button v-else variant="danger" squared @click="deletePerawat(indexSelected)">
           Delete
       </b-button>
       <b-button variant="primary" squared @click="ok()">
@@ -292,26 +292,26 @@
   export default {
     data() {
       return {
-        dokter:[],
-        detailDokter:[],
+        perawat:[],
+        detailPerawat:[],
         editMode: false,
         indexNumber: '',
         indexSelected: '',
         form : {
-          sip: '',
+          sipp: '',
           nama: '',
           gender:'',
-          spesialis: '',
+          bagian: '',
           jadwal: '',
-          str: '',
+          jabatan: '',
           handling: ''
         },
-        sipState: null,
+        sippState: null,
         namaState: null,
         genderState: null,
-        spesialisState: null,
+        bagianState: null,
         jadwalState: null,
-        strState: null,
+        jabatanState: null,
         selected: '',
         options: [
             { text: 'Laki-laki', value: 'L' },
@@ -321,12 +321,12 @@
         fields: [
           
           { key: 'index', label: 'No'},
-          { key: 'sip', label: 'SIP'},
+          { key: 'sipp', label: 'SIPP'},
           { key: 'nama', label: 'Nama'},
-          { key: 'spesialis', label: 'Spesialis'},
           { key: 'gender', label: 'Jenis Kelamin'},
+          { key: 'bagian', label: 'Bagian Kerja'},
           { key: 'jadwal', label: 'Jadwal Praktek'},
-          { key: 'str', label: 'Nomor STR'},
+          { key: 'jabatan', label: 'Jabatan'},
           { key: 'actions', label: 'Actions' }
         ],
         totalRows: 1,
@@ -354,7 +354,7 @@
     
     methods: {
       testIndex(item) {
-        console.log(this.detailDokter.indexOf(item))
+        console.log(this.detailPerawat.indexOf(item))
       },
       info(item, button) {
         this.infoModal.title = `Data Dokter`
@@ -371,29 +371,29 @@
         this.currentPage = 1
       },
       async load() {
-            const response = await axios.get(`https://62b483cfda3017eabb0c415b.mockapi.io/dokter`)
-            this.dokter = response.data
+            const response = await axios.get(`https://62b483cfda3017eabb0c415b.mockapi.io/perawat`)
+            this.perawat = response.data
             
             // Set the initial number of patients
-            this.totalRows = this.dokter.length
+            this.totalRows = this.perawat.length
         },
       getIndex(item) {
-            this.indexNumber = this.dokter.indexOf(item)
-            this.detailDokter = this.dokter[this.indexNumber]
-            this.indexSelected = this.detailDokter.id
+            this.indexNumber = this.perawat.indexOf(item)
+            this.detailPerawat = this.perawat[this.indexNumber]
+            this.indexSelected = this.detailPerawat.id
         },
-        async addDokter() {
+        async addPerawat() {
           try {
-              await axios.post(`https://62b483cfda3017eabb0c415b.mockapi.io/dokter`, this.form)
+              await axios.post(`https://62b483cfda3017eabb0c415b.mockapi.io/perawat`, this.form)
               this.load()
           } catch (error) {
               console.log(error)
           }
         },
-        async deleteDokter(indexId) {
+        async deletePerawat(indexId) {
             if (confirm('Apakah Anda Akan Menghapus Data Ini?') == true) {
                 try {
-                    await axios.delete(`https://62b483cfda3017eabb0c415b.mockapi.io/dokter/` + indexId)
+                    await axios.delete(`https://62b483cfda3017eabb0c415b.mockapi.io/perawat/` + indexId)
                     this.load()
                 } catch (error) {
                     console.log(error)
@@ -404,16 +404,16 @@
                 this.editMode = false
             })
         },
-        async updateDokter() {
+        async updatePerawat() {
             try {
-                await axios.put(`https://62b483cfda3017eabb0c415b.mockapi.io/dokter/` + this.indexSelected, {
-                    sip: this.detailDokter.sip,
-                    nama: this.detailDokter.nama,
-                    gender: this.detailDokter.gender,
-                    spesialis: this.detailDokter.spesialis,
-                    jadwal: this.detailDokter.jadwal,
-                    str: this.detailDokter.str,
-                    handling: this.detailDokter.handling
+                await axios.put(`https://62b483cfda3017eabb0c415b.mockapi.io/perawat/` + this.indexSelected, {
+                    sipp: this.detailPerawat.sipp,
+                    nama: this.detailPerawat.nama,
+                    gender: this.detailPerawat.gender,
+                    bagian: this.detailPerawat.bagian,
+                    jadwal: this.detailPerawat.jadwal,
+                    jabatan: this.detailPerawat.jabatan,
+                    handling: this.detailPerawat.handling
                 })
                 this.load()
             } catch (error) {
@@ -422,64 +422,65 @@
         },
         checkFormValidity() {
             const valid = this.$refs.form.checkValidity()
-            this.sipState = valid
+            this.sippState = valid
             this.namaState = valid
             this.genderState = valid
-            this.spesialisState = valid
+            this.bagianState = valid
             this.jadwalState = valid
-            this.str = valid
+            this.jabatanState = valid
             return valid
         },
         resetModal() {
-          this.form.sip = ''
+          this.form.sipp = ''
           this.form.nama = ''
           this.form.gender = ''
-          this.form.spesialis = ''
+          this.form.bagian = ''
           this.form.jadwal = ''
-          this.form.str = ''
-          this.sipState = null
+          this.form.jabatan = ''
+          this.sippState = null
           this.namaState = null
           this.genderState = null
-          this.spesialisState = null
+          this.bagianState = null
           this.jadwalState = null
+          this.jabatanState = null
           this.editMode = false
         },
         selectionHandeOk(){
             if (this.editMode === false) {
-                this.handleOkAddDokter()
+                this.handleOkAddPerawat()
             } else {
-                this.handleOkEditDokter()
+                this.handleOkEditPerawat()
             }
         },
-        handleOkAddDokter(bvModalEvent) {
+        handleOkAddPerawat(bvModalEvent) {
             // Prevent modal from closing
             bvModalEvent.preventDefault()
             // Trigger submit handler
-            this.handleSubmitAddDokter()
+            this.handleSubmitAddPerawat()
         },
-        handleOkEditDokter(bvModalEvent) {
+        handleOkEditPerawat(bvModalEvent) {
             // Prevent modal from closing
             bvModalEvent.preventDefault()
             // Trigger submit handler
-            this.handleSubmitEditDokter()
+            this.handleSubmitEditPerawat()
         },
-        handleSubmitAddDokter() {
+        handleSubmitAddPerawat() {
             // Exit when the form isn't valid
             if (!this.checkFormValidity()) {
                 return
             }
-            this.addDokter()
+            this.addPerawat()
             // Hide the modal manually
             this.$nextTick(() => {
                 this.$bvModal.hide('add-modal-prevent-closing')
             })
         },
-        handleSubmitEditDokter() {
+        handleSubmitEditPerawat() {
             // Exit when the form isn't valid
             if (!this.checkFormValidity()) {
                 return
             }
-            this.updateDokter()
+            this.updatePerawat()
             this.indexNumber = ''
             // Hide the modal manually
             this.$nextTick(() => {

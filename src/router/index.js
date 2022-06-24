@@ -3,9 +3,13 @@ import VuerRouter from "vue-router";
 import HomeAdmin from "@/views/admin/HomeAdmin";
 import DataDokter from "@/views/admin/DataDokter";
 import HomeDokter from "@/views/dokter/HomeDokter";
-import DataPasien from '@/views/admin/DataPasien.vue';
-import PasienRawatJalan from '@/views/admin/PasienRawatJalan.vue'
-import TestPage from '@/views/TestPage.vue'
+import DataPerawat from "@/views/admin/DataPerawat"
+import HomePage from "@/views/HomePage";
+import ManageAccount from "@/views/ManageAccount";
+import AddAccount from "@/views/AddAccount";
+
+import DataPasien from '@/views/admin/DataPasien.vue'
+import DataPasienDokter from '@/views/dokter/DataPasien.vue'
 import Default from "@/layout/default.vue";
 import LoginPage from "@/views/LoginPage";
 
@@ -18,6 +22,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
+
 
 
 Vue.use(VuerRouter);
@@ -34,28 +39,50 @@ const routes = [
         component: HomeAdmin,
       },
       {
-        path:"/",
+        path:"/DataDokter",
         name:"DataDokter",
         component: DataDokter,
+      },
+      {
+        path: "/DataPasien",
+        name: "DataPasien",
+        component : DataPasien,
+      },
+      {
+        path: "/DataPerawat",
+        name: "DataPerawat",
+        component : DataPerawat,
       },
       {
         path:"/HomeDokter",
         name:"HomeDokter",
         component: HomeDokter,
-      }
+      },
+      {
+        path: "/AddAccount",
+        name: "AddAccount",
+        component: AddAccount,
+      },
+      {
+        path: "/DataPasienDokter",
+        name: "DataPasienDokter",
+        component: DataPasienDokter,
+      },
     ]
     
   },
   {
-    path:"/LoginPage",
+    path:"/",
     name:"LoginPage",
     component: LoginPage,
   },
   {
-    path: "/DataPasien",
-    name: "DataPasien",
-    component : DataPasien,
+
+    path: "/HomePage",
+    name: "HomePage",
+    component: HomePage,
   },
+
   {
     path: "/PasienRawatJalan",
     name: "PasienRawatJalan",
@@ -64,8 +91,14 @@ const routes = [
   {
     path: "/TestPage",
     name: "TestPage",
-    component : TestPage,
+
   },
+  {
+    path: "/ManageAccount",
+    name: "ManageAccount",
+    component: ManageAccount,
+  },
+  
 ];
 const router = new VuerRouter({
     mode:"history",
