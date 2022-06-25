@@ -7,6 +7,7 @@ import DataPerawat from "@/views/admin/DataPerawat"
 import HomePage from "@/views/HomePage";
 import ManageAccount from "@/views/ManageAccount";
 import AddAccount from "@/views/AddAccount";
+import PasienRawatJalan from "@/views/admin/PasienRawatJalan.vue"
 
 import DataPasien from '@/views/admin/DataPasien.vue'
 import DataPasienDokter from '@/views/dokter/DataPasien.vue'
