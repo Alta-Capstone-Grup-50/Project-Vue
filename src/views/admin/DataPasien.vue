@@ -1,8 +1,8 @@
 <template>
   <b-container class="mt-5">
   <h3><strong>Data Pasien</strong></h3>
+    <b-col cols="4">
       <div class="d-flex">
-
           <b-form-group
             label-for="filter-input"
             label-align-sm="right"
@@ -38,6 +38,7 @@
           @ok="handleOkAddPatient"
           size="xl"
           >
+          <b-form-group>
             <b-input-group size="sm">
               <b-form-input
                 id="filter-input"
@@ -52,18 +53,10 @@
               </b-input-group-append>
             </b-input-group>
           </b-form-group>
-        </b-col>
+        </b-modal>
+      </b-col>
 
         <b-col cols="4" class="col2">
-          <div class="d-flex justify-content-end btn-tambah-pasien">
-            <b-button
-            v-b-modal.add-modal-prevent-closing
-            variant="primary"
-            >
-            Tambah Pasien
-            </b-button>
-          </div>
-
           <b-modal
             id="add-modal-prevent-closing"
             ref="modal"
@@ -169,19 +162,23 @@
                 ></b-form-input>
                 </b-form-group>
     
-                <!-- Input Date of Birth -->
                 <b-form-group
                 label="Date of Birth"
                 label-for="dateOfBirth-input"
                 invalid-feedback="Date of Birth is required"
                 :state="dateOfBirthState"
-                required
-              ></b-form-datepicker>
-              </b-form-group>
+                >
+                <b-form-datepicker
+                  id="dateOfBirth-datepicker"
+                  v-model="form.dateOfBirth"
+                  :state="dateOfBirthState"
+                  required
+                ></b-form-datepicker>
+                </b-form-group>
 
           </form>
           </b-modal>
-
+      </b-col>
 
 
     <!-- Main table element -->
@@ -191,18 +188,18 @@
       :current-page="currentPage"
       :per-page="perPage"
       :filter="filter"
-      striped hover
-      borderless
-      class="mt-3 shadow text-center rounded"
-      thead-class="bg-info text-white"
-      responsive
       :filter-included-fields="filterOn"
+      stacked="md"
       show-empty
+      small
       @filtered="onFiltered"
+      class="text-center"
     >
-      <template v-slot:cell(index)="row">
+
+      <template v-slot:cell(no)="row">
         {{ row.index + 1 }}
       </template>
+
       <template #cell(disease)="row">
         <p v-if="row.item.disease === ''">--</p>
         <p v-else>{{ row.item.disease }}</p>
@@ -214,39 +211,16 @@
       </template>
 
       <template #cell(actions)="row">
-        <b-link class="text-decoration-none text-muted"
+        <b-button 
         v-b-modal.detail-modal-prevent-closing 
         size="sm" 
-        @click="getIndex(row.item)">
+        @click="getIndex(row.item)" 
+        class="mr-1">
           Detail
-        </b-link>
+        </b-button>
       </template>
 
-        <template v-slot:cell(no)="row">
-          {{ row.index + 1 }}
-        </template>
-
-        <template #cell(disease)="row">
-          <p v-if="row.item.disease === ''">--</p>
-          <p v-else>{{ row.item.disease }}</p>
-        </template>
-
-        <template #cell(handling)="row">
-          <p v-if="row.item.handling === ''">--</p>
-          <p v-else>{{ row.item.handling }}</p>
-        </template>
-
-        <template #cell(actions)="row">
-          <b-button 
-          v-b-modal.detail-modal-prevent-closing 
-          size="sm" 
-          @click="getIndex(row.item)" 
-          class="mr-1">
-            Detail
-          </b-button>
-        </template>
-
-      </b-table>
+    </b-table>
 
       <b-modal
       id="detail-modal-prevent-closing"
@@ -525,18 +499,13 @@
 
 
     </b-container>
-  </div>
 </template>
 
 <script>
 import axios from 'axios'
-import navbar from '@/components/navbar.vue'
 
   export default {
     name: 'VuetifyPage',
-    components: {
-      navbar
-    },
     data() {
       return {
         patients: [],
