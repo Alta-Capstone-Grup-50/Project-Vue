@@ -13,6 +13,7 @@
                                 id="input-1"
                                 v-model="login.email"
                                 name="username"
+                                type="email"
                                 class="forminput mt-3"
                                 required></b-form-input>
                             </b-form-group></strong>
@@ -82,7 +83,7 @@ export default {
   },
   methods: {
    async submit(){
-      let result = await axios.get(`https://62b483cfda3017eabb0c415b.mockapi.io/user`,this.login)
+      let result = await axios.get(`http://localhost:3000/users`,this.login)
       console.warn(result)
       if(result.status==200 && result.data[0].tingkat==1)
      {
@@ -90,7 +91,7 @@ export default {
        localStorage.setItem("admin-info",JSON.stringify(result.data[0]))
        this.$router.push({name:"HomeAdmin"})
        this.showError = false
-     } else if (result.status==200 && result.data[0].tingkat==0) {
+     } else if (result.status==200 && result.data[0].tingkat==2) {
        localStorage.setItem("user-info",JSON.stringify(result.data[0]))
        this.$router.push({name:"HomeDokter"})
        this.showError = false
