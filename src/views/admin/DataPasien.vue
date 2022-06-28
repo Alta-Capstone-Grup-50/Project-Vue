@@ -1,7 +1,6 @@
 <template>
   <b-container class="mt-5">
   <h3><strong>Data Pasien</strong></h3>
-    <b-col cols="4">
       <div class="d-flex">
           <b-form-group
             label-for="filter-input"
@@ -54,7 +53,6 @@
             </b-input-group>
           </b-form-group>
         </b-modal>
-      </b-col>
 
         <b-col cols="4" class="col2">
           <b-modal
