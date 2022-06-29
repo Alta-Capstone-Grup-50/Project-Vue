@@ -20,8 +20,8 @@
             <div class="card border shadow">
               <img src="https://i.postimg.cc/rpXF7vBX/Frame-12-1.png" class="card-img-top p-4" alt="">
               <div class="card-body text-center">
-                <p class="card-text text-center"><router-link class="text-decoration-none text-black" to="/TenagaKesehatan"><strong>Data Dokter dan Perawat</strong></router-link></p>
-                <a href="#" class="btn btn-primary"><router-link class="text-decoration-none text-white" to="/TenagaKesehatan"><strong>Lebih Lanjut</strong></router-link></a>
+                <p class="card-text text-center"><router-link class="text-decoration-none text-black" to="/TenagaKesehatanPage"><strong>Data Dokter dan Perawat</strong></router-link></p>
+                <a href="#" class="btn btn-primary"><router-link class="text-decoration-none text-white" to="/TenagaKesehatanPage"><strong>Lebih Lanjut</strong></router-link></a>
               </div>
             </div>
           </div>
