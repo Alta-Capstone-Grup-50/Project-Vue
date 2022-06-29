@@ -28,37 +28,11 @@
           </b-button>
         </div>
       </div>
-        <b-modal
-          id="add-modal-prevent-closing"
-          ref="modal"
-          title="Tambah Data Pasien"
-          @show="resetModal"
-          @hidden="resetModal"
-          @ok="handleOkAddPatient"
-          size="xl"
-          >
-          <b-form-group>
-            <b-input-group size="sm">
-              <b-form-input
-                id="filter-input"
-                v-model="filter"
-                type="search"
-                placeholder="Type to Search"
-                class="mb-2"
-              ></b-form-input>
-
-              <b-input-group-append>
-                <!-- <b-button :disabled="!filter" @click="filter = ''">Clear</b-button> -->
-              </b-input-group-append>
-            </b-input-group>
-          </b-form-group>
-        </b-modal>
-
         <b-col cols="4" class="col2">
           <b-modal
             id="add-modal-prevent-closing"
             ref="modal"
-            title="Tambah Data Pasien Rawat Jalan"
+            title="Tambah Data Pasien"
             @show="resetModal"
             @hidden="resetModal"
             @ok="handleOkAddPatient"
