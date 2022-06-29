@@ -8,6 +8,7 @@ import HomePage from "@/views/HomePage";
 import ManageAccount from "@/views/ManageAccount";
 import AddAccount from "@/views/AddAccount";
 import PasienRawatJalan from "@/views/admin/PasienRawatJalan.vue"
+import PasienRawatJalanDokter from "@/views/dokter/PasienRawatJalan.vue"
 
 import DataPasien from '@/views/admin/DataPasien.vue'
 import DataPasienDokter from '@/views/dokter/DataPasien.vue'
@@ -63,6 +64,11 @@ const routes = [
         path:"/HomeDokter",
         name:"HomeDokter",
         component: HomeDokter,
+      },
+      {
+        path:"/PasienRawatDokter",
+        name:"PasienRawatDokter",
+        component: PasienRawatJalanDokter,
       },
       {
         path: "/AddAccount",
