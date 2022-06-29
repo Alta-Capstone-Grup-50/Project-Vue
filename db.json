@@ -138,6 +138,7 @@
   "patients": [
     {
       "nik": "3507131606000004",
+      "name": "Ayu Calista",
       "address": "4517 Washington Ave. Manchester, Kentucky 39495",
       "gender": "P",
       "phone": "(406) 555-0120",
@@ -145,6 +146,24 @@
       "dateOfBirth": "2022-06-15",
       "disease": "Gigi",
       "handling": "Rawat Jalan",
+      "jadwalRawat": "",
+      "noAntri": "",
+      "ketRawat": "",
+      "id": 2
+    },
+    {
+      "nik": "3507131606000004",
+      "name": "Mochammad Syafiuddin",
+      "address": "4517 Washington Ave. Manchester, Kentucky 39495",
+      "gender": "L",
+      "phone": "(406) 555-0120",
+      "placeOfBirth": "New York",
+      "dateOfBirth": "2022-06-15",
+      "disease": "Gigi",
+      "handling": "Rawat Jalan",
+      "jadwalRawat": "",
+      "noAntri": "",
+      "ketRawat": "",
       "id": 2
     },
     {
@@ -157,6 +176,9 @@
       "dateOfBirth": "2022-06-15",
       "disease": "",
       "handling": "",
+      "jadwalRawat": "",
+      "noAntri": "",
+      "ketRawat": "",
       "id": 3
     },
     {
