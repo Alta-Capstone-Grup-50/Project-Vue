@@ -54,7 +54,17 @@
         </template>
 
         <template #cell(ketRawat)="row">
+          <b-button
+          v-if="row.item.ketRawat === ''"
+          v-b-modal.keteranganPasien-modal-prevent-closing 
+          size="sm" 
+          @click="getIndex(row.item)" 
+          class="mr-1"
+          variant="primary">
+            Ket
+          </b-button>
           <b-button 
+          v-else
           v-b-modal.keteranganPasien-modal-prevent-closing 
           size="sm" 
           @click="getIndex(row.item)" 
