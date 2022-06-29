@@ -31,7 +31,7 @@
         <b-modal
           id="add-modal-prevent-closing"
           ref="modal"
-          title="Tambah Data Pasien Rawat Jalan"
+          title="Tambah Data Pasien"
           @show="resetModal"
           @hidden="resetModal"
           @ok="handleOkAddPatient"
@@ -186,15 +186,17 @@
       :current-page="currentPage"
       :per-page="perPage"
       :filter="filter"
+      striped hover
+      borderless
+      class="mt-3 shadow text-center rounded"
+      thead-class="bg-info text-white"
+      responsive
       :filter-included-fields="filterOn"
-      stacked="md"
       show-empty
-      small
       @filtered="onFiltered"
-      class="text-center"
     >
 
-      <template v-slot:cell(no)="row">
+      <template v-slot:cell(index)="row">
         {{ row.index + 1 }}
       </template>
 
