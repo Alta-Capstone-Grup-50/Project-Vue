@@ -1,32 +1,32 @@
 <template>
-  <div>
+  <div class="text-center">
     <b-container class="mt-3">
       <div>
         <b-img src="https://i.postimg.cc/wBYm6Dvv/beautiful-shot-ponte-vecchio-florence-tuscany-italy-1.png" rounded class="mt-5 shadow" fluid alt="Responsive image"></b-img>
       </div>
-      <div class="container mt-5 mb-5">
-        <div class="row">
-          <div class="col">
-            <div class="card" style="width: 18rem;">
-              <img src="https://i.postimg.cc/rpXF7vBX/Frame-12-1.png" class="card-img-top" alt="">
+      <div class="mt-5 mb-5 text-center mr-auto ml-auto">
+        <div class="row justify-content-center">
+          <div class="col-4">
+            <div class="card border shadow">
+              <img src="https://i.postimg.cc/rpXF7vBX/Frame-12-1.png" class="card-img-top p-4" alt="">
               <div class="card-body text-center">
                 <p class="card-text text-center"><router-link class="text-decoration-none text-black" to="/DataPasien"><strong>Data Pasien</strong></router-link></p>
                 <a href="#" class="btn btn-primary"><router-link class="text-decoration-none text-white" to="/DataPasien"><strong>Lebih Lanjut</strong></router-link></a>
               </div>
             </div>
           </div>
-          <div class="col">
-            <div class="card" style="width: 18rem;">
-              <img src="https://i.postimg.cc/rpXF7vBX/Frame-12-1.png" class="card-img-top" alt="">
+          <div class="col-4">
+            <div class="card border shadow">
+              <img src="https://i.postimg.cc/rpXF7vBX/Frame-12-1.png" class="card-img-top p-4" alt="">
               <div class="card-body text-center">
-                <p class="card-text text-center"><router-link class="text-decoration-none text-black" to="/DataDokter"><strong>Data Dokter</strong></router-link></p>
-                <a href="#" class="btn btn-primary"><router-link class="text-decoration-none text-white" to="/DataDokter"><strong>Lebih Lanjut</strong></router-link></a>
+                <p class="card-text text-center"><router-link class="text-decoration-none text-black" to="/TenagaKesehatan"><strong>Data Dokter dan Perawat</strong></router-link></p>
+                <a href="#" class="btn btn-primary"><router-link class="text-decoration-none text-white" to="/TenagaKesehatan"><strong>Lebih Lanjut</strong></router-link></a>
               </div>
             </div>
           </div>
-          <div class="col">
-            <div class="card" style="width: 18rem;">
-              <img src="https://i.postimg.cc/rpXF7vBX/Frame-12-1.png" class="card-img-top" alt="">
+          <div class="col-4">
+            <div class="card border shadow">
+              <img src="https://i.postimg.cc/rpXF7vBX/Frame-12-1.png" class="card-img-top p-4" alt="">
               <div class="card-body text-center">
                 <p class="card-text text-center"><router-link class="text-decoration-none text-black" to="/DataPerawat"><strong>Data Perawat</strong></router-link></p>
                 <a href="#" class="btn btn-primary"><router-link class="text-decoration-none text-white" to="/DataPerawat"><strong>Lebih Lanjut</strong></router-link></a>
@@ -40,9 +40,20 @@
 </template>
 
 <script>
+export default{
+   mounted()
+    {
+      let user= localStorage.getItem('adminLogin');
+      if(!user){
+        this.$router.push({name:"LoginPage"})
+      } 
+    }
+}
 
 </script>
 
 <style>
-
+div.card{
+   border-radius: 30px;
+}
 </style>

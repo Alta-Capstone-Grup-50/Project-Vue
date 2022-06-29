@@ -703,7 +703,12 @@ import axios from 'axios'
     },
     mounted() {
       this.load()
+      let user= localStorage.getItem('admin-info');
+      if(!user){
+        this.$router.push({name:"LoginPage"})
+      } 
     },
+
   }
 </script>
   

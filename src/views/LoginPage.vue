@@ -81,31 +81,26 @@ export default {
     };
   },
   methods: {
-   async submit(){
-      let result = await axios.get(`https://62b483cfda3017eabb0c415b.mockapi.io/user`,this.login)
-      console.warn(result)
-      if(result.status==200 && result.data[0].tingkat==1)
-     {
-       
-       localStorage.setItem("admin-info",JSON.stringify(result.data[0]))
-       this.$router.push({name:"HomeAdmin"})
-       this.showError = false
-     } else if (result.status==200 && result.data[0].tingkat==0) {
-       localStorage.setItem("user-info",JSON.stringify(result.data[0]))
-       this.$router.push({name:"HomeDokter"})
-       this.showError = false
-
-     } else (result.status==201) 
-     {
-         this.showError = true
+      async submit() {
+        try {
+          let response = await axios.post('https://api-capstone-heroku.herokuapp.com/login',this.login);
+          console.log(response);
+          if (response.status==200){
+            localStorage.setItem("adminLogin",JSON.stringify(response.data))
+            this.$router.push({name:"HomeAdmin"})
+            this.showError = false
+          } 
+        } catch (error) {
+          console.error(error);
+          this.showError = true
+        }
       }
-    }
   },
   mounted()
     {
-      let user= localStorage.getItem('user-info');
+      let user= localStorage.getItem('admin-info');
       if(user){
-        this.$router.push({name:"DataDokter"})
+        this.$router.push({name:"HomeAdmin"})
       } 
     }
 };

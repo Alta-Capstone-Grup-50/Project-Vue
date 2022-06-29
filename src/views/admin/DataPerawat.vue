@@ -345,7 +345,7 @@
     mounted() {
       this.load()
       {
-        let user= localStorage.getItem('admin-info');
+        let user= localStorage.getItem('adminLogin');
           if(!user){
             this.$router.push({name:"LoginPage"})
           }
