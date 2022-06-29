@@ -4,15 +4,13 @@ import HomeAdmin from "@/views/admin/HomeAdmin";
 import DataDokter from "@/views/admin/DataDokter";
 import HomeDokter from "@/views/dokter/HomeDokter";
 import DataPerawat from "@/views/admin/DataPerawat"
+import TenagaKesehatan from "@/views/admin/TenagaKesehatanPage";
 import HomePage from "@/views/HomePage";
 import ManageAccount from "@/views/ManageAccount";
 import AddAccount from "@/views/AddAccount";
-
 import DataPasien from '@/views/admin/DataPasien.vue'
 import Default from "@/layout/default.vue";
 import LoginPage from "@/views/LoginPage";
-
-
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 
 
@@ -46,6 +44,11 @@ const routes = [
         path: "/DataPasien",
         name: "DataPasien",
         component : DataPasien,
+      },
+      {
+        path: "/TenagaKesehatan",
+        name: "TenagaKesehatan",
+        component : TenagaKesehatan,
       },
       {
         path: "/DataPerawat",
