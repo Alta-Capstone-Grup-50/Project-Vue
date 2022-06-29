@@ -585,6 +585,12 @@
     },
     mounted() {
       this.load()
+      {
+        let user= localStorage.getItem('userLogin');
+          if(!user){
+            this.$router.push({name:"LoginPage"})
+          }
+      }
     },
   }
 </script>

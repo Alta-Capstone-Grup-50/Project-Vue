@@ -1,4 +1,6 @@
 <template>
+  <div>
+  <navbar/>
   <b-container class="mt-5">
   <h3><strong>Data Pasien</strong></h3>
       <div class="d-flex">
@@ -541,16 +543,18 @@
           class="my-0"
         ></b-pagination>
     </b-col>
-
-
   </b-container>
+</div>
 </template>
 
 <script>
 import axios from 'axios'
-
+import navbar from '@/components/NavbarDokter.vue'
   export default {
-    name: 'VuetifyPage',
+    name: 'PasienPage',
+    components : {
+      navbar
+    },
     data() {
       return {
         patients: [],
@@ -782,6 +786,12 @@ import axios from 'axios'
     },
     mounted() {
       this.load()
+      {
+        let user= localStorage.getItem('userLogin');
+          if(!user){
+            this.$router.push({name:"LoginPage"})
+          }
+      }
     },
   }
 </script>

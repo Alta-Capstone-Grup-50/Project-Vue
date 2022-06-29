@@ -1,4 +1,6 @@
 <template>
+<div>
+  <navbar />
   <b-container class="mt-5">
     <h3><strong>Data Dokter</strong></h3>
     <!-- User Interface controls -->
@@ -174,11 +176,16 @@
     </template>
     </b-modal>
   </b-container>
+  </div>
 </template>
 
 <script>
   import axios from 'axios'
+  import navbar from '@/components/NavbarDokter.vue'
   export default {
+   components : {
+      navbar
+    },
     data() {
       return {
         dokter:[],
@@ -234,7 +241,7 @@
     mounted() {
       this.load()
       {
-        let user= localStorage.getItem('admin-info');
+        let user= localStorage.getItem('userLogin');
           if(!user){
             this.$router.push({name:"LoginPage"})
           }

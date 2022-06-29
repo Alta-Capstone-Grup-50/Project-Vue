@@ -18,11 +18,16 @@
       "email": "json@server",
       "password": "1234",
       "gender": "L",
-      "tingkat": "1",
+      "tingkat": "2",
       "spesialis": "Jant",
       "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
       "str": "1821303554327688",
       "id": 2
+    },
+    {
+      "email": "json@server",
+      "password": "1234",
+      "id": 3
     }
   ],
   "dokter": [

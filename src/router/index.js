@@ -14,7 +14,7 @@ import AddAccount from "@/views/AddAccount";
 import DataPerawatDokter from "@/views/dokter/DataPerawat.vue"
 import PasienRawatJalan from "@/views/admin/PasienRawatJalan.vue"
 import PasienRawatJalanDokter from "@/views/dokter/PasienRawatJalan.vue"
-
+import TenagaKesehatnDokter from "@/views/dokter/TenagaKesehatan.vue"
 import DataPasien from '@/views/admin/DataPasien.vue'
 import DataPasienDokter from '@/views/dokter/DataPasien.vue'
 import LoginPage from "@/views/LoginPage";
@@ -76,9 +76,15 @@ const routes = [
   },
   {
 
+    path: "/TenagaKesehatanPage",
+    name: "TenagaKesehatanPage",
+    component : TenagaKesehatan,
+  },
+  {
+
     path: "/TenagaKesehatan",
     name: "TenagaKesehatan",
-    component : TenagaKesehatan,
+    component : TenagaKesehatnDokter,
   },
   {
     path: "/PasienRawatJalan",
