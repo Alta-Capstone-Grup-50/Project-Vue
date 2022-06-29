@@ -83,7 +83,7 @@ export default {
   methods: {
       async submit() {
         try {
-          let response = await axios.post('https://api-capstone-heroku.herokuapp.com/login',this.login);
+          let response = await axios.post('https://reqres.in/api/login',this.login);
           console.log(response);
           if (response.status==200){
             localStorage.setItem("adminLogin",JSON.stringify(response.data))
