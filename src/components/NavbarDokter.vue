@@ -9,11 +9,10 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <b-navbar-nav class="ms-auto mb-2 mb-lg-0">
-        <b-nav-item ><router-link class="text-decoration-none text-black" to="/HomeAdmin"><strong>Home</strong></router-link></b-nav-item>
-        <b-nav-item ><router-link class="text-decoration-none text-black" to="/DataPasien"><strong>Data Pasien</strong></router-link></b-nav-item>
-        <b-nav-item ><router-link class="text-decoration-none text-black" to="/PasienRawatJalan"><strong>Data Rawat Jalan</strong></router-link></b-nav-item>
+        <b-nav-item ><router-link class="text-decoration-none text-black" to="/HomeDokter"><strong>Home</strong></router-link></b-nav-item>
+        <b-nav-item ><router-link class="text-decoration-none text-black" to="/DataPasienDokter"><strong>Data Pasien</strong></router-link></b-nav-item>
+        <b-nav-item ><router-link class="text-decoration-none text-black" to="/PasienRawatDokter"><strong>Data Rawat Jalan</strong></router-link></b-nav-item>
         <b-nav-item ><router-link class="text-decoration-none text-black" to="/TenagaKesehatan"><strong>Data Tenaga Kesehatan</strong></router-link></b-nav-item>
-        <b-nav-item ><router-link class="text-decoration-none text-black" to="/ManageAccount"><strong>Manage Account</strong></router-link></b-nav-item>
         <b-button size="sm" v-on:click="logout" type="logout" class="btn btn-warning text-white">Logout</b-button>
       </b-navbar-nav>
     </div>

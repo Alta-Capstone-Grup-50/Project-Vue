@@ -1,7 +1,7 @@
 <template>
-  <div class="mt-5">
-    <b-container>
-
+  <div>
+    <navbar />
+    <b-container class="mt-5">
         <h3><strong>Data Pasien Rawat Jalan</strong></h3>
         <div class="d-flex">
           <b-form-group
@@ -335,8 +335,12 @@
 
 <script>
   import axios from 'axios'
+  import navbar from '@/components/NavbarDokter.vue'
 
   export default {
+  components: { 
+    navbar 
+  },
     name:'VuetifyPage',
     data() {
       return {

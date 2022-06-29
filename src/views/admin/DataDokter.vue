@@ -378,7 +378,7 @@
         this.currentPage = 1
       },
       async load() {
-            const response = await axios.get(`https://62b483cfda3017eabb0c415b.mockapi.io/dokter`)
+            const response = await axios.get(`http://localhost:3000/dokter`)
             this.dokter = response.data
             
             // Set the initial number of patients
@@ -391,7 +391,7 @@
         },
         async addDokter() {
           try {
-              await axios.post(`https://62b483cfda3017eabb0c415b.mockapi.io/dokter`, this.form)
+              await axios.post(`http://localhost:3000/dokter/`, this.form)
               this.load()
           } catch (error) {
               console.log(error)
@@ -400,7 +400,7 @@
         async deleteDokter(indexId) {
             if (confirm('Apakah Anda Akan Menghapus Data Ini?') == true) {
                 try {
-                    await axios.delete(`https://62b483cfda3017eabb0c415b.mockapi.io/dokter/` + indexId)
+                    await axios.delete(`http://localhost:3000/dokter/` + indexId)
                     this.load()
                 } catch (error) {
                     console.log(error)
@@ -413,7 +413,7 @@
         },
         async updateDokter() {
             try {
-                await axios.put(`https://62b483cfda3017eabb0c415b.mockapi.io/dokter/` + this.indexSelected, {
+                await axios.put(`http://localhost:3000/dokter/` + this.indexSelected, {
                     sip: this.detailDokter.sip,
                     nama: this.detailDokter.nama,
                     gender: this.detailDokter.gender,

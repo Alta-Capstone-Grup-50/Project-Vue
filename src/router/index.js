@@ -4,6 +4,7 @@ import HomeAdmin from "@/views/admin/HomeAdmin";
 import DataDokter from "@/views/admin/DataDokter";
 import DataDokterFlowDokter from "@/views/dokter/DataDokter.vue"
 import HomeDokter from "@/views/dokter/HomeDokter";
+import TestPage from "@/views/TestPage.vue"
 
 import DataPerawat from "@/views/admin/DataPerawat"
 import TenagaKesehatan from "@/views/admin/TenagaKesehatanPage";
@@ -45,7 +46,7 @@ const routes = [
   {
     path: "/TestPage",
     name: "TestPage",
-
+    component: TestPage,
   },
   {
     path: "/ManageAccount",

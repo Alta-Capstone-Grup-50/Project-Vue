@@ -23,31 +23,6 @@
       "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
       "str": "1821303554327688",
       "id": 2
-    },
-    {
-      "email": "json1@server",
-      "password": "1234",
-      "id": 3
-    },
-    {
-      "email": "json1@server",
-      "password": "1234",
-      "id": 4
-    },
-    {
-      "email": "json1@server",
-      "password": "1234",
-      "id": 5
-    },
-    {
-      "email": "json1@server",
-      "password": "1234",
-      "id": 6
-    },
-    {
-      "email": "json1@server",
-      "password": "1234",
-      "id": 7
     }
   ],
   "dokter": [
@@ -58,6 +33,9 @@
       "spesialis": "Mata Jantung l",
       "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
       "str": "1821303554327688",
+      "email": "json1@server",
+      "password": "1234",
+      "tingkat": "1",
       "id": 2
     },
     {
@@ -67,6 +45,9 @@
       "spesialis": "Mata",
       "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
       "str": "1821303554327688",
+      "email": "json1@server",
+      "password": "1234",
+      "tingkat": "1",
       "id": 3
     },
     {
@@ -76,6 +57,9 @@
       "spesialis": "Mata",
       "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
       "str": "1821303554327688",
+      "email": "json1@server",
+      "password": "1234",
+      "tingkat": "1",
       "id": 5
     },
     {
@@ -85,6 +69,9 @@
       "spesialis": "Mata",
       "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
       "str": "1821303554327688",
+      "email": "json1@server",
+      "password": "1234",
+      "tingkat": "1",
       "id": 6
     },
     {
@@ -94,6 +81,9 @@
       "spesialis": "Mata",
       "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
       "str": "1821303554327688",
+      "email": "json1@server",
+      "password": "1234",
+      "tingkat": "1",
       "id": 7
     },
     {
@@ -103,6 +93,9 @@
       "spesialis": "Mata",
       "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
       "str": "1821303554327688",
+      "email": "json1@server",
+      "password": "1234",
+      "tingkat": "1",
       "id": 8
     },
     {
@@ -112,6 +105,9 @@
       "spesialis": "Mata",
       "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
       "str": "1821303554327688",
+      "email": "json1@server",
+      "password": "1234",
+      "tingkat": "1",
       "id": 243
     },
     {
@@ -121,6 +117,9 @@
       "spesialis": "Mata",
       "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
       "str": "1821303554327688",
+      "email": "json1@server",
+      "password": "1234",
+      "tingkat": "1",
       "id": 2433
     },
     {
@@ -130,6 +129,9 @@
       "spesialis": "Mata",
       "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
       "str": "1821303554327688",
+      "email": "json1@server",
+      "password": "1234",
+      "tingkat": "1",
       "id": 212
     },
     {
@@ -139,6 +141,9 @@
       "spesialis": "Mata",
       "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
       "str": "1821303554327688",
+      "email": "json1@server",
+      "password": "1234",
+      "tingkat": "1",
       "id": 2332
     },
     {
@@ -148,6 +153,9 @@
       "spesialis": "Mata",
       "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
       "str": "1821303554327688",
+      "email": "json1@server",
+      "password": "1234",
+      "tingkat": "1",
       "id": 24345
     },
     {
@@ -157,7 +165,31 @@
       "spesialis": "Mata",
       "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
       "str": "1821303554327688",
+      "email": "json1@server",
+      "password": "1234",
+      "tingkat": "1",
       "id": 245
+    },
+    {
+      "sip": "111111",
+      "nama": "Syafik",
+      "gender": "L",
+      "spesialis": "Mata",
+      "jadwal": "Minggu",
+      "str": "111111",
+      "id": 24346
+    },
+    {
+      "sip": "",
+      "nama": "Pak Roni",
+      "email": "roni@gmail.com",
+      "password": "roni",
+      "gender": "",
+      "tingkat": "",
+      "spesialis": "",
+      "jadwal": "",
+      "str": "",
+      "id": 24347
     }
   ],
   "patients": [
@@ -385,6 +417,18 @@
       "jadwalRawat": "",
       "noAntri": "",
       "ketRawat": ""
+    },
+    {
+      "nik": "3507131606000005",
+      "name": "Elsya",
+      "address": "SULTAN AGUNG NO. 46",
+      "gender": "P",
+      "phone": "0896-9828-9699",
+      "placeOfBirth": "Panjen",
+      "dateOfBirth": "2022-06-28",
+      "disease": "",
+      "handling": "",
+      "id": 16
     }
   ]
 }
