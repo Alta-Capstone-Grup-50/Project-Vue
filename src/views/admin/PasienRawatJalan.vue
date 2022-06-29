@@ -1,36 +1,26 @@
 <template>
-  <div>
-    <navbar />
+  <div class="mt-5">
     <b-container>
-      <b-row class="w-100" align-h="between">
 
-        <h1>Data Pasien Rawat Jalan</h1>
-        <b-col cols="4">
+        <h3><strong>Data Pasien Rawat Jalan</strong></h3>
+        <div class="d-flex">
           <b-form-group
-            label="Filter"
             label-for="filter-input"
-            label-cols-sm="3"
             label-align-sm="right"
-            label-size="sm"
-            class="mb-0"
+            label-size="md"
+            class="w-25 shadow rounded"
           >
-            <b-input-group size="sm">
+            <b-input-group>
               <b-form-input
                 id="filter-input"
                 v-model="filter"
                 type="search"
-                placeholder="Type to Search"
-                class="mb-2"
+                placeholder="Cari Disini"
               ></b-form-input>
-
-              <b-input-group-append>
-                <!-- <b-button :disabled="!filter" @click="filter = ''">Clear</b-button> -->
-              </b-input-group-append>
             </b-input-group>
           </b-form-group>
-        </b-col>
+      </div>
 
-      </b-row>
 
       <!-- Main table element -->
       <b-table
@@ -39,12 +29,14 @@
         :current-page="currentPage"
         :per-page="perPage"
         :filter="filter"
+        striped hover
+        borderless
+        class="mt-3 shadow text-center rounded"
+        thead-class="bg-info text-white"
+        responsive
         :filter-included-fields="filterOn"
-        stacked="md"
         show-empty
-        small
         @filtered="onFiltered"
-        class="text-center"
       >
 
         <template v-slot:cell(no)="row">
@@ -455,13 +447,9 @@
 
 <script>
   import axios from 'axios'
-  import navbar from '@/components/navbar.vue'
 
   export default {
     name:'VuetifyPage',
-    components: {
-        navbar
-      },
     data() {
       return {
         patients: [],
@@ -517,7 +505,7 @@
         ],
         totalRows: 1,
         currentPage: 1,
-        perPage: 10,
+        perPage: 5,
         filter: null,
         filterOn: [],
         infoModal: {
