@@ -23,6 +23,31 @@
       "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
       "str": "1821303554327688",
       "id": 2
+    },
+    {
+      "email": "json1@server",
+      "password": "1234",
+      "id": 3
+    },
+    {
+      "email": "json1@server",
+      "password": "1234",
+      "id": 4
+    },
+    {
+      "email": "json1@server",
+      "password": "1234",
+      "id": 5
+    },
+    {
+      "email": "json1@server",
+      "password": "1234",
+      "id": 6
+    },
+    {
+      "email": "json1@server",
+      "password": "1234",
+      "id": 7
     }
   ],
   "dokter": [

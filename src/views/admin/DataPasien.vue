@@ -565,7 +565,7 @@ import axios from 'axios'
       },
 
         async load() {
-            const response = await axios.get(`https://api-capstone-heroku.herokuapp.com/auth/data_pasien`)
+            const response = await axios.get(`http://localhost:3000/patients`)
             this.patients = response.data
             
             // Set the initial number of patients

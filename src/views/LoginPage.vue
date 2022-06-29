@@ -83,13 +83,18 @@ export default {
   methods: {
       async submit() {
         try {
-          let response = await axios.post('https://reqres.in/api/login',this.login);
-          console.log(response);
-          if (response.status==200){
-            localStorage.setItem("adminLogin",JSON.stringify(response.data))
+          let result = await axios.get('http://localhost:3000/users',this.login);
+          console.log(result);
+          if (result.status==200 && result.data.length>0 && result.data[0].tingkat==1){
+            localStorage.setItem("adminLogin",JSON.stringify(result.data))
             this.$router.push({name:"HomeAdmin"})
             this.showError = false
           } 
+          else if(result.status==200 && result.data.length>0 && result.data[0].tingkat==2){
+            localStorage.setItem("userLogin",JSON.stringify(result.data))
+            this.$router.push({name:"HomeDokter"})
+            this.showError = false
+          }
         } catch (error) {
           console.error(error);
           this.showError = true

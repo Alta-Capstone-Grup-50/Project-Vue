@@ -19,7 +19,7 @@ export default {
   },
   mounted()
   {
-    let user= localStorage.getItem('user-info');
+    let user= localStorage.getItem('adminLogin');
       if(!user){
         this.$router.push({name:"LoginPage"})
       }
