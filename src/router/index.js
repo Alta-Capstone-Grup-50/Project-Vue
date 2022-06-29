@@ -50,6 +50,11 @@ const routes = [
         component : DataPasien,
       },
       {
+        path: "/PasienRawatJalan",
+        name: "PasienRawatJalan",
+        component : PasienRawatJalan,
+      },
+      {
         path: "/DataPerawat",
         name: "DataPerawat",
         component : DataPerawat,
@@ -82,12 +87,6 @@ const routes = [
     path: "/HomePage",
     name: "HomePage",
     component: HomePage,
-  },
-
-  {
-    path: "/PasienRawatJalan",
-    name: "PasienRawatJalan",
-    component : PasienRawatJalan,
   },
   {
     path: "/TestPage",
