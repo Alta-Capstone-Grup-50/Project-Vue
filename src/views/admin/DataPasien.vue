@@ -1,6 +1,8 @@
 <template>
-  <b-container class="mt-5">
-  <h3><strong>Data Pasien</strong></h3>
+  <div>
+    <navbar />
+    <b-container class="mt-5">
+      <h3><strong>Data Pasien</strong></h3>
       <div class="d-flex">
           <b-form-group
             label-for="filter-input"
@@ -473,12 +475,17 @@
 
 
     </b-container>
+  </div>
 </template>
 
 <script>
 import axios from 'axios'
+import navbar from '@/components/navbar.vue'
 
   export default {
+    components : {
+      navbar
+    },
     name: 'VuetifyPage',
     data() {
       return {

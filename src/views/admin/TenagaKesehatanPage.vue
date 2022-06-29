@@ -1,5 +1,6 @@
 <template>
   <div class="text-center">
+    <navbar />
     <b-container class="mt-3">
       <div class="mt-5 mb-5 text-center mr-auto ml-auto">
         <div class="row justify-content-center">
@@ -28,7 +29,12 @@
 </template>
 
 <script>
+
+import navbar from '@/components/navbar.vue'
 export default {
+  components : {
+    navbar
+  },
    mounted()
     {
       let user= localStorage.getItem('adminLogin');

@@ -1,6 +1,7 @@
 <template>
   <div class="text-center">
-    <b-container class="mt-3">
+    <navbar />
+    <b-container>
       <div>
         <b-img src="https://i.postimg.cc/wBYm6Dvv/beautiful-shot-ponte-vecchio-florence-tuscany-italy-1.png" rounded class="mt-5 shadow" fluid alt="Responsive image"></b-img>
       </div>
@@ -40,7 +41,12 @@
 </template>
 
 <script>
+
+import navbar from '@/components/navbar.vue'
 export default{
+  components : {
+      navbar
+    },
    mounted()
     {
       let user= localStorage.getItem('adminLogin');

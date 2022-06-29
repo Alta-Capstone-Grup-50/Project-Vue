@@ -16,7 +16,6 @@ import PasienRawatJalanDokter from "@/views/dokter/PasienRawatJalan.vue"
 
 import DataPasien from '@/views/admin/DataPasien.vue'
 import DataPasienDokter from '@/views/dokter/DataPasien.vue'
-import Default from "@/layout/default.vue";
 import LoginPage from "@/views/LoginPage";
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 
@@ -32,75 +31,6 @@ Vue.use(BootstrapVueIcons)
 Vue.use(VuerRouter);
 
 const routes = [
-  {
-    path: "/",
-    name: "Layout",
-    component :Default,
-    children : [
-      {
-        path:"/HomeAdmin",
-        name:"HomeAdmin",
-        component: HomeAdmin,
-      },
-      {
-        path:"/DataDokter",
-        name:"DataDokter",
-        component: DataDokter,
-      },
-      {
-        path:"/DataDokterFlowDokter",
-        name:"DataDokterFlowDokter",
-        component: DataDokterFlowDokter,
-      },
-      {
-        path: "/DataPasien",
-        name: "DataPasien",
-        component : DataPasien,
-      },
-      {
-
-        path: "/TenagaKesehatan",
-        name: "TenagaKesehatan",
-        component : TenagaKesehatan,
-      },
-      {
-        path: "/PasienRawatJalan",
-        name: "PasienRawatJalan",
-        component : PasienRawatJalan,
-      },
-      {
-        path: "/DataPerawat",
-        name: "DataPerawat",
-        component : DataPerawat,
-      },
-      {
-        path: "/DataPerawatDokter",
-        name: "DataPerawatDokter",
-        component : DataPerawatDokter,
-      },
-      {
-        path:"/HomeDokter",
-        name:"HomeDokter",
-        component: HomeDokter,
-      },
-      {
-        path:"/PasienRawatDokter",
-        name:"PasienRawatDokter",
-        component: PasienRawatJalanDokter,
-      },
-      {
-        path: "/AddAccount",
-        name: "AddAccount",
-        component: AddAccount,
-      },
-      {
-        path: "/DataPasienDokter",
-        name: "DataPasienDokter",
-        component: DataPasienDokter,
-      },
-    ]
-    
-  },
   {
     path:"/",
     name:"LoginPage",
@@ -121,6 +51,68 @@ const routes = [
     path: "/ManageAccount",
     name: "ManageAccount",
     component: ManageAccount,
+  },
+
+  {
+    path:"/HomeAdmin",
+    name:"HomeAdmin",
+    component: HomeAdmin,
+  },
+  {
+    path:"/DataDokter",
+    name:"DataDokter",
+    component: DataDokter,
+  },
+  {
+    path:"/DataDokterFlowDokter",
+    name:"DataDokterFlowDokter",
+    component: DataDokterFlowDokter,
+  },
+  {
+    path: "/DataPasien",
+    name: "DataPasien",
+    component : DataPasien,
+  },
+  {
+
+    path: "/TenagaKesehatan",
+    name: "TenagaKesehatan",
+    component : TenagaKesehatan,
+  },
+  {
+    path: "/PasienRawatJalan",
+    name: "PasienRawatJalan",
+    component : PasienRawatJalan,
+  },
+  {
+    path: "/DataPerawat",
+    name: "DataPerawat",
+    component : DataPerawat,
+  },
+  {
+    path: "/DataPerawatDokter",
+    name: "DataPerawatDokter",
+    component : DataPerawatDokter,
+  },
+  {
+    path:"/HomeDokter",
+    name:"HomeDokter",
+    component: HomeDokter,
+  },
+  {
+    path:"/PasienRawatDokter",
+    name:"PasienRawatDokter",
+    component: PasienRawatJalanDokter,
+  },
+  {
+    path: "/AddAccount",
+    name: "AddAccount",
+    component: AddAccount,
+  },
+  {
+    path: "/DataPasienDokter",
+    name: "DataPasienDokter",
+    component: DataPasienDokter,
   },
   
 ];

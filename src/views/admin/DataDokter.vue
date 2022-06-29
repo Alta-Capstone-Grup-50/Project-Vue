@@ -1,5 +1,7 @@
 <template>
-  <b-container class="mt-5">
+  <div>
+    <navbar />
+    <b-container class="mt-5">
     <h3><strong>Data Dokter</strong></h3>
     <!-- User Interface controls -->
     <div class="mt-2 d-flex">
@@ -285,11 +287,16 @@
     </template>
     </b-modal>
   </b-container>
+  </div>
 </template>
 
 <script>
   import axios from 'axios'
+  import navbar from '@/components/navbar.vue'
   export default {
+    components : {
+      navbar
+    },
     data() {
       return {
         dokter:[],
