@@ -2,6 +2,7 @@ import Vue from "vue";
 import VuerRouter from "vue-router";
 import HomeAdmin from "@/views/admin/HomeAdmin";
 import DataDokter from "@/views/admin/DataDokter";
+import DataDokterFlowDokter from "@/views/dokter/DataDokter.vue"
 import HomeDokter from "@/views/dokter/HomeDokter";
 import DataPerawat from "@/views/admin/DataPerawat";
 import DataPerawatDokter from "@/views/dokter/DataPerawat.vue"
@@ -45,6 +46,11 @@ const routes = [
         path:"/DataDokter",
         name:"DataDokter",
         component: DataDokter,
+      },
+      {
+        path:"/DataDokterFlowDokter",
+        name:"DataDokterFlowDokter",
+        component: DataDokterFlowDokter,
       },
       {
         path: "/DataPasien",
