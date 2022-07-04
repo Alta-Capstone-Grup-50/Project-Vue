@@ -357,6 +357,7 @@
             v-model="detailPatient.disease"
             :state="diseaseState"
             required
+            disabled
         ></b-form-input>
         </b-form-group>
 

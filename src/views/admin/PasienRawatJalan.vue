@@ -2,6 +2,36 @@
   <div>
     <navbar />
     <b-container class="mt-5">
+      <div>
+        <h3><strong>Nomor Antri</strong></h3>
+        <b-card-group>
+    <b-card title="Poli Umum">
+      <b-card-text>
+        <h1 class="text-center">U - {{ noUmum }}</h1>
+      </b-card-text>
+    </b-card>
+
+    <b-card title="Poli Gigi">
+      <b-card-text>
+        <h1 class="text-center">G - {{ noGigi }}</h1>
+      </b-card-text>
+    </b-card>
+
+    <b-card title="Poli Kulit">
+      <b-card-text>
+        <h1 class="text-center">K - {{ noKulit }}</h1>
+      </b-card-text>
+    </b-card>
+
+    <b-card title="Poli THT">
+      <b-card-text>
+        <h1 class="text-center">T - {{ noTht }}</h1>
+      </b-card-text>
+    </b-card>
+  </b-card-group>
+      </div>
+
+      <div class="mt-5 mb-5">
         <h3><strong>Data Pasien Rawat Jalan</strong></h3>
         <div class="d-flex">
           <b-form-group
@@ -264,183 +294,183 @@
 
       <!-- Detail Edit Mode -->
         <form v-else ref="form" @submit.stop.prevent="handleSubmitAddPatient()">
-        <!-- Input NIK -->
-        <b-form-group
-        label="NIK"
-        label-for="nik-input"
-        invalid-feedback="NIK is required"
-        :state="nikState"
-        >
-        <b-form-input
-            id="nik-input"
-            v-model="detailPatient.nik"
-            :state="nikState"
-            required
-        ></b-form-input>
-        </b-form-group>
-
-          <!-- Input Name -->
+          <!-- Input NIK -->
           <b-form-group
-          label="Name"
-          label-for="name-input"
-          invalid-feedback="Name is required"
-          :state="nameState"
+          label="NIK"
+          label-for="nik-input"
+          invalid-feedback="NIK is required"
+          :state="nikState"
           >
           <b-form-input
-              id="name-input"
-              v-model="detailPatient.name"
-              :state="nameState"
+              id="nik-input"
+              v-model="detailPatient.nik"
+              :state="nikState"
               required
-
           ></b-form-input>
           </b-form-group>
 
-          <!-- Input Address -->
-          <b-form-group
-          label="Address"
-          label-for="address-input"
-          invalid-feedback="Address is required"
-          :state="addressState"
-          >
-          <b-form-input
-              id="address-input"
-              v-model="detailPatient.address"
-              :state="addressState"
-              required
+            <!-- Input Name -->
+            <b-form-group
+            label="Name"
+            label-for="name-input"
+            invalid-feedback="Name is required"
+            :state="nameState"
+            >
+            <b-form-input
+                id="name-input"
+                v-model="detailPatient.name"
+                :state="nameState"
+                required
 
-          ></b-form-input>
-          </b-form-group>
+            ></b-form-input>
+            </b-form-group>
 
-          <!-- Input Radio Gender -->
-          <b-form-group
-          label="Jenis Kelamin"
-          label-for="gender-input"
-          invalid-feedback="Jenis Kelamin is required"
-          :state="genderState"
-          >
-          <b-form-radio-group
-              id="btn-radios-2"
-              v-model="detailPatient.gender"
-              :options="options"
-              button-variant="outline-primary"
-              size="md"
-              name="radio-btn-outline"
-              buttons
-              required
+            <!-- Input Address -->
+            <b-form-group
+            label="Address"
+            label-for="address-input"
+            invalid-feedback="Address is required"
+            :state="addressState"
+            >
+            <b-form-input
+                id="address-input"
+                v-model="detailPatient.address"
+                :state="addressState"
+                required
 
-          ></b-form-radio-group>
-          </b-form-group>
+            ></b-form-input>
+            </b-form-group>
 
-          <!-- Input Phone -->
-          <b-form-group
-          label="Phone"
-          label-for="phone-input"
-          invalid-feedback="Phone is required"
-          :state="phoneState"
-          >
-          <b-form-input
-              id="phone-input"
-              v-model="detailPatient.phone"
-              :state="phoneState"
-              required
+            <!-- Input Radio Gender -->
+            <b-form-group
+            label="Jenis Kelamin"
+            label-for="gender-input"
+            invalid-feedback="Jenis Kelamin is required"
+            :state="genderState"
+            >
+            <b-form-radio-group
+                id="btn-radios-2"
+                v-model="detailPatient.gender"
+                :options="options"
+                button-variant="outline-primary"
+                size="md"
+                name="radio-btn-outline"
+                buttons
+                required
 
-          ></b-form-input>
-          </b-form-group>
+            ></b-form-radio-group>
+            </b-form-group>
 
-          <!-- Input Place of Birth -->
-          <b-form-group
-          label="Place of Birth"
-          label-for="placeOfBirth-input"
-          invalid-feedback="Place of Birth is required"
-          :state="placeOfBirthState"
-          >
-          <b-form-input
-              id="placeOfBirth-input"
-              v-model="detailPatient.placeOfBirth"
-              :state="placeOfBirthState"
-              required
+            <!-- Input Phone -->
+            <b-form-group
+            label="Phone"
+            label-for="phone-input"
+            invalid-feedback="Phone is required"
+            :state="phoneState"
+            >
+            <b-form-input
+                id="phone-input"
+                v-model="detailPatient.phone"
+                :state="phoneState"
+                required
 
-          ></b-form-input>
-          </b-form-group>
+            ></b-form-input>
+            </b-form-group>
 
-          <!-- Input Date of Birth -->
-          <b-form-group
-          label="Date of Birth"
-          label-for="dateOfBirth-input"
-          invalid-feedback="Date of Birth is required"
-          :state="dateOfBirthState"
-          >
-          <b-form-datepicker
-            id="dateOfBirth-datepicker"
-            v-model="detailPatient.dateOfBirth"
+            <!-- Input Place of Birth -->
+            <b-form-group
+            label="Place of Birth"
+            label-for="placeOfBirth-input"
+            invalid-feedback="Place of Birth is required"
+            :state="placeOfBirthState"
+            >
+            <b-form-input
+                id="placeOfBirth-input"
+                v-model="detailPatient.placeOfBirth"
+                :state="placeOfBirthState"
+                required
+
+            ></b-form-input>
+            </b-form-group>
+
+            <!-- Input Date of Birth -->
+            <b-form-group
+            label="Date of Birth"
+            label-for="dateOfBirth-input"
+            invalid-feedback="Date of Birth is required"
             :state="dateOfBirthState"
-            required
-          ></b-form-datepicker>
-          </b-form-group>
-
-          <!-- Input Jadwal Rawat Jalan -->
-          <b-form-group
-          label="Jadwal Rawat Jalan"
-          label-for="jadwalRawat-input"
-          invalid-feedback="Jadwal Rawat is required"
-          :state="jadwalRawatState"
-          >
-          <b-form-datepicker
-            id="jadwalRawat-datepicker"
-            v-model="detailPatient.jadwalRawat"
-            :state="jadwalRawatState"
-            required
-          ></b-form-datepicker>
-          </b-form-group>
-
-          <!-- No Antri of Birth -->
-          <b-form-group
-          label="No Antri"
-          label-for="noAntri-input"
-          invalid-feedback="No Antri is required"
-          :state="noAntriState"
-          >
-          <b-form-input
-              id="noAntri-input"
-              v-model="detailPatient.noAntri"
-              :state="noAntriState"
+            >
+            <b-form-datepicker
+              id="dateOfBirth-datepicker"
+              v-model="detailPatient.dateOfBirth"
+              :state="dateOfBirthState"
               required
-          ></b-form-input>
-          </b-form-group>
+            ></b-form-datepicker>
+            </b-form-group>
 
-        </form>
+            <!-- Input Jadwal Rawat Jalan -->
+            <b-form-group
+            label="Jadwal Rawat Jalan"
+            label-for="jadwalRawat-input"
+            invalid-feedback="Jadwal Rawat is required"
+            :state="jadwalRawatState"
+            >
+            <b-form-datepicker
+              id="jadwalRawat-datepicker"
+              v-model="detailPatient.jadwalRawat"
+              :state="jadwalRawatState"
+              required
+            ></b-form-datepicker>
+            </b-form-group>
 
-      <template #modal-footer="{ ok }">
-        <b-button 
-        v-if="editMode === false"
-        v-b-modal.detail-modal-prevent-closing 
-        size="lg" 
-        variant="secondary" 
-        @click="changeEditMode()">
-            Edit
-        </b-button>
-        <b-button v-else size="lg" variant="danger" @click="deletePatient(indexSelected)">
-            Delete
-        </b-button>
-        <b-button size="lg" variant="success" @click="ok()">
-            Simpan
-        </b-button>
-      </template>
-      </b-modal>
+            <!-- No Antri of Birth -->
+            <b-form-group
+            label="No Antri"
+            label-for="noAntri-input"
+            invalid-feedback="No Antri is required"
+            :state="noAntriState"
+            >
+            <b-form-input
+                id="noAntri-input"
+                v-model="detailPatient.noAntri"
+                :state="noAntriState"
+                required
+            ></b-form-input>
+            </b-form-group>
 
-      <!-- Pagination -->
-      <b-col sm="7" md="6" class="mx-auto">
-          <b-pagination
-            v-model="currentPage"
-            :total-rows="totalRows"
-            :per-page="perPage"
-            align="fill"
-            size="sm"
-            class="my-0"
-          ></b-pagination>
-      </b-col>
+          </form>
 
+        <template #modal-footer="{ ok }">
+          <b-button 
+          v-if="editMode === false"
+          v-b-modal.detail-modal-prevent-closing 
+          size="lg" 
+          variant="secondary" 
+          @click="changeEditMode()">
+              Edit
+          </b-button>
+          <b-button v-else size="lg" variant="danger" @click="deletePatient(indexSelected)">
+              Delete
+          </b-button>
+          <b-button size="lg" variant="success" @click="ok()">
+              Simpan
+          </b-button>
+        </template>
+        </b-modal>
 
+        <!-- Pagination -->
+        <b-col sm="7" md="6" class="mx-auto">
+            <b-pagination
+              v-model="currentPage"
+              :total-rows="totalRows"
+              :per-page="perPage"
+              align="fill"
+              size="sm"
+              class="my-0"
+            ></b-pagination>
+        </b-col>
+      </div>
+        
     </b-container>
   </div>
 </template>
@@ -451,6 +481,20 @@
   export default {
     components : {
       navbar
+    },
+    computed: {
+      noUmum() {
+        return this.$store.state.noUmum
+      },
+      noGigi() {
+        return this.$store.state.noGigi
+      },
+      noKulit() {
+        return this.$store.state.noKulit
+      },
+      noTht() {
+        return this.$store.state.noTht
+      }
     },
     name:'VuetifyPage',
     data() {
@@ -521,6 +565,10 @@
     },
 
     methods: {
+      testGigi(payload) {
+        this.$store.dispatch('changeNoGigi', payload)
+      },
+
       testIndex(item) {
         console.log(this.detailPatient.indexOf(item))
       },
