@@ -106,17 +106,17 @@
                 ></b-form-radio-group>
                 </b-form-group>
 
-                <!-- Input Phone -->
+                <!-- Input nomer_telfon -->
                 <b-form-group
-                label="Phone"
-                label-for="phone-input"
-                invalid-feedback="Phone is required"
-                :state="phoneState"
+                label="nomer_telfon"
+                label-for="nomer_telfon-input"
+                invalid-feedback="nomer_telfon is required"
+                :state="nomer_telfonState"
                 >
                 <b-form-input
-                    id="phone-input"
-                    v-model="form.phone"
-                    :state="phoneState"
+                    id="nomer_telfon-input"
+                    v-model="form.nomer_telfon"
+                    :state="nomer_telfonState"
                     required
                 ></b-form-input>
                 </b-form-group>
@@ -124,28 +124,28 @@
                 <!-- Input Place of Birth -->
                 <b-form-group
                 label="Place of Birth"
-                label-for="placeOfBirth-input"
+                label-for="tempat_lahir-input"
                 invalid-feedback="Place of Birth is required"
-                :state="placeOfBirthState"
+                :state="tempat_lahirState"
                 >
                 <b-form-input
-                    id="placeOfBirth-input"
-                    v-model="form.placeOfBirth"
-                    :state="placeOfBirthState"
+                    id="tempat_lahir-input"
+                    v-model="form.tempat_lahir"
+                    :state="tempat_lahirState"
                     required
                 ></b-form-input>
                 </b-form-group>
     
                 <b-form-group
                 label="Date of Birth"
-                label-for="dateOfBirth-input"
+                label-for="tanggal_lahir-input"
                 invalid-feedback="Date of Birth is required"
-                :state="dateOfBirthState"
+                :state="tanggal_lahirState"
                 >
                 <b-form-datepicker
-                  id="dateOfBirth-datepicker"
-                  v-model="form.dateOfBirth"
-                  :state="dateOfBirthState"
+                  id="tanggal_lahir-datepicker"
+                  v-model="form.tanggal_lahir"
+                  :state="tanggal_lahirState"
                   required
                 ></b-form-datepicker>
                 </b-form-group>
@@ -218,7 +218,7 @@
 
           <!-- Input Name -->
           <b-form-group
-          label="Name"
+          label="Nama"
           label-for="name-input"
           invalid-feedback="Name is required"
           :state="namaState"
@@ -234,7 +234,7 @@
 
           <!-- Input alamat -->
           <b-form-group
-          label="alamat"
+          label="Alamat"
           label-for="alamat-input"
           invalid-feedback="alamat is required"
           :state="alamatState"
@@ -268,17 +268,17 @@
           ></b-form-radio-group>
           </b-form-group>
 
-          <!-- Input Phone -->
+          <!-- Input nomer_telfon -->
           <b-form-group
-          label="Phone"
-          label-for="phone-input"
-          invalid-feedback="Phone is required"
-          :state="phoneState"
+          label="Nomor Telefon"
+          label-for="nomer_telfon-input"
+          invalid-feedback="nomer_telfon is required"
+          :state="nomer_telfonState"
           >
           <b-form-input
-              id="phone-input"
-              v-model="detailPatient.phone"
-              :state="phoneState"
+              id="nomer_telfon-input"
+              v-model="detailPatient.nomer_telfon"
+              :state="nomer_telfonState"
               required
               disabled
           ></b-form-input>
@@ -286,15 +286,15 @@
 
           <!-- Input Place of Birth -->
           <b-form-group
-          label="Place of Birth"
-          label-for="placeOfBirth-input"
+          label="Tempat Lahir"
+          label-for="tempat_lahir-input"
           invalid-feedback="Place of Birth is required"
-          :state="placeOfBirthState"
+          :state="tempat_lahirState"
           >
           <b-form-input
-              id="placeOfBirth-input"
-              v-model="detailPatient.placeOfBirth"
-              :state="placeOfBirthState"
+              id="tempat_lahir-input"
+              v-model="detailPatient.tempat_lahir"
+              :state="tempat_lahirState"
               required
               disabled
           ></b-form-input>
@@ -302,15 +302,15 @@
 
           <!-- Input Date of Birth -->
           <b-form-group
-          label="Date of Birth"
-          label-for="dateOfBirth-input"
+          label="Tanggal Lahir"
+          label-for="tanggal_lahir-input"
           invalid-feedback="Date of Birth is required"
-          :state="dateOfBirthState"
+          :state="tanggal_lahirState"
           >
           <b-form-datepicker
-            id="dateOfBirth-datepicker"
-            v-model="detailPatient.dateOfBirth"
-            :state="dateOfBirthState"
+            id="tanggal_lahir-datepicker"
+            v-model="detailPatient.tanggal_lahir"
+            :state="tanggal_lahirState"
             required
             disabled
           ></b-form-datepicker>
@@ -336,7 +336,7 @@
 
           <!-- Input Name -->
           <b-form-group
-          label="Name"
+          label="Nama"
           label-for="name-input"
           invalid-feedback="Name is required"
           :state="namaState"
@@ -386,17 +386,17 @@
           ></b-form-radio-group>
           </b-form-group>
 
-          <!-- Input Phone -->
+          <!-- Input nomer_telfon -->
           <b-form-group
-          label="Phone"
-          label-for="phone-input"
-          invalid-feedback="Phone is required"
-          :state="phoneState"
+          label="nomer_telfon"
+          label-for="nomer_telfon-input"
+          invalid-feedback="nomer_telfon is required"
+          :state="nomer_telfonState"
           >
           <b-form-input
-              id="phone-input"
-              v-model="detailPatient.phone"
-              :state="phoneState"
+              id="nomer_telfon-input"
+              v-model="detailPatient.nomer_telfon"
+              :state="nomer_telfonState"
               required
 
           ></b-form-input>
@@ -405,14 +405,14 @@
           <!-- Input Place of Birth -->
           <b-form-group
           label="Place of Birth"
-          label-for="placeOfBirth-input"
+          label-for="tempat_lahir-input"
           invalid-feedback="Place of Birth is required"
-          :state="placeOfBirthState"
+          :state="tempat_lahirState"
           >
           <b-form-input
-              id="placeOfBirth-input"
-              v-model="detailPatient.placeOfBirth"
-              :state="placeOfBirthState"
+              id="tempat_lahir-input"
+              v-model="detailPatient.tempat_lahir"
+              :state="tempat_lahirState"
               required
 
           ></b-form-input>
@@ -421,14 +421,14 @@
           <!-- Input Date of Birth -->
           <b-form-group
           label="Date of Birth"
-          label-for="dateOfBirth-input"
+          label-for="tanggal_lahir-input"
           invalid-feedback="Date of Birth is required"
-          :state="dateOfBirthState"
+          :state="tanggal_lahirState"
           >
           <b-form-datepicker
-            id="dateOfBirth-datepicker"
-            v-model="detailPatient.dateOfBirth"
-            :state="dateOfBirthState"
+            id="tanggal_lahir-datepicker"
+            v-model="detailPatient.tanggal_lahir"
+            :state="tanggal_lahirState"
             required
           ></b-form-datepicker>
           </b-form-group>
@@ -489,9 +489,9 @@ import navbar from '@/components/navbar.vue'
           nama: '',
           alamat: '',
           jenis_kelamin:'',
-          phone: '',
-          placeOfBirth: '',
-          dateOfBirth: '',
+          nomer_telfon: '',
+          tempat_lahir: '',
+          tanggal_lahir: '',
           disease: '',
           Rekam_medis: ''
         },
@@ -500,17 +500,17 @@ import navbar from '@/components/navbar.vue'
             nama: '',
             alamat: '',
             jenis_kelamin:'',
-            phone: '',
-            placeOfBirth: '',
-            dateOfBirth: '',
+            nomer_telfon: '',
+            tempat_lahir: '',
+            tanggal_lahir: '',
         },
         nikState: null,
         namaState: null,
         alamatState: null,
         jenis_kelaminState: null,
-        phoneState: null,
-        placeOfBirthState: null,
-        dateOfBirthState: null,
+        nomer_telfonState: null,
+        tempat_lahirState: null,
+        tanggal_lahirState: null,
         selected: '',
         options: [
             { text: 'Laki-laki', value: 'L' },
@@ -577,7 +577,7 @@ import navbar from '@/components/navbar.vue'
 
         async addPatient() {
           try {
-              await axios.post(`http://localhost:3000/patients`, this.form)
+              await axios.post(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien_tambah`, this.form)
               this.load()
           } catch (error) {
               console.log(error)
@@ -586,7 +586,7 @@ import navbar from '@/components/navbar.vue'
         async deletePatient(indexId) {
             if (confirm('Apakah Anda Akan Menghapus Data Ini?') == true) {
                 try {
-                    await axios.delete(`http://localhost:3000/patients` + indexId)
+                    await axios.delete(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien_hapus/` + indexId)
                     this.load()
                 } catch (error) {
                     console.log(error)
@@ -600,16 +600,14 @@ import navbar from '@/components/navbar.vue'
 
         async updatePatient() {
             try {
-                await axios.put(`http://localhost:3000/patients` + this.indexSelected, {
+                await axios.put(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien_edit/` + this.indexSelected, {
                     nik: this.detailPatient.nik,
                     nama: this.detailPatient.nama,
                     alamat: this.detailPatient.alamat,
                     jenis_kelamin: this.detailPatient.jenis_kelamin,
-                    phone: this.detailPatient.phone,
-                    placeOfBirth: this.detailPatient.placeOfBirth,
-                    dateOfBirth: this.detailPatient.dateOfBirth,
-                    disease: this.detailPatient.disease,
-                    Rekam_medis: this.detailPatient.Rekam_medis.jenis_penanganan
+                    nomer_telfon: this.detailPatient.nomer_telfon,
+                    tempat_lahir: this.detailPatient.tempat_lahir,
+                    tanggal_lahir: this.detailPatient.tanggal_lahir,
                 })
                 this.load()
             } catch (error) {
@@ -623,9 +621,9 @@ import navbar from '@/components/navbar.vue'
             this.namaState = valid
             this.alamatState = valid
             this.jenis_kelaminState = valid
-            this.phoneState = valid
-            this.placeOfBirthState = valid
-            this.dateOfBirthState = valid
+            this.nomer_telfonState = valid
+            this.tempat_lahirState = valid
+            this.tanggal_lahirState = valid
             return valid
         },
 
@@ -634,17 +632,17 @@ import navbar from '@/components/navbar.vue'
           this.form.nama = ''
           this.form.alamat = ''
           this.form.jenis_kelamin = ''
-          this.form.phone = ''
-          this.form.placeOfBirth = ''
-          this.form.dateOfBirth = ''
+          this.form.nomer_telfon = ''
+          this.form.tempat_lahir = ''
+          this.form.tanggal_lahir = ''
 
           this.nikState = null
           this.namaState = null
           this.alamatState = null
           this.jenis_kelaminState = null
-          this.phoneState = null
-          this.placeOfBirthState = null
-          this.dateOfBirthState = null
+          this.nomer_telfonState = null
+          this.tempat_lahirState = null
+          this.tanggal_lahirState = null
 
           this.editMode = false
         },
