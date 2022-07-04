@@ -11,7 +11,7 @@
                             <strong><b-form-group label="Username" class="mt-2">
                                 <b-form-input
                                 id="input-1"
-                                v-model="email"
+                                v-model="login.email"
                                 name="username"
                                 class="forminput mt-3"
                                 required></b-form-input>
@@ -20,7 +20,7 @@
                             <strong><b-form-group label="Password" class="mt-2">
                                 <b-form-input
                                 id="input-2"
-                                v-model="password"
+                                v-model="login.password"
                                 type="password"
                                 name="password"
                                 class="forminput mt-3"
@@ -32,9 +32,9 @@
                                     <div class="p-2"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> <strong class="text-secondary">Remember Me</strong></div>
                                     <div class="p-2"> <a href="" class="ml-5"><strong class="text-secondary  text-right" >Forgot Password ?</strong></a></div>
                                 </div>
-                                <div v-if="showError" id="error">
+                                <div v-if="error" id="error">
                                   <b-alert variant="danger" show>
-                                    Username or Password is incorrect
+                                    Email atau Password salah
                                   </b-alert>
                                 </div>
                         </b-form>
@@ -73,30 +73,35 @@ export default {
   components: {},
   data() {
     return {
-      email: "",
+     login:{
+       email: "",
       password: "",
-      showError: false
+     },
+      error: null,
     };
   },
   methods: {
-   async submit(){
-      let result = await axios.get(`https://62b483cfda3017eabb0c415b.mockapi.io/user?email=${this.email}&password=${this.password}`)
-      console.warn(result)
-      if(result.status==200 && result.data.length>0 && result.data[0].tingkat==1)
-     {
-       
-       localStorage.setItem("adminLogin",JSON.stringify(result.data[0]))
-       this.$router.push({name:"HomeAdmin"})
-       this.showError = false
-     } else if (result.status==200 && result.data.length>0 && result.data[0].tingkat==2) {
-       localStorage.setItem("userLogin",JSON.stringify(result.data[0]))
-       this.$router.push({name:"HomeDokter"})
-       this.showError = false
-     } else (result.status==!200 && result.data.length==0) 
-     {
-         this.showError = true
-      }
+    async submit() {
+     try {
+      let result = await axios.post(`https://api-capstone-heroku.herokuapp.com/login`,this.login)
+      console.log(result);
+      if(result.status==200 && result.data.level==="admin")
+     { 
+      localStorage.setItem("adminLogin",JSON.stringify(result.data))
+      this.$router.push({name:"HomeAdmin"})
+      this.error = null;
+     } else if (result.status==200 && result.data.level==="dokter") {
+      localStorage.setItem("userLogin",JSON.stringify(result.data))
+      this.$router.push({name:"HomeDokter"})
+      this.error = null;
+     } else{
+      this.error = result.message
+     }
+     } 
+    catch (err) {
+    this.error = err.message;
     }
+  }
   },
   mounted()
     {
@@ -106,7 +111,7 @@ export default {
       }
       let user= localStorage.getItem('userLogin');
       if(user){
-        this.$router.push({name:"sHomeDokter"})
+        this.$router.push({name:"HomeDokter"})
       } 
     },
 };

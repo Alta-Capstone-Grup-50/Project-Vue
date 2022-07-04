@@ -96,7 +96,7 @@
         >
         <b-form-input
             id="nama-input"
-            v-model="detailDokter.nama"
+            v-model="detailDokter.nama_dokter"
             :state="namaState"
             required
             disabled
@@ -112,7 +112,7 @@
         >
         <b-form-radio-group
             id="btn-radios-2"
-            v-model="detailDokter.gender"
+            v-model="detailDokter.jenis_kelamin"
             :options="options"
             class="mb-3"
             required
@@ -145,7 +145,7 @@
         >
         <b-form-input
             id="jadwal-input"
-            v-model="detailDokter.jadwal"
+            v-model="detailDokter.jadwal_praktek"
             :state="jadwalState"
             required
             disabled
@@ -161,7 +161,7 @@
         >
         <b-form-input
             id="placeOfBirth-input"
-            v-model="detailDokter.str"
+            v-model="detailDokter.nomor_str"
             :state="strState"
             required
             disabled
@@ -195,11 +195,11 @@
         indexSelected: '',
         form : {
           sip: '',
-          nama: '',
-          gender:'',
+          nama_dokter: '',
+          jenis_kelamin:'',
           spesialis: '',
-          jadwal: '',
-          str: '',
+          jadwal_praktek: '',
+          nomor_str: '',
           handling: ''
         },
         sipState: null,
@@ -218,11 +218,11 @@
           
           { key: 'index', label: 'No'},
           { key: 'sip', label: 'SIP'},
-          { key: 'nama', label: 'Nama'},
+          { key: 'nama_dokter', label: 'Nama'},
           { key: 'spesialis', label: 'Spesialis'},
-          { key: 'gender', label: 'Jenis Kelamin'},
-          { key: 'jadwal', label: 'Jadwal Praktek'},
-          { key: 'str', label: 'Nomor STR'},
+          { key: 'jenis_kelamin', label: 'Jenis Kelamin'},
+          { key: 'jadwal_praktek', label: 'Jadwal Praktek'},
+          { key: 'nomor_str', label: 'Nomor STR'},
           { key: 'actions', label: 'Actions' }
         ],
         totalRows: 1,
@@ -267,8 +267,8 @@
         this.currentPage = 1
       },
       async load() {
-            const response = await axios.get(`https://62b483cfda3017eabb0c415b.mockapi.io/dokter`)
-            this.dokter = response.data
+            const response = await axios.get(`https://api-capstone-heroku.herokuapp.com/dokter/akun_dokter_lihat`)
+            this.dokter = response.data.data
             
             // Set the initial number of patients
             this.totalRows = this.dokter.length
@@ -304,11 +304,11 @@
             try {
                 await axios.put(`https://62b483cfda3017eabb0c415b.mockapi.io/dokter/` + this.indexSelected, {
                     sip: this.detailDokter.sip,
-                    nama: this.detailDokter.nama,
-                    gender: this.detailDokter.gender,
+                    nama_dokter: this.detailDokter.nama_dokter,
+                    jenis_kelamin: this.detailDokter.jenis_kelamin,
                     spesialis: this.detailDokter.spesialis,
-                    jadwal: this.detailDokter.jadwal,
-                    str: this.detailDokter.str,
+                    jadwal_praktek: this.detailDokter.jadwal_praktek,
+                    nomor_str: this.detailDokter.nomor_str,
                     handling: this.detailDokter.handling
                 })
                 this.load()
@@ -328,11 +328,11 @@
         },
         resetModal() {
           this.form.sip = ''
-          this.form.nama = ''
-          this.form.gender = ''
+          this.form.nama_dokter = ''
+          this.form.jenis_kelamin = ''
           this.form.spesialis = ''
-          this.form.jadwal = ''
-          this.form.str = ''
+          this.form.jadwal_praktek = ''
+          this.form.nomor_str = ''
           this.sipState = null
           this.namaState = null
           this.genderState = null

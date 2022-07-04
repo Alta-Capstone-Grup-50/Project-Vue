@@ -62,41 +62,41 @@
                 label="Name"
                 label-for="name-input"
                 invalid-feedback="Name is required"
-                :state="nameState"
+                :state="namaState"
                 >
                 <b-form-input
                     id="name-input"
-                    v-model="form.name"
-                    :state="nameState"
+                    v-model="form.nama"
+                    :state="namaState"
                     required
                 ></b-form-input>
                 </b-form-group>
 
-                <!-- Input Address -->
+                <!-- Input alamat -->
                 <b-form-group
-                label="Address"
-                label-for="address-input"
-                invalid-feedback="Address is required"
-                :state="addressState"
+                label="alamat"
+                label-for="alamat-input"
+                invalid-feedback="alamat is required"
+                :state="alamatState"
                 >
                 <b-form-input
-                    id="address-input"
-                    v-model="form.address"
-                    :state="addressState"
+                    id="alamat-input"
+                    v-model="form.alamat"
+                    :state="alamatState"
                     required
                 ></b-form-input>
                 </b-form-group>
 
-                <!-- Input Radio Gender -->
+                <!-- Input Radio jenis_kelamin -->
                 <b-form-group
                 label="Jenis Kelamin"
-                label-for="gender-input"
+                label-for="jenis_kelamin-input"
                 invalid-feedback="Jenis Kelamin is required"
-                :state="genderState"
+                :state="jenis_kelaminState"
                 >
                 <b-form-radio-group
                     id="btn-radios-2"
-                    v-model="form.gender"
+                    v-model="form.jenis_kelamin"
                     :options="options"
                     button-variant="outline-primary"
                     size="md"
@@ -176,17 +176,7 @@
         {{ row.index + 1 }}
       </template>
 
-      <template #cell(disease)="row">
-        <p v-if="row.item.disease === ''">--</p>
-        <p v-else>{{ row.item.disease }}</p>
-      </template>
-
-      <template #cell(handling)="row">
-        <p v-if="row.item.handling === ''">--</p>
-        <p v-else>{{ row.item.handling }}</p>
-      </template>
-
-      <template #cell(actions)="row">
+<template #cell(actions)="row">
         <b-button 
         v-b-modal.detail-modal-prevent-closing 
         size="sm" 
@@ -231,43 +221,43 @@
           label="Name"
           label-for="name-input"
           invalid-feedback="Name is required"
-          :state="nameState"
+          :state="namaState"
           >
           <b-form-input
               id="name-input"
-              v-model="detailPatient.name"
-              :state="nameState"
+              v-model="detailPatient.nama"
+              :state="namaState"
               required
               disabled
           ></b-form-input>
           </b-form-group>
 
-          <!-- Input Address -->
+          <!-- Input alamat -->
           <b-form-group
-          label="Address"
-          label-for="address-input"
-          invalid-feedback="Address is required"
-          :state="addressState"
+          label="alamat"
+          label-for="alamat-input"
+          invalid-feedback="alamat is required"
+          :state="alamatState"
           >
           <b-form-input
-              id="address-input"
-              v-model="detailPatient.address"
-              :state="addressState"
+              id="alamat-input"
+              v-model="detailPatient.alamat"
+              :state="alamatState"
               required
               disabled
           ></b-form-input>
           </b-form-group>
 
-          <!-- Input Radio Gender -->
+          <!-- Input Radio jenis_kelamin -->
           <b-form-group
           label="Jenis Kelamin"
-          label-for="gender-input"
+          label-for="jenis_kelamin-input"
           invalid-feedback="Jenis Kelamin is required"
-          :state="genderState"
+          :state="jenis_kelaminState"
           >
           <b-form-radio-group
               id="btn-radios-2"
-              v-model="detailPatient.gender"
+              v-model="detailPatient.jenis_kelamin"
               :options="options"
               button-variant="outline-primary"
               size="md"
@@ -349,43 +339,43 @@
           label="Name"
           label-for="name-input"
           invalid-feedback="Name is required"
-          :state="nameState"
+          :state="namaState"
           >
           <b-form-input
               id="name-input"
-              v-model="detailPatient.name"
-              :state="nameState"
+              v-model="detailPatient.nama"
+              :state="namaState"
               required
 
           ></b-form-input>
           </b-form-group>
 
-          <!-- Input Address -->
+          <!-- Input alamat -->
           <b-form-group
-          label="Address"
-          label-for="address-input"
-          invalid-feedback="Address is required"
-          :state="addressState"
+          label="alamat"
+          label-for="alamat-input"
+          invalid-feedback="alamat is required"
+          :state="alamatState"
           >
           <b-form-input
-              id="address-input"
-              v-model="detailPatient.address"
-              :state="addressState"
+              id="alamat-input"
+              v-model="detailPatient.alamat"
+              :state="alamatState"
               required
 
           ></b-form-input>
           </b-form-group>
 
-          <!-- Input Radio Gender -->
+          <!-- Input Radio jenis_kelamin -->
           <b-form-group
           label="Jenis Kelamin"
-          label-for="gender-input"
+          label-for="jenis_kelamin-input"
           invalid-feedback="Jenis Kelamin is required"
-          :state="genderState"
+          :state="jenis_kelaminState"
           >
           <b-form-radio-group
               id="btn-radios-2"
-              v-model="detailPatient.gender"
+              v-model="detailPatient.jenis_kelamin"
               :options="options"
               button-variant="outline-primary"
               size="md"
@@ -496,28 +486,28 @@ import navbar from '@/components/navbar.vue'
         indexSelected: '',
         form : {
           nik: '',
-          name: '',
-          address: '',
-          gender:'',
+          nama: '',
+          alamat: '',
+          jenis_kelamin:'',
           phone: '',
           placeOfBirth: '',
           dateOfBirth: '',
           disease: '',
-          handling: ''
+          Rekam_medis: ''
         },
         editForm: {
             nik: '',
-            name: '',
-            address: '',
-            gender:'',
+            nama: '',
+            alamat: '',
+            jenis_kelamin:'',
             phone: '',
             placeOfBirth: '',
             dateOfBirth: '',
         },
         nikState: null,
-        nameState: null,
-        addressState: null,
-        genderState: null,
+        namaState: null,
+        alamatState: null,
+        jenis_kelaminState: null,
         phoneState: null,
         placeOfBirthState: null,
         dateOfBirthState: null,
@@ -531,11 +521,11 @@ import navbar from '@/components/navbar.vue'
         fields: [
           { key: 'index', label: 'No'},
           { key: 'nik', label: 'NIK'},
-          { key: 'name', label: 'Nama'},
-          { key: 'address', label: 'Alamat'},
-          { key: 'gender', label: 'Jenis Kelamin'},
-          { key: 'disease', label: 'Jenis Penyakit'},
-          { key: 'handling', label: 'Jenis Penanganan'},
+          { key: 'nama', label: 'Nama'},
+          { key: 'alamat', label: 'Alamat'},
+          { key: 'jenis_kelamin', label: 'Jenis Kelamin'},
+          { key: 'Rekam_medis[0].poli', label: 'Jenis Penyakit'},
+          { key: 'Rekam_medis[0].jenis_penanganan', label: 'Jenis Penanganan'},
           { key: 'actions', label: 'Actions' }
         ],
         totalRows: 1,
@@ -572,8 +562,8 @@ import navbar from '@/components/navbar.vue'
       },
 
         async load() {
-            const response = await axios.get(`http://localhost:3000/patients`)
-            this.patients = response.data
+            const response = await axios.get(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien`)
+            this.patients = response.data.data
             
             // Set the initial number of patients
             this.totalRows = this.patients.length
@@ -612,14 +602,14 @@ import navbar from '@/components/navbar.vue'
             try {
                 await axios.put(`http://localhost:3000/patients` + this.indexSelected, {
                     nik: this.detailPatient.nik,
-                    name: this.detailPatient.name,
-                    address: this.detailPatient.address,
-                    gender: this.detailPatient.gender,
+                    nama: this.detailPatient.nama,
+                    alamat: this.detailPatient.alamat,
+                    jenis_kelamin: this.detailPatient.jenis_kelamin,
                     phone: this.detailPatient.phone,
                     placeOfBirth: this.detailPatient.placeOfBirth,
                     dateOfBirth: this.detailPatient.dateOfBirth,
                     disease: this.detailPatient.disease,
-                    handling: this.detailPatient.handling
+                    Rekam_medis: this.detailPatient.Rekam_medis.jenis_penanganan
                 })
                 this.load()
             } catch (error) {
@@ -630,9 +620,9 @@ import navbar from '@/components/navbar.vue'
         checkFormValidity() {
             const valid = this.$refs.form.checkValidity()
             this.nikState = valid
-            this.nameState = valid
-            this.addressState = valid
-            this.genderState = valid
+            this.namaState = valid
+            this.alamatState = valid
+            this.jenis_kelaminState = valid
             this.phoneState = valid
             this.placeOfBirthState = valid
             this.dateOfBirthState = valid
@@ -641,17 +631,17 @@ import navbar from '@/components/navbar.vue'
 
         resetModal() {
           this.form.nik = ''
-          this.form.name = ''
-          this.form.address = ''
-          this.form.gender = ''
+          this.form.nama = ''
+          this.form.alamat = ''
+          this.form.jenis_kelamin = ''
           this.form.phone = ''
           this.form.placeOfBirth = ''
           this.form.dateOfBirth = ''
 
           this.nikState = null
-          this.nameState = null
-          this.addressState = null
-          this.genderState = null
+          this.namaState = null
+          this.alamatState = null
+          this.jenis_kelaminState = null
           this.phoneState = null
           this.placeOfBirthState = null
           this.dateOfBirthState = null
