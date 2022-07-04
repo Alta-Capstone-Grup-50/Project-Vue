@@ -2,8 +2,8 @@
   <div>
     <navbar />
     <b-container class="mt-5">
-      <h3><strong>Data Pasien</strong></h3>
-      <div class="d-flex">
+        <h3><strong>Data Pasien Rawat Jalan</strong></h3>
+        <div class="d-flex">
           <b-form-group
             label-for="filter-input"
             label-align-sm="right"
@@ -19,200 +19,172 @@
               ></b-form-input>
             </b-input-group>
           </b-form-group>
-
-        <div class="ms-auto">
-        <b-button
-          v-b-modal.add-modal-prevent-closing
-          variant="primary"
-          class="shadow"
-          >
-          Tambah Pasien
-          </b-button>
-        </div>
       </div>
-        <b-col cols="4" class="col2">
-          <b-modal
-            id="add-modal-prevent-closing"
-            ref="modal"
-            title="Tambah Data Pasien"
-            @show="resetModal"
-            @hidden="resetModal"
-            @ok="handleOkAddPatient"
-            size="xl"
+
+
+      <!-- Main table element -->
+      <b-table
+        :items="patients"
+        :fields="fields"
+        :current-page="currentPage"
+        :per-page="perPage"
+        :filter="filter"
+        striped hover
+        borderless
+        class="mt-3 shadow text-center rounded"
+        thead-class="bg-info text-white"
+        responsive
+        :filter-included-fields="filterOn"
+        show-empty
+        @filtered="onFiltered"
+      >
+
+        <template v-slot:cell(no)="row">
+          {{ row.index + 1 }}
+        </template>
+
+        <template #cell(jadwalRawat)="row">
+          <p v-if="row.item.jadwalRawat === ''">--</p>
+          <p v-else>{{ row.item.jadwalRawat }}</p>
+        </template>
+
+        <template #cell(noAntri)="row">
+          <p v-if="row.item.noAntri === ''">--</p>
+          <p v-else>{{ row.item.noAntri }}</p>
+        </template>
+
+        <template #cell(ketRawat)="row">
+          <b-button
+          v-if="row.item.ketRawat === ''"
+          v-b-modal.keteranganPasien-modal-prevent-closing 
+          size="sm" 
+          @click="getIndex(row.item)" 
+          class="mr-1"
+          variant="primary">
+            Ket
+          </b-button>
+          <b-button 
+          v-else
+          v-b-modal.keteranganPasien-modal-prevent-closing 
+          size="sm" 
+          @click="getIndex(row.item)" 
+          class="mr-1"
+          variant="success">
+            Ket
+          </b-button>
+        </template>
+
+        <template #cell(actions)="row">
+          <b-button 
+          v-b-modal.detail-modal-prevent-closing 
+          size="sm" 
+          @click="getIndex(row.item)">
+            Detail
+          </b-button>
+
+          <div v-if="row.item.status !== 'selesai'">
+            <!-- No Antri Umum -->
+            <b-button v-if="row.item.disease === 'umum'"
+            size="sm"
+            @click="changeStatusUmum(row.item)"
             >
-            <form ref="form" @submit.stop.prevent="handleSubmitAddPatient()">
+              Selesai
+            </b-button>
 
-              <!-- Input NIK -->
-              <b-form-group
-              label="NIK"
-              label-for="nik-input"
-              invalid-feedback="NIK is required"
-              :state="nikState"
-              >
-              <b-form-input
-                  id="nik-input"
-                  v-model="form.nik"
-                  :state="nikState"
-                  required
-              ></b-form-input>
-              </b-form-group>
+            <!-- No Antri Gigi -->
+            <b-button v-if="row.item.disease === 'gigi'"
+            size="sm"
+            @click="changeStatusGigi(row.item)"
+            >
+              Selesai
+            </b-button>
 
-                <!-- Input Name -->
-                <b-form-group
-                label="Name"
-                label-for="name-input"
-                invalid-feedback="Name is required"
-                :state="nameState"
-                >
-                <b-form-input
-                    id="name-input"
-                    v-model="form.name"
-                    :state="nameState"
-                    required
-                ></b-form-input>
-                </b-form-group>
+            <!-- No Antri Kulit -->
+            <b-button v-if="row.item.disease === 'kulit'"
+            size="sm"
+            @click="changeStatusKulit(row.item)"
+            >
+              Selesai
+            </b-button>
 
-                <!-- Input Address -->
-                <b-form-group
-                label="Address"
-                label-for="address-input"
-                invalid-feedback="Address is required"
-                :state="addressState"
-                >
-                <b-form-input
-                    id="address-input"
-                    v-model="form.address"
-                    :state="addressState"
-                    required
-                ></b-form-input>
-                </b-form-group>
+            <!-- No Antri THT -->
+            <b-button v-if="row.item.disease === 'tht'"
+            size="sm"
+            @click="changeStatusTht(row.item)"
+            >
+              Selesai
+            </b-button>
+          </div>
 
-                <!-- Input Radio Gender -->
-                <b-form-group
-                label="Jenis Kelamin"
-                label-for="gender-input"
-                invalid-feedback="Jenis Kelamin is required"
-                :state="genderState"
-                >
-                <b-form-radio-group
-                    id="btn-radios-2"
-                    v-model="form.gender"
-                    :options="options"
-                    button-variant="outline-primary"
-                    size="md"
-                    name="radio-btn-outline"
-                    buttons
-                    required
-                ></b-form-radio-group>
-                </b-form-group>
+          <div v-else>
+            <b-iconstack font-scale="2">
+              <b-icon stacked icon="square"></b-icon>
+              <b-icon stacked icon="check"></b-icon>
+            </b-iconstack>
+          </div>
+        </template>
 
-                <!-- Input Phone -->
-                <b-form-group
-                label="Phone"
-                label-for="phone-input"
-                invalid-feedback="Phone is required"
-                :state="phoneState"
-                >
-                <b-form-input
-                    id="phone-input"
-                    v-model="form.phone"
-                    :state="phoneState"
-                    required
-                ></b-form-input>
-                </b-form-group>
+      </b-table>
 
-                <!-- Input Place of Birth -->
-                <b-form-group
-                label="Place of Birth"
-                label-for="placeOfBirth-input"
-                invalid-feedback="Place of Birth is required"
-                :state="placeOfBirthState"
-                >
-                <b-form-input
-                    id="placeOfBirth-input"
-                    v-model="form.placeOfBirth"
-                    :state="placeOfBirthState"
-                    required
-                ></b-form-input>
-                </b-form-group>
+      <!-- Modal Keterangan Pasien -->
+      <b-modal
+      id="keteranganPasien-modal-prevent-closing"
+      ref="modal"
+      title="Keterangan Dokter"
+      @show="resetModal"
+      @hidden="resetModal"
+      @ok="handleOkEditPatient"
+      size="xl"
+      >
 
-                <!-- Input Date of Birth -->
-                <b-form-group
-                label="Date of Birth"
-                label-for="dateOfBirth-input"
-                invalid-feedback="Date of Birth is required"
-                :state="dateOfBirthState"
-                >
-                <b-form-datepicker
-                  id="dateOfBirth-datepicker"
-                  v-model="form.dateOfBirth"
-                  :state="dateOfBirthState"
-                  required
-                ></b-form-datepicker>
-                </b-form-group>
+      <!-- Detail View Mode -->
+        <form v-if="editMode === false" ref="form" @submit.stop.prevent="handleSubmitAddPatient()">
+        <!-- Input Keterangan Rawat -->
+        <b-form-group>
+        <b-form-textarea
+          rows="8"
+          id="ketRawat-input"
+          v-model="detailPatient.ketRawat"
+          :state="ketRawatState"
+          disabled
+        ></b-form-textarea>
 
-                <!-- Input Disease -->
-                <b-form-group
-                label="Disease"
-                label-for="disease-input"
-                invalid-feedback="Disease is required"
-                :state="diseaseState"
-                >
-                <b-form-select v-model="form.disease" :options="optionDisease"></b-form-select>
-                </b-form-group>
+        </b-form-group>
 
-          </form>
-          </b-modal>
-      </b-col>
+        </form>
 
+      <!-- Detail Edit Mode -->
+        <form v-else ref="form" @submit.stop.prevent="handleSubmitAddPatient()">
+        <!-- Input Keterangan Rawat -->
+        <b-form-group>
+        <b-form-textarea
+          rows="8"
+          id="ketRawat-input"
+          v-model="detailPatient.ketRawat"
+          :state="ketRawatState"
+        ></b-form-textarea>
 
-    <!-- Main table element -->
-    <b-table
-      :items="patients"
-      :fields="fields"
-      :current-page="currentPage"
-      :per-page="perPage"
-      :filter="filter"
-      striped hover
-      borderless
-      class="mt-3 shadow text-center rounded"
-      thead-class="bg-info text-white"
-      responsive
-      :filter-included-fields="filterOn"
-      show-empty
-      @filtered="onFiltered"
-    >
+        </b-form-group>
 
-      <template v-slot:cell(index)="row">
-        {{ row.index + 1 }}
-      </template>
+        </form>
 
-      <template #cell(disease)="row">
-        <p v-if="row.item.disease === ''">--</p>
-        <p v-else>{{ row.item.disease }}</p>
-      </template>
-
-      <template #cell(id_dokter)="row">
-        <p v-if="row.item.id_dokter === ''">--</p>
-        <p v-else>{{ dokter }}</p>
-      </template>
-
-      <template #cell(handling)="row">
-        <p v-if="row.item.handling === ''">--</p>
-        <p v-else>{{ row.item.handling }}</p>
-      </template>
-
-      <template #cell(actions)="row">
+      <template #modal-footer="{ ok }">
         <b-button 
+        v-if="editMode === false"
         v-b-modal.detail-modal-prevent-closing 
-        size="sm" 
-        @click="getIndex(row.item)" 
-        class="mr-1">
-          Detail
+        size="lg" 
+        variant="secondary" 
+        @click="changeEditMode()">
+            Edit
+        </b-button>
+        <b-button v-else size="lg" variant="danger" @click="restoreEditMode()">
+            Batal
+        </b-button>
+        <b-button size="lg" variant="success" @click="ok()">
+            Simpan
         </b-button>
       </template>
-
-    </b-table>
+      </b-modal>
 
       <!-- Modal Detail Pasien -->
       <b-modal
@@ -226,7 +198,7 @@
       >
 
       <!-- Detail View Mode -->
-        <form v-if="editMode === false" ref="form" @submit.stop.prevent="handleSubmitAddPatient()">
+        <form ref="form" @submit.stop.prevent="handleSubmitAddPatient()">
         <!-- Input NIK -->
         <b-form-group
         label="NIK"
@@ -342,143 +314,49 @@
             disabled
           ></b-form-datepicker>
           </b-form-group>
-        </form>
 
-      <!-- Detail Edit Mode -->
-        <form v-else ref="form" @submit.stop.prevent="handleSubmitAddPatient()">
-        <!-- Input NIK -->
-        <b-form-group
-        label="NIK"
-        label-for="nik-input"
-        invalid-feedback="NIK is required"
-        :state="nikState"
-        >
-        <b-form-input
-            id="nik-input"
-            v-model="detailPatient.nik"
-            :state="nikState"
-            required
-        ></b-form-input>
-        </b-form-group>
-
-          <!-- Input Name -->
+          <!-- Input Jadwal Rawat Jalan -->
           <b-form-group
-          label="Name"
-          label-for="name-input"
-          invalid-feedback="Name is required"
-          :state="nameState"
-          >
-          <b-form-input
-              id="name-input"
-              v-model="detailPatient.name"
-              :state="nameState"
-              required
-
-          ></b-form-input>
-          </b-form-group>
-
-          <!-- Input Address -->
-          <b-form-group
-          label="Address"
-          label-for="address-input"
-          invalid-feedback="Address is required"
-          :state="addressState"
-          >
-          <b-form-input
-              id="address-input"
-              v-model="detailPatient.address"
-              :state="addressState"
-              required
-
-          ></b-form-input>
-          </b-form-group>
-
-          <!-- Input Radio Gender -->
-          <b-form-group
-          label="Jenis Kelamin"
-          label-for="gender-input"
-          invalid-feedback="Jenis Kelamin is required"
-          :state="genderState"
-          >
-          <b-form-radio-group
-              id="btn-radios-2"
-              v-model="detailPatient.gender"
-              :options="options"
-              button-variant="outline-primary"
-              size="md"
-              name="radio-btn-outline"
-              buttons
-              required
-
-          ></b-form-radio-group>
-          </b-form-group>
-
-          <!-- Input Phone -->
-          <b-form-group
-          label="Phone"
-          label-for="phone-input"
-          invalid-feedback="Phone is required"
-          :state="phoneState"
-          >
-          <b-form-input
-              id="phone-input"
-              v-model="detailPatient.phone"
-              :state="phoneState"
-              required
-
-          ></b-form-input>
-          </b-form-group>
-
-          <!-- Input Place of Birth -->
-          <b-form-group
-          label="Place of Birth"
-          label-for="placeOfBirth-input"
-          invalid-feedback="Place of Birth is required"
-          :state="placeOfBirthState"
-          >
-          <b-form-input
-              id="placeOfBirth-input"
-              v-model="detailPatient.placeOfBirth"
-              :state="placeOfBirthState"
-              required
-
-          ></b-form-input>
-          </b-form-group>
-
-          <!-- Input Date of Birth -->
-          <b-form-group
-          label="Date of Birth"
-          label-for="dateOfBirth-input"
-          invalid-feedback="Date of Birth is required"
-          :state="dateOfBirthState"
+          label="Jadwal Rawat Jalan"
+          label-for="jadwalRawat-input"
+          invalid-feedback="Jadwal Rawat is required"
+          :state="jadwalRawatState"
           >
           <b-form-datepicker
-            id="dateOfBirth-datepicker"
-            v-model="detailPatient.dateOfBirth"
-            :state="dateOfBirthState"
+            id="jadwalRawat-datepicker"
+            v-model="detailPatient.jadwalRawat"
+            :state="jadwalRawatState"
             required
+            disabled
           ></b-form-datepicker>
           </b-form-group>
+
+          <!-- No Antri of Birth -->
+          <b-form-group
+          label="No Antri"
+          label-for="noAntri-input"
+          invalid-feedback="No Antri is required"
+          :state="noAntriState"
+          >
+          <b-form-input
+              id="noAntri-input"
+              v-model="detailPatient.noAntri"
+              :state="noAntriState"
+              required
+              disabled
+          ></b-form-input>
+          </b-form-group>
+
         </form>
 
       <template #modal-footer="{ ok }">
-        <b-button 
-        v-if="editMode === false"
-        v-b-modal.detail-modal-prevent-closing 
-        size="lg" 
-        variant="secondary" 
-        @click="changeEditMode()">
-            Edit
-        </b-button>
-        <b-button v-else size="lg" variant="danger" @click="deletePatient(indexSelected)">
-            Delete
-        </b-button>
         <b-button size="lg" variant="success" @click="ok()">
-            Simpan
+            Ok
         </b-button>
       </template>
       </b-modal>
 
+      <!-- Pagination -->
       <b-col sm="7" md="6" class="mx-auto">
           <b-pagination
             v-model="currentPage"
@@ -496,18 +374,17 @@
 </template>
 
 <script>
-import axios from 'axios'
-import navbar from '@/components/navbar.vue'
+  import axios from 'axios'
+  import navbar from '@/components/NavbarDokter.vue'
 
   export default {
-    components : {
-      navbar
-    },
-    name: 'VuetifyPage',
+  components: { 
+    navbar 
+  },
+    name:'VuetifyPage',
     data() {
       return {
         patients: [],
-        dokter: [],
         detailPatient: [],
         editMode: false,
         indexNumber: '',
@@ -521,8 +398,13 @@ import navbar from '@/components/navbar.vue'
           placeOfBirth: '',
           dateOfBirth: '',
           disease: '',
-          handling: ''
+          handling: '',
+          jadwalRawat: '',
+          noAntri: '',
+          ketRawat: '',
+          status: ''
         },
+
         nikState: null,
         nameState: null,
         addressState: null,
@@ -531,45 +413,46 @@ import navbar from '@/components/navbar.vue'
         placeOfBirthState: null,
         dateOfBirthState: null,
         diseaseState: null,
+        handlingState: null,
+        jadwalRawatState: null,
+        noAntriState: null,
+        ketRawatState: null,
+
         selected: '',
         options: [
             { text: 'Laki-laki', value: 'L' },
             { text: 'Perempuan', value: 'P' },
         ],
-        optionDisease: [
-          { value: 'umum', text: 'Umum' },
-          { value: 'gigi', text: 'Gigi' },
-          { value: 'kulit', text: 'Kulit' },
-          { value: 'THT', text: 'THT' }
-        ],
+
         items: [],
         fields: [
-          { key: 'index', label: 'No'},
+          { key: 'no', label: 'No'},
           { key: 'nik', label: 'NIK'},
           { key: 'name', label: 'Nama'},
-          { key: 'gender', label: 'Jenis Kelamin'},
-          { key: 'disease', label: 'Poli'},
           { key: 'address', label: 'Alamat'},
-          { key: 'handling', label: 'Jenis Penanganan'},
+          { key: 'gender', label: 'Jenis Kelamin'},
+          { key: 'jadwalRawat', label: 'Jadwal Rawat Jalan'},
+          { key: 'noAntri', label: 'Nomer Antrian'},
+          { key: 'ketRawat', label: 'Ket. Rawat Jalan'},
           { key: 'actions', label: 'Actions' }
         ],
         totalRows: 1,
         currentPage: 1,
         perPage: 5,
-        pageOptions: [5, 10, 15, { value: 100, text: "Show a lot" }],
         filter: null,
         filterOn: [],
         infoModal: {
           id: 'info-modal',
           title: '',
           content: ''
-        }
+        },
+        context: null,
       }
     },
 
     methods: {
       testIndex(item) {
-        console.log(this.detailPatient.indexOf(item))
+        console.log(item)
       },
       info(item, index, button) {
         this.infoModal.title = `Row index: ${index}`
@@ -592,11 +475,6 @@ import navbar from '@/components/navbar.vue'
             
             // Set the initial number of patients
             this.totalRows = this.patients.length
-        },
-
-        async loadDokter() {
-          const response = await axios.get(`http://localhost:3000/dokter`)
-          this.dokter = response.data
         },
 
         getIndex(item) {
@@ -630,7 +508,7 @@ import navbar from '@/components/navbar.vue'
 
         async updatePatient() {
             try {
-                await axios.put(`http://localhost:3000/patients` + this.indexSelected, {
+                await axios.put(`http://localhost:3000/patients/` + this.indexSelected, {
                     nik: this.detailPatient.nik,
                     name: this.detailPatient.name,
                     address: this.detailPatient.address,
@@ -639,7 +517,33 @@ import navbar from '@/components/navbar.vue'
                     placeOfBirth: this.detailPatient.placeOfBirth,
                     dateOfBirth: this.detailPatient.dateOfBirth,
                     disease: this.detailPatient.disease,
-                    handling: this.detailPatient.handling
+                    handling: this.detailPatient.handling,
+                    jadwalRawat: this.detailPatient.jadwalRawat,
+                    noAntri: this.detailPatient.noAntri,
+                    ketRawat: this.detailPatient.ketRawat
+                })
+                this.load()
+            } catch (error) {
+                console.log(error)
+            }
+        },
+
+        async updateStatusPatient(payload) {
+            try {
+                await axios.put(`http://localhost:3000/patients/` + this.indexSelected, {
+                    nik: this.detailPatient.nik,
+                    name: this.detailPatient.name,
+                    address: this.detailPatient.address,
+                    gender: this.detailPatient.gender,
+                    phone: this.detailPatient.phone,
+                    placeOfBirth: this.detailPatient.placeOfBirth,
+                    dateOfBirth: this.detailPatient.dateOfBirth,
+                    disease: this.detailPatient.disease,
+                    handling: this.detailPatient.handling,
+                    jadwalRawat: this.detailPatient.jadwalRawat,
+                    noAntri: this.detailPatient.noAntri,
+                    ketRawat: this.detailPatient.ketRawat,
+                    status: payload
                 })
                 this.load()
             } catch (error) {
@@ -656,6 +560,7 @@ import navbar from '@/components/navbar.vue'
             this.phoneState = valid
             this.placeOfBirthState = valid
             this.dateOfBirthState = valid
+            this.ketRawatState = valid
             return valid
         },
 
@@ -667,6 +572,7 @@ import navbar from '@/components/navbar.vue'
           this.form.phone = ''
           this.form.placeOfBirth = ''
           this.form.dateOfBirth = ''
+          this.form.ketRawat = ''
 
           this.nikState = null
           this.nameState = null
@@ -675,6 +581,7 @@ import navbar from '@/components/navbar.vue'
           this.phoneState = null
           this.placeOfBirthState = null
           this.dateOfBirthState = null
+          this.ketRawatState = null
 
           this.editMode = false
         },
@@ -723,22 +630,80 @@ import navbar from '@/components/navbar.vue'
             // Hide the modal manually
             this.$nextTick(() => {
                 this.$bvModal.hide('detail-modal-prevent-closing')
+                this.$bvModal.hide('keteranganPasien-modal-prevent-closing')
             })
             this.editMode = false
         },
+
         changeEditMode() {
           this.editMode = true
+        },
+
+        restoreEditMode() {
+            this.editMode = false
+        },
+
+        onContext(ctx) {
+          this.context = ctx
+        },
+
+        changeStatusUmum(item){
+          this.getIndex(item)
+          this.finishedTreatmentUmum(item.noAntri)
+          this.updateStatusPatient('selesai')
+        },
+
+        changeStatusGigi(item){
+          this.getIndex(item)
+          this.finishedTreatmentGigi(item.noAntri)
+          this.updateStatusPatient('selesai')
+        },
+
+        changeStatusKulit(item){
+          this.getIndex(item)
+          this.finishedTreatmentKulit(item.noAntri)
+          this.updateStatusPatient('selesai')
+        },
+
+        changeStatusTht(item){
+          this.getIndex(item)
+          this.finishedTreatmentTht(item.noAntri)
+          this.updateStatusPatient('selesai')
+        },
+
+        finishedTreatmentUmum(payload) {
+          if (confirm('Apakah Pasien Selesai Berobat?') == true) {
+            this.$store.dispatch('changeNoUmum', payload)
+          }
+        },
+
+        finishedTreatmentGigi(payload) {
+          if (confirm('Apakah Pasien Selesai Berobat?') == true) {
+            this.$store.dispatch('changeNoGigi', payload)
+          }
+        },
+
+        finishedTreatmentKulit(payload) {
+          if (confirm('Apakah Pasien Selesai Berobat?') == true) {
+            this.$store.dispatch('changeNoKulit', payload)
+          }
+        },
+
+        finishedTreatmentTht(payload) {
+          if (confirm('Apakah Pasien Selesai Berobat?') == true) {
+            this.$store.dispatch('changeNoTht', payload)
+          }
         }
     },
     mounted() {
       this.load()
-      this.loadDokter()
-      let user= localStorage.getItem('adminLogin');
-      if(!user){
-        this.$router.push({name:"LoginPage"})
-      } 
+      {
+        let user= localStorage.getItem('userLogin');
+          if(!user){
+            this.$router.push({name:"LoginPage"})
+          }
+      }
     },
-
   }
 </script>
   

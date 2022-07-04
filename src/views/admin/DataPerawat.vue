@@ -1,295 +1,303 @@
 <template>
-  <b-container class="mt-5">
-    <h3><strong>Data Perawat</strong></h3>
-    <!-- User Interface controls -->
-    <div class="mt-2 d-flex">
-        <b-form-group
-          label-for="filter-input"
-          label-align-sm="right"
-          label-size="md"
-          class="w-25 shadow rounded"
-        >
-          <b-input-group>
-            <b-form-input
-              id="filter-input"
-              v-model="filter"
-              type="search"
-              placeholder="Cari Disini"
-            ></b-form-input>
-          </b-input-group>
-        </b-form-group>
-    </div>
-    <!-- Main table element -->
-    <b-table
-      :items="perawat"
-      :fields="fields"
-      :current-page="currentPage"
-      :per-page="perPage"
-      :filter="filter"
-      striped hover
-      borderless
-      class="mt-3 shadow text-center rounded"
-      thead-class="bg-info text-white"
-      responsive
-      :filter-included-fields="filterOn"
-      show-empty
-      @filtered="onFiltered"
-    >
-      <template v-slot:cell(index)="row">
-        {{ row.index + 1 }}
-      </template>
-      <template #cell(perawat)="row">
-       {{ row.item.perawat + 1 }} {{ row.item.perawat }} {{ row.item.perawat }}
-      </template>
-
-      <template #cell(actions)="row">
-        <b-link class="text-decoration-none text-muted" size="sm" @click="getIndex(row.item)" v-b-modal.detail-modal-prevent-closing>
-          Detail
-        </b-link>
-      </template>
-    </b-table>
-    <div class="ms-auto me-auto w-25">
-      <b-pagination
-          v-model="currentPage"
-          :total-rows="totalRows"
-          :per-page="perPage"
-          align="fill"
-          size="sm"
-          class="my-0"
-      ></b-pagination>
-    </div>
-    <!-- Info modal -->
-    <b-modal
-    id="detail-modal-prevent-closing"
-    ref="modal"
-    title="Data Perawat"
-    @show="resetModal"
-    @hidden="resetModal"
-    @ok="handleOkEditPerawat"
-    size="md"
-    >
-      <form v-if="editMode === false" ref="form" @submit.stop.prevent="handleSubmitAddPerawat()">
-      <!-- Data SIP -->
-      <b-form-group
-      label="SIPP"
-      label-for="sipp-input"
-      invalid-feedback="SIPP is required"
-      :state="sippState"
+  <div>
+    <navbar />
+    <b-container class="mt-5">
+      <h3><strong>Data Perawat</strong></h3>
+      <!-- User Interface controls -->
+      <div class="mt-2 d-flex">
+          <b-form-group
+            label-for="filter-input"
+            label-align-sm="right"
+            label-size="md"
+            class="w-25 shadow rounded"
+          >
+            <b-input-group>
+              <b-form-input
+                id="filter-input"
+                v-model="filter"
+                type="search"
+                placeholder="Cari Disini"
+              ></b-form-input>
+            </b-input-group>
+          </b-form-group>
+      </div>
+      <!-- Main table element -->
+      <b-table
+        :items="perawat"
+        :fields="fields"
+        :current-page="currentPage"
+        :per-page="perPage"
+        :filter="filter"
+        striped hover
+        borderless
+        class="mt-3 shadow text-center rounded"
+        thead-class="bg-info text-white"
+        responsive
+        :filter-included-fields="filterOn"
+        show-empty
+        @filtered="onFiltered"
       >
-      <b-form-input
-          id="sipp-input"
-          v-model="detailPerawat.sipp"
-          :state="sippState"
-          required
-          disabled
-      ></b-form-input>
-      </b-form-group>
+        <template v-slot:cell(index)="row">
+          {{ row.index + 1 }}
+        </template>
+        <template #cell(perawat)="row">
+        {{ row.item.perawat + 1 }} {{ row.item.perawat }} {{ row.item.perawat }}
+        </template>
 
-        <!-- Data Nama -->
-        <b-form-group
-        label="Name"
-        label-for="nama-input"
-        invalid-feedback="Name is required"
-        :state="namaState"
-        >
-        <b-form-input
-            id="nama-input"
-            v-model="detailPerawat.nama"
-            :state="namaState"
-            required
-            disabled
-        ></b-form-input>
-        </b-form-group>
-
-        <!-- Data Jenis Kelamin -->
-        <b-form-group
-        label="Jenis Kelamin"
-        label-for="gender-input"
-        invalid-feedback="Jenis Kelamin is required"
-        :state="genderState"
-        >
-        <b-form-radio-group
-            id="btn-radios-2"
-            v-model="detailPerawat.gender"
-            :options="options"
-            class="mb-3"
-            required
-            disabled
-        ></b-form-radio-group>
-        </b-form-group>
-
-        <!-- Data Spesialis -->
-        <b-form-group
-        label="Bagian"
-        label-for="bagian-input"
-        invalid-feedback="Bagian is required"
-        :state="bagianState"
-        >
-        <b-form-input
-            id="bagian-input"
-            v-model="detailPerawat.bagian"
-            :state="bagianState"
-            required
-            disabled
-        ></b-form-input>
-        </b-form-group>
-
-        <!-- Data Jadwal -->
-        <b-form-group
-        label="Jadwal Praktek"
-        label-for="jadwal-input"
-        invalid-feedback="Jadwal is required"
-        :state="jadwalState"
-        >
-        <b-form-input
-            id="jadwal-input"
-            v-model="detailPerawat.jadwal"
-            :state="jadwalState"
-            required
-            disabled
-        ></b-form-input>
-        </b-form-group>
-
-        <!-- Data STRh -->
-        <b-form-group
-        label="Jabatan"
-        label-for="jabatan-input"
-        invalid-feedback="Jabatan is required"
-        :state="jabatanState"
-        >
-        <b-form-input
-            id="jabatan-input"
-            v-model="detailPerawat.jabatan"
-            :state="jabatanState"
-            required
-            disabled
-        ></b-form-input>
-        </b-form-group>
-      </form>
-
-    <!-- Detail Edit Mode -->
-      <form v-else ref="form" @submit.stop.prevent="handleSubmitAddPerawat()">
-      <!-- SIP -->
-      <b-form-group
-      label="SIPP"
-      label-for="sipp-input"
-      invalid-feedback="SIPP is required"
-      :state="sippState"
+        <template #cell(actions)="row">
+          <b-link class="text-decoration-none text-muted" size="sm" @click="getIndex(row.item)" v-b-modal.detail-modal-prevent-closing>
+            Detail
+          </b-link>
+        </template>
+      </b-table>
+      <div class="ms-auto me-auto w-25">
+        <b-pagination
+            v-model="currentPage"
+            :total-rows="totalRows"
+            :per-page="perPage"
+            align="fill"
+            size="sm"
+            class="my-0"
+        ></b-pagination>
+      </div>
+      <!-- Info modal -->
+      <b-modal
+      id="detail-modal-prevent-closing"
+      ref="modal"
+      title="Data Perawat"
+      @show="resetModal"
+      @hidden="resetModal"
+      @ok="handleOkEditPerawat"
+      size="md"
       >
-      <b-form-input
-          id="sipp-input"
-          v-model="detailPerawat.sipp"
-          :state="sippState"
-          required
-      ></b-form-input>
-      </b-form-group>
-
-        <!-- Nama -->
+        <form v-if="editMode === false" ref="form" @submit.stop.prevent="handleSubmitAddPerawat()">
+        <!-- Data SIP -->
         <b-form-group
-        label="Nama"
-        label-for="name-input"
-        invalid-feedback="Name is required"
-        :state="namaState"
+        label="SIPP"
+        label-for="sipp-input"
+        invalid-feedback="SIPP is required"
+        :state="sippState"
         >
         <b-form-input
-            id="name-input"
-            v-model="detailPerawat.nama"
-            :state="namaState"
+            id="sipp-input"
+            v-model="detailPerawat.sipp"
+            :state="sippState"
             required
-
+            disabled
         ></b-form-input>
         </b-form-group>
 
-        <!-- Jenis Kelamin -->
-        <b-form-group
-        label="Jenis Kelamin"
-        label-for="gender-input"
-        invalid-feedback="Jenis Kelamin is required"
-        :state="genderState"
-        >
-        <b-form-radio-group
-            id="gender-input"
-            v-model="detailPerawat.gender"
-            :options="options"
-            size="md"
-            required
+          <!-- Data Nama -->
+          <b-form-group
+          label="Name"
+          label-for="nama-input"
+          invalid-feedback="Name is required"
+          :state="namaState"
+          >
+          <b-form-input
+              id="nama-input"
+              v-model="detailPerawat.nama"
+              :state="namaState"
+              required
+              disabled
+          ></b-form-input>
+          </b-form-group>
 
-        ></b-form-radio-group>
-        </b-form-group>
+          <!-- Data Jenis Kelamin -->
+          <b-form-group
+          label="Jenis Kelamin"
+          label-for="gender-input"
+          invalid-feedback="Jenis Kelamin is required"
+          :state="genderState"
+          >
+          <b-form-radio-group
+              id="btn-radios-2"
+              v-model="detailPerawat.gender"
+              :options="options"
+              class="mb-3"
+              required
+              disabled
+          ></b-form-radio-group>
+          </b-form-group>
 
-        <!-- Spesialis -->
+          <!-- Data Spesialis -->
+          <b-form-group
+          label="Bagian"
+          label-for="bagian-input"
+          invalid-feedback="Bagian is required"
+          :state="bagianState"
+          >
+          <b-form-input
+              id="bagian-input"
+              v-model="detailPerawat.bagian"
+              :state="bagianState"
+              required
+              disabled
+          ></b-form-input>
+          </b-form-group>
+
+          <!-- Data Jadwal -->
+          <b-form-group
+          label="Jadwal Praktek"
+          label-for="jadwal-input"
+          invalid-feedback="Jadwal is required"
+          :state="jadwalState"
+          >
+          <b-form-input
+              id="jadwal-input"
+              v-model="detailPerawat.jadwal"
+              :state="jadwalState"
+              required
+              disabled
+          ></b-form-input>
+          </b-form-group>
+
+          <!-- Data STRh -->
+          <b-form-group
+          label="Jabatan"
+          label-for="jabatan-input"
+          invalid-feedback="Jabatan is required"
+          :state="jabatanState"
+          >
+          <b-form-input
+              id="jabatan-input"
+              v-model="detailPerawat.jabatan"
+              :state="jabatanState"
+              required
+              disabled
+          ></b-form-input>
+          </b-form-group>
+        </form>
+
+      <!-- Detail Edit Mode -->
+        <form v-else ref="form" @submit.stop.prevent="handleSubmitAddPerawat()">
+        <!-- SIP -->
         <b-form-group
-        label="Bagian"
-        label-for="bagian-input"
-        invalid-feedback="Bagian is required"
-        :state="bagianState"
+        label="SIPP"
+        label-for="sipp-input"
+        invalid-feedback="SIPP is required"
+        :state="sippState"
         >
         <b-form-input
-            id="spesialis-input"
-            v-model="detailPerawat.bagian"
-            :state="bagianState"
+            id="sipp-input"
+            v-model="detailPerawat.sipp"
+            :state="sippState"
             required
-
         ></b-form-input>
         </b-form-group>
 
-        <!-- Jadwal -->
-        <b-form-group
-        label="Jadwal"
-        label-for="jadwal-input"
-        invalid-feedback="Jadwal is required"
-        :state="jadwalState"
-        >
-        <b-form-input
-            id="jadwal-input"
-            v-model="detailPerawat.jadwal"
-            :state="jadwalState"
-            required
+          <!-- Nama -->
+          <b-form-group
+          label="Nama"
+          label-for="name-input"
+          invalid-feedback="Name is required"
+          :state="namaState"
+          >
+          <b-form-input
+              id="name-input"
+              v-model="detailPerawat.nama"
+              :state="namaState"
+              required
 
-        ></b-form-input>
-        </b-form-group>
+          ></b-form-input>
+          </b-form-group>
 
-        <!-- STR -->
-        <b-form-group
-        label="Jabatan"
-        label-for="jabatan-input"
-        invalid-feedback="Jabatan is required"
-        :state="jabatanState"
-        >
-        <b-form-input
-            id="jabatan-input"
-            v-model="detailPerawat.jabatan"
-            :state="jabatanState"
-            required
+          <!-- Jenis Kelamin -->
+          <b-form-group
+          label="Jenis Kelamin"
+          label-for="gender-input"
+          invalid-feedback="Jenis Kelamin is required"
+          :state="genderState"
+          >
+          <b-form-radio-group
+              id="gender-input"
+              v-model="detailPerawat.gender"
+              :options="options"
+              size="md"
+              required
 
-        ></b-form-input>
-        </b-form-group>
-      </form>
+          ></b-form-radio-group>
+          </b-form-group>
 
-    <template #modal-footer="{ ok }">
-      <b-button 
-      v-if="editMode === false"
-      v-b-modal.detail-modal-prevent-closing  
-      squared
-      class="text-white"
-      variant="warning" 
-      @click="changeEditMode()">
-          Edit
-      </b-button>
-      <b-button v-else variant="danger" squared @click="deletePerawat(indexSelected)">
-          Delete
-      </b-button>
-      <b-button variant="primary" squared @click="ok()">
-          Simpan
-      </b-button>
-    </template>
-    </b-modal>
-  </b-container>
+          <!-- Spesialis -->
+          <b-form-group
+          label="Bagian"
+          label-for="bagian-input"
+          invalid-feedback="Bagian is required"
+          :state="bagianState"
+          >
+          <b-form-input
+              id="spesialis-input"
+              v-model="detailPerawat.bagian"
+              :state="bagianState"
+              required
+
+          ></b-form-input>
+          </b-form-group>
+
+          <!-- Jadwal -->
+          <b-form-group
+          label="Jadwal"
+          label-for="jadwal-input"
+          invalid-feedback="Jadwal is required"
+          :state="jadwalState"
+          >
+          <b-form-input
+              id="jadwal-input"
+              v-model="detailPerawat.jadwal"
+              :state="jadwalState"
+              required
+
+          ></b-form-input>
+          </b-form-group>
+
+          <!-- STR -->
+          <b-form-group
+          label="Jabatan"
+          label-for="jabatan-input"
+          invalid-feedback="Jabatan is required"
+          :state="jabatanState"
+          >
+          <b-form-input
+              id="jabatan-input"
+              v-model="detailPerawat.jabatan"
+              :state="jabatanState"
+              required
+
+          ></b-form-input>
+          </b-form-group>
+        </form>
+
+      <template #modal-footer="{ ok }">
+        <b-button 
+        v-if="editMode === false"
+        v-b-modal.detail-modal-prevent-closing  
+        squared
+        class="text-white"
+        variant="warning" 
+        @click="changeEditMode()">
+            Edit
+        </b-button>
+        <b-button v-else variant="danger" squared @click="deletePerawat(indexSelected)">
+            Delete
+        </b-button>
+        <b-button variant="primary" squared @click="ok()">
+            Simpan
+        </b-button>
+      </template>
+      </b-modal>
+    </b-container>
+  </div>
 </template>
 
 <script>
   import axios from 'axios'
+  import navbar from '@/components/navbar.vue'
+  
   export default {
+    components : {
+      navbar
+    },
     data() {
       return {
         perawat:[],
@@ -345,7 +353,7 @@
     mounted() {
       this.load()
       {
-        let user= localStorage.getItem('admin-info');
+        let user= localStorage.getItem('adminLogin');
           if(!user){
             this.$router.push({name:"LoginPage"})
           }

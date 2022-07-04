@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <navbar />
-    <b-container class="mt-5">
+<div>
+  <navbar />
+  <b-container class="mt-5">
     <h3><strong>Data Dokter</strong></h3>
     <!-- User Interface controls -->
     <div class="mt-2 d-flex">
@@ -169,118 +169,7 @@
         </b-form-group>
       </form>
 
-    <!-- Detail Edit Mode -->
-      <form v-else ref="form" @submit.stop.prevent="handleSubmitAddDokter()">
-      <!-- SIP -->
-      <b-form-group
-      label="SIP"
-      label-for="sip-input"
-      invalid-feedback="SIP is required"
-      :state="sipState"
-      >
-      <b-form-input
-          id="sip-input"
-          v-model="detailDokter.sip"
-          :state="sipState"
-          required
-      ></b-form-input>
-      </b-form-group>
-
-        <!-- Nama -->
-        <b-form-group
-        label="Nama"
-        label-for="name-input"
-        invalid-feedback="Name is required"
-        :state="namaState"
-        >
-        <b-form-input
-            id="name-input"
-            v-model="detailDokter.nama"
-            :state="namaState"
-            required
-
-        ></b-form-input>
-        </b-form-group>
-
-        <!-- Jenis Kelamin -->
-        <b-form-group
-        label="Jenis Kelamin"
-        label-for="gender-input"
-        invalid-feedback="Jenis Kelamin is required"
-        :state="genderState"
-        >
-        <b-form-radio-group
-            id="gender-input"
-            v-model="detailDokter.gender"
-            :options="options"
-            size="md"
-            required
-
-        ></b-form-radio-group>
-        </b-form-group>
-
-        <!-- Spesialis -->
-        <b-form-group
-        label="Spesialis"
-        label-for="spesialis-input"
-        invalid-feedback="Spesialis is required"
-        :state="spesialisState"
-        >
-        <b-form-input
-            id="spesialis-input"
-            v-model="detailDokter.spesialis"
-            :state="spesialisState"
-            required
-
-        ></b-form-input>
-        </b-form-group>
-
-        <!-- Jadwal -->
-        <b-form-group
-        label="Jadwal"
-        label-for="jadwal-input"
-        invalid-feedback="Jadwal is required"
-        :state="jadwalState"
-        >
-        <b-form-input
-            id="jadwal-input"
-            v-model="detailDokter.jadwal"
-            :state="jadwalState"
-            required
-
-        ></b-form-input>
-        </b-form-group>
-
-        <!-- STR -->
-        <b-form-group
-        label="STR"
-        label-for="str-input"
-        invalid-feedback="STR is required"
-        :state="strState"
-        >
-        <b-form-input
-            id="str-input"
-            v-model="detailDokter.str"
-            :state="strState"
-            required
-
-        ></b-form-input>
-        </b-form-group>
-      </form>
-
     <template #modal-footer="{ ok }">
-      <b-button 
-      v-if="editMode === false"
-      v-b-modal.detail-modal-prevent-closing  
-      squared
-      class="text-white"
-      variant="warning" 
-      @click="changeEditMode()">
-          Edit
-      </b-button>
-      <b-button v-else variant="danger" squared @click="deleteDokter(indexSelected)">
-          Delete
-      </b-button>
       <b-button variant="primary" squared @click="ok()">
           Simpan
       </b-button>
@@ -292,9 +181,9 @@
 
 <script>
   import axios from 'axios'
-  import navbar from '@/components/navbar.vue'
+  import navbar from '@/components/NavbarDokter.vue'
   export default {
-    components : {
+   components : {
       navbar
     },
     data() {
@@ -352,7 +241,7 @@
     mounted() {
       this.load()
       {
-        let user= localStorage.getItem('adminLogin');
+        let user= localStorage.getItem('userLogin');
           if(!user){
             this.$router.push({name:"LoginPage"})
           }
@@ -378,7 +267,7 @@
         this.currentPage = 1
       },
       async load() {
-            const response = await axios.get(`http://localhost:3000/dokter`)
+            const response = await axios.get(`https://62b483cfda3017eabb0c415b.mockapi.io/dokter`)
             this.dokter = response.data
             
             // Set the initial number of patients
@@ -391,7 +280,7 @@
         },
         async addDokter() {
           try {
-              await axios.post(`http://localhost:3000/dokter/`, this.form)
+              await axios.post(`https://62b483cfda3017eabb0c415b.mockapi.io/dokter`, this.form)
               this.load()
           } catch (error) {
               console.log(error)
@@ -400,7 +289,7 @@
         async deleteDokter(indexId) {
             if (confirm('Apakah Anda Akan Menghapus Data Ini?') == true) {
                 try {
-                    await axios.delete(`http://localhost:3000/dokter/` + indexId)
+                    await axios.delete(`https://62b483cfda3017eabb0c415b.mockapi.io/dokter/` + indexId)
                     this.load()
                 } catch (error) {
                     console.log(error)
@@ -413,7 +302,7 @@
         },
         async updateDokter() {
             try {
-                await axios.put(`http://localhost:3000/dokter/` + this.indexSelected, {
+                await axios.put(`https://62b483cfda3017eabb0c415b.mockapi.io/dokter/` + this.indexSelected, {
                     sip: this.detailDokter.sip,
                     nama: this.detailDokter.nama,
                     gender: this.detailDokter.gender,
