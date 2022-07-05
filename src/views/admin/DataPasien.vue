@@ -135,7 +135,8 @@
                     required
                 ></b-form-input>
                 </b-form-group>
-    
+
+                <!-- Input Date of Birth -->
                 <b-form-group
                 label="Date of Birth"
                 label-for="dateOfBirth-input"
@@ -148,6 +149,16 @@
                   :state="dateOfBirthState"
                   required
                 ></b-form-datepicker>
+                </b-form-group>
+
+                <!-- Input Disease -->
+                <b-form-group
+                label="Disease"
+                label-for="disease-input"
+                invalid-feedback="Disease is required"
+                :state="diseaseState"
+                >
+                <b-form-select v-model="form.disease" :options="optionDisease"></b-form-select>
                 </b-form-group>
 
           </form>
@@ -181,6 +192,11 @@
         <p v-else>{{ row.item.disease }}</p>
       </template>
 
+      <template #cell(id_dokter)="row">
+        <p v-if="row.item.id_dokter === ''">--</p>
+        <p v-else>{{ dokter }}</p>
+      </template>
+
       <template #cell(handling)="row">
         <p v-if="row.item.handling === ''">--</p>
         <p v-else>{{ row.item.handling }}</p>
@@ -198,6 +214,7 @@
 
     </b-table>
 
+      <!-- Modal Detail Pasien -->
       <b-modal
       id="detail-modal-prevent-closing"
       ref="modal"
@@ -490,6 +507,7 @@ import navbar from '@/components/navbar.vue'
     data() {
       return {
         patients: [],
+        dokter: [],
         detailPatient: [],
         editMode: false,
         indexNumber: '',
@@ -505,15 +523,6 @@ import navbar from '@/components/navbar.vue'
           disease: '',
           handling: ''
         },
-        editForm: {
-            nik: '',
-            name: '',
-            address: '',
-            gender:'',
-            phone: '',
-            placeOfBirth: '',
-            dateOfBirth: '',
-        },
         nikState: null,
         nameState: null,
         addressState: null,
@@ -521,20 +530,26 @@ import navbar from '@/components/navbar.vue'
         phoneState: null,
         placeOfBirthState: null,
         dateOfBirthState: null,
+        diseaseState: null,
         selected: '',
         options: [
             { text: 'Laki-laki', value: 'L' },
             { text: 'Perempuan', value: 'P' },
         ],
-
+        optionDisease: [
+          { value: 'umum', text: 'Umum' },
+          { value: 'gigi', text: 'Gigi' },
+          { value: 'kulit', text: 'Kulit' },
+          { value: 'THT', text: 'THT' }
+        ],
         items: [],
         fields: [
           { key: 'index', label: 'No'},
           { key: 'nik', label: 'NIK'},
           { key: 'name', label: 'Nama'},
-          { key: 'address', label: 'Alamat'},
           { key: 'gender', label: 'Jenis Kelamin'},
-          { key: 'disease', label: 'Jenis Penyakit'},
+          { key: 'disease', label: 'Poli'},
+          { key: 'address', label: 'Alamat'},
           { key: 'handling', label: 'Jenis Penanganan'},
           { key: 'actions', label: 'Actions' }
         ],
@@ -579,6 +594,11 @@ import navbar from '@/components/navbar.vue'
             this.totalRows = this.patients.length
         },
 
+        async loadDokter() {
+          const response = await axios.get(`http://localhost:3000/dokter`)
+          this.dokter = response.data
+        },
+
         getIndex(item) {
             this.indexNumber = this.patients.indexOf(item)
             this.detailPatient = this.patients[this.indexNumber]
@@ -596,7 +616,7 @@ import navbar from '@/components/navbar.vue'
         async deletePatient(indexId) {
             if (confirm('Apakah Anda Akan Menghapus Data Ini?') == true) {
                 try {
-                    await axios.delete(`http://localhost:3000/patients` + indexId)
+                    await axios.delete(`http://localhost:3000/patients/` + indexId)
                     this.load()
                 } catch (error) {
                     console.log(error)
@@ -712,6 +732,7 @@ import navbar from '@/components/navbar.vue'
     },
     mounted() {
       this.load()
+      this.loadDokter()
       let user= localStorage.getItem('adminLogin');
       if(!user){
         this.$router.push({name:"LoginPage"})

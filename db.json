@@ -33,9 +33,21 @@
   "dokter": [
     {
       "sip": "19301103 195903 1 0171287",
-      "nama": "Trisna Chandra Lskn",
+      "nama": "Dr. Amelia Puspita Sp.THT",
       "gender": "P",
-      "spesialis": "Mata Jantung l",
+      "spesialis": "Tht",
+      "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
+      "str": "1821303554327688",
+      "email": "json1@server",
+      "password": "1234",
+      "tingkat": "1",
+      "id": 1
+    },
+    {
+      "sip": "19301103 195903 1 01712",
+      "nama": "Dr. Trisna Chandra Sp.KK",
+      "gender": "L",
+      "spesialis": "Kulit",
       "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
       "str": "1821303554327688",
       "email": "json1@server",
@@ -45,9 +57,9 @@
     },
     {
       "sip": "19301103 195903 1 01712",
-      "nama": "Trisna Chandra",
+      "nama": "Dr. Mochammad Syafiuddin Sp.KGA",
       "gender": "L",
-      "spesialis": "Mata",
+      "spesialis": "Gigi",
       "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
       "str": "1821303554327688",
       "email": "json1@server",
@@ -56,145 +68,16 @@
       "id": 3
     },
     {
-      "sip": "19301103 195903 1 01712",
-      "nama": "Trisna Chandra'pojihy",
-      "gender": "L",
-      "spesialis": "Mata",
-      "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
-      "str": "1821303554327688",
-      "email": "json1@server",
-      "password": "1234",
-      "tingkat": "1",
-      "id": 5
-    },
-    {
       "sip": "19301103 195903 1 0171287",
-      "nama": "Trisna Chandra",
+      "nama": "Dr. Ainun Rizki",
       "gender": "L",
-      "spesialis": "Mata",
+      "spesialis": "Umum",
       "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
       "str": "1821303554327688",
       "email": "json1@server",
       "password": "1234",
       "tingkat": "1",
-      "id": 6
-    },
-    {
-      "sip": "19301103 195903 1 01712",
-      "nama": "Trisna Chandra",
-      "gender": "L",
-      "spesialis": "Mata",
-      "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
-      "str": "1821303554327688",
-      "email": "json1@server",
-      "password": "1234",
-      "tingkat": "1",
-      "id": 7
-    },
-    {
-      "sip": "19301103 195903 1 01712",
-      "nama": "Trisna Chandra",
-      "gender": "L",
-      "spesialis": "Mata",
-      "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
-      "str": "1821303554327688",
-      "email": "json1@server",
-      "password": "1234",
-      "tingkat": "1",
-      "id": 8
-    },
-    {
-      "sip": "19301103 195903 1 01712",
-      "nama": "Trisna Chandra",
-      "gender": "L",
-      "spesialis": "Mata",
-      "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
-      "str": "1821303554327688",
-      "email": "json1@server",
-      "password": "1234",
-      "tingkat": "1",
-      "id": 243
-    },
-    {
-      "sip": "19301103 195903 1 01712",
-      "nama": "Trisna Chandra",
-      "gender": "L",
-      "spesialis": "Mata",
-      "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
-      "str": "1821303554327688",
-      "email": "json1@server",
-      "password": "1234",
-      "tingkat": "1",
-      "id": 2433
-    },
-    {
-      "sip": "19301103 195903 1 01712",
-      "nama": "Trisna Chandra",
-      "gender": "L",
-      "spesialis": "Mata",
-      "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
-      "str": "1821303554327688",
-      "email": "json1@server",
-      "password": "1234",
-      "tingkat": "1",
-      "id": 212
-    },
-    {
-      "sip": "19301103 195903 1 01712",
-      "nama": "Trisna Chandra",
-      "gender": "L",
-      "spesialis": "Mata",
-      "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
-      "str": "1821303554327688",
-      "email": "json1@server",
-      "password": "1234",
-      "tingkat": "1",
-      "id": 2332
-    },
-    {
-      "sip": "19301103 195903 1 01712",
-      "nama": "Trisna Chandra",
-      "gender": "L",
-      "spesialis": "Mata",
-      "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
-      "str": "1821303554327688",
-      "email": "json1@server",
-      "password": "1234",
-      "tingkat": "1",
-      "id": 24345
-    },
-    {
-      "sip": "19301103 195903 1 01712",
-      "nama": "Trisna Chandra",
-      "gender": "L",
-      "spesialis": "Mata",
-      "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
-      "str": "1821303554327688",
-      "email": "json1@server",
-      "password": "1234",
-      "tingkat": "1",
-      "id": 245
-    },
-    {
-      "sip": "111111",
-      "nama": "Syafik",
-      "gender": "L",
-      "spesialis": "Mata",
-      "jadwal": "Minggu",
-      "str": "111111",
-      "id": 24346
-    },
-    {
-      "sip": "",
-      "nama": "Pak Roni",
-      "email": "roni@gmail.com",
-      "password": "roni",
-      "gender": "",
-      "tingkat": "",
-      "spesialis": "",
-      "jadwal": "",
-      "str": "",
-      "id": 24347
+      "id": 4
     }
   ],
   "patients": [
@@ -211,7 +94,9 @@
       "jadwalRawat": "",
       "noAntri": "",
       "ketRawat": "",
-      "id": 2
+      "status": "",
+      "id_dokter": "",
+      "id": 1
     },
     {
       "nik": "3507131606000004",
@@ -226,6 +111,8 @@
       "jadwalRawat": "",
       "noAntri": "",
       "ketRawat": "",
+      "status": "",
+      "id_dokter": "",
       "id": 2
     },
     {
@@ -241,6 +128,8 @@
       "jadwalRawat": "",
       "noAntri": "",
       "ketRawat": "",
+      "status": "",
+      "id_dokter": "",
       "id": 3
     },
     {
@@ -256,6 +145,8 @@
       "jadwalRawat": "2022-07-01",
       "noAntri": "",
       "ketRawat": "",
+      "status": "",
+      "id_dokter": "",
       "id": 4
     },
     {
@@ -271,7 +162,9 @@
       "handling": "",
       "jadwalRawat": "",
       "noAntri": "",
-      "ketRawat": ""
+      "ketRawat": "",
+      "status": "",
+      "id_dokter": ""
     },
     {
       "id": 6,
@@ -286,7 +179,9 @@
       "handling": "",
       "jadwalRawat": "",
       "noAntri": "",
-      "ketRawat": ""
+      "ketRawat": "",
+      "status": "",
+      "id_dokter": ""
     },
     {
       "id": 7,
@@ -301,7 +196,9 @@
       "handling": "",
       "jadwalRawat": "",
       "noAntri": "",
-      "ketRawat": ""
+      "ketRawat": "",
+      "status": "",
+      "id_dokter": ""
     },
     {
       "id": 8,
@@ -316,7 +213,9 @@
       "handling": "",
       "jadwalRawat": "",
       "noAntri": "",
-      "ketRawat": ""
+      "ketRawat": "",
+      "status": "",
+      "id_dokter": ""
     },
     {
       "id": 9,
@@ -331,7 +230,9 @@
       "handling": "",
       "jadwalRawat": "",
       "noAntri": "",
-      "ketRawat": ""
+      "ketRawat": "",
+      "status": "",
+      "id_dokter": ""
     },
     {
       "id": 10,
@@ -346,7 +247,9 @@
       "handling": "",
       "jadwalRawat": "",
       "noAntri": "",
-      "ketRawat": ""
+      "ketRawat": "",
+      "status": "",
+      "id_dokter": ""
     },
     {
       "id": 11,
@@ -361,7 +264,9 @@
       "handling": "",
       "jadwalRawat": "",
       "noAntri": "",
-      "ketRawat": ""
+      "ketRawat": "",
+      "status": "",
+      "id_dokter": ""
     },
     {
       "nik": "3507131606000004",
@@ -376,7 +281,9 @@
       "id": 12,
       "jadwalRawat": "",
       "noAntri": "",
-      "ketRawat": ""
+      "ketRawat": "",
+      "status": "",
+      "id_dokter": ""
     },
     {
       "nik": "3507131606000004",
@@ -391,7 +298,9 @@
       "id": 13,
       "jadwalRawat": "",
       "noAntri": "",
-      "ketRawat": ""
+      "ketRawat": "",
+      "status": "",
+      "id_dokter": ""
     },
     {
       "nik": "3507131606000004",
@@ -406,7 +315,9 @@
       "id": 14,
       "jadwalRawat": "",
       "noAntri": "",
-      "ketRawat": ""
+      "ketRawat": "",
+      "status": "",
+      "id_dokter": ""
     },
     {
       "nik": "3507131606000004",
@@ -421,7 +332,9 @@
       "id": 15,
       "jadwalRawat": "",
       "noAntri": "",
-      "ketRawat": ""
+      "ketRawat": "",
+      "status": "",
+      "id_dokter": ""
     },
     {
       "nik": "3507131606000005",
@@ -433,7 +346,80 @@
       "dateOfBirth": "2022-06-28",
       "disease": "",
       "handling": "",
+      "status": "",
+      "jadwalRawat": "",
+      "noAntri": "",
+      "ketRawat": "",
+      "id_dokter": "",
       "id": 16
+    },
+    {
+      "nik": "3507131606000005",
+      "name": "Umum",
+      "address": "SULTAN AGUNG NO. 46",
+      "gender": "P",
+      "phone": "0896-9828-9699",
+      "placeOfBirth": "Panjen",
+      "dateOfBirth": "2022-06-28",
+      "disease": "umum",
+      "handling": "",
+      "jadwalRawat": "",
+      "noAntri": "5",
+      "ketRawat": "",
+      "status": "selesai",
+      "id_dokter": "4",
+      "id": 17
+    },
+    {
+      "nik": "3507131606000005",
+      "name": "Gigi",
+      "address": "SULTAN AGUNG NO. 46",
+      "gender": "P",
+      "phone": "0896-9828-9699",
+      "placeOfBirth": "Panjen",
+      "dateOfBirth": "2022-06-28",
+      "disease": "gigi",
+      "handling": "",
+      "jadwalRawat": "",
+      "noAntri": "2",
+      "ketRawat": "",
+      "status": "selesai",
+      "id_dokter": "3",
+      "id": 18
+    },
+    {
+      "nik": "3507131606000005",
+      "name": "Kulit",
+      "address": "SULTAN AGUNG NO. 46",
+      "gender": "P",
+      "phone": "0896-9828-9699",
+      "placeOfBirth": "Panjen",
+      "dateOfBirth": "2022-06-28",
+      "disease": "kulit",
+      "handling": "",
+      "jadwalRawat": "",
+      "noAntri": "4",
+      "ketRawat": "",
+      "status": "selesai",
+      "id_dokter": "2",
+      "id": 19
+    },
+    {
+      "nik": "3507131606000005",
+      "name": "THT",
+      "address": "SULTAN AGUNG NO. 46",
+      "gender": "P",
+      "phone": "0896-9828-9699",
+      "placeOfBirth": "Panjen",
+      "dateOfBirth": "2022-06-28",
+      "disease": "tht",
+      "handling": "",
+      "jadwalRawat": "",
+      "noAntri": "3",
+      "ketRawat": "",
+      "status": "selesai",
+      "id_dokter": "1",
+      "id": 20
     }
   ]
 }
