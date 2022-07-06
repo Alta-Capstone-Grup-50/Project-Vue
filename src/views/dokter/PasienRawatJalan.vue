@@ -78,10 +78,50 @@
           <b-button 
           v-b-modal.detail-modal-prevent-closing 
           size="sm" 
-          @click="getIndex(row.item)" 
-          class="mr-1">
+          @click="getIndex(row.item)">
             Detail
           </b-button>
+
+          <div v-if="row.item.status !== 'selesai'">
+            <!-- No Antri Umum -->
+            <b-button v-if="row.item.disease === 'umum'"
+            size="sm"
+            @click="changeStatusUmum(row.item)"
+            >
+              Selesai
+            </b-button>
+
+            <!-- No Antri Gigi -->
+            <b-button v-if="row.item.disease === 'gigi'"
+            size="sm"
+            @click="changeStatusGigi(row.item)"
+            >
+              Selesai
+            </b-button>
+
+            <!-- No Antri Kulit -->
+            <b-button v-if="row.item.disease === 'kulit'"
+            size="sm"
+            @click="changeStatusKulit(row.item)"
+            >
+              Selesai
+            </b-button>
+
+            <!-- No Antri THT -->
+            <b-button v-if="row.item.disease === 'tht'"
+            size="sm"
+            @click="changeStatusTht(row.item)"
+            >
+              Selesai
+            </b-button>
+          </div>
+
+          <div v-else>
+            <b-iconstack font-scale="2">
+              <b-icon stacked icon="square"></b-icon>
+              <b-icon stacked icon="check"></b-icon>
+            </b-iconstack>
+          </div>
         </template>
 
       </b-table>
@@ -361,7 +401,8 @@
           handling: '',
           jadwalRawat: '',
           noAntri: '',
-          ketRawat: ''
+          ketRawat: '',
+          status: ''
         },
 
         nikState: null,
@@ -411,7 +452,7 @@
 
     methods: {
       testIndex(item) {
-        console.log(this.detailPatient.indexOf(item))
+        console.log(item)
       },
       info(item, index, button) {
         this.infoModal.title = `Row index: ${index}`
@@ -480,6 +521,29 @@
                     jadwalRawat: this.detailPatient.jadwalRawat,
                     noAntri: this.detailPatient.noAntri,
                     ketRawat: this.detailPatient.ketRawat
+                })
+                this.load()
+            } catch (error) {
+                console.log(error)
+            }
+        },
+
+        async updateStatusPatient(payload) {
+            try {
+                await axios.put(`http://localhost:3000/patients/` + this.indexSelected, {
+                    nik: this.detailPatient.nik,
+                    name: this.detailPatient.name,
+                    address: this.detailPatient.address,
+                    gender: this.detailPatient.gender,
+                    phone: this.detailPatient.phone,
+                    placeOfBirth: this.detailPatient.placeOfBirth,
+                    dateOfBirth: this.detailPatient.dateOfBirth,
+                    disease: this.detailPatient.disease,
+                    handling: this.detailPatient.handling,
+                    jadwalRawat: this.detailPatient.jadwalRawat,
+                    noAntri: this.detailPatient.noAntri,
+                    ketRawat: this.detailPatient.ketRawat,
+                    status: payload
                 })
                 this.load()
             } catch (error) {
@@ -581,6 +645,54 @@
 
         onContext(ctx) {
           this.context = ctx
+        },
+
+        changeStatusUmum(item){
+          this.getIndex(item)
+          this.finishedTreatmentUmum(item.noAntri)
+          this.updateStatusPatient('selesai')
+        },
+
+        changeStatusGigi(item){
+          this.getIndex(item)
+          this.finishedTreatmentGigi(item.noAntri)
+          this.updateStatusPatient('selesai')
+        },
+
+        changeStatusKulit(item){
+          this.getIndex(item)
+          this.finishedTreatmentKulit(item.noAntri)
+          this.updateStatusPatient('selesai')
+        },
+
+        changeStatusTht(item){
+          this.getIndex(item)
+          this.finishedTreatmentTht(item.noAntri)
+          this.updateStatusPatient('selesai')
+        },
+
+        finishedTreatmentUmum(payload) {
+          if (confirm('Apakah Pasien Selesai Berobat?') == true) {
+            this.$store.dispatch('changeNoUmum', payload)
+          }
+        },
+
+        finishedTreatmentGigi(payload) {
+          if (confirm('Apakah Pasien Selesai Berobat?') == true) {
+            this.$store.dispatch('changeNoGigi', payload)
+          }
+        },
+
+        finishedTreatmentKulit(payload) {
+          if (confirm('Apakah Pasien Selesai Berobat?') == true) {
+            this.$store.dispatch('changeNoKulit', payload)
+          }
+        },
+
+        finishedTreatmentTht(payload) {
+          if (confirm('Apakah Pasien Selesai Berobat?') == true) {
+            this.$store.dispatch('changeNoTht', payload)
+          }
         }
     },
     mounted() {
