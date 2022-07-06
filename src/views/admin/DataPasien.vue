@@ -187,9 +187,7 @@
         {{ row.index + 1 }}
       </template>
 
-<<<<<<< HEAD
-<template #cell(actions)="row">
-=======
+
       <template #cell(disease)="row">
         <p v-if="row.item.disease === ''">--</p>
         <p v-else>{{ row.item.disease }}</p>
@@ -206,7 +204,6 @@
       </template>
 
       <template #cell(actions)="row">
->>>>>>> 7c5c765946ce8504d1786b9d5e366e1e47306b81
         <b-button 
         v-b-modal.detail-modal-prevent-closing 
         size="sm" 
@@ -527,7 +524,6 @@ import navbar from '@/components/navbar.vue'
           disease: '',
           Rekam_medis: ''
         },
-<<<<<<< HEAD
         editForm: {
             nik: '',
             nama: '',
@@ -544,16 +540,6 @@ import navbar from '@/components/navbar.vue'
         nomer_telfonState: null,
         tempat_lahirState: null,
         tanggal_lahirState: null,
-=======
-        nikState: null,
-        nameState: null,
-        addressState: null,
-        genderState: null,
-        phoneState: null,
-        placeOfBirthState: null,
-        dateOfBirthState: null,
-        diseaseState: null,
->>>>>>> 7c5c765946ce8504d1786b9d5e366e1e47306b81
         selected: '',
         options: [
             { text: 'Laki-laki', value: 'L' },
@@ -569,19 +555,11 @@ import navbar from '@/components/navbar.vue'
         fields: [
           { key: 'index', label: 'No'},
           { key: 'nik', label: 'NIK'},
-<<<<<<< HEAD
           { key: 'nama', label: 'Nama'},
           { key: 'alamat', label: 'Alamat'},
           { key: 'jenis_kelamin', label: 'Jenis Kelamin'},
           { key: 'Rekam_medis[0].poli', label: 'Jenis Penyakit'},
           { key: 'Rekam_medis[0].jenis_penanganan', label: 'Jenis Penanganan'},
-=======
-          { key: 'name', label: 'Nama'},
-          { key: 'gender', label: 'Jenis Kelamin'},
-          { key: 'disease', label: 'Poli'},
-          { key: 'address', label: 'Alamat'},
-          { key: 'handling', label: 'Jenis Penanganan'},
->>>>>>> 7c5c765946ce8504d1786b9d5e366e1e47306b81
           { key: 'actions', label: 'Actions' }
         ],
         totalRows: 1,
@@ -647,11 +625,8 @@ import navbar from '@/components/navbar.vue'
         async deletePatient(indexId) {
             if (confirm('Apakah Anda Akan Menghapus Data Ini?') == true) {
                 try {
-<<<<<<< HEAD
                     await axios.delete(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien_hapus/` + indexId)
-=======
-                    await axios.delete(`http://localhost:3000/patients/` + indexId)
->>>>>>> 7c5c765946ce8504d1786b9d5e366e1e47306b81
+
                     this.load()
                 } catch (error) {
                     console.log(error)
