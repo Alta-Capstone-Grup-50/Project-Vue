@@ -74,7 +74,7 @@ export default {
   data() {
     return {
      login:{
-       email: "",
+      email: "",
       password: "",
      },
       error: null,
@@ -94,8 +94,6 @@ export default {
       localStorage.setItem("userLogin",JSON.stringify(result.data))
       this.$router.push({name:"HomeDokter"})
       this.error = null;
-     } else{
-      this.error = result.message
      }
      } 
     catch (err) {
