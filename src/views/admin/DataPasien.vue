@@ -106,26 +106,26 @@
                 ></b-form-radio-group>
                 </b-form-group>
 
-                <!-- Input nomer_telfon -->
+                <!-- Input no_hp -->
                 <b-form-group
-                label="nomer_telfon"
-                label-for="nomer_telfon-input"
-                invalid-feedback="nomer_telfon is required"
-                :state="nomer_telfonState"
+                label="Nomor Telfon"
+                label-for="no_hp-input"
+                invalid-feedback="Nomor Telfon is required"
+                :state="no_hpState"
                 >
                 <b-form-input
-                    id="nomer_telfon-input"
-                    v-model="form.nomer_telfon"
-                    :state="nomer_telfonState"
+                    id="no_hp-input"
+                    v-model="form.no_hp"
+                    :state="no_hpState"
                     required
                 ></b-form-input>
                 </b-form-group>
 
-                <!-- Input Place of Birth -->
+                <!-- Input Tempat Lahir -->
                 <b-form-group
-                label="Place of Birth"
+                label="Tempat Lahir"
                 label-for="tempat_lahir-input"
-                invalid-feedback="Place of Birth is required"
+                invalid-feedback="Tempat Lahir is required"
                 :state="tempat_lahirState"
                 >
                 <b-form-input
@@ -138,9 +138,9 @@
 
                 <!-- Input Date of Birth -->
                 <b-form-group
-                label="Date of Birth"
-                label-for="tanggal_lahir-input"
-                invalid-feedback="Date of Birth is required"
+                label="Tanggal Lahir"
+                label-for="tanggal_lahir-datepicker"
+                invalid-feedback="Tanggal Lahir is required"
                 :state="tanggal_lahirState"
                 >
                 <b-form-datepicker
@@ -153,12 +153,12 @@
 
                 <!-- Input Disease -->
                 <b-form-group
-                label="Disease"
+                label="Poli"
                 label-for="disease-input"
-                invalid-feedback="Disease is required"
-                :state="diseaseState"
+                invalid-feedback="Poli is required"
+                :state="poliState"
                 >
-                <b-form-select v-model="form.disease" :options="optionDisease"></b-form-select>
+                <b-form-select v-model="form.poli" :options="optionpoli"></b-form-select>
                 </b-form-group>
 
           </form>
@@ -187,22 +187,6 @@
         {{ row.index + 1 }}
       </template>
 
-
-      <template #cell(disease)="row">
-        <p v-if="row.item.disease === ''">--</p>
-        <p v-else>{{ row.item.disease }}</p>
-      </template>
-
-      <template #cell(id_dokter)="row">
-        <p v-if="row.item.id_dokter === ''">--</p>
-        <p v-else>{{ dokter }}</p>
-      </template>
-
-      <template #cell(handling)="row">
-        <p v-if="row.item.handling === ''">--</p>
-        <p v-else>{{ row.item.handling }}</p>
-      </template>
-
       <template #cell(actions)="row">
         <b-button 
         v-b-modal.detail-modal-prevent-closing 
@@ -223,7 +207,7 @@
       @show="resetModal"
       @hidden="resetModal"
       @ok="handleOkEditPatient"
-      size="xl"
+      size="md"
       >
 
       <!-- Detail View Mode -->
@@ -296,27 +280,27 @@
           ></b-form-radio-group>
           </b-form-group>
 
-          <!-- Input nomer_telfon -->
+          <!-- Input no_hp -->
           <b-form-group
           label="Nomor Telefon"
-          label-for="nomer_telfon-input"
-          invalid-feedback="nomer_telfon is required"
-          :state="nomer_telfonState"
+          label-for="no_hp-input"
+          invalid-feedback="Nomor Telfon is required"
+          :state="no_hpState"
           >
           <b-form-input
-              id="nomer_telfon-input"
-              v-model="detailPatient.nomer_telfon"
-              :state="nomer_telfonState"
+              id="no_hp-input"
+              v-model="detailPatient.no_hp"
+              :state="no_hpState"
               required
               disabled
           ></b-form-input>
           </b-form-group>
 
-          <!-- Input Place of Birth -->
+          <!-- Input Tempat Lahir -->
           <b-form-group
           label="Tempat Lahir"
           label-for="tempat_lahir-input"
-          invalid-feedback="Place of Birth is required"
+          invalid-feedback="Tempat Lahir is required"
           :state="tempat_lahirState"
           >
           <b-form-input
@@ -331,8 +315,8 @@
           <!-- Input Date of Birth -->
           <b-form-group
           label="Tanggal Lahir"
-          label-for="tanggal_lahir-input"
-          invalid-feedback="Date of Birth is required"
+          label-for="tanggal_lahir-datepicker"
+          invalid-feedback="Tanggal Lahir is required"
           :state="tanggal_lahirState"
           >
           <b-form-datepicker
@@ -414,27 +398,27 @@
           ></b-form-radio-group>
           </b-form-group>
 
-          <!-- Input nomer_telfon -->
+          <!-- Input no_hp -->
           <b-form-group
-          label="nomer_telfon"
-          label-for="nomer_telfon-input"
-          invalid-feedback="nomer_telfon is required"
-          :state="nomer_telfonState"
+          label="Nomor Telfon"
+          label-for="no_hp-input"
+          invalid-feedback="no_hp is required"
+          :state="no_hpState"
           >
           <b-form-input
-              id="nomer_telfon-input"
-              v-model="detailPatient.nomer_telfon"
-              :state="nomer_telfonState"
+              id="no_hp-input"
+              v-model="detailPatient.no_hp"
+              :state="no_hpState"
               required
 
           ></b-form-input>
           </b-form-group>
 
-          <!-- Input Place of Birth -->
+          <!-- Input Tempat Lahir -->
           <b-form-group
-          label="Place of Birth"
+          label="Tempat Lahir"
           label-for="tempat_lahir-input"
-          invalid-feedback="Place of Birth is required"
+          invalid-feedback="Tempat Lahir is required"
           :state="tempat_lahirState"
           >
           <b-form-input
@@ -448,9 +432,9 @@
 
           <!-- Input Date of Birth -->
           <b-form-group
-          label="Date of Birth"
+          label="Tanggal Lahir"
           label-for="tanggal_lahir-input"
-          invalid-feedback="Date of Birth is required"
+          invalid-feedback="Tanggal Lahir is required"
           :state="tanggal_lahirState"
           >
           <b-form-datepicker
@@ -518,34 +502,35 @@ import navbar from '@/components/navbar.vue'
           nama: '',
           alamat: '',
           jenis_kelamin:'',
-          nomer_telfon: '',
+          no_hp: '',
           tempat_lahir: '',
           tanggal_lahir: '',
-          disease: '',
-          Rekam_medis: ''
+          poli: ''
         },
         editForm: {
             nik: '',
             nama: '',
             alamat: '',
             jenis_kelamin:'',
-            nomer_telfon: '',
+            no_hp: '',
             tempat_lahir: '',
             tanggal_lahir: '',
+            poli: ''
         },
         nikState: null,
         namaState: null,
         alamatState: null,
         jenis_kelaminState: null,
-        nomer_telfonState: null,
+        no_hpState: null,
         tempat_lahirState: null,
         tanggal_lahirState: null,
+        poliState: null,
         selected: '',
         options: [
             { text: 'Laki-laki', value: 'L' },
             { text: 'Perempuan', value: 'P' },
         ],
-        optionDisease: [
+        optionpoli: [
           { value: 'umum', text: 'Umum' },
           { value: 'gigi', text: 'Gigi' },
           { value: 'kulit', text: 'Kulit' },
@@ -603,11 +588,6 @@ import navbar from '@/components/navbar.vue'
             this.totalRows = this.patients.length
         },
 
-        async loadDokter() {
-          const response = await axios.get(`http://localhost:3000/dokter`)
-          this.dokter = response.data
-        },
-
         getIndex(item) {
             this.indexNumber = this.patients.indexOf(item)
             this.detailPatient = this.patients[this.indexNumber]
@@ -645,9 +625,11 @@ import navbar from '@/components/navbar.vue'
                     nama: this.detailPatient.nama,
                     alamat: this.detailPatient.alamat,
                     jenis_kelamin: this.detailPatient.jenis_kelamin,
-                    nomer_telfon: this.detailPatient.nomer_telfon,
+                    no_hp: this.detailPatient.no_hp,
                     tempat_lahir: this.detailPatient.tempat_lahir,
                     tanggal_lahir: this.detailPatient.tanggal_lahir,
+
+                    poli: this.detailPatient.poli,
                 })
                 this.load()
             } catch (error) {
@@ -661,9 +643,10 @@ import navbar from '@/components/navbar.vue'
             this.namaState = valid
             this.alamatState = valid
             this.jenis_kelaminState = valid
-            this.nomer_telfonState = valid
+            this.no_hpState = valid
             this.tempat_lahirState = valid
             this.tanggal_lahirState = valid
+            this.poliState = valid
             return valid
         },
 
@@ -672,17 +655,18 @@ import navbar from '@/components/navbar.vue'
           this.form.nama = ''
           this.form.alamat = ''
           this.form.jenis_kelamin = ''
-          this.form.nomer_telfon = ''
+          this.form.no_hp = ''
           this.form.tempat_lahir = ''
           this.form.tanggal_lahir = ''
-
+          this.form.poli = ''
           this.nikState = null
           this.namaState = null
           this.alamatState = null
           this.jenis_kelaminState = null
-          this.nomer_telfonState = null
+          this.no_hpState = null
           this.tempat_lahirState = null
           this.tanggal_lahirState = null
+          this.poliState = null
 
           this.editMode = false
         },
@@ -740,7 +724,6 @@ import navbar from '@/components/navbar.vue'
     },
     mounted() {
       this.load()
-      this.loadDokter()
       let user= localStorage.getItem('adminLogin');
       if(!user){
         this.$router.push({name:"LoginPage"})
