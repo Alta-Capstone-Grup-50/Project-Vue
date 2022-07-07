@@ -106,17 +106,17 @@
                 ></b-form-radio-group>
                 </b-form-group>
 
-                <!-- Input no_hp -->
+                <!-- Input nomer_telfon -->
                 <b-form-group
                 label="Nomor Telfon"
-                label-for="no_hp-input"
+                label-for="nomer_telfon-input"
                 invalid-feedback="Nomor Telfon is required"
-                :state="no_hpState"
+                :state="nomer_telfonState"
                 >
                 <b-form-input
-                    id="no_hp-input"
-                    v-model="form.no_hp"
-                    :state="no_hpState"
+                    id="nomer_telfon-input"
+                    v-model="form.nomer_telfon"
+                    :state="nomer_telfonState"
                     required
                 ></b-form-input>
                 </b-form-group>
@@ -159,6 +159,20 @@
                 :state="poliState"
                 >
                 <b-form-select v-model="form.poli" :options="optionpoli"></b-form-select>
+                </b-form-group>
+                <!-- Input Penanganan -->
+                <b-form-group
+                label="Penanganan"
+                label-for="jenis_penangananr-input"
+                invalid-feedback="Penanganan is required"
+                :state="tempat_lahirState"
+                >
+                <b-form-input
+                    id="jenis_penanganan-input"
+                    v-model="form.jenis_penanganan"
+                    :state="jenis_penangananState"
+                    required
+                ></b-form-input>
                 </b-form-group>
 
           </form>
@@ -280,17 +294,17 @@
           ></b-form-radio-group>
           </b-form-group>
 
-          <!-- Input no_hp -->
+          <!-- Input nomer_telfon -->
           <b-form-group
           label="Nomor Telefon"
-          label-for="no_hp-input"
+          label-for="nomer_telfon-input"
           invalid-feedback="Nomor Telfon is required"
-          :state="no_hpState"
+          :state="nomer_telfonState"
           >
           <b-form-input
-              id="no_hp-input"
-              v-model="detailPatient.no_hp"
-              :state="no_hpState"
+              id="nomer_telfon-input"
+              v-model="detailPatient.nomer_telfon"
+              :state="nomer_telfonState"
               required
               disabled
           ></b-form-input>
@@ -319,13 +333,13 @@
           invalid-feedback="Tanggal Lahir is required"
           :state="tanggal_lahirState"
           >
-          <b-form-datepicker
+          <b-form-input
             id="tanggal_lahir-datepicker"
             v-model="detailPatient.tanggal_lahir"
             :state="tanggal_lahirState"
             required
             disabled
-          ></b-form-datepicker>
+          ></b-form-input>
           </b-form-group>
         </form>
 
@@ -398,17 +412,17 @@
           ></b-form-radio-group>
           </b-form-group>
 
-          <!-- Input no_hp -->
+          <!-- Input nomer_telfon -->
           <b-form-group
           label="Nomor Telfon"
-          label-for="no_hp-input"
-          invalid-feedback="no_hp is required"
-          :state="no_hpState"
+          label-for="nomer_telfon-input"
+          invalid-feedback="nomer_telfon is required"
+          :state="nomer_telfonState"
           >
           <b-form-input
-              id="no_hp-input"
-              v-model="detailPatient.no_hp"
-              :state="no_hpState"
+              id="nomer_telfon-input"
+              v-model="detailPatient.nomer_telfon"
+              :state="nomer_telfonState"
               required
 
           ></b-form-input>
@@ -502,17 +516,18 @@ import navbar from '@/components/navbar.vue'
           nama: '',
           alamat: '',
           jenis_kelamin:'',
-          no_hp: '',
+          nomer_telfon: '',
           tempat_lahir: '',
           tanggal_lahir: '',
-          poli: ''
+          poli: '',
+          jenis_penanganan:''
         },
         editForm: {
             nik: '',
             nama: '',
             alamat: '',
             jenis_kelamin:'',
-            no_hp: '',
+            nomer_telfon: '',
             tempat_lahir: '',
             tanggal_lahir: '',
             poli: ''
@@ -521,9 +536,10 @@ import navbar from '@/components/navbar.vue'
         namaState: null,
         alamatState: null,
         jenis_kelaminState: null,
-        no_hpState: null,
+        nomer_telfonState: null,
         tempat_lahirState: null,
         tanggal_lahirState: null,
+        jenis_penangananState: null,
         poliState: null,
         selected: '',
         options: [
@@ -625,10 +641,9 @@ import navbar from '@/components/navbar.vue'
                     nama: this.detailPatient.nama,
                     alamat: this.detailPatient.alamat,
                     jenis_kelamin: this.detailPatient.jenis_kelamin,
-                    no_hp: this.detailPatient.no_hp,
+                    nomer_telfon: this.detailPatient.nomer_telfon,
                     tempat_lahir: this.detailPatient.tempat_lahir,
                     tanggal_lahir: this.detailPatient.tanggal_lahir,
-
                     poli: this.detailPatient.poli,
                 })
                 this.load()
@@ -643,7 +658,7 @@ import navbar from '@/components/navbar.vue'
             this.namaState = valid
             this.alamatState = valid
             this.jenis_kelaminState = valid
-            this.no_hpState = valid
+            this.nomer_telfonState = valid
             this.tempat_lahirState = valid
             this.tanggal_lahirState = valid
             this.poliState = valid
@@ -655,7 +670,7 @@ import navbar from '@/components/navbar.vue'
           this.form.nama = ''
           this.form.alamat = ''
           this.form.jenis_kelamin = ''
-          this.form.no_hp = ''
+          this.form.nomer_telfon = ''
           this.form.tempat_lahir = ''
           this.form.tanggal_lahir = ''
           this.form.poli = ''
@@ -663,7 +678,7 @@ import navbar from '@/components/navbar.vue'
           this.namaState = null
           this.alamatState = null
           this.jenis_kelaminState = null
-          this.no_hpState = null
+          this.nomer_telfonState = null
           this.tempat_lahirState = null
           this.tanggal_lahirState = null
           this.poliState = null
