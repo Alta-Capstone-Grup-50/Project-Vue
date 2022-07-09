@@ -470,7 +470,7 @@
       },
 
         async load() {
-            const response = await axios.get(`http://localhost:3000/patients`)
+            const response = await axios.get(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien`)
             this.patients = response.data
             
             // Set the initial number of patients
@@ -485,7 +485,7 @@
 
         async addPatient() {
           try {
-              await axios.post(`http://localhost:3000/patients`, this.form)
+              await axios.post(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien_tambah`, this.form)
               this.load()
           } catch (error) {
               console.log(error)
@@ -494,7 +494,7 @@
         async deletePatient(indexId) {
             if (confirm('Apakah Anda Akan Menghapus Data Ini?') == true) {
                 try {
-                    await axios.delete(`http://localhost:3000/patients/` + indexId)
+                    await axios.delete(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien_hapus/` + indexId)
                     this.load()
                 } catch (error) {
                     console.log(error)
@@ -508,7 +508,7 @@
 
         async updatePatient() {
             try {
-                await axios.put(`http://localhost:3000/patients/` + this.indexSelected, {
+                await axios.put(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien_edit/` + this.indexSelected, {
                     nik: this.detailPatient.nik,
                     name: this.detailPatient.name,
                     address: this.detailPatient.address,
