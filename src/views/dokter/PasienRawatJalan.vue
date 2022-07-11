@@ -43,14 +43,14 @@
           {{ row.index + 1 }}
         </template>
 
-        <template #cell(jadwalRawat)="row">
-          <p v-if="row.item.jadwalRawat === ''">--</p>
-          <p v-else>{{ row.item.jadwalRawat }}</p>
+        <template #cell(jadwal_rawat_jalan)="row">
+          <p v-if="row.item.jadwal_rawat_jalan === ''">-</p>
+          <p v-else>{{ row.item.jadwal_rawat_jalan }}</p>
         </template>
 
-        <template #cell(noAntri)="row">
-          <p v-if="row.item.noAntri === ''">--</p>
-          <p v-else>{{ row.item.noAntri }}</p>
+        <template #cell(jenis_penanganan)="row">
+          <p v-if="row.item.jenis_penanganan === ''">-</p>
+          <p v-else>{{ row.item.jenis_penanganan }}</p>
         </template>
 
         <template #cell(ketRawat)="row">
@@ -224,7 +224,7 @@
           >
           <b-form-input
               id="name-input"
-              v-model="detailPatient.name"
+              v-model="detailPatient.nama"
               :state="nameState"
               required
               disabled
@@ -240,7 +240,7 @@
           >
           <b-form-input
               id="address-input"
-              v-model="detailPatient.address"
+              v-model="detailPatient.alamat"
               :state="addressState"
               required
               disabled
@@ -256,7 +256,7 @@
           >
           <b-form-radio-group
               id="btn-radios-2"
-              v-model="detailPatient.gender"
+              v-model="detailPatient.jenis_kelamin"
               :options="options"
               button-variant="outline-primary"
               size="md"
@@ -276,7 +276,7 @@
           >
           <b-form-input
               id="phone-input"
-              v-model="detailPatient.phone"
+              v-model="detailPatient.nomor_hp"
               :state="phoneState"
               required
               disabled
@@ -428,12 +428,12 @@
         fields: [
           { key: 'no', label: 'No'},
           { key: 'nik', label: 'NIK'},
-          { key: 'name', label: 'Nama'},
-          { key: 'address', label: 'Alamat'},
-          { key: 'gender', label: 'Jenis Kelamin'},
-          { key: 'jadwalRawat', label: 'Jadwal Rawat Jalan'},
-          { key: 'noAntri', label: 'Nomer Antrian'},
-          { key: 'ketRawat', label: 'Ket. Rawat Jalan'},
+          { key: 'nama', label: 'Nama'},
+          { key: 'jenis_kelamin', label: 'Jenis Kelamin'},
+          { key: 'jadwal_rawat_jalan', label: 'Jadwal Rawat Jalan'},
+          { key: 'nomer_antrian', label: 'Nomer Antrian'},
+          { key: 'jenis_penanganan', label: 'Jenis Penanganan'},
+          { key: 'ketRawat', label: 'Keterangan Rawat Jalan'},
           { key: 'actions', label: 'Actions' }
         ],
         totalRows: 1,
@@ -470,8 +470,8 @@
       },
 
         async load() {
-            const response = await axios.get(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien`)
-            this.patients = response.data
+            const response = await axios.get(`https://api-capstone-heroku.herokuapp.com/admin/rawat_jalan_lihat/gigi`)
+            this.patients = response.data.data
             
             // Set the initial number of patients
             this.totalRows = this.patients.length
