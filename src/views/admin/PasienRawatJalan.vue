@@ -562,7 +562,7 @@
 
         async addPatient() {
           try {
-              await axios.post(`http://localhost:3000/patients`, this.form)
+              await axios.post(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien_tambah`, this.form)
               this.load()
           } catch (error) {
               console.log(error)
@@ -585,7 +585,7 @@
 
         async updatePatient() {
             try {
-                await axios.put(`http://localhost:3000/patients/` + this.indexSelected, {
+                await axios.put(`https://api-capstone-heroku.herokuapp.com/admin/rawat_jalan_edit/` + this.indexSelected, {
                     nik: this.detailPatient.nik,
                     name: this.detailPatient.name,
                     address: this.detailPatient.address,

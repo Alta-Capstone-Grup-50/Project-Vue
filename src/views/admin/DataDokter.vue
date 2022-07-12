@@ -87,32 +87,48 @@
       ></b-form-input>
       </b-form-group>
 
-        <!-- Data Nama -->
+        <!-- Data nama_dokter -->
         <b-form-group
-        label="Name"
-        label-for="nama-input"
+        label="Nama"
+        label-for="nama_dokter-input"
         invalid-feedback="Name is required"
         :state="namaState"
         >
         <b-form-input
-            id="nama-input"
-            v-model="detailDokter.nama"
+            id="nama_dokter-input"
+            v-model="detailDokter.nama_dokter"
             :state="namaState"
             required
             disabled
         ></b-form-input>
         </b-form-group>
+        <!-- Data No HP -->
+        <b-form-group
+        label="Nomor Telefon"
+        label-for="hp-input"
+        invalid-feedback="Nomor Telefon is required"
+        :state="nomor_telfonState"
+        >
+        <b-form-input
+            id="hp-input"
+            v-model="detailDokter.nomor_telfon"
+            :state="nomor_telfonState"
+            required
+            disabled
+        ></b-form-input>
+        </b-form-group>
+
 
         <!-- Data Jenis Kelamin -->
         <b-form-group
         label="Jenis Kelamin"
-        label-for="gender-input"
+        label-for="jenis_kelamin-input"
         invalid-feedback="Jenis Kelamin is required"
-        :state="genderState"
+        :state="jenis_kelaminState"
         >
         <b-form-radio-group
             id="btn-radios-2"
-            v-model="detailDokter.gender"
+            v-model="detailDokter.jenis_kelamin"
             :options="options"
             class="mb-3"
             required
@@ -120,33 +136,33 @@
         ></b-form-radio-group>
         </b-form-group>
 
-        <!-- Data Spesialis -->
+        <!-- Data poli -->
         <b-form-group
-        label="Spesialis"
-        label-for="spesialis-input"
-        invalid-feedback="Spesialis is required"
-        :state="spesialisState"
+        label="Poli"
+        label-for="poli-input"
+        invalid-feedback="Poli is required"
+        :state="poliState"
         >
         <b-form-input
-            id="spesialis-input"
-            v-model="detailDokter.spesialis"
-            :state="spesialisState"
+            id="poli-input"
+            v-model="detailDokter.poli"
+            :state="poliState"
             required
             disabled
         ></b-form-input>
         </b-form-group>
 
-        <!-- Data Jadwal -->
+        <!-- Data jadwal_praktek -->
         <b-form-group
         label="Jadwal Praktek"
-        label-for="jadwal-input"
-        invalid-feedback="Jadwal is required"
-        :state="jadwalState"
+        label-for="jadwal_praktek-input"
+        invalid-feedback="jadwal_praktek is required"
+        :state="jadwal_praktekState"
         >
         <b-form-input
-            id="jadwal-input"
-            v-model="detailDokter.jadwal"
-            :state="jadwalState"
+            id="jadwal_praktek-input"
+            v-model="detailDokter.jadwal_praktek"
+            :state="jadwal_praktekState"
             required
             disabled
         ></b-form-input>
@@ -157,12 +173,12 @@
         label="Nomor STR"
         label-for="str-input"
         invalid-feedback="Place of Birth is required"
-        :state="strState"
+        :state="nomor_strState"
         >
         <b-form-input
             id="placeOfBirth-input"
-            v-model="detailDokter.str"
-            :state="strState"
+            v-model="detailDokter.nomor_str"
+            :state="nomor_strState"
             required
             disabled
         ></b-form-input>
@@ -186,7 +202,7 @@
       ></b-form-input>
       </b-form-group>
 
-        <!-- Nama -->
+        <!-- nama_dokter -->
         <b-form-group
         label="Nama"
         label-for="name-input"
@@ -195,23 +211,37 @@
         >
         <b-form-input
             id="name-input"
-            v-model="detailDokter.nama"
+            v-model="detailDokter.nama_dokter"
             :state="namaState"
             required
 
+        ></b-form-input>
+        </b-form-group>
+        <!-- Data No HP -->
+        <b-form-group
+        label="Nomor Telefon"
+        label-for="hp-input"
+        invalid-feedback="Nomor Telefon is required"
+        :state="nomor_telfonState"
+        >
+        <b-form-input
+            id="hp-input"
+            v-model="detailDokter.nomor_telfon"
+            :state="nomor_telfonState"
+            required
         ></b-form-input>
         </b-form-group>
 
         <!-- Jenis Kelamin -->
         <b-form-group
         label="Jenis Kelamin"
-        label-for="gender-input"
+        label-for="jenis_kelamin-input"
         invalid-feedback="Jenis Kelamin is required"
-        :state="genderState"
+        :state="jenis_kelaminState"
         >
         <b-form-radio-group
-            id="gender-input"
-            v-model="detailDokter.gender"
+            id="jenis_kelamin-input"
+            v-model="detailDokter.jenis_kelamin"
             :options="options"
             size="md"
             required
@@ -219,33 +249,33 @@
         ></b-form-radio-group>
         </b-form-group>
 
-        <!-- Spesialis -->
+        <!-- poli -->
         <b-form-group
-        label="Spesialis"
-        label-for="spesialis-input"
-        invalid-feedback="Spesialis is required"
-        :state="spesialisState"
+        label="Poli"
+        label-for="poli-input"
+        invalid-feedback="Poli is required"
+        :state="poliState"
         >
         <b-form-input
-            id="spesialis-input"
-            v-model="detailDokter.spesialis"
-            :state="spesialisState"
+            id="poli-input"
+            v-model="detailDokter.poli"
+            :state="poliState"
             required
 
         ></b-form-input>
         </b-form-group>
 
-        <!-- Jadwal -->
+        <!-- jadwal_praktek -->
         <b-form-group
-        label="Jadwal"
-        label-for="jadwal-input"
-        invalid-feedback="Jadwal is required"
-        :state="jadwalState"
+        label="Jadwal Praktek"
+        label-for="jadwal_praktek-input"
+        invalid-feedback="jadwal_praktek is required"
+        :state="jadwal_praktekState"
         >
         <b-form-input
-            id="jadwal-input"
-            v-model="detailDokter.jadwal"
-            :state="jadwalState"
+            id="jadwal_praktek-input"
+            v-model="detailDokter.jadwal_praktek"
+            :state="jadwal_praktekState"
             required
 
         ></b-form-input>
@@ -256,12 +286,12 @@
         label="STR"
         label-for="str-input"
         invalid-feedback="STR is required"
-        :state="strState"
+        :state="nomor_strState"
         >
         <b-form-input
-            id="str-input"
-            v-model="detailDokter.str"
-            :state="strState"
+            id="nomor_str-input"
+            v-model="detailDokter.nomor_str"
+            :state="nomor_strState"
             required
 
         ></b-form-input>
@@ -306,19 +336,20 @@
         indexSelected: '',
         form : {
           sip: '',
-          nama: '',
-          gender:'',
-          spesialis: '',
-          jadwal: '',
-          str: '',
-          handling: ''
+          nama_dokter: '',
+          nomor_telfon: '',
+          jenis_kelamin:'',
+          poli: '',
+          jadwal_praktek: '',
+          nomor_str: ''
         },
         sipState: null,
         namaState: null,
-        genderState: null,
-        spesialisState: null,
-        jadwalState: null,
-        strState: null,
+        nomor_telfonState: null,
+        jenis_kelaminState: null,
+        poliState: null,
+        jadwal_praktekState: null,
+        nomor_strState: null,
         selected: '',
         options: [
             { text: 'Laki-laki', value: 'L' },
@@ -329,11 +360,11 @@
           
           { key: 'index', label: 'No'},
           { key: 'sip', label: 'SIP'},
-          { key: 'nama', label: 'Nama'},
-          { key: 'spesialis', label: 'Spesialis'},
-          { key: 'gender', label: 'Jenis Kelamin'},
-          { key: 'jadwal', label: 'Jadwal Praktek'},
-          { key: 'str', label: 'Nomor STR'},
+          { key: 'nama_dokter', label: 'Nama'},
+          { key: 'poli', label: 'poli'},
+          { key: 'jenis_kelamin', label: 'Jenis Kelamin'},
+          { key: 'jadwal_praktek', label: 'Jadwal Praktek'},
+          { key: 'nomor_str', label: 'Nomor STR'},
           { key: 'actions', label: 'Actions' }
         ],
         totalRows: 1,
@@ -378,8 +409,8 @@
         this.currentPage = 1
       },
       async load() {
-            const response = await axios.get(`http://localhost:3000/dokter`)
-            this.dokter = response.data
+            const response = await axios.get(`https://api-capstone-heroku.herokuapp.com/admin/data_dokter_lihat`)
+            this.dokter = response.data.data
             
             // Set the initial number of patients
             this.totalRows = this.dokter.length
@@ -400,7 +431,7 @@
         async deleteDokter(indexId) {
             if (confirm('Apakah Anda Akan Menghapus Data Ini?') == true) {
                 try {
-                    await axios.delete(`http://localhost:3000/dokter/` + indexId)
+                    await axios.delete(`https://api-capstone-heroku.herokuapp.com/admin/data_dokter_hapus` + indexId)
                     this.load()
                 } catch (error) {
                     console.log(error)
@@ -413,14 +444,14 @@
         },
         async updateDokter() {
             try {
-                await axios.put(`http://localhost:3000/dokter/` + this.indexSelected, {
+                await axios.put(`https://api-capstone-heroku.herokuapp.com/admin/data_dokter_edit/` + this.indexSelected, {
                     sip: this.detailDokter.sip,
-                    nama: this.detailDokter.nama,
-                    gender: this.detailDokter.gender,
-                    spesialis: this.detailDokter.spesialis,
-                    jadwal: this.detailDokter.jadwal,
-                    str: this.detailDokter.str,
-                    handling: this.detailDokter.handling
+                    nama: this.detailDokter.nama_dokter,
+                    nomor_telfon: this.detailDokter.nomor_telfon,
+                    jenis_kelamin: this.detailDokter.jenis_kelamin,
+                    poli: this.detailDokter.poli,
+                    jadwal_praktek: this.detailDokter.jadwal_praktek,
+                    nomor_str: this.detailDokter.nomor_str,
                 })
                 this.load()
             } catch (error) {
@@ -431,23 +462,25 @@
             const valid = this.$refs.form.checkValidity()
             this.sipState = valid
             this.namaState = valid
-            this.genderState = valid
-            this.spesialisState = valid
+            this.nomor_telfonState = valid
+            this.jenis_kelaminState = valid
+            this.poliState = valid
             this.jadwalState = valid
-            this.str = valid
+            this.nomor_str = valid
             return valid
         },
         resetModal() {
           this.form.sip = ''
           this.form.nama = ''
-          this.form.gender = ''
-          this.form.spesialis = ''
-          this.form.jadwal = ''
-          this.form.str = ''
+          this.form.nomor_telfon =''
+          this.form.jenis_kelamin = ''
+          this.form.poli = ''
+          this.form.jadwal_praktek = ''
+          this.form.nomor_str = ''
           this.sipState = null
           this.namaState = null
-          this.genderState = null
-          this.spesialisState = null
+          this.jenis_kelaminState = null
+          this.poliState = null
           this.jadwalState = null
           this.editMode = false
         },
