@@ -160,20 +160,6 @@
                 >
                 <b-form-select v-model="form.poli" :options="optionpoli"></b-form-select>
                 </b-form-group>
-                <!-- Input Penanganan -->
-                <b-form-group
-                label="Penanganan"
-                label-for="jenis_penangananr-input"
-                invalid-feedback="Penanganan is required"
-                :state="tempat_lahirState"
-                >
-                <b-form-input
-                    id="jenis_penanganan-input"
-                    v-model="form.jenis_penanganan"
-                    :state="jenis_penangananState"
-                    required
-                ></b-form-input>
-                </b-form-group>
 
           </form>
           </b-modal>
@@ -520,16 +506,6 @@ import navbar from '@/components/navbar.vue'
           poli: '',
           jenis_penanganan:''
         },
-        editForm: {
-            nik: '',
-            nama: '',
-            alamat: '',
-            jenis_kelamin:'',
-            no_hp: '',
-            tempat_lahir: '',
-            tanggal_lahir: '',
-            poli: ''
-        },
         nikState: null,
         namaState: null,
         alamatState: null,
@@ -555,10 +531,9 @@ import navbar from '@/components/navbar.vue'
           { key: 'index', label: 'No'},
           { key: 'nik', label: 'NIK'},
           { key: 'nama', label: 'Nama'},
-          { key: 'alamat', label: 'Alamat'},
           { key: 'jenis_kelamin', label: 'Jenis Kelamin'},
-          { key: 'Rekam_medis[0].poli', label: 'Jenis Penyakit'},
-          { key: 'Rekam_medis[0].jenis_penanganan', label: 'Jenis Penanganan'},
+          { key: 'poli', label: 'Poli'},
+          { key: 'alamat', label: 'Alamat'},
           { key: 'actions', label: 'Actions' }
         ],
         totalRows: 1,
