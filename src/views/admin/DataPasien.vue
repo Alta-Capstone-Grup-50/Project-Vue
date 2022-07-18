@@ -59,9 +59,9 @@
 
                 <!-- Input Name -->
                 <b-form-group
-                label="Name"
+                label="Nama"
                 label-for="name-input"
-                invalid-feedback="Name is required"
+                invalid-feedback="Nama is required"
                 :state="namaState"
                 >
                 <b-form-input
@@ -74,9 +74,9 @@
 
                 <!-- Input alamat -->
                 <b-form-group
-                label="alamat"
+                label="Alamat"
                 label-for="alamat-input"
-                invalid-feedback="alamat is required"
+                invalid-feedback="Alamat is required"
                 :state="alamatState"
                 >
                 <b-form-input
@@ -108,9 +108,9 @@
 
                 <!-- Input no_hp -->
                 <b-form-group
-                label="Nomor Telfon"
+                label="Nomor Telepon"
                 label-for="no_hp-input"
-                invalid-feedback="Nomor Telfon is required"
+                invalid-feedback="Nomor Telepon is required"
                 :state="no_hpState"
                 >
                 <b-form-input
@@ -327,6 +327,22 @@
             disabled
           ></b-form-input>
           </b-form-group>
+
+          <!-- Input Disease -->
+          <b-form-group
+          label="Poli"
+          label-for="disease-input"
+          invalid-feedback="Poli is required"
+          :state="poliState"
+          >
+          <b-form-input
+            id="tanggal_lahir-datepicker"
+            v-model="detailPatient.poli"
+            :state="tanggal_lahirState"
+            required
+            disabled
+          ></b-form-input>
+          </b-form-group>
         </form>
 
       <!-- Detail Edit Mode -->
@@ -444,6 +460,16 @@
             required
           ></b-form-datepicker>
           </b-form-group>
+
+          <!-- Input Disease -->
+          <b-form-group
+          label="Poli"
+          label-for="disease-input"
+          invalid-feedback="Poli is required"
+          :state="poliState"
+          >
+          <b-form-select v-model="form.poli" :options="optionpoli"></b-form-select>
+          </b-form-group>
         </form>
 
       <template #modal-footer="{ ok }">
@@ -504,7 +530,7 @@ import navbar from '@/components/navbar.vue'
           tempat_lahir: '',
           tanggal_lahir: '',
           poli: '',
-          jenis_penanganan:''
+          jenis_penanganan: 'Rawat jalan',
         },
         nikState: null,
         namaState: null,
@@ -513,7 +539,6 @@ import navbar from '@/components/navbar.vue'
         no_hpState: null,
         tempat_lahirState: null,
         tanggal_lahirState: null,
-        jenis_penangananState: null,
         poliState: null,
         selected: '',
         options: [
@@ -521,9 +546,9 @@ import navbar from '@/components/navbar.vue'
             { text: 'Perempuan', value: 'P' },
         ],
         optionpoli: [
-          { value: 'umum', text: 'Umum' },
-          { value: 'gigi', text: 'Gigi' },
-          { value: 'kulit', text: 'Kulit' },
+          { value: 'Umum', text: 'Umum' },
+          { value: 'Gigi', text: 'Gigi' },
+          { value: 'Kulit', text: 'Kulit' },
           { value: 'THT', text: 'THT' }
         ],
         items: [],
@@ -531,9 +556,9 @@ import navbar from '@/components/navbar.vue'
           { key: 'index', label: 'No'},
           { key: 'nik', label: 'NIK'},
           { key: 'nama', label: 'Nama'},
+          { key: 'alamat', label: 'Alamat'},
           { key: 'jenis_kelamin', label: 'Jenis Kelamin'},
           { key: 'poli', label: 'Poli'},
-          { key: 'alamat', label: 'Alamat'},
           { key: 'actions', label: 'Actions' }
         ],
         totalRows: 1,
