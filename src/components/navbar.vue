@@ -1,5 +1,5 @@
 <template>
-<nav class="navbar navbar-expand-lg navbar-light shadow bg-light" sticky fixed="top">
+<nav class="navbar fixed-top navbar-expand-lg navbar-light shadow bg-light" >
   <b-container>
     <a class="navbar-brand" href="#">
       <img src="https://i.postimg.cc/CKjq1Vg7/logo-klinik-1.png">
@@ -8,12 +8,12 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <b-navbar-nav class="ms-auto mb-2 mb-lg-0">
-        <b-nav-item ><router-link class="text-decoration-none text-black" to="/HomeAdmin"><strong>Home</strong></router-link></b-nav-item>
-        <b-nav-item ><router-link class="text-decoration-none text-black" to="/DataPasien"><strong>Data Pasien</strong></router-link></b-nav-item>
-        <b-nav-item ><router-link class="text-decoration-none text-black" to="/PasienRawatJalan"><strong>Data Rawat Jalan</strong></router-link></b-nav-item>
-        <b-nav-item ><router-link class="text-decoration-none text-black" to="/TenagaKesehatanPage"><strong>Data Tenaga Kesehatan</strong></router-link></b-nav-item>
-        <b-nav-item ><router-link class="text-decoration-none text-black" to="/ManageAccount"><strong>Manage Account</strong></router-link></b-nav-item>
+      <b-navbar-nav class="ms-auto mb-2 mb-lg-0" >
+        <b-nav-item ><router-link class="text-decoration-none item text-black" to="/HomeAdmin">Home</router-link></b-nav-item>
+        <b-nav-item ><router-link class="text-decoration-none item text-black" to="/DataPasien">Data Pasien</router-link></b-nav-item>
+        <b-nav-item ><router-link class="text-decoration-none item text-black" to="/PasienRawatJalan">Data Rawat Jalan</router-link></b-nav-item>
+        <b-nav-item ><router-link class="text-decoration-none item text-black" to="/TenagaKesehatanPage">Data Tenaga Kesehatan</router-link></b-nav-item>
+        <b-nav-item ><router-link class="text-decoration-none item text-black" to="/ManageAccount">Manage Account</router-link></b-nav-item>
         <b-button size="sm" v-on:click="logout" type="logout" class="btn btn-warning text-white">Logout</b-button>
       </b-navbar-nav>
     </div>
@@ -36,6 +36,10 @@ export default {
 };
 </script>
 <style>
-
+.item {
+  font-weight: 700 !important;
+  font-size: 18px !important;
+  margin-left: 20px;
+}
 </style>
 

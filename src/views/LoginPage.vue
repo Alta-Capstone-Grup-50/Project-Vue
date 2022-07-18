@@ -1,36 +1,36 @@
 <template>
 <body>
     <b-container>
-        <b-row>
+      <section>
+        <b-row class="padding">
             <b-col cols="12" md="6">
                 <b-container>
                 <div class="p-5">
                     <h2 class="mb-n5 text-secondary" ><strong>Welcome Back</strong></h2>
                     <h6><strong class="mt-n4 text-secondary">Weclome Back! Please enter your details.</strong></h6>
                         <b-form class="mt-5" @submit.prevent="submit">
-                            <strong><b-form-group label="Username" class="mt-2">
+                            <strong><b-form-group label="Email" class="mt-2">
                                 <b-form-input
                                 id="input-1"
                                 v-model="login.email"
-                                name="username"
-                                class="forminput mt-3"
+                                name="email"
+                                class="forminput input mt-3"
                                 required></b-form-input>
                             </b-form-group></strong>
 
                             <strong><b-form-group label="Password" class="mt-2">
-                                <b-form-input
+                                <vue-password
                                 id="input-2"
                                 v-model="login.password"
                                 type="password"
                                 name="password"
                                 class="forminput mt-3"
+                                disableStrength
                                 required
-                                ></b-form-input>
+                                ></vue-password>
                             </b-form-group></strong>
                             <b-button block class="shadow btnlogin mt-3 w-100 text-white" size="lg" type="submit" variant="info"><strong>Login</strong></b-button>
                              <div class="d-flex justify-content-between mb-3">
-                                    <div class="p-2"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> <strong class="text-secondary">Remember Me</strong></div>
-                                    <div class="p-2"> <a href="" class="ml-5"><strong class="text-secondary  text-right" >Forgot Password ?</strong></a></div>
                                 </div>
                                 <div v-if="error" id="error">
                                   <b-alert variant="danger" show>
@@ -62,15 +62,19 @@
                 </b-carousel>
             </div>
             </b-col>
-        </b-row>
+        </b-row>       
+      </section>
     </b-container>
 </body>
 </template>
 <script>
 import axios from 'axios'
+import VuePassword from 'vue-password'
 export default {
   name: "LoginPage",
-  components: {},
+  components: {
+    VuePassword
+    },
   data() {
     return {
      login:{
@@ -90,7 +94,11 @@ export default {
       localStorage.setItem("adminLogin",JSON.stringify(result.data))
       this.$router.push({name:"HomeAdmin"})
       this.error = null;
-     } else if (result.status==200 && result.data.level==="dokter" && result.data.level==="perawat") {
+     } else if (result.status==200 && result.data.level==="dokter") {
+      localStorage.setItem("userLogin",JSON.stringify(result.data))
+      this.$router.push({name:"HomeDokter"})
+      this.error = null;
+     } else if (result.status==200 && result.data.level==="perawat") {
       localStorage.setItem("userLogin",JSON.stringify(result.data))
       this.$router.push({name:"HomeDokter"})
       this.error = null;
@@ -117,8 +125,11 @@ export default {
 <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap');
-b-row{
-    font-family: 'Poppins', sans-serif;
+b-carousel{
+  max-width: 500px;
+}
+section{
+    margin-top: 50px !important;
 }
 .forminput{
     max-width: 605px;
@@ -126,6 +137,7 @@ b-row{
 .btnlogin{
     max-width: 605px;
 }
+
 
 
 </style>

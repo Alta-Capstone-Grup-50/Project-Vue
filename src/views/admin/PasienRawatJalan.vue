@@ -1,9 +1,9 @@
 <template>
   <div>
     <navbar />
-    <b-container class="mt-5">
+    <b-container class="mt-5 margintop">
       <div>
-        <h3><strong>Nomor Antri</strong></h3>
+        <h3 class="margintop"><strong>Nomor Antri</strong></h3>
         <b-card-group>
     <b-card title="Poli Umum">
       <b-card-text>
@@ -699,4 +699,7 @@
 </script>
   
 <style scoped>
+.margintop{
+  margin-top: 150px;
+}
 </style>

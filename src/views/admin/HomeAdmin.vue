@@ -3,35 +3,29 @@
     <navbar />
     <b-container>
       <div>
-        <b-img src="https://i.postimg.cc/wBYm6Dvv/beautiful-shot-ponte-vecchio-florence-tuscany-italy-1.png" rounded class="mt-5 shadow" fluid alt="Responsive image"></b-img>
+        <b-img src="https://i.postimg.cc/nV5gmjBN/Frame-168-1.png" class="margintop" fluid alt="Responsive image"></b-img>
       </div>
       <div class="mt-5 mb-5 text-center mr-auto ml-auto">
         <div class="row justify-content-center">
-          <div class="col-4">
-            <div class="card border shadow">
-              <img src="https://i.postimg.cc/rpXF7vBX/Frame-12-1.png" class="card-img-top p-4" alt="">
-              <div class="card-body text-center">
-                <p class="card-text text-center"><router-link class="text-decoration-none text-black" to="/DataPasien"><strong>Data Pasien</strong></router-link></p>
-                <a href="#" class="btn btn-primary"><router-link class="text-decoration-none text-white" to="/DataPasien"><strong>Lebih Lanjut</strong></router-link></a>
-              </div>
+          <div class="col-12 col-md-4">
+            <div class="maintxt shadow">
+                <div class="bg-text d-flex align-items-center justify-content-center">
+                  <p class="card-text text-white text-center"><router-link class="text-decoration-none text-white" to="/DataPasien"><strong>Data Pasien</strong></router-link></p>
+                </div>
             </div>
           </div>
-          <div class="col-4">
-            <div class="card border shadow">
-              <img src="https://i.postimg.cc/rpXF7vBX/Frame-12-1.png" class="card-img-top p-4" alt="">
-              <div class="card-body text-center">
-                <p class="card-text text-center"><router-link class="text-decoration-none text-black" to="/TenagaKesehatanPage"><strong>Data Dokter dan Perawat</strong></router-link></p>
-                <a href="#" class="btn btn-primary"><router-link class="text-decoration-none text-white" to="/TenagaKesehatanPage"><strong>Lebih Lanjut</strong></router-link></a>
-              </div>
+          <div class="col-12 col-md-4">
+            <div class="maintenaga shadow">
+                <div class="bg-text d-flex align-items-center justify-content-center">
+                  <p class="card-text text-white text-center"><router-link class="text-decoration-none text-white" to="/TenagaKesehatanPage"><strong>Data Tenaga Kesehatan</strong></router-link></p>
+                </div>
             </div>
           </div>
-          <div class="col-4">
-            <div class="card border shadow">
-              <img src="https://i.postimg.cc/rpXF7vBX/Frame-12-1.png" class="card-img-top p-4" alt="">
-              <div class="card-body text-center">
-                <p class="card-text text-center"><router-link class="text-decoration-none text-black" to="/PasienRawatJalan"><strong>Data Rawat Jalan</strong></router-link></p>
-                <a href="#" class="btn btn-primary"><router-link class="text-decoration-none text-white" to="/PasienRawatJalan"><strong>Lebih Lanjut</strong></router-link></a>
-              </div>
+          <div class="col-12 col-md-4">
+            <div class="mainpasien shadow">
+                <div class="bg-text d-flex align-items-center justify-content-center">
+                  <p class="card-text text-white text-center"><router-link class="text-decoration-none text-white" to="/PasienRawatjalan"><strong>Pasien Rawat Jalan</strong></router-link></p>
+                </div>
             </div>
           </div>
         </div>
@@ -61,5 +55,35 @@ export default{
 <style>
 div.card{
    border-radius: 30px;
+}
+.margintop{
+  margin-top: 150px;
+}
+.maintxt {
+    background-image: url(https://i.postimg.cc/d3Kg3bG0/Rectangle-44.png);
+    width: 420px;
+    height: 318px;
+    border-radius: 25px;
+}
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  width: 420px;
+  height: 318px;
+  border-radius: 25px;
+}
+.maintenaga {
+    background-image: url(https://i.postimg.cc/9FrT5m8z/Rectangle-44.png);
+    width: 420px;
+    height: 318px;
+    border-radius: 25px;
+}
+.mainpasien {
+    background-image: url(https://i.postimg.cc/XJrQQp1W/Rectangle-44-2.png);
+    width: 420px;
+    height: 318px;
+    border-radius: 25px;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center">
+  <div class="text-center margintop">
     <navbar />
     <b-container class="mt-3">
       <div class="mt-5 mb-5 text-center mr-auto ml-auto">
@@ -48,5 +48,8 @@ export default {
 <style>
 div.card{
    border-radius: 30px;
+}
+.margintop{
+  margin-top: 150px;
 }
 </style>
