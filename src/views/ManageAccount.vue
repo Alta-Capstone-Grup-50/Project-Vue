@@ -2,7 +2,7 @@
   <div>
     <navbar />
     <b-container class="mt-5">
-      <h3><strong>Data Dokter & Perawat</strong></h3>
+      <h3 class="margintop"><strong>Data Dokter & Perawat</strong></h3>
       <div class="d-flex">
           <b-form-group
             label-for="filter-input"
@@ -498,4 +498,7 @@ import navbar from '@/components/navbar.vue'
 </script>
   
 <style scoped>
+.margintop{
+  margin-top: 150px;
+}
 </style>
