@@ -49,9 +49,9 @@
 
         <template #cell(proses)="row">
 
-          <div v-if="row.item.proses !== true">
+          <div v-if='row.item.proses === "false"'>
             <!-- No Antri Umum -->
-            <b-button v-if="row.item.nomer_antrian.slice(0, 1) === 'U'"
+            <b-button v-if="row.item.poli === 'Umum'"
             size="sm"
             @click="changeStatusUmum(row.item)"
             >
@@ -59,7 +59,7 @@
             </b-button>
 
             <!-- No Antri Gigi -->
-            <b-button v-if="row.item.nomer_antrian.slice(0, 1) === 'G'"
+            <b-button v-if="row.item.poli === 'Gigi'"
             size="sm"
             @click="changeStatusGigi(row.item)"
             >
@@ -67,7 +67,7 @@
             </b-button>
 
             <!-- No Antri Kulit -->
-            <b-button v-if="row.item.nomer_antrian.slice(0, 1) === 'K'"
+            <b-button v-if="row.item.poli === 'Kulit'"
             size="sm"
             @click="changeStatusKulit(row.item)"
             >
@@ -75,7 +75,7 @@
             </b-button>
 
             <!-- No Antri THT -->
-            <b-button v-if="row.item.nomer_antrian.slice(0, 1) === 'T'"
+            <b-button v-if="row.item.poli === 'THT'"
             size="sm"
             @click="changeStatusTht(row.item)"
             >
@@ -95,7 +95,7 @@
             v-if="row.item.proses === true"
             id="checkbox-1"
             v-model="statusSelesai"
-            name="checkbox-1"
+            nama="checkbox-1"
             value="accepted"
             unchecked-value="not_accepted"
             disabled
@@ -111,9 +111,9 @@
 
         </template>
 
-        <template #cell(ketRawat)="row">
+        <template #cell(keterangan)="row">
           <b-button
-          v-if="row.item.ketRawat === ''"
+          v-if="row.item.keterangan === ''"
           v-b-modal.keteranganPasien-modal-prevent-closing 
           size="sm" 
           @click="getIndex(row.item)" 
@@ -161,9 +161,9 @@
         <b-form-group>
         <b-form-textarea
           rows="8"
-          id="ketRawat-input"
-          v-model="detailPatient.ketRawat"
-          :state="ketRawatState"
+          id="keterangan-input"
+          v-model="detailPatient.keterangan"
+          :state="keteranganState"
           disabled
         ></b-form-textarea>
 
@@ -177,9 +177,9 @@
         <b-form-group>
         <b-form-textarea
           rows="8"
-          id="ketRawat-input"
-          v-model="detailPatient.ketRawat"
-          :state="ketRawatState"
+          id="keterangan-input"
+          v-model="detailPatient.keterangan"
+          :state="keteranganState"
         ></b-form-textarea>
 
         </b-form-group>
@@ -233,44 +233,44 @@
         ></b-form-input>
         </b-form-group>
 
-          <!-- Input Name -->
+          <!-- Input nama -->
           <b-form-group
-          label="Name"
-          label-for="name-input"
-          invalid-feedback="Name is required"
-          :state="nameState"
+          label="nama"
+          label-for="nama-input"
+          invalid-feedback="nama is required"
+          :state="namaState"
           >
           <b-form-input
-              id="name-input"
+              id="nama-input"
               v-model="detailPatient.nama"
-              :state="nameState"
+              :state="namaState"
               required
               disabled
           ></b-form-input>
           </b-form-group>
 
-          <!-- Input Address -->
+          <!-- Input alamat -->
           <b-form-group
-          label="Address"
-          label-for="address-input"
-          invalid-feedback="Address is required"
-          :state="addressState"
+          label="alamat"
+          label-for="alamat-input"
+          invalid-feedback="alamat is required"
+          :state="alamatState"
           >
           <b-form-input
-              id="address-input"
+              id="alamat-input"
               v-model="detailPatient.alamat"
-              :state="addressState"
+              :state="alamatState"
               required
               disabled
           ></b-form-input>
           </b-form-group>
 
-          <!-- Input Radio Gender -->
+          <!-- Input Radio jenis_kelamin -->
           <b-form-group
           label="Jenis Kelamin"
-          label-for="gender-input"
+          label-for="jenis_kelamin-input"
           invalid-feedback="Jenis Kelamin is required"
-          :state="genderState"
+          :state="jenis_kelaminState"
           >
           <b-form-radio-group
               id="btn-radios-2"
@@ -278,24 +278,24 @@
               :options="options"
               button-variant="outline-primary"
               size="md"
-              name="radio-btn-outline"
+              nama="radio-btn-outline"
               buttons
               required
               disabled
           ></b-form-radio-group>
           </b-form-group>
 
-          <!-- Input Phone -->
+          <!-- Input no_hp -->
           <b-form-group
-          label="Phone"
-          label-for="phone-input"
-          invalid-feedback="Phone is required"
-          :state="phoneState"
+          label="no_hp"
+          label-for="no_hp-input"
+          invalid-feedback="no_hp is required"
+          :state="no_hpState"
           >
           <b-form-input
-              id="phone-input"
+              id="no_hp-input"
               v-model="detailPatient.nomor_hp"
-              :state="phoneState"
+              :state="no_hpState"
               required
               disabled
           ></b-form-input>
@@ -304,14 +304,14 @@
           <!-- Input Place of Birth -->
           <b-form-group
           label="Place of Birth"
-          label-for="placeOfBirth-input"
+          label-for="tempat_lahir-input"
           invalid-feedback="Place of Birth is required"
-          :state="placeOfBirthState"
+          :state="tempat_lahirState"
           >
           <b-form-input
-              id="placeOfBirth-input"
-              v-model="detailPatient.placeOfBirth"
-              :state="placeOfBirthState"
+              id="tempat_lahir-input"
+              v-model="detailPatient.tempat_lahir"
+              :state="tempat_lahirState"
               required
               disabled
           ></b-form-input>
@@ -320,14 +320,14 @@
           <!-- Input Date of Birth -->
           <b-form-group
           label="Date of Birth"
-          label-for="dateOfBirth-input"
+          label-for="tanggal_lahir-input"
           invalid-feedback="Date of Birth is required"
-          :state="dateOfBirthState"
+          :state="tanggal_lahirState"
           >
           <b-form-datepicker
-            id="dateOfBirth-datepicker"
-            v-model="detailPatient.dateOfBirth"
-            :state="dateOfBirthState"
+            id="tanggal_lahir-datepicker"
+            v-model="detailPatient.tanggal_lahir"
+            :state="tanggal_lahirState"
             required
             disabled
           ></b-form-datepicker>
@@ -336,14 +336,14 @@
           <!-- Input Jadwal Rawat Jalan -->
           <b-form-group
           label="Jadwal Rawat Jalan"
-          label-for="jadwalRawat-input"
+          label-for="jadwal_rawat_jalan-input"
           invalid-feedback="Jadwal Rawat is required"
-          :state="jadwalRawatState"
+          :state="jadwal_rawat_jalanState"
           >
           <b-form-datepicker
-            id="jadwalRawat-datepicker"
-            v-model="detailPatient.jadwalRawat"
-            :state="jadwalRawatState"
+            id="jadwal_rawat_jalan-datepicker"
+            v-model="detailPatient.jadwal_rawat_jalan"
+            :state="jadwal_rawat_jalanState"
             required
             disabled
           ></b-form-datepicker>
@@ -352,14 +352,14 @@
           <!-- No Antri of Birth -->
           <b-form-group
           label="No Antri"
-          label-for="noAntri-input"
+          label-for="nomer_antrian-input"
           invalid-feedback="No Antri is required"
-          :state="noAntriState"
+          :state="nomer_antrianState"
           >
           <b-form-input
-              id="noAntri-input"
-              v-model="detailPatient.noAntri"
-              :state="noAntriState"
+              id="nomer_antrian-input"
+              v-model="detailPatient.nomer_antrian"
+              :state="nomer_antrianState"
               required
               disabled
           ></b-form-input>
@@ -399,7 +399,7 @@
   components: { 
     navbar 
   },
-    name:'VuetifyPage',
+    nama:'VuetifyPage',
     data() {
       return {
         patients: [],
@@ -409,32 +409,32 @@
         indexSelected: '',
         form : {
           nik: '',
-          name: '',
-          address: '',
-          gender:'',
-          phone: '',
-          placeOfBirth: '',
-          dateOfBirth: '',
-          disease: '',
-          handling: '',
-          jadwalRawat: '',
-          noAntri: '',
-          ketRawat: '',
+          nama: '',
+          alamat: '',
+          jenis_kelamin:'',
+          no_hp: '',
+          tempat_lahir: '',
+          tanggal_lahir: '',
+          poli: '',
+          jenis_penanganan: '',
+          jadwal_rawat_jalan: '',
+          nomer_antrian: '',
+          keterangan: '',
           status: ''
         },
 
         nikState: null,
-        nameState: null,
-        addressState: null,
-        genderState: null,
-        phoneState: null,
-        placeOfBirthState: null,
-        dateOfBirthState: null,
-        diseaseState: null,
-        handlingState: null,
-        jadwalRawatState: null,
-        noAntriState: null,
-        ketRawatState: null,
+        namaState: null,
+        alamatState: null,
+        jenis_kelaminState: null,
+        no_hpState: null,
+        tempat_lahirState: null,
+        tanggal_lahirState: null,
+        poliState: null,
+        jenis_penangananState: null,
+        jadwal_rawat_jalanState: null,
+        nomer_antrianState: null,
+        keteranganState: null,
 
         selected: '',
         options: [
@@ -451,7 +451,7 @@
           { key: 'jadwal_rawat_jalan', label: 'Jadwal Rawat Jalan'},
           { key: 'nomer_antrian', label: 'Nomer Antrian'},
           { key: 'jenis_penanganan', label: 'Jenis Penanganan'},
-          { key: 'ketRawat', label: 'Keterangan Rawat Jalan'},
+          { key: 'keterangan', label: 'Keterangan Rawat Jalan'},
           { key: 'actions', label: 'Actions' },
           { key: 'proses', label: 'Selesai'}
         ],
@@ -491,8 +491,8 @@
       },
 
         async load() {
-            const response = await axios.get(`https://api-capstone-heroku.herokuapp.com/admin/rawat_jalan_lihat`)
-            this.patients = response.data.data
+            const response = await axios.get(`http://localhost:3000/patients`)
+            this.patients = response.data
             
             // Set the initial number of patients
             this.totalRows = this.patients.length
@@ -506,7 +506,7 @@
 
         async addPatient() {
           try {
-              await axios.post(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien_tambah`, this.form)
+              await axios.post(`http://localhost:3000/patients`, this.form)
               this.load()
           } catch (error) {
               console.log(error)
@@ -515,7 +515,7 @@
         async deletePatient(indexId) {
             if (confirm('Apakah Anda Akan Menghapus Data Ini?') == true) {
                 try {
-                    await axios.delete(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien_hapus/` + indexId)
+                    await axios.delete(`http://localhost:3000/patients/` + indexId)
                     this.load()
                 } catch (error) {
                     console.log(error)
@@ -529,19 +529,19 @@
 
         async updatePatient() {
             try {
-                await axios.put(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien_edit/` + this.indexSelected, {
+                await axios.put(`http://localhost:3000/patients/` + this.indexSelected, {
                     nik: this.detailPatient.nik,
-                    name: this.detailPatient.name,
-                    address: this.detailPatient.address,
-                    gender: this.detailPatient.gender,
-                    phone: this.detailPatient.phone,
-                    placeOfBirth: this.detailPatient.placeOfBirth,
-                    dateOfBirth: this.detailPatient.dateOfBirth,
-                    disease: this.detailPatient.disease,
-                    handling: this.detailPatient.handling,
-                    jadwalRawat: this.detailPatient.jadwalRawat,
-                    noAntri: this.detailPatient.noAntri,
-                    ketRawat: this.detailPatient.ketRawat
+                    nama: this.detailPatient.nama,
+                    alamat: this.detailPatient.alamat,
+                    jenis_kelamin: this.detailPatient.jenis_kelamin,
+                    no_hp: this.detailPatient.no_hp,
+                    tempat_lahir: this.detailPatient.tempat_lahir,
+                    tanggal_lahir: this.detailPatient.tanggal_lahir,
+                    poli: this.detailPatient.poli,
+                    jenis_penanganan: this.detailPatient.jenis_penanganan,
+                    jadwal_rawat_jalan: this.detailPatient.jadwal_rawat_jalan,
+                    nomer_antrian: this.detailPatient.nomer_antrian,
+                    keterangan: this.detailPatient.keterangan
                 })
                 this.load()
             } catch (error) {
@@ -553,17 +553,17 @@
             try {
                 await axios.put(`http://localhost:3000/patients/` + this.indexSelected, {
                     nik: this.detailPatient.nik,
-                    name: this.detailPatient.name,
-                    address: this.detailPatient.address,
-                    gender: this.detailPatient.gender,
-                    phone: this.detailPatient.phone,
-                    placeOfBirth: this.detailPatient.placeOfBirth,
-                    dateOfBirth: this.detailPatient.dateOfBirth,
-                    disease: this.detailPatient.disease,
-                    handling: this.detailPatient.handling,
-                    jadwalRawat: this.detailPatient.jadwalRawat,
-                    noAntri: this.detailPatient.noAntri,
-                    ketRawat: this.detailPatient.ketRawat,
+                    nama: this.detailPatient.nama,
+                    alamat: this.detailPatient.alamat,
+                    jenis_kelamin: this.detailPatient.jenis_kelamin,
+                    no_hp: this.detailPatient.no_hp,
+                    tempat_lahir: this.detailPatient.tempat_lahir,
+                    tanggal_lahir: this.detailPatient.tanggal_lahir,
+                    poli: this.detailPatient.poli,
+                    jenis_penanganan: this.detailPatient.jenis_penanganan,
+                    jadwal_rawat_jalan: this.detailPatient.jadwal_rawat_jalan,
+                    nomer_antrian: this.detailPatient.nomer_antrian,
+                    keterangan: this.detailPatient.keterangan,
                     status: payload
                 })
                 this.load()
@@ -575,34 +575,34 @@
         checkFormValidity() {
             const valid = this.$refs.form.checkValidity()
             this.nikState = valid
-            this.nameState = valid
-            this.addressState = valid
-            this.genderState = valid
-            this.phoneState = valid
-            this.placeOfBirthState = valid
-            this.dateOfBirthState = valid
-            this.ketRawatState = valid
+            this.namaState = valid
+            this.alamatState = valid
+            this.jenis_kelaminState = valid
+            this.no_hpState = valid
+            this.tempat_lahirState = valid
+            this.tanggal_lahirState = valid
+            this.keteranganState = valid
             return valid
         },
 
         resetModal() {
           this.form.nik = ''
-          this.form.name = ''
-          this.form.address = ''
-          this.form.gender = ''
-          this.form.phone = ''
-          this.form.placeOfBirth = ''
-          this.form.dateOfBirth = ''
-          this.form.ketRawat = ''
+          this.form.nama = ''
+          this.form.alamat = ''
+          this.form.jenis_kelamin = ''
+          this.form.no_hp = ''
+          this.form.tempat_lahir = ''
+          this.form.tanggal_lahir = ''
+          this.form.keterangan = ''
 
           this.nikState = null
-          this.nameState = null
-          this.addressState = null
-          this.genderState = null
-          this.phoneState = null
-          this.placeOfBirthState = null
-          this.dateOfBirthState = null
-          this.ketRawatState = null
+          this.namaState = null
+          this.alamatState = null
+          this.jenis_kelaminState = null
+          this.no_hpState = null
+          this.tempat_lahirState = null
+          this.tanggal_lahirState = null
+          this.keteranganState = null
 
           this.editMode = false
         },
@@ -671,31 +671,28 @@
         changeStatusUmum(item){
           this.getIndex(item)
           this.finishedTreatmentUmum(item.nomer_antrian)
-          this.updateStatusPatient(true)
         },
 
         changeStatusGigi(item){
           this.getIndex(item)
           this.finishedTreatmentGigi(item.nomer_antrian)
-          this.updateStatusPatient(true)
         },
 
         changeStatusKulit(item){
           this.getIndex(item)
           this.finishedTreatmentKulit(item.nomer_antrian)
-          this.updateStatusPatient(true)
         },
 
         changeStatusTht(item){
           this.getIndex(item)
           this.finishedTreatmentTht(item.nomer_antrian)
-          this.updateStatusPatient(true)
         },
 
         finishedTreatmentUmum(payload) {
           if (confirm('Apakah Pasien Selesai Berobat?') == true) {
             localStorage.setItem('noUmum', payload)
             this.$store.dispatch('changeNoUmum', payload)
+            this.updateStatusPatient(true)
           }
         },
 
@@ -703,6 +700,7 @@
           if (confirm('Apakah Pasien Selesai Berobat?') == true) {
             localStorage.setItem('noGigi', payload)
             this.$store.dispatch('changeNoGigi', payload)
+            this.updateStatusPatient(true)
           }
         },
 
@@ -710,6 +708,7 @@
           if (confirm('Apakah Pasien Selesai Berobat?') == true) {
             localStorage.setItem('noKulit', payload)
             this.$store.dispatch('changeNoKulit', payload)
+            this.updateStatusPatient(true)
           }
         },
 
@@ -717,6 +716,7 @@
           if (confirm('Apakah Pasien Selesai Berobat?') == true) {
             localStorage.setItem('noTht', payload)
             this.$store.dispatch('changeNoTht', payload)
+            this.updateStatusPatient(true)
           }
         }
     },
@@ -725,7 +725,7 @@
       {
         let user= localStorage.getItem('userLogin');
           if(!user){
-            this.$router.push({name:"LoginPage"})
+            this.$router.push({nama:"LoginPage"})
           }
       }
     },

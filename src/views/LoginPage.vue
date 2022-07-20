@@ -88,17 +88,13 @@ export default {
     async submit() {
      try {
       let result = await axios.get(`http://localhost:3000/users`,this.login)
-      console.log(result);
-      if(result.data[0].level==="admin" || result.data[1].level==="admin")
+      console.log(result.data);
+      if(this.login.email === result.data[0].email)
      { 
       localStorage.setItem("adminLogin",JSON.stringify(result.data))
       this.$router.push({name:"HomeAdmin"})
       this.error = null;
-     } else if (result.data[0].level==="dokter" || result.data[1].level==="dokter") {
-      localStorage.setItem("userLogin",JSON.stringify(result.data))
-      this.$router.push({name:"HomeDokter"})
-      this.error = null;
-     } else if (result.data[0].level==="perawat" || result.data[1].level==="perawat") {
+     } else if (this.login.email === result.data[1].email) {
       localStorage.setItem("userLogin",JSON.stringify(result.data))
       this.$router.push({name:"HomeDokter"})
       this.error = null;

@@ -3,10 +3,10 @@
     {
       "sip": "19301103 195903 1 01712",
       "nama": "Chan Can",
-      "email": "dokter@server",
+      "email": "admin@server",
       "password": "1234",
       "jenis_kelamin": "L",
-      "level": "dokter",
+      "level": "admin",
       "spesialis": "Jant",
       "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
       "str": "1821303554327688",
@@ -15,29 +15,14 @@
     {
       "sip": "19301103 195903 1 01712",
       "nama": "Chan Can",
-      "email": "admin@server",
+      "email": "dokter@server",
       "password": "1234",
       "jenis_kelamin": "L",
-      "level": "admin",
+      "level": "dokter",
       "spesialis": "Jant",
       "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
       "str": "1821303554327688",
       "id": 2
-    },
-    {
-      "email": "json@server",
-      "password": "1234",
-      "id": 3
-    },
-    {
-      "email": "admin@gmail.com",
-      "password": "1234",
-      "id": 4
-    },
-    {
-      "email": "admin@gmail.com",
-      "password": "1234",
-      "id": 5
     }
   ],
   "dokter": [
@@ -104,7 +89,7 @@
       "jadwal_rawat_jalan": "",
       "nomer_antrian": "",
       "keterangan": "",
-      "status": "",
+      "proses": "false",
       "id_dokter": "",
       "id": 1
     },
@@ -121,7 +106,7 @@
       "jadwal_rawat_jalan": "",
       "nomer_antrian": "",
       "keterangan": "",
-      "status": "",
+      "proses": "false",
       "id_dokter": "",
       "id": 2
     },
@@ -133,12 +118,12 @@
       "no_hp": "(406) 555-0120",
       "tempat_lahir": "New York",
       "tanggal_lahir": "2022-06-15",
-      "poli": "",
+      "poli": "THT",
       "jenis_penanganan": "",
       "jadwal_rawat_jalan": "",
       "nomer_antrian": "",
       "keterangan": "",
-      "status": "",
+      "proses": "false",
       "id_dokter": "",
       "id": 3
     },
@@ -150,12 +135,12 @@
       "no_hp": "089698289699",
       "tempat_lahir": "New York",
       "tanggal_lahir": "2022-06-15",
-      "poli": "",
+      "poli": "Kulit",
       "jenis_penanganan": "",
       "jadwal_rawat_jalan": "2022-07-01",
       "nomer_antrian": "",
       "keterangan": "",
-      "status": "",
+      "proses": "false",
       "id_dokter": "",
       "id": 4
     },
@@ -168,12 +153,12 @@
       "no_hp": "089698289699",
       "tempat_lahir": "New York",
       "tanggal_lahir": "2022-06-15",
-      "poli": "",
+      "poli": "Gigi",
       "jenis_penanganan": "",
       "jadwal_rawat_jalan": "",
       "nomer_antrian": "",
       "keterangan": "",
-      "status": "",
+      "proses": "false",
       "id_dokter": ""
     },
     {
@@ -185,12 +170,12 @@
       "no_hp": "(406) 555-0120",
       "tempat_lahir": "New York",
       "tanggal_lahir": "2022-06-15",
-      "poli": "",
+      "poli": "Umum",
       "jenis_penanganan": "",
       "jadwal_rawat_jalan": "",
       "nomer_antrian": "",
       "keterangan": "",
-      "status": "",
+      "proses": "false",
       "id_dokter": ""
     },
     {
@@ -202,12 +187,12 @@
       "no_hp": "(406) 555-0120",
       "tempat_lahir": "New York",
       "tanggal_lahir": "2022-06-15",
-      "poli": "",
+      "poli": "Umum",
       "jenis_penanganan": "",
       "jadwal_rawat_jalan": "",
       "nomer_antrian": "",
       "keterangan": "",
-      "status": "",
+      "proses": "false",
       "id_dokter": ""
     },
     {
@@ -219,12 +204,12 @@
       "no_hp": "089698289699",
       "tempat_lahir": "New York",
       "tanggal_lahir": "2022-06-15",
-      "poli": "",
+      "poli": "Kulit",
       "jenis_penanganan": "",
       "jadwal_rawat_jalan": "",
       "nomer_antrian": "",
       "keterangan": "",
-      "status": "",
+      "proses": "false",
       "id_dokter": ""
     },
     {
@@ -236,12 +221,12 @@
       "no_hp": "089698289699",
       "tempat_lahir": "New York",
       "tanggal_lahir": "2022-06-15",
-      "poli": "",
+      "poli": "THT",
       "jenis_penanganan": "",
       "jadwal_rawat_jalan": "",
       "nomer_antrian": "",
       "keterangan": "",
-      "status": "",
+      "proses": "false",
       "id_dokter": ""
     },
     {
@@ -253,12 +238,12 @@
       "no_hp": "(406) 555-0120",
       "tempat_lahir": "New York",
       "tanggal_lahir": "2022-06-15",
-      "poli": "",
+      "poli": "Gigi",
       "jenis_penanganan": "",
       "jadwal_rawat_jalan": "",
       "nomer_antrian": "",
       "keterangan": "",
-      "status": "",
+      "proses": "false",
       "id_dokter": ""
     },
     {
@@ -270,12 +255,12 @@
       "no_hp": "(406) 555-0120",
       "tempat_lahir": "New York",
       "tanggal_lahir": "2022-06-15",
-      "poli": "",
+      "poli": "Gigi",
       "jenis_penanganan": "",
       "jadwal_rawat_jalan": "",
       "nomer_antrian": "",
       "keterangan": "",
-      "status": "",
+      "proses": "false",
       "id_dokter": ""
     },
     {
@@ -286,13 +271,13 @@
       "no_hp": "(406) 555-0120",
       "tempat_lahir": "New York",
       "tanggal_lahir": "2022-06-15",
-      "poli": "",
+      "poli": "Kulit",
       "jenis_penanganan": "",
       "id": 12,
       "jadwal_rawat_jalan": "",
       "nomer_antrian": "",
       "keterangan": "",
-      "status": "",
+      "proses": "false",
       "id_dokter": ""
     },
     {
@@ -303,13 +288,13 @@
       "no_hp": "(406) 555-0120",
       "tempat_lahir": "New York",
       "tanggal_lahir": "2022-06-15",
-      "poli": "",
+      "poli": "Umum",
       "jenis_penanganan": "",
       "id": 13,
       "jadwal_rawat_jalan": "",
       "nomer_antrian": "",
       "keterangan": "",
-      "status": "",
+      "proses": "false",
       "id_dokter": ""
     },
     {
@@ -320,13 +305,13 @@
       "no_hp": "(406) 555-0120",
       "tempat_lahir": "New York",
       "tanggal_lahir": "2022-06-15",
-      "poli": "",
+      "poli": "THT",
       "jenis_penanganan": "",
       "id": 14,
       "jadwal_rawat_jalan": "",
       "nomer_antrian": "",
       "keterangan": "",
-      "status": "",
+      "proses": "false",
       "id_dokter": ""
     },
     {
@@ -343,7 +328,7 @@
       "jadwal_rawat_jalan": "",
       "nomer_antrian": "",
       "keterangan": "",
-      "status": "",
+      "proses": "false",
       "id_dokter": ""
     },
     {
@@ -356,7 +341,7 @@
       "tanggal_lahir": "2022-06-28",
       "poli": "",
       "jenis_penanganan": "",
-      "status": "",
+      "proses": "true",
       "jadwal_rawat_jalan": "",
       "nomer_antrian": "",
       "keterangan": "",
@@ -376,8 +361,7 @@
       "jadwal_rawat_jalan": "",
       "nomer_antrian": "U-5",
       "keterangan": "",
-      "status": "selesai",
-      "id_dokter": "4",
+      "proses": true,
       "id": 17
     },
     {
@@ -393,7 +377,7 @@
       "jadwal_rawat_jalan": "",
       "nomer_antrian": "G-2",
       "keterangan": "",
-      "status": "selesai",
+      "proses": "false",
       "id_dokter": "3",
       "id": 18
     },
@@ -410,7 +394,7 @@
       "jadwal_rawat_jalan": "",
       "nomer_antrian": "K-4",
       "keterangan": "",
-      "status": "selesai",
+      "proses": "false",
       "id_dokter": "2",
       "id": 19
     },
@@ -427,7 +411,7 @@
       "jadwal_rawat_jalan": "",
       "nomer_antrian": "T-3",
       "keterangan": "",
-      "status": "selesai",
+      "proses": "false",
       "id": 20
     }
   ]

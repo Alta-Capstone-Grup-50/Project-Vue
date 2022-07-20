@@ -5,27 +5,27 @@
       <div>
         <h3 class="margintop"><strong>Nomor Antri</strong></h3>
         <b-card-group>
-    <b-card title="Poli Umum">
+    <b-card title="Poli Umum" class="text-center">
       <b-card-text>
-        <h1 class="text-center">U - {{ noUmum }}</h1>
+        <h1 class="text-center">{{ noUmum }}</h1>
       </b-card-text>
     </b-card>
 
-    <b-card title="Poli Gigi">
+    <b-card title="Poli Gigi" class="text-center">
       <b-card-text>
-        <h1 class="text-center">G - {{ noGigi }}</h1>
+        <h1 class="text-center">{{ noGigi }}</h1>
       </b-card-text>
     </b-card>
 
-    <b-card title="Poli Kulit">
+    <b-card title="Poli Kulit" class="text-center">
       <b-card-text>
-        <h1 class="text-center">K - {{ noKulit }}</h1>
+        <h1 class="text-center">{{ noKulit }}</h1>
       </b-card-text>
     </b-card>
 
-    <b-card title="Poli THT">
+    <b-card title="Poli THT" class="text-center">
       <b-card-text>
-        <h1 class="text-center">T - {{ noTht }}</h1>
+        <h1 class="text-center">{{ noTht }}</h1>
       </b-card-text>
     </b-card>
   </b-card-group>
@@ -547,8 +547,8 @@
       },
 
         async load() {
-            const response = await axios.get(`https://api-capstone-heroku.herokuapp.com/admin/rawat_jalan_lihat`)
-            this.patients = response.data.data
+            const response = await axios.get(`http://localhost:3000/patients`)
+            this.patients = response.data
             
             // Set the initial number of patients
             this.totalRows = this.patients.length
@@ -562,7 +562,7 @@
 
         async addPatient() {
           try {
-              await axios.post(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien_tambah`, this.form)
+              await axios.post(`http://localhost:3000/patients`, this.form)
               this.load()
           } catch (error) {
               console.log(error)
@@ -585,7 +585,7 @@
 
         async updatePatient() {
             try {
-                await axios.put(`https://api-capstone-heroku.herokuapp.com/admin/rawat_jalan_edit/` + this.indexSelected, {
+                await axios.put(`http://localhost:3000/patients/` + this.indexSelected, {
                     nik: this.detailPatient.nik,
                     name: this.detailPatient.name,
                     address: this.detailPatient.address,

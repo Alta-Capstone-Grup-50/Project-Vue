@@ -508,8 +508,8 @@ import navbar from '@/components/NavbarDokter.vue'
       },
 
         async load() {
-            const response = await axios.get(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien`)
-            this.patients = response.data.data
+            const response = await axios.get(`http://localhost:3000/patients`)
+            this.patients = response.data
             
             // Set the initial number of patients
             this.totalRows = this.patients.length
@@ -523,7 +523,7 @@ import navbar from '@/components/NavbarDokter.vue'
 
         async addPatient() {
           try {
-              await axios.post(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien_tambah`, this.form)
+              await axios.post(`http://localhost:3000/patients`, this.form)
               this.load()
           } catch (error) {
               console.log(error)
@@ -532,7 +532,7 @@ import navbar from '@/components/NavbarDokter.vue'
         async deletePatient(indexId) {
             if (confirm('Apakah Anda Akan Menghapus Data Ini?') == true) {
                 try {
-                    await axios.delete(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien_hapus/` + indexId)
+                    await axios.delete(`http://localhost:3000/patients/` + indexId)
                     this.load()
                 } catch (error) {
                     console.log(error)
@@ -546,7 +546,7 @@ import navbar from '@/components/NavbarDokter.vue'
 
         async updatePatient() {
             try {
-                await axios.put(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien_edit/` + this.indexSelected, {
+                await axios.put(`http://localhost:3000/patients/` + this.indexSelected, {
                     nik: this.detailPatient.nik,
                     nama: this.detailPatient.nama,
                     alamat: this.detailPatient.alamat,
