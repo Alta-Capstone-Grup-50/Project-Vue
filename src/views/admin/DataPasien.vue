@@ -470,7 +470,7 @@
           invalid-feedback="Poli is required"
           :state="poliState"
           >
-          <b-form-select v-model="form.poli" :options="optionpoli"></b-form-select>
+          <b-form-select v-model="detailPatient.poli" :options="optionpoli"></b-form-select>
           </b-form-group>
         </form>
 
@@ -557,6 +557,10 @@ import navbar from '@/components/navbar.vue'
           tanggal_lahir: '',
           poli: '',
           jenis_penanganan: 'Rawat jalan',
+          jadwal_rawat_jalan: '',
+          nomer_antrian: '',
+          keterangan: '',
+          status: '',
         },
         nikState: null,
         namaState: null,
@@ -668,6 +672,11 @@ import navbar from '@/components/navbar.vue'
                     tempat_lahir: this.detailPatient.tempat_lahir,
                     tanggal_lahir: this.detailPatient.tanggal_lahir,
                     poli: this.detailPatient.poli,
+                    jenis_penanganan: 'Rawat jalan',
+                    jadwal_rawat_jalan: this.detailPatient.jadwal_rawat_jalan,
+                    nomer_antrian: this.detailPatient.nomer_antrian,
+                    keterangan: this.detailPatient.keterangan,
+                    status: this.detailPatient.status,
                 })
                 this.load()
             } catch (error) {
