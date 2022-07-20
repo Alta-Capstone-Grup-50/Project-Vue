@@ -87,18 +87,18 @@ export default {
   methods: {
     async submit() {
      try {
-      let result = await axios.post(`https://api-capstone-heroku.herokuapp.com/login`,this.login)
+      let result = await axios.get(`http://localhost:3000/users`,this.login)
       console.log(result);
-      if(result.status==200 && result.data.level==="admin")
+      if(result.data[0].level==="admin" || result.data[1].level==="admin")
      { 
       localStorage.setItem("adminLogin",JSON.stringify(result.data))
       this.$router.push({name:"HomeAdmin"})
       this.error = null;
-     } else if (result.status==200 && result.data.level==="dokter") {
+     } else if (result.data[0].level==="dokter" || result.data[1].level==="dokter") {
       localStorage.setItem("userLogin",JSON.stringify(result.data))
       this.$router.push({name:"HomeDokter"})
       this.error = null;
-     } else if (result.status==200 && result.data.level==="perawat") {
+     } else if (result.data[0].level==="perawat" || result.data[1].level==="perawat") {
       localStorage.setItem("userLogin",JSON.stringify(result.data))
       this.$router.push({name:"HomeDokter"})
       this.error = null;
