@@ -49,38 +49,38 @@
 
         <template #cell(proses)="row">
 
-          <div v-if="row.item.proses !== 'true'">
+          <div v-if="row.item.proses !== true">
             <!-- No Antri Umum -->
-            <!-- <b-button v-if="row.item.nomer_antrian.slice(0, 1) === 'U'"
+            <b-button v-if="row.item.nomer_antrian.slice(0, 1) === 'U'"
             size="sm"
             @click="changeStatusUmum(row.item)"
             >
               Selesai
-            </b-button> -->
+            </b-button>
 
             <!-- No Antri Gigi -->
-            <!-- <b-button v-if="row.item.disease === 'gigi'"
+            <b-button v-if="row.item.nomer_antrian.slice(0, 1) === 'G'"
             size="sm"
             @click="changeStatusGigi(row.item)"
             >
               Selesai
-            </b-button> -->
+            </b-button>
 
             <!-- No Antri Kulit -->
-            <!-- <b-button v-if="row.item.disease === 'kulit'"
+            <b-button v-if="row.item.nomer_antrian.slice(0, 1) === 'K'"
             size="sm"
             @click="changeStatusKulit(row.item)"
             >
               Selesai
-            </b-button> -->
+            </b-button>
 
             <!-- No Antri THT -->
-            <!-- <b-button v-if="row.item.disease === 'tht'"
+            <b-button v-if="row.item.nomer_antrian.slice(0, 1) === 'T'"
             size="sm"
             @click="changeStatusTht(row.item)"
             >
               Selesai
-            </b-button> -->
+            </b-button>
           </div>
 
           <div v-else>
@@ -670,48 +670,52 @@
 
         changeStatusUmum(item){
           this.getIndex(item)
-          this.finishedTreatmentUmum(item.noAntri)
-          this.updateStatusPatient('selesai')
+          this.finishedTreatmentUmum(item.nomer_antrian)
+          this.updateStatusPatient(true)
         },
 
         changeStatusGigi(item){
           this.getIndex(item)
-          this.finishedTreatmentGigi(item.noAntri)
-          this.updateStatusPatient('selesai')
+          this.finishedTreatmentGigi(item.nomer_antrian)
+          this.updateStatusPatient(true)
         },
 
         changeStatusKulit(item){
           this.getIndex(item)
-          this.finishedTreatmentKulit(item.noAntri)
-          this.updateStatusPatient('selesai')
+          this.finishedTreatmentKulit(item.nomer_antrian)
+          this.updateStatusPatient(true)
         },
 
         changeStatusTht(item){
           this.getIndex(item)
-          this.finishedTreatmentTht(item.noAntri)
-          this.updateStatusPatient('selesai')
+          this.finishedTreatmentTht(item.nomer_antrian)
+          this.updateStatusPatient(true)
         },
 
         finishedTreatmentUmum(payload) {
           if (confirm('Apakah Pasien Selesai Berobat?') == true) {
+            localStorage.setItem('noUmum', payload)
             this.$store.dispatch('changeNoUmum', payload)
           }
         },
 
         finishedTreatmentGigi(payload) {
           if (confirm('Apakah Pasien Selesai Berobat?') == true) {
+            localStorage.setItem('noGigi', payload)
             this.$store.dispatch('changeNoGigi', payload)
           }
         },
 
         finishedTreatmentKulit(payload) {
           if (confirm('Apakah Pasien Selesai Berobat?') == true) {
+            localStorage.setItem('noKulit', payload)
             this.$store.dispatch('changeNoKulit', payload)
           }
         },
 
         finishedTreatmentTht(payload) {
           if (confirm('Apakah Pasien Selesai Berobat?') == true) {
+            localStorage.setItem('noTht', payload)
             this.$store.dispatch('changeNoTht', payload)
           }
         }
