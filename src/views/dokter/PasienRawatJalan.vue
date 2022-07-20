@@ -43,14 +43,72 @@
           {{ row.index + 1 }}
         </template>
 
-        <template #cell(jadwal_rawat_jalan)="row">
-          <p v-if="row.item.jadwal_rawat_jalan === ''">-</p>
-          <p v-else>{{ row.item.jadwal_rawat_jalan }}</p>
+        <template #cell(jenis_penanganan)="row">
+          {{ row.item }}
         </template>
 
-        <template #cell(jenis_penanganan)="row">
-          <p v-if="row.item.jenis_penanganan === ''">-</p>
-          <p v-else>{{ row.item.jenis_penanganan }}</p>
+        <template #cell(proses)="row">
+
+          <div v-if="row.item.proses !== 'true'">
+            <!-- No Antri Umum -->
+            <!-- <b-button v-if="row.item.nomer_antrian.slice(0, 1) === 'U'"
+            size="sm"
+            @click="changeStatusUmum(row.item)"
+            >
+              Selesai
+            </b-button> -->
+
+            <!-- No Antri Gigi -->
+            <!-- <b-button v-if="row.item.disease === 'gigi'"
+            size="sm"
+            @click="changeStatusGigi(row.item)"
+            >
+              Selesai
+            </b-button> -->
+
+            <!-- No Antri Kulit -->
+            <!-- <b-button v-if="row.item.disease === 'kulit'"
+            size="sm"
+            @click="changeStatusKulit(row.item)"
+            >
+              Selesai
+            </b-button> -->
+
+            <!-- No Antri THT -->
+            <!-- <b-button v-if="row.item.disease === 'tht'"
+            size="sm"
+            @click="changeStatusTht(row.item)"
+            >
+              Selesai
+            </b-button> -->
+          </div>
+
+          <div v-else>
+            <b-iconstack font-scale="2">
+              <b-icon stacked icon="square"></b-icon>
+              <b-icon stacked icon="check"></b-icon>
+            </b-iconstack>
+          </div>
+
+          <!-- <b-form-checkbox
+            size="lg"
+            v-if="row.item.proses === true"
+            id="checkbox-1"
+            v-model="statusSelesai"
+            name="checkbox-1"
+            value="accepted"
+            unchecked-value="not_accepted"
+            disabled
+          >
+          </b-form-checkbox>
+          <b-button 
+          v-else
+          size="sm" 
+          @click="getIndex(row.item)"
+          variant="primary">
+            Selesai
+          </b-button> -->
+
         </template>
 
         <template #cell(ketRawat)="row">
@@ -81,47 +139,7 @@
           @click="getIndex(row.item)">
             Detail
           </b-button>
-
-          <div v-if="row.item.status !== 'selesai'">
-            <!-- No Antri Umum -->
-            <b-button v-if="row.item.disease === 'umum'"
-            size="sm"
-            @click="changeStatusUmum(row.item)"
-            >
-              Selesai
-            </b-button>
-
-            <!-- No Antri Gigi -->
-            <b-button v-if="row.item.disease === 'gigi'"
-            size="sm"
-            @click="changeStatusGigi(row.item)"
-            >
-              Selesai
-            </b-button>
-
-            <!-- No Antri Kulit -->
-            <b-button v-if="row.item.disease === 'kulit'"
-            size="sm"
-            @click="changeStatusKulit(row.item)"
-            >
-              Selesai
-            </b-button>
-
-            <!-- No Antri THT -->
-            <b-button v-if="row.item.disease === 'tht'"
-            size="sm"
-            @click="changeStatusTht(row.item)"
-            >
-              Selesai
-            </b-button>
-          </div>
-
-          <div v-else>
-            <b-iconstack font-scale="2">
-              <b-icon stacked icon="square"></b-icon>
-              <b-icon stacked icon="check"></b-icon>
-            </b-iconstack>
-          </div>
+          
         </template>
 
       </b-table>
@@ -434,7 +452,8 @@
           { key: 'nomer_antrian', label: 'Nomer Antrian'},
           { key: 'jenis_penanganan', label: 'Jenis Penanganan'},
           { key: 'ketRawat', label: 'Keterangan Rawat Jalan'},
-          { key: 'actions', label: 'Actions' }
+          { key: 'actions', label: 'Actions' },
+          { key: 'proses', label: 'Selesai'}
         ],
         totalRows: 1,
         currentPage: 1,
@@ -447,6 +466,8 @@
           content: ''
         },
         context: null,
+        statusSelesai: 'accepted',
+        statusBelumSelesai:'not_accepted'
       }
     },
 
@@ -470,7 +491,7 @@
       },
 
         async load() {
-            const response = await axios.get(`https://api-capstone-heroku.herokuapp.com/admin/rawat_jalan_lihat/gigi`)
+            const response = await axios.get(`https://api-capstone-heroku.herokuapp.com/admin/rawat_jalan_lihat`)
             this.patients = response.data.data
             
             // Set the initial number of patients
