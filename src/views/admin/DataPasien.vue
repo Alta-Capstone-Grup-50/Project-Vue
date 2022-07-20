@@ -23,9 +23,9 @@
         <div class="ms-auto">
         <b-button
           v-b-modal.add-modal-prevent-closing
-          variant="primary"
+          variant="success"
           class="shadow"
-          >
+          ><b-icon icon="plus-circle-fill" aria-hidden="true"></b-icon> 
           Tambah Pasien
           </b-button>
         </div>
@@ -38,7 +38,7 @@
             @show="resetModal"
             @hidden="resetModal"
             @ok="handleOkAddPatient"
-            size="xl"
+            size="md"
             >
             <form ref="form" @submit.stop.prevent="handleSubmitAddPatient()">
 
@@ -190,7 +190,7 @@
       striped hover
       borderless
       class="mt-3 shadow text-center rounded"
-      thead-class="bg-info text-white"
+      thead-class="bg-light text-black"
       responsive
       :filter-included-fields="filterOn"
       show-empty
@@ -202,13 +202,13 @@
       </template>
 
       <template #cell(actions)="row">
-        <b-button 
+        <a
         v-b-modal.detail-modal-prevent-closing 
         size="sm" 
         @click="getIndex(row.item)" 
-        class="mr-1">
+        class="mr-1 text-decoration-none">
           Detail
-        </b-button>
+        </a>
       </template>
 
     </b-table>
@@ -464,15 +464,15 @@
         <b-button 
         v-if="editMode === false"
         v-b-modal.detail-modal-prevent-closing 
-        size="lg" 
-        variant="secondary" 
+        size="md" 
+        variant="outline-secondary" 
         @click="changeEditMode()">
             Edit
         </b-button>
-        <b-button v-else size="lg" variant="danger" @click="deletePatient(indexSelected)">
+        <b-button v-else size="md" variant="outline-danger" @click="deletePatient(indexSelected)">
             Delete
         </b-button>
-        <b-button size="lg" variant="success" @click="ok()">
+        <b-button size="md" variant="primary" @click="ok()">
             Simpan
         </b-button>
       </template>

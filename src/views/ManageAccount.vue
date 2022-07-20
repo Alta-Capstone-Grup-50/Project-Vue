@@ -2,7 +2,7 @@
   <div>
     <navbar />
     <b-container class="mt-5">
-      <h3 class="margintop"><strong>Data Dokter & Perawat</strong></h3>
+      <h3 class="margintop"><strong>Detail Akun Tenaga Kesehatan</strong></h3>
       <div class="d-flex">
           <b-form-group
             label-for="filter-input"
@@ -23,9 +23,9 @@
         <div class="ms-auto">
         <b-button
           v-b-modal.add-modal-prevent-closing
-          variant="secondary"
+          variant="success"
           class="shadow"
-          >
+          ><b-icon icon="plus-circle-fill" aria-hidden="true"></b-icon> 
           Tambah Akun
           </b-button>
         </div>
@@ -40,7 +40,7 @@
             @show="resetModal"
             @hidden="resetModal"
             @ok="handleOkAddakun"
-            size="xl"
+            size="md"
             >
 
             <!-- Detail View Mode -->
@@ -105,7 +105,7 @@
       striped hover
       borderless
       class="mt-3 shadow text-center rounded"
-      thead-class="bg-info text-white"
+      thead-class="bg-secondary text-white"
       responsive
       :filter-included-fields="filterOn"
       show-empty
