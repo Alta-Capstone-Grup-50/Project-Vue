@@ -682,6 +682,7 @@ import navbar from '@/components/navbar.vue'
           this.poliState = null
 
           this.editMode = false
+          this.load()
         },
 
         selectionHandeOk(){
