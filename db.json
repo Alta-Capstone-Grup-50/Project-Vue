@@ -3,10 +3,10 @@
     {
       "sip": "19301103 195903 1 01712",
       "nama": "Chan Can",
-      "email": "json1@server",
+      "email": "dokter@server",
       "password": "1234",
       "jenis_kelamin": "L",
-      "tingkat": "1",
+      "level": "dokter",
       "spesialis": "Jant",
       "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
       "str": "1821303554327688",
@@ -15,10 +15,10 @@
     {
       "sip": "19301103 195903 1 01712",
       "nama": "Chan Can",
-      "email": "json@server",
+      "email": "admin@server",
       "password": "1234",
       "jenis_kelamin": "L",
-      "tingkat": "2",
+      "level": "admin",
       "spesialis": "Jant",
       "jadwal": "Senin - Minggu, 08.00-20.00 WIB",
       "str": "1821303554327688",
@@ -28,6 +28,16 @@
       "email": "json@server",
       "password": "1234",
       "id": 3
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "1234",
+      "id": 4
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "1234",
+      "id": 5
     }
   ],
   "dokter": [
@@ -40,7 +50,7 @@
       "str": "1821303554327688",
       "email": "json1@server",
       "password": "1234",
-      "tingkat": "1",
+      "level": "1",
       "id": 1
     },
     {
@@ -52,7 +62,7 @@
       "str": "1821303554327688",
       "email": "json1@server",
       "password": "1234",
-      "tingkat": "1",
+      "level": "1",
       "id": 2
     },
     {
@@ -64,7 +74,7 @@
       "str": "1821303554327688",
       "email": "json1@server",
       "password": "1234",
-      "tingkat": "1",
+      "level": "1",
       "id": 3
     },
     {
@@ -76,7 +86,7 @@
       "str": "1821303554327688",
       "email": "json1@server",
       "password": "1234",
-      "tingkat": "1",
+      "level": "1",
       "id": 4
     }
   ],
@@ -406,7 +416,7 @@
     },
     {
       "nik": "3507131606000005",
-      "nama": "THT",
+      "nama": "THTEEE",
       "alamat": "SULTAN AGUNG NO. 46",
       "jenis_kelamin": "P",
       "no_hp": "0896-9828-9699",
@@ -418,7 +428,6 @@
       "nomer_antrian": "3",
       "keterangan": "",
       "status": "selesai",
-      "id_dokter": "1",
       "id": 20
     }
   ]
