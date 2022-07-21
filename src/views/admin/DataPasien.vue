@@ -140,7 +140,7 @@
 
                 <!-- Input Date of Birth -->
                 <div>
-                  <label for="tanggal_lahir-input">Choose a date</label>
+                  <label for="tanggal_lahir-input">Tanggal Lahir</label>
                   <b-form-group
                     invalid-feedback="Tanggal Lahir is required"
                     :state="tanggal_lahirState">
@@ -330,7 +330,7 @@
 
           <!-- Input Date of Birth -->
           <div>
-            <label for="tanggal_lahir-input">Choose a date</label>
+            <label for="tanggal_lahir-input">Tanggal Lahir</label>
             <b-form-group
               invalid-feedback="Tanggal Lahir is required"
               :state="tanggal_lahirState">
@@ -479,7 +479,7 @@
 
           <!-- Input Date of Birth -->
           <div>
-            <label for="tanggal_lahir-input">Choose a date</label>
+            <label for="tanggal_lahir-input">Tanggal Lahir</label>
             <b-form-group
               invalid-feedback="Tanggal Lahir is required"
               :state="tanggal_lahirState">
