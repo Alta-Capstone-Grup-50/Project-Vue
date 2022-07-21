@@ -5,16 +5,16 @@ import createPersistedState from "vuex-persistedstate"
 Vue.use(Vuex)
 
 const persistedDataState = createPersistedState({
-  paths: ["noUmum"],
+  paths: ["noUmum", "noGigi", "noKulit", "noTht"],
 })
 
 export default new Vuex.Store({
   plugins: [persistedDataState],
   state: {
-    noUmum: [],
-    noGigi: [],
-    noKulit: [],
-    noTht: [],
+    noUmum: '',
+    noGigi: '',
+    noKulit: '',
+    noTht: '',
   },
   mutations: {
     setNoUmum(state, payload){

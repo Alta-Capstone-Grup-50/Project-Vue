@@ -48,9 +48,9 @@
 
               <!-- Input nama -->
               <b-form-group
-              label="Nama"
+              label="nama"
               label-for="nama-input"
-              invalid-feedback="Nama is required"
+              invalid-feedback="nama is required"
               :state="namaState"
               >
               <b-form-input
@@ -93,7 +93,7 @@
 
                 <!-- Input Level -->
                 <b-form-group
-                label="Pekerejaan"
+                label="Pekerjaan"
                 label-for="level-input"
                 invalid-feedback="Pekerjaan is required"
                 :state="levelState"
@@ -161,9 +161,9 @@
         <form v-if="editMode === false" ref="form" @submit.stop.prevent="handleSubmitAddakun()">
         <!-- Input nama -->
               <b-form-group
-              label="Nama"
+              label="nama"
               label-for="nama-input"
-              invalid-feedback="Nama is required"
+              invalid-feedback="nama is required"
               :state="namaState"
               >
               <b-form-input
@@ -232,7 +232,7 @@
         <form v-else ref="form" @submit.stop.prevent="handleSubmitAddakun()">
         <!-- Input nama -->
               <b-form-group
-              label="Nama"
+              label="nama"
               label-for="nama-input"
               invalid-feedback="nama is required"
               :state="namaState"
@@ -383,7 +383,6 @@ import navbar from '@/components/navbar.vue'
           { key: 'jenis_kelamin', label: 'Jenis Kelamin'},
           { key: 'email', label: 'Email'},
           { key: 'password', label: 'Password'},
-          { key: 'actions', label: 'Actions'},
         ],
         totalRows: 1,
         currentPage: 1,

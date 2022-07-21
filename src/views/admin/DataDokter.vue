@@ -40,6 +40,7 @@
       <template v-slot:cell(index)="row">
         {{ row.index + 1 }}
       </template>
+
       <template #cell(dokter)="row">
        {{ row.item.dokter + 1 }} {{ row.item.dokter }} {{ row.item.last }}
       </template>
@@ -359,12 +360,12 @@
         fields: [
           
           { key: 'index', label: 'No'},
-          { key: 'sip', label: 'SIP'},
-          { key: 'nama_dokter', label: 'Nama'},
-          { key: 'poli', label: 'poli'},
-          { key: 'jenis_kelamin', label: 'Jenis Kelamin'},
-          { key: 'jadwal_praktek', label: 'Jadwal Praktek'},
-          { key: 'nomor_str', label: 'Nomor STR'},
+          { key: 'Sip', label: 'SIP'},
+          { key: 'Nama', label: 'Nama'},
+          { key: 'Jenis_kelamin', label: 'Jenis Kelamin'},
+          { key: 'Poli', label: 'Poli'},
+          { key: 'Jadwal_praktek', label: 'Jadwal Praktek'},
+          { key: 'Nomor_str', label: 'Nomor STR'},
           { key: 'actions', label: 'Actions' }
         ],
         totalRows: 1,

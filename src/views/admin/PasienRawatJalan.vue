@@ -527,7 +527,6 @@
           { key: 'nama', label: 'Nama'},
           { key: 'jenis_kelamin', label: 'Jenis Kelamin'},
           { key: 'jadwal_rawat_jalan', label: 'Jadwal Rawat Jalan'},
-          { key: 'poli', label: 'Poli'},
           { key: 'nomer_antrian', label: 'Nomer Antrian'},
           { key: 'ketRawat', label: 'Ket. Rawat Jalan'},
           { key: 'actions', label: 'Actions' },
