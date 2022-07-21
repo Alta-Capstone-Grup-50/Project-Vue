@@ -31,6 +31,8 @@
         </div>
       </div>
         <b-col cols="4" class="col2">
+
+          <!-- Modal Tambah Pasien -->
           <b-modal
             id="add-modal-prevent-closing"
             ref="modal"
@@ -59,9 +61,9 @@
 
                 <!-- Input Name -->
                 <b-form-group
-                label="Name"
+                label="Nama"
                 label-for="name-input"
-                invalid-feedback="Name is required"
+                invalid-feedback="Nama is required"
                 :state="namaState"
                 >
                 <b-form-input
@@ -74,9 +76,9 @@
 
                 <!-- Input alamat -->
                 <b-form-group
-                label="alamat"
+                label="Alamat"
                 label-for="alamat-input"
-                invalid-feedback="alamat is required"
+                invalid-feedback="Alamat is required"
                 :state="alamatState"
                 >
                 <b-form-input
@@ -108,9 +110,9 @@
 
                 <!-- Input no_hp -->
                 <b-form-group
-                label="Nomor Telfon"
+                label="Nomor Telepon"
                 label-for="no_hp-input"
-                invalid-feedback="Nomor Telfon is required"
+                invalid-feedback="Nomor Telepon is required"
                 :state="no_hpState"
                 >
                 <b-form-input
@@ -159,20 +161,6 @@
                 :state="poliState"
                 >
                 <b-form-select v-model="form.poli" :options="optionpoli"></b-form-select>
-                </b-form-group>
-                <!-- Input Penanganan -->
-                <b-form-group
-                label="Penanganan"
-                label-for="jenis_penangananr-input"
-                invalid-feedback="Penanganan is required"
-                :state="tempat_lahirState"
-                >
-                <b-form-input
-                    id="jenis_penanganan-input"
-                    v-model="form.jenis_penanganan"
-                    :state="jenis_penangananState"
-                    required
-                ></b-form-input>
                 </b-form-group>
 
           </form>
@@ -341,6 +329,22 @@
             disabled
           ></b-form-input>
           </b-form-group>
+
+          <!-- Input Disease -->
+          <b-form-group
+          label="Poli"
+          label-for="disease-input"
+          invalid-feedback="Poli is required"
+          :state="poliState"
+          >
+          <b-form-input
+            id="tanggal_lahir-datepicker"
+            v-model="detailPatient.poli"
+            :state="tanggal_lahirState"
+            required
+            disabled
+          ></b-form-input>
+          </b-form-group>
         </form>
 
       <!-- Detail Edit Mode -->
@@ -458,6 +462,16 @@
             required
           ></b-form-datepicker>
           </b-form-group>
+
+          <!-- Input Disease -->
+          <b-form-group
+          label="Poli"
+          label-for="disease-input"
+          invalid-feedback="Poli is required"
+          :state="poliState"
+          >
+          <b-form-select v-model="form.poli" :options="optionpoli"></b-form-select>
+          </b-form-group>
         </form>
 
       <template #modal-footer="{ ok }">
@@ -469,11 +483,36 @@
         @click="changeEditMode()">
             Edit
         </b-button>
-        <b-button v-else size="md" variant="outline-danger" @click="deletePatient(indexSelected)">
-            Delete
+        
+        <b-button v-else 
+        v-b-modal.modal-warning
+        size="md"
+        variant="outline-danger">
+          Delete
         </b-button>
         <b-button size="md" variant="primary" @click="ok()">
-            Simpan
+          Simpan
+        </b-button>
+      </template>
+      </b-modal>
+
+      <!-- Modal Warning Delete -->
+      <b-modal id="modal-warning" centered>
+        <div class="text-center">
+          <b-icon-exclamation-triangle-fill 
+          class="h1"
+          variant="warning">
+          </b-icon-exclamation-triangle-fill>
+        </div>
+        <h2 class="text-center">HAPUS DATA</h2>
+        <p class="text-center">Apa Anda yakin akan menghapus data ini?</p>
+
+        <template #modal-footer="{ close }">
+        <b-button size="lg" variant="secondary" @click="close()">
+            Batal
+        </b-button>
+        <b-button size="lg" variant="danger" @click="deletePatient(indexSelected)">
+            Ya, yakin
         </b-button>
       </template>
       </b-modal>
@@ -518,17 +557,7 @@ import navbar from '@/components/navbar.vue'
           tempat_lahir: '',
           tanggal_lahir: '',
           poli: '',
-          jenis_penanganan:''
-        },
-        editForm: {
-            nik: '',
-            nama: '',
-            alamat: '',
-            jenis_kelamin:'',
-            no_hp: '',
-            tempat_lahir: '',
-            tanggal_lahir: '',
-            poli: ''
+          jenis_penanganan: 'Rawat jalan',
         },
         nikState: null,
         namaState: null,
@@ -537,7 +566,6 @@ import navbar from '@/components/navbar.vue'
         no_hpState: null,
         tempat_lahirState: null,
         tanggal_lahirState: null,
-        jenis_penangananState: null,
         poliState: null,
         selected: '',
         options: [
@@ -545,9 +573,9 @@ import navbar from '@/components/navbar.vue'
             { text: 'Perempuan', value: 'P' },
         ],
         optionpoli: [
-          { value: 'umum', text: 'Umum' },
-          { value: 'gigi', text: 'Gigi' },
-          { value: 'kulit', text: 'Kulit' },
+          { value: 'Umum', text: 'Umum' },
+          { value: 'Gigi', text: 'Gigi' },
+          { value: 'Kulit', text: 'Kulit' },
           { value: 'THT', text: 'THT' }
         ],
         items: [],
@@ -557,8 +585,7 @@ import navbar from '@/components/navbar.vue'
           { key: 'nama', label: 'Nama'},
           { key: 'alamat', label: 'Alamat'},
           { key: 'jenis_kelamin', label: 'Jenis Kelamin'},
-          { key: 'Rekam_medis[0].poli', label: 'Jenis Penyakit'},
-          { key: 'Rekam_medis[0].jenis_penanganan', label: 'Jenis Penanganan'},
+          { key: 'poli', label: 'Poli'},
           { key: 'actions', label: 'Actions' }
         ],
         totalRows: 1,
@@ -617,17 +644,16 @@ import navbar from '@/components/navbar.vue'
           }
         },
         async deletePatient(indexId) {
-            if (confirm('Apakah Anda Akan Menghapus Data Ini?') == true) {
-                try {
-                    await axios.delete(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien_hapus/` + indexId)
+            try {
+                await axios.delete(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien_hapus/` + indexId)
 
-                    this.load()
-                } catch (error) {
-                    console.log(error)
-                }
+                this.load()
+            } catch (error) {
+                console.log(error)
             }
             this.$nextTick(() => {
                 this.$bvModal.hide('detail-modal-prevent-closing')
+                this.$bvModal.hide('modal-warning')
                 this.editMode = false
             })
         },
@@ -682,6 +708,7 @@ import navbar from '@/components/navbar.vue'
           this.poliState = null
 
           this.editMode = false
+          this.load()
         },
 
         selectionHandeOk(){

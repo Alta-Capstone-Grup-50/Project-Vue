@@ -43,14 +43,72 @@
           {{ row.index + 1 }}
         </template>
 
-        <template #cell(jadwalRawat)="row">
-          <p v-if="row.item.jadwalRawat === ''">--</p>
-          <p v-else>{{ row.item.jadwalRawat }}</p>
+        <template #cell(jenis_penanganan)="row">
+          {{ row.item }}
         </template>
 
-        <template #cell(noAntri)="row">
-          <p v-if="row.item.noAntri === ''">--</p>
-          <p v-else>{{ row.item.noAntri }}</p>
+        <template #cell(proses)="row">
+
+          <div v-if="row.item.proses !== true">
+            <!-- No Antri Umum -->
+            <b-button v-if="row.item.nomer_antrian.slice(0, 1) === 'U'"
+            size="sm"
+            @click="changeStatusUmum(row.item)"
+            >
+              Selesai
+            </b-button>
+
+            <!-- No Antri Gigi -->
+            <b-button v-if="row.item.nomer_antrian.slice(0, 1) === 'G'"
+            size="sm"
+            @click="changeStatusGigi(row.item)"
+            >
+              Selesai
+            </b-button>
+
+            <!-- No Antri Kulit -->
+            <b-button v-if="row.item.nomer_antrian.slice(0, 1) === 'K'"
+            size="sm"
+            @click="changeStatusKulit(row.item)"
+            >
+              Selesai
+            </b-button>
+
+            <!-- No Antri THT -->
+            <b-button v-if="row.item.nomer_antrian.slice(0, 1) === 'T'"
+            size="sm"
+            @click="changeStatusTht(row.item)"
+            >
+              Selesai
+            </b-button>
+          </div>
+
+          <div v-else>
+            <b-iconstack font-scale="2">
+              <b-icon stacked icon="square"></b-icon>
+              <b-icon stacked icon="check"></b-icon>
+            </b-iconstack>
+          </div>
+
+          <!-- <b-form-checkbox
+            size="lg"
+            v-if="row.item.proses === true"
+            id="checkbox-1"
+            v-model="statusSelesai"
+            name="checkbox-1"
+            value="accepted"
+            unchecked-value="not_accepted"
+            disabled
+          >
+          </b-form-checkbox>
+          <b-button 
+          v-else
+          size="sm" 
+          @click="getIndex(row.item)"
+          variant="primary">
+            Selesai
+          </b-button> -->
+
         </template>
 
         <template #cell(ketRawat)="row">
@@ -81,47 +139,7 @@
           @click="getIndex(row.item)">
             Detail
           </b-button>
-
-          <div v-if="row.item.status !== 'selesai'">
-            <!-- No Antri Umum -->
-            <b-button v-if="row.item.disease === 'umum'"
-            size="sm"
-            @click="changeStatusUmum(row.item)"
-            >
-              Selesai
-            </b-button>
-
-            <!-- No Antri Gigi -->
-            <b-button v-if="row.item.disease === 'gigi'"
-            size="sm"
-            @click="changeStatusGigi(row.item)"
-            >
-              Selesai
-            </b-button>
-
-            <!-- No Antri Kulit -->
-            <b-button v-if="row.item.disease === 'kulit'"
-            size="sm"
-            @click="changeStatusKulit(row.item)"
-            >
-              Selesai
-            </b-button>
-
-            <!-- No Antri THT -->
-            <b-button v-if="row.item.disease === 'tht'"
-            size="sm"
-            @click="changeStatusTht(row.item)"
-            >
-              Selesai
-            </b-button>
-          </div>
-
-          <div v-else>
-            <b-iconstack font-scale="2">
-              <b-icon stacked icon="square"></b-icon>
-              <b-icon stacked icon="check"></b-icon>
-            </b-iconstack>
-          </div>
+          
         </template>
 
       </b-table>
@@ -224,7 +242,7 @@
           >
           <b-form-input
               id="name-input"
-              v-model="detailPatient.name"
+              v-model="detailPatient.nama"
               :state="nameState"
               required
               disabled
@@ -240,7 +258,7 @@
           >
           <b-form-input
               id="address-input"
-              v-model="detailPatient.address"
+              v-model="detailPatient.alamat"
               :state="addressState"
               required
               disabled
@@ -256,7 +274,7 @@
           >
           <b-form-radio-group
               id="btn-radios-2"
-              v-model="detailPatient.gender"
+              v-model="detailPatient.jenis_kelamin"
               :options="options"
               button-variant="outline-primary"
               size="md"
@@ -276,7 +294,7 @@
           >
           <b-form-input
               id="phone-input"
-              v-model="detailPatient.phone"
+              v-model="detailPatient.nomor_hp"
               :state="phoneState"
               required
               disabled
@@ -428,13 +446,14 @@
         fields: [
           { key: 'no', label: 'No'},
           { key: 'nik', label: 'NIK'},
-          { key: 'name', label: 'Nama'},
-          { key: 'address', label: 'Alamat'},
-          { key: 'gender', label: 'Jenis Kelamin'},
-          { key: 'jadwalRawat', label: 'Jadwal Rawat Jalan'},
-          { key: 'noAntri', label: 'Nomer Antrian'},
-          { key: 'ketRawat', label: 'Ket. Rawat Jalan'},
-          { key: 'actions', label: 'Actions' }
+          { key: 'nama', label: 'Nama'},
+          { key: 'jenis_kelamin', label: 'Jenis Kelamin'},
+          { key: 'jadwal_rawat_jalan', label: 'Jadwal Rawat Jalan'},
+          { key: 'nomer_antrian', label: 'Nomer Antrian'},
+          { key: 'jenis_penanganan', label: 'Jenis Penanganan'},
+          { key: 'ketRawat', label: 'Keterangan Rawat Jalan'},
+          { key: 'actions', label: 'Actions' },
+          { key: 'proses', label: 'Selesai'}
         ],
         totalRows: 1,
         currentPage: 1,
@@ -447,6 +466,8 @@
           content: ''
         },
         context: null,
+        statusSelesai: 'accepted',
+        statusBelumSelesai:'not_accepted'
       }
     },
 
@@ -470,8 +491,8 @@
       },
 
         async load() {
-            const response = await axios.get(`http://localhost:3000/patients`)
-            this.patients = response.data
+            const response = await axios.get(`https://api-capstone-heroku.herokuapp.com/admin/rawat_jalan_lihat`)
+            this.patients = response.data.data
             
             // Set the initial number of patients
             this.totalRows = this.patients.length
@@ -485,7 +506,7 @@
 
         async addPatient() {
           try {
-              await axios.post(`http://localhost:3000/patients`, this.form)
+              await axios.post(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien_tambah`, this.form)
               this.load()
           } catch (error) {
               console.log(error)
@@ -494,7 +515,7 @@
         async deletePatient(indexId) {
             if (confirm('Apakah Anda Akan Menghapus Data Ini?') == true) {
                 try {
-                    await axios.delete(`http://localhost:3000/patients/` + indexId)
+                    await axios.delete(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien_hapus/` + indexId)
                     this.load()
                 } catch (error) {
                     console.log(error)
@@ -508,7 +529,7 @@
 
         async updatePatient() {
             try {
-                await axios.put(`http://localhost:3000/patients/` + this.indexSelected, {
+                await axios.put(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien_edit/` + this.indexSelected, {
                     nik: this.detailPatient.nik,
                     name: this.detailPatient.name,
                     address: this.detailPatient.address,
@@ -649,48 +670,52 @@
 
         changeStatusUmum(item){
           this.getIndex(item)
-          this.finishedTreatmentUmum(item.noAntri)
-          this.updateStatusPatient('selesai')
+          this.finishedTreatmentUmum(item.nomer_antrian)
+          this.updateStatusPatient(true)
         },
 
         changeStatusGigi(item){
           this.getIndex(item)
-          this.finishedTreatmentGigi(item.noAntri)
-          this.updateStatusPatient('selesai')
+          this.finishedTreatmentGigi(item.nomer_antrian)
+          this.updateStatusPatient(true)
         },
 
         changeStatusKulit(item){
           this.getIndex(item)
-          this.finishedTreatmentKulit(item.noAntri)
-          this.updateStatusPatient('selesai')
+          this.finishedTreatmentKulit(item.nomer_antrian)
+          this.updateStatusPatient(true)
         },
 
         changeStatusTht(item){
           this.getIndex(item)
-          this.finishedTreatmentTht(item.noAntri)
-          this.updateStatusPatient('selesai')
+          this.finishedTreatmentTht(item.nomer_antrian)
+          this.updateStatusPatient(true)
         },
 
         finishedTreatmentUmum(payload) {
           if (confirm('Apakah Pasien Selesai Berobat?') == true) {
+            localStorage.setItem('noUmum', payload)
             this.$store.dispatch('changeNoUmum', payload)
           }
         },
 
         finishedTreatmentGigi(payload) {
           if (confirm('Apakah Pasien Selesai Berobat?') == true) {
+            localStorage.setItem('noGigi', payload)
             this.$store.dispatch('changeNoGigi', payload)
           }
         },
 
         finishedTreatmentKulit(payload) {
           if (confirm('Apakah Pasien Selesai Berobat?') == true) {
+            localStorage.setItem('noKulit', payload)
             this.$store.dispatch('changeNoKulit', payload)
           }
         },
 
         finishedTreatmentTht(payload) {
           if (confirm('Apakah Pasien Selesai Berobat?') == true) {
+            localStorage.setItem('noTht', payload)
             this.$store.dispatch('changeNoTht', payload)
           }
         }

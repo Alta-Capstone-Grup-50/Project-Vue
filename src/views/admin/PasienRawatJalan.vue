@@ -7,25 +7,25 @@
         <b-card-group>
     <b-card title="Poli Umum">
       <b-card-text>
-        <h1 class="text-center">U - {{ noUmum }}</h1>
+        <h1 class="text-center">{{ noUmum }}</h1>
       </b-card-text>
     </b-card>
 
     <b-card title="Poli Gigi">
       <b-card-text>
-        <h1 class="text-center">G - {{ noGigi }}</h1>
+        <h1 class="text-center">{{ noGigi }}</h1>
       </b-card-text>
     </b-card>
 
     <b-card title="Poli Kulit">
       <b-card-text>
-        <h1 class="text-center">K - {{ noKulit }}</h1>
+        <h1 class="text-center">{{ noKulit }}</h1>
       </b-card-text>
     </b-card>
 
     <b-card title="Poli THT">
       <b-card-text>
-        <h1 class="text-center">T - {{ noTht }}</h1>
+        <h1 class="text-center">{{ noTht }}</h1>
       </b-card-text>
     </b-card>
   </b-card-group>
@@ -547,7 +547,7 @@
       },
 
         async load() {
-            const response = await axios.get(`https://api-capstone-heroku.herokuapp.com/admin/rawat_jalan_lihat/gigi`)
+            const response = await axios.get(`https://api-capstone-heroku.herokuapp.com/admin/rawat_jalan_lihat`)
             this.patients = response.data.data
             
             // Set the initial number of patients
