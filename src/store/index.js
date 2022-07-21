@@ -1,16 +1,20 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createPersistedState from "vuex-persistedstate"
 
 Vue.use(Vuex)
 
+const persistedDataState = createPersistedState({
+  paths: ["noUmum"],
+})
+
 export default new Vuex.Store({
+  plugins: [persistedDataState],
   state: {
-    noUmum: null,
-    noGigi: null,
-    noKulit: null,
-    noTht: null,
-  },
-  getters: {
+    noUmum: [],
+    noGigi: [],
+    noKulit: [],
+    noTht: [],
   },
   mutations: {
     setNoUmum(state, payload){

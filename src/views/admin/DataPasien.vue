@@ -40,7 +40,7 @@
             @show="resetModal"
             @hidden="resetModal"
             @ok="handleOkAddPatient"
-            size="md"
+            size="lg"
             >
             <form ref="form" @submit.stop.prevent="handleSubmitAddPatient()">
 
@@ -139,19 +139,33 @@
                 </b-form-group>
 
                 <!-- Input Date of Birth -->
-                <b-form-group
-                label="Tanggal Lahir"
-                label-for="tanggal_lahir-datepicker"
-                invalid-feedback="Tanggal Lahir is required"
-                :state="tanggal_lahirState"
-                >
-                <b-form-datepicker
-                  id="tanggal_lahir-datepicker"
-                  v-model="form.tanggal_lahir"
-                  :state="tanggal_lahirState"
-                  required
-                ></b-form-datepicker>
-                </b-form-group>
+                <div>
+                  <label for="tanggal_lahir-input">Choose a date</label>
+                  <b-form-group
+                    invalid-feedback="Tanggal Lahir is required"
+                    :state="tanggal_lahirState">
+                    <b-input-group>
+                      <b-form-input
+                        id="tanggal_lahir-input"
+                        v-model="form.tanggal_lahir"
+                        type="text"
+                        placeholder="YYYY-MM-DD"
+                        autocomplete="off"
+                        required
+                      ></b-form-input>
+                      <b-input-group-append>
+                        <b-form-datepicker
+                          v-model="form.tanggal_lahir"
+                          right
+                          locale="en-US"
+                          aria-controls="tanggal_lahir-input"
+                          @context="onContext"
+                          required
+                        ></b-form-datepicker>
+                      </b-input-group-append>
+                    </b-input-group>
+                  </b-form-group>
+                </div>
 
                 <!-- Input Disease -->
                 <b-form-group
@@ -187,6 +201,10 @@
 
       <template v-slot:cell(index)="row">
         {{ row.index + 1 }}
+      </template>
+
+      <template #cell(alamat)="row">
+        {{ row.item }}
       </template>
 
       <template #cell(actions)="row">
@@ -315,20 +333,35 @@
           </b-form-group>
 
           <!-- Input Date of Birth -->
-          <b-form-group
-          label="Tanggal Lahir"
-          label-for="tanggal_lahir-datepicker"
-          invalid-feedback="Tanggal Lahir is required"
-          :state="tanggal_lahirState"
-          >
-          <b-form-input
-            id="tanggal_lahir-datepicker"
-            v-model="detailPatient.tanggal_lahir"
-            :state="tanggal_lahirState"
-            required
-            disabled
-          ></b-form-input>
-          </b-form-group>
+          <div>
+            <label for="tanggal_lahir-input">Choose a date</label>
+            <b-form-group
+              invalid-feedback="Tanggal Lahir is required"
+              :state="tanggal_lahirState">
+              <b-input-group>
+                <b-form-input
+                  id="tanggal_lahir-input"
+                  v-model="detailPatient.tanggal_lahir"
+                  type="text"
+                  placeholder="YYYY-MM-DD"
+                  autocomplete="off"
+                  required
+                  disabled
+                ></b-form-input>
+                <b-input-group-append>
+                  <b-form-datepicker
+                    v-model="detailPatient.tanggal_lahir"
+                    right
+                    locale="en-US"
+                    aria-controls="tanggal_lahir-input"
+                    @context="onContext"
+                    required
+                    disabled
+                  ></b-form-datepicker>
+                </b-input-group-append>
+              </b-input-group>
+            </b-form-group>
+          </div>
 
           <!-- Input Disease -->
           <b-form-group
@@ -449,19 +482,33 @@
           </b-form-group>
 
           <!-- Input Date of Birth -->
-          <b-form-group
-          label="Tanggal Lahir"
-          label-for="tanggal_lahir-input"
-          invalid-feedback="Tanggal Lahir is required"
-          :state="tanggal_lahirState"
-          >
-          <b-form-datepicker
-            id="tanggal_lahir-datepicker"
-            v-model="detailPatient.tanggal_lahir"
-            :state="tanggal_lahirState"
-            required
-          ></b-form-datepicker>
-          </b-form-group>
+          <div>
+            <label for="tanggal_lahir-input">Choose a date</label>
+            <b-form-group
+              invalid-feedback="Tanggal Lahir is required"
+              :state="tanggal_lahirState">
+              <b-input-group>
+                <b-form-input
+                  id="tanggal_lahir-input"
+                  v-model="detailPatient.tanggal_lahir"
+                  type="text"
+                  placeholder="YYYY-MM-DD"
+                  autocomplete="off"
+                  required
+                ></b-form-input>
+                <b-input-group-append>
+                  <b-form-datepicker
+                    v-model="detailPatient.tanggal_lahir"
+                    right
+                    locale="en-US"
+                    aria-controls="tanggal_lahir-input"
+                    @context="onContext"
+                    required
+                  ></b-form-datepicker>
+                </b-input-group-append>
+              </b-input-group>
+            </b-form-group>
+          </div>
 
           <!-- Input Disease -->
           <b-form-group
@@ -470,7 +517,7 @@
           invalid-feedback="Poli is required"
           :state="poliState"
           >
-          <b-form-select v-model="form.poli" :options="optionpoli"></b-form-select>
+          <b-form-select v-model="detailPatient.poli" :options="optionpoli"></b-form-select>
           </b-form-group>
         </form>
 
@@ -567,6 +614,7 @@ import navbar from '@/components/navbar.vue'
         tempat_lahirState: null,
         tanggal_lahirState: null,
         poliState: null,
+        formatted: '',
         selected: '',
         options: [
             { text: 'Laki-laki', value: 'L' },
@@ -760,6 +808,12 @@ import navbar from '@/components/navbar.vue'
         },
         changeEditMode() {
           this.editMode = true
+        },
+        onContext(ctx) {
+          // The date formatted in the locale, or the `label-no-date-selected` string
+          this.formatted = ctx.selectedFormatted
+          // The following will be an empty string until a valid date is entered
+          this.selected = ctx.selectedYMD
         }
     },
     mounted() {
