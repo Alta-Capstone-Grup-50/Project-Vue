@@ -478,18 +478,18 @@
         <b-button 
         v-if="editMode === false"
         v-b-modal.detail-modal-prevent-closing 
-        size="lg" 
-        variant="secondary" 
+        size="md" 
+        variant="outline-secondary" 
         @click="changeEditMode()">
             Edit
         </b-button>
         <b-button v-else 
         v-b-modal.modal-warning
-        size="lg" 
-        variant="danger">
+        size="md"
+        variant="outline-danger">
           Delete
         </b-button>
-        <b-button size="lg" variant="success" @click="ok()">
+        <b-button size="md" variant="primary" @click="ok()">
           Simpan
         </b-button>
       </template>
