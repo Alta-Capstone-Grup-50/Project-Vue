@@ -9,12 +9,12 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <b-navbar-nav class="ms-auto mb-2 mb-lg-0" >
-        <b-nav-item ><router-link class="text-decoration-none item text-black" to="/HomeAdmin">Home</router-link></b-nav-item>
-        <b-nav-item ><router-link class="text-decoration-none item text-black" to="/DataPasien">Data Pasien</router-link></b-nav-item>
-        <b-nav-item ><router-link class="text-decoration-none item text-black" to="/PasienRawatJalan">Data Rawat Jalan</router-link></b-nav-item>
-        <b-nav-item ><router-link class="text-decoration-none item text-black" to="/TenagaKesehatanPage">Data Tenaga Kesehatan</router-link></b-nav-item>
-        <b-nav-item ><router-link class="text-decoration-none item text-black" to="/ManageAccount">Manage Account</router-link></b-nav-item>
-        <b-button size="sm" v-on:click="logout" type="logout" class="btn btn-warning text-white">Logout</b-button>
+        <b-nav-item ><router-link class="text-decoration-none  text-black" to="/HomeAdmin">Home</router-link></b-nav-item>
+        <b-nav-item ><router-link class="text-decoration-none text-black" to="/DataPasien">Data Pasien</router-link></b-nav-item>
+        <b-nav-item ><router-link class="text-decoration-none  text-black" to="/PasienRawatJalan">Data Rawat Jalan</router-link></b-nav-item>
+        <b-nav-item ><router-link class="text-decoration-none text-black" to="/TenagaKesehatanPage">Data Tenaga Kesehatan</router-link></b-nav-item>
+        <b-nav-item ><router-link class="text-decoration-none text-black" to="/ManageAccount">Manage Account</router-link></b-nav-item>
+        <b-button v-on:click="logout" type="logout" variant="outline-danger" class="mb-2"><b-icon icon="box-arrow-right" aria-hidden="true"></b-icon> Logout</b-button>
       </b-navbar-nav>
     </div>
   </b-container>
@@ -36,10 +36,6 @@ export default {
 };
 </script>
 <style>
-.item {
-  font-weight: 700 !important;
-  font-size: 18px !important;
-  margin-left: 20px;
-}
+
 </style>
 

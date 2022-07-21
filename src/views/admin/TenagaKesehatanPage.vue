@@ -1,24 +1,29 @@
 <template>
-  <div class="text-center margintop">
+  <div class="text-center">
     <navbar />
-    <b-container class="mt-3">
+    <b-container>
+      <div>
+        <h6 class="margintop" ><strong>Data Tenaga Kesehatan</strong></h6>
+      </div>
       <div class="mt-5 mb-5 text-center mr-auto ml-auto">
         <div class="row justify-content-center">
-          <div class="col-6">
-            <div class="card border shadow">
-              <img src="https://i.postimg.cc/rpXF7vBX/Frame-12-1.png" class="card-img-top p-4" alt="">
-              <div class="card-body text-center">
-                <p class="card-text text-center"><router-link class="text-decoration-none text-black" to="/DataDokter"><strong>Data Dokter</strong></router-link></p>
-                <a href="#" class="btn btn-primary"><router-link class="text-decoration-none text-white" to="/DataDokter"><strong>Lebih Lanjut</strong></router-link></a>
+          <div class="col-12 col-md-6">
+            <div class="card border mx-auto text-white" >
+              <img src="https://i.postimg.cc/d3Kg3bG0/Rectangle-44.png" class="card-img border" alt="...">
+              <div class="card-img-overlay">
+               <div class="bg-text d-flex align-items-center center justify-content-center">
+                  <p class="card-text text-white text-center"><router-link class="text-decoration-none text-white" to="/DataDokter"><strong>Data Dokter</strong></router-link></p>
+                </div>
               </div>
             </div>
           </div>
-          <div class="col-6">
-            <div class="card border shadow">
-              <img src="https://i.postimg.cc/rpXF7vBX/Frame-12-1.png" class="card-img-top p-4" alt="">
-              <div class="card-body text-center">
-                <p class="card-text text-center"><router-link class="text-decoration-none text-black" to="/DataPerawat"><strong>Data Perawat</strong></router-link></p>
-                <a href="#" class="btn btn-primary"><router-link class="text-decoration-none text-white" to="/DataPerawat"><strong>Lebih Lanjut</strong></router-link></a>
+          <div class="col-12 col-md-6">
+            <div class="card mx-auto border text-white">
+              <img src="https://i.postimg.cc/9FrT5m8z/Rectangle-44.png" class="card-img border" alt="...">
+              <div class="card-img-overlay">
+               <div class="bg-text d-flex align-items-center center justify-content-center">
+                  <p class="card-text text-white text-center"><router-link class="text-decoration-none text-white" to="/DataPerawat"><strong>Data Perawat</strong></router-link></p>
+                </div>
               </div>
             </div>
           </div>
@@ -31,10 +36,10 @@
 <script>
 
 import navbar from '@/components/navbar.vue'
-export default {
+export default{
   components : {
-    navbar
-  },
+      navbar
+    },
    mounted()
     {
       let user= localStorage.getItem('adminLogin');
@@ -43,13 +48,24 @@ export default {
       } 
     }
 }
+
 </script>
 
 <style>
-div.card{
-   border-radius: 30px;
-}
+
 .margintop{
   margin-top: 150px;
+}
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.border {
+  border-radius: 30px !important;
+  background: rgba(34,34,34,0.75);
+  max-width: 420px;
+  max-height: 318px;
 }
 </style>

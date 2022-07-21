@@ -2,7 +2,7 @@
   <div>
   <navbar/>
   <b-container class="mt-5">
-  <h3><strong>Data Pasien</strong></h3>
+  <h3 class="margintop"><strong>Data Pasien</strong></h3>
       <div class="d-flex">
 
           <b-form-group
@@ -32,7 +32,7 @@
       striped hover
       borderless
       class="mt-3 shadow text-center rounded"
-      thead-class="bg-info text-white"
+      thead-class="bg-light text-black"
       responsive
       :filter-included-fields="filterOn"
       show-empty
@@ -378,7 +378,7 @@
         v-if="editMode === false"
         v-b-modal.detail-modal-prevent-closing 
         size="lg" 
-        variant="secondary" 
+        variant="outline-secondary text-black" 
         @click="changeEditMode()">
             Edit
         </b-button>
@@ -663,4 +663,7 @@ import navbar from '@/components/NavbarDokter.vue'
 </script>
   
 <style scoped>
+.margintop{
+  margin-top: 150px;
+}
 </style>

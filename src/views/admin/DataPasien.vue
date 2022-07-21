@@ -23,9 +23,9 @@
         <div class="ms-auto">
         <b-button
           v-b-modal.add-modal-prevent-closing
-          variant="primary"
+          variant="success"
           class="shadow"
-          >
+          ><b-icon icon="plus-circle-fill" aria-hidden="true"></b-icon> 
           Tambah Pasien
           </b-button>
         </div>
@@ -40,7 +40,7 @@
             @show="resetModal"
             @hidden="resetModal"
             @ok="handleOkAddPatient"
-            size="xl"
+            size="md"
             >
             <form ref="form" @submit.stop.prevent="handleSubmitAddPatient()">
 
@@ -178,7 +178,7 @@
       striped hover
       borderless
       class="mt-3 shadow text-center rounded"
-      thead-class="bg-info text-white"
+      thead-class="bg-light text-black"
       responsive
       :filter-included-fields="filterOn"
       show-empty
@@ -190,13 +190,13 @@
       </template>
 
       <template #cell(actions)="row">
-        <b-button 
+        <a
         v-b-modal.detail-modal-prevent-closing 
         size="sm" 
         @click="getIndex(row.item)" 
-        class="mr-1">
+        class="mr-1 text-decoration-none">
           Detail
-        </b-button>
+        </a>
       </template>
 
     </b-table>
@@ -483,6 +483,7 @@
         @click="changeEditMode()">
             Edit
         </b-button>
+        
         <b-button v-else 
         v-b-modal.modal-warning
         size="md"
