@@ -46,7 +46,7 @@
             <!-- Detail View Mode -->
             <form ref="form" @submit.stop.prevent="handleSubmitAddakun()">
 
-              <!-- Input Nama -->
+              <!-- Input nama -->
               <b-form-group
               label="Nama"
               label-for="nama-input"
@@ -89,6 +89,25 @@
                     :state="passwordState"
                     required
                 ></b-form-input>
+                </b-form-group>
+
+                <!-- Input Level -->
+                <b-form-group
+                label="Pekerejaan"
+                label-for="level-input"
+                invalid-feedback="Pekerjaan is required"
+                :state="levelState"
+                >
+                <b-form-radio-group
+                    id="btn-radios-2"
+                    v-model="form.level"
+                    :options="optionsLevel"
+                    button-variant="outline-primary"
+                    size="md"
+                    nama="radio-btn-outline"
+                    buttons
+                    required
+                ></b-form-radio-group>
                 </b-form-group>
           </form>
           </b-modal>
@@ -116,16 +135,6 @@
         {{ row.index + 1 }}
       </template>
 
-      <template #cell(disease)="row">
-        <p v-if="row.item.disease === ''">--</p>
-        <p v-else>{{ row.item.disease }}</p>
-      </template>
-
-      <template #cell(handling)="row">
-        <p v-if="row.item.handling === ''">--</p>
-        <p v-else>{{ row.item.handling }}</p>
-      </template>
-
       <template #cell(actions)="row">
         <b-button 
         v-b-modal.detail-modal-prevent-closing 
@@ -150,7 +159,7 @@
 
       <!-- Detail View Mode -->
         <form v-if="editMode === false" ref="form" @submit.stop.prevent="handleSubmitAddakun()">
-        <!-- Input Nama -->
+        <!-- Input nama -->
               <b-form-group
               label="Nama"
               label-for="nama-input"
@@ -159,7 +168,7 @@
               >
               <b-form-input
                   id="nama-input"
-                  v-model="form.nama"
+                  v-model="detailAkun.nama"
                   :state="namaState"
                   required
                   disabled
@@ -175,7 +184,7 @@
                 >
                 <b-form-input
                     id="email-input"
-                    v-model="form.email"
+                    v-model="detailAkun.email"
                     :state="emailState"
                     required
                     disabled
@@ -191,26 +200,46 @@
                 >
                 <b-form-input
                     id="password-input"
-                    v-model="form.password"
+                    v-model="detailAkun.password"
                     :state="passwordState"
                     required
                     disabled
                 ></b-form-input>
                 </b-form-group>
+
+                <!-- Input Level -->
+                <b-form-group
+                label="Pekerejaan"
+                label-for="level-input"
+                invalid-feedback="Pekerjaan is required"
+                :state="levelState"
+                >
+                <b-form-radio-group
+                    id="btn-radios-2"
+                    v-model="detailAkun.level"
+                    :options="optionsLevel"
+                    button-variant="outline-primary"
+                    size="md"
+                    nama="radio-btn-outline"
+                    buttons
+                    required
+                    disabled
+                ></b-form-radio-group>
+                </b-form-group>
         </form>
 
       <!-- Detail Edit Mode -->
         <form v-else ref="form" @submit.stop.prevent="handleSubmitAddakun()">
-        <!-- Input Nama -->
+        <!-- Input nama -->
               <b-form-group
               label="Nama"
               label-for="nama-input"
-              invalid-feedback="Nama is required"
+              invalid-feedback="nama is required"
               :state="namaState"
               >
               <b-form-input
                   id="nama-input"
-                  v-model="form.nama"
+                  v-model="detailAkun.nama"
                   :state="namaState"
                   required
               ></b-form-input>
@@ -225,7 +254,7 @@
                 >
                 <b-form-input
                     id="email-input"
-                    v-model="form.email"
+                    v-model="detailAkun.email"
                     :state="emailState"
                     required
                 ></b-form-input>
@@ -240,10 +269,29 @@
                 >
                 <b-form-input
                     id="password-input"
-                    v-model="form.password"
+                    v-model="detailAkun.password"
                     :state="passwordState"
                     required
                 ></b-form-input>
+                </b-form-group>
+
+                <!-- Input Level -->
+                <b-form-group
+                label="Pekerejaan"
+                label-for="level-input"
+                invalid-feedback="Pekerjaan is required"
+                :state="levelState"
+                >
+                <b-form-radio-group
+                    id="btn-radios-2"
+                    v-model="detailAkun.level"
+                    :options="optionsLevel"
+                    button-variant="outline-primary"
+                    size="md"
+                    nama="radio-btn-outline"
+                    buttons
+                    required
+                ></b-form-radio-group>
                 </b-form-group>
         </form>
 
@@ -302,8 +350,8 @@ import navbar from '@/components/navbar.vue'
           nama: '',
           email: '',
           password: '',
-          gender:'',
-          tingkat: '',
+          jenis_kelamin:'',
+          level: '',
           spesialis: '',
           jadwal: '',
           str: '',
@@ -312,8 +360,8 @@ import navbar from '@/components/navbar.vue'
         namaState: null,
         emailState: null,
         passwordState: null,
-        genderState: null,
-        tingkatState: null,
+        jenis_kelaminState: null,
+        levelState: null,
         spesialisState: null,
         jadwalState: null,
         strState: null,
@@ -322,15 +370,20 @@ import navbar from '@/components/navbar.vue'
             { text: 'Laki-laki', value: 'L' },
             { text: 'Perempuan', value: 'P' },
         ],
+        optionsLevel: [
+            { text: 'Dokter', value: 'dokter' },
+            { text: 'Perawat', value: 'perawat' },
+        ],
 
         items: [],
         fields: [
           { key: 'index', label: 'No'},
           { key: 'sip', label: 'SIP'},
           { key: 'nama', label: 'Nama'},
-          { key: 'gender', label: 'Jenis Kelamin'},
+          { key: 'jenis_kelamin', label: 'Jenis Kelamin'},
           { key: 'email', label: 'Email'},
           { key: 'password', label: 'Password'},
+          { key: 'actions', label: 'Actions'},
         ],
         totalRows: 1,
         currentPage: 1,
@@ -366,8 +419,8 @@ import navbar from '@/components/navbar.vue'
       },
 
         async load() {
-            const response = await axios.get(`http://localhost:3000/dokter`)
-            this.akuns = response.data
+            const response = await axios.get(`https://api-capstone-heroku.herokuapp.com/admin/akun_tampil`)
+            this.akuns = response.data.data
             
             // Set the initial number of akuns
             this.totalRows = this.akuns.length
@@ -381,16 +434,17 @@ import navbar from '@/components/navbar.vue'
 
         async addakun() {
           try {
-              await axios.post(`http://localhost:3000/dokter`, this.form)
+              await axios.post(`https://api-capstone-heroku.herokuapp.com/admin/akun_tambah`, this.form)
               this.load()
           } catch (error) {
               console.log(error)
+              window.alert(error.response.data.message)
           }
         },
         async deleteakun(indexId) {
             if (confirm('Apakah Anda Akan Menghapus Data Ini?') == true) {
                 try {
-                    await axios.delete(`http://localhost:3000/dokter` + indexId)
+                    await axios.delete(`https://api-capstone-heroku.herokuapp.com/admin/akun_hapus/` + indexId)
                     this.load()
                 } catch (error) {
                     console.log(error)
@@ -408,6 +462,7 @@ import navbar from '@/components/navbar.vue'
                     nama: this.detailAkun.nama,
                     email: this.detailAkun.email,
                     password: this.detailAkun.password,
+                    level: this.detailAkun.level
                 })
                 this.load()
             } catch (error) {
