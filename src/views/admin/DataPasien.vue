@@ -203,10 +203,6 @@
         {{ row.index + 1 }}
       </template>
 
-      <template #cell(alamat)="row">
-        {{ row.item }}
-      </template>
-
       <template #cell(actions)="row">
         <a
         v-b-modal.detail-modal-prevent-closing 
