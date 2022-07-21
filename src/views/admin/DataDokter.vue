@@ -31,7 +31,7 @@
       striped hover
       borderless
       class="mt-3 shadow text-center rounded"
-      thead-class="bg-info text-white"
+      thead-class="bg-light text-black"
       responsive
       :filter-included-fields="filterOn"
       show-empty
@@ -45,7 +45,7 @@
       </template>
 
       <template #cell(actions)="row">
-        <b-link class="text-decoration-none text-muted" size="sm" @click="getIndex(row.item)" v-b-modal.detail-modal-prevent-closing>
+        <b-link class="text-decoration-none" size="sm" @click="getIndex(row.item)" v-b-modal.detail-modal-prevent-closing>
           Detail
         </b-link>
       </template>
@@ -303,12 +303,12 @@
       v-if="editMode === false"
       v-b-modal.detail-modal-prevent-closing  
       squared
-      class="text-white"
-      variant="warning" 
+      class="text-black"
+      variant="outline-secondary" 
       @click="changeEditMode()">
           Edit
       </b-button>
-      <b-button v-else variant="danger" squared @click="deleteDokter(indexSelected)">
+      <b-button v-else variant="outline-danger" squared @click="deleteDokter(indexSelected)">
           Delete
       </b-button>
       <b-button variant="primary" squared @click="ok()">
