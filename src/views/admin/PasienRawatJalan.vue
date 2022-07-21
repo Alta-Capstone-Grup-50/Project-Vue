@@ -440,6 +440,12 @@
     components : {
       navbar
     },
+    created() {
+      this.antriUmum = JSON.parse(localStorage.getItem('noUmum')),
+      this.antriGigi = JSON.parse(localStorage.getItem('noGigi')),
+      this.antriKulit = JSON.parse(localStorage.getItem('noKulit')),
+      this.antriTht = JSON.parse(localStorage.getItem('noTht'))
+    },
     computed: {
       noUmum() {
         return this.$store.state.noUmum
@@ -458,6 +464,10 @@
     data() {
       return {
         patients: [],
+        antriUmum: [],
+        antriGigi: [],
+        antriKulit: [],
+        antriTht: [],
         detailPatient: [],
         editMode: false,
         indexNumber: '',
