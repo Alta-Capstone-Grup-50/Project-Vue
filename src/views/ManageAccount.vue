@@ -209,7 +209,7 @@
 
                 <!-- Input Level -->
                 <b-form-group
-                label="Pekerejaan"
+                label="Pekerjaan"
                 label-for="level-input"
                 invalid-feedback="Pekerjaan is required"
                 :state="levelState"
