@@ -124,7 +124,7 @@
       striped hover
       borderless
       class="mt-3 shadow text-center rounded"
-      thead-class="bg-secondary text-white"
+      thead-class="bg-light text-black"
       responsive
       :filter-included-fields="filterOn"
       show-empty

@@ -5,25 +5,25 @@
       <div>
         <h3 class="margintop"><strong>Nomor Antri</strong></h3>
         <b-card-group>
-    <b-card title="Poli Umum">
+    <b-card title="Poli Umum" class="text-center">
       <b-card-text>
         <h1 class="text-center">{{ noUmum }}</h1>
       </b-card-text>
     </b-card>
 
-    <b-card title="Poli Gigi">
+    <b-card title="Poli Gigi" class="text-center">
       <b-card-text>
         <h1 class="text-center">{{ noGigi }}</h1>
       </b-card-text>
     </b-card>
 
-    <b-card title="Poli Kulit">
+    <b-card title="Poli Kulit" class="text-center">
       <b-card-text>
         <h1 class="text-center">{{ noKulit }}</h1>
       </b-card-text>
     </b-card>
 
-    <b-card title="Poli THT">
+    <b-card title="Poli THT" class="text-center">
       <b-card-text>
         <h1 class="text-center">{{ noTht }}</h1>
       </b-card-text>
@@ -62,7 +62,7 @@
         striped hover
         borderless
         class="mt-3 shadow text-center rounded"
-        thead-class="bg-info text-white"
+        thead-class="bg-light text-black"
         responsive
         :filter-included-fields="filterOn"
         show-empty
@@ -71,6 +71,20 @@
 
         <template v-slot:cell(no)="row">
           {{ row.index + 1 }}
+        </template>
+
+        <template #cell(proses)="row">
+          <div v-if="row.item.proses === false">
+            <b-iconstack font-scale="2">
+              <b-icon stacked icon="square"></b-icon>
+            </b-iconstack>
+          </div>
+          <div v-else>
+            <b-iconstack font-scale="2">
+              <b-icon stacked icon="square"></b-icon>
+              <b-icon stacked icon="check"></b-icon>
+            </b-iconstack>
+          </div>
         </template>
 
         <template #cell(ketRawat)="row">
