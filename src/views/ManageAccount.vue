@@ -488,6 +488,7 @@ import navbar from '@/components/navbar.vue'
           this.passwordState = null
 
           this.editMode = false
+          this.load()
         },
 
         selectionHandeOk(){
