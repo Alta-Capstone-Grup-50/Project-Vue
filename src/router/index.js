@@ -1,22 +1,5 @@
 import Vue from "vue";
 import VuerRouter from "vue-router";
-import HomeAdmin from "@/views/admin/HomeAdmin";
-import DataDokter from "@/views/admin/DataDokter";
-import DataDokterFlowDokter from "@/views/dokter/DataDokter.vue"
-import HomeDokter from "@/views/dokter/HomeDokter";
-import TestPage from "@/views/TestPage.vue"
-
-import DataPerawat from "@/views/admin/DataPerawat"
-import TenagaKesehatan from "@/views/admin/TenagaKesehatanPage";
-import HomePage from "@/views/HomePage";
-import ManageAccount from "@/views/ManageAccount";
-import AddAccount from "@/views/AddAccount";
-import DataPerawatDokter from "@/views/dokter/DataPerawat.vue"
-import PasienRawatJalan from "@/views/admin/PasienRawatJalan.vue"
-import PasienRawatJalanDokter from "@/views/dokter/PasienRawatJalan.vue"
-import TenagaKesehatnDokter from "@/views/dokter/TenagaKesehatan.vue"
-import DataPasien from '@/views/admin/DataPasien.vue'
-import DataPasienDokter from '@/views/dokter/DataPasien.vue'
 import LoginPage from "@/views/LoginPage";
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 
@@ -33,100 +16,120 @@ Vue.use(VuerRouter);
 
 const routes = [
   {
-    path:"/",
-    name:"LoginPage",
-    component: LoginPage,
+    path: '/HomeAdmin',
+    name: 'HomeAdmin',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/HomeAdmin.vue')
   },
   {
+    path: '/DataPasien',
+    name: 'DataPasien',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/DataPasien.vue')
+  },
+  {
+    path: '/PasienRawatJalan',
+    name: 'PasienRawatJalan',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/PasienRawatJalan.vue')
+  },
+  {
+    path: '/DataDokter',
+    name: 'DataDokter',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/DataDokter.vue')
+  },
+  {
+    path: '/DataPerawat',
+    name: 'DataPerawat',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/DataPerawat.vue')
+  },
+  {
+    path: '/TenagaKesehatanPage',
+    name: 'TenagaKesehatan',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/TenagaKesehatanPage.vue')
+  },
+  {
+    path: '/ManageAccount',
+    name: 'ManageAccount',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/ManageAccount.vue')
+  },
+  {
+    path: '/DataDokterFlowDokter',
+    name: 'DataDokterDokter',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/dokter/DataDokter.vue')
+  },
+  {
+    path: '/DataPasienDokter',
+    name: 'DataPasienDokter',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/dokter/DataPasien.vue')
+  },
+  {
+    path: '/DataPerawatDokter',
+    name: 'DataPerawatDokter',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/dokter/DataPerawat.vue')
+  },
+  {
+    path: '/HomeDokter',
+    name: 'HomeDokter',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/dokter/HomeDokter.vue')
+  },
+  {
+    path: '/PasienRawatDokter',
+    name: 'PasienRawatJalan',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/dokter/PasienRawatJalan.vue')
+  },
+  {
+    path: '/TenagaKesehatan',
+    name: 'TenagaKesehatan',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/dokter/TenagaKesehatan.vue')
+  },
 
-    path: "/HomePage",
-    name: "HomePage",
-    component: HomePage,
-  },
   {
-    path: "/TestPage",
-    name: "TestPage",
-    component: TestPage,
-  },
-  {
-    path: "/ManageAccount",
-    name: "ManageAccount",
-    component: ManageAccount,
-  },
+    path: '/',
+    name: 'LoginPage',
+    component : LoginPage
+  }
+]
 
-  {
-    path:"/HomeAdmin",
-    name:"HomeAdmin",
-    component: HomeAdmin,
-  },
-  {
-    path:"/DataDokter",
-    name:"DataDokter",
-    component: DataDokter,
-  },
-  {
-    path:"/DataDokterFlowDokter",
-    name:"DataDokterFlowDokter",
-    component: DataDokterFlowDokter,
-  },
-  {
-    path: "/DataPasien",
-    name: "DataPasien",
-    component : DataPasien,
-  },
-  {
-
-    path: "/TenagaKesehatanPage",
-    name: "TenagaKesehatanPage",
-    component : TenagaKesehatan,
-  },
-  {
-
-    path: "/TenagaKesehatan",
-    name: "TenagaKesehatan",
-    component : TenagaKesehatnDokter,
-  },
-  {
-    path: "/PasienRawatJalan",
-    name: "PasienRawatJalan",
-    component : PasienRawatJalan,
-  },
-  {
-    path: "/DataPerawat",
-    name: "DataPerawat",
-    component : DataPerawat,
-  },
-  {
-    path: "/DataPerawatDokter",
-    name: "DataPerawatDokter",
-    component : DataPerawatDokter,
-  },
-  {
-    path:"/HomeDokter",
-    name:"HomeDokter",
-    component: HomeDokter,
-  },
-  {
-    path:"/PasienRawatDokter",
-    name:"PasienRawatDokter",
-    component: PasienRawatJalanDokter,
-  },
-  {
-    path: "/AddAccount",
-    name: "AddAccount",
-    component: AddAccount,
-  },
-  {
-    path: "/DataPasienDokter",
-    name: "DataPasienDokter",
-    component: DataPasienDokter,
-  },
-  
-];
 const router = new VuerRouter({
-    mode:"history",
-    base: "/",
-    routes,
-  });
-
-export default router;
+  mode:"history",
+  base: "/",
+  routes,
+});
+export default router

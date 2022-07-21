@@ -1,5 +1,5 @@
 <template>
-<nav class="navbar navbar-expand-lg navbar-light shadow bg-light" sticky fixed="top">
+<nav class="navbar fixed-top navbar-expand-lg navbar-light shadow bg-light" >
   <b-container>
     <a class="navbar-brand" href="#">
       <img src="https://i.postimg.cc/CKjq1Vg7/logo-klinik-1.png">
@@ -9,10 +9,10 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <b-navbar-nav class="ms-auto mb-2 mb-lg-0">
-        <b-nav-item ><router-link class="text-decoration-none  text-black" to="/HomeDokter"><strong>Home</strong></router-link></b-nav-item>
-        <b-nav-item ><router-link class="text-decoration-none text-black" to="/DataPasienDokter"><strong>Data Pasien</strong></router-link></b-nav-item>
-        <b-nav-item ><router-link class="text-decoration-none text-black" to="/PasienRawatDokter"><strong>Data Rawat Jalan</strong></router-link></b-nav-item>
-        <b-nav-item ><router-link class="text-decoration-none text-black" to="/TenagaKesehatan"><strong>Data Tenaga Kesehatan</strong></router-link></b-nav-item>
+        <b-nav-item ><router-link class="text-decoration-none  text-black" to="/HomeDokter">Home</router-link></b-nav-item>
+        <b-nav-item ><router-link class="text-decoration-none text-black" to="/DataPasienDokter">Data Pasien</router-link></b-nav-item>
+        <b-nav-item ><router-link class="text-decoration-none text-black" to="/PasienRawatDokter">Data Rawat Jalan</router-link></b-nav-item>
+        <b-nav-item ><router-link class="text-decoration-none text-black" to="/TenagaKesehatan">Data Tenaga Kesehatan</router-link></b-nav-item>
         <b-button v-on:click="logout" type="logout" variant="outline-danger" class="mb-2"><b-icon icon="box-arrow-right" aria-hidden="true"></b-icon> Logout</b-button>
       </b-navbar-nav>
     </div>
