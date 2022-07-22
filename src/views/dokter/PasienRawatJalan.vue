@@ -3,7 +3,7 @@
     <navbar />
     <b-container class="mt-5">
         <h3 class="margintop"><strong>Data Pasien Rawat Jalan</strong></h3>
-        <p>Umum : {{ noUmum }}</p>
+        <p>Gigi : {{ noGigi }}</p>
         <p>User ID : {{ userID }}</p>
         <div class="d-flex">
           <b-form-group

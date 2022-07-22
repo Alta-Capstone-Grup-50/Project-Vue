@@ -95,9 +95,9 @@ export default {
       this.$router.push({name:"HomeAdmin"})
       this.error = null;
      } else if (result.status==200 && result.data.level==="Dokter") {
+      this.$store.dispatch("changeUserID", result.data.id)
       localStorage.setItem("userLogin",JSON.stringify(result.data))
       this.$router.push({name:"HomeDokter"})
-      this.$store.dispatch("changeUserID", result.data.id)
       this.error = null;
      } else if (result.status==200 && result.data.level==="Perawat") {
       localStorage.setItem("userLogin",JSON.stringify(result.data))

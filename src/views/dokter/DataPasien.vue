@@ -42,10 +42,6 @@
         {{ row.index + 1 }}
       </template>
 
-      <template #cell(nik)="row">
-        {{ row.item }}
-      </template>
-
       <template #cell(actions)="row">
         <b-link class="text-decoration-none text-muted"
         v-b-modal.detail-modal-prevent-closing 
@@ -512,7 +508,7 @@ import navbar from '@/components/NavbarDokter.vue'
       },
 
         async load() {
-            const response = await axios.get(`https://api-capstone-heroku.herokuapp.com/dokter/rawat_jalan/`)
+            const response = await axios.get(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien`)
             this.patients = response.data.data
             
             // Set the initial number of patients
@@ -555,10 +551,10 @@ import navbar from '@/components/NavbarDokter.vue'
                     nama: this.detailPatient.nama,
                     alamat: this.detailPatient.alamat,
                     jenis_kelamin: this.detailPatient.jenis_kelamin,
+                    poli: this.detailPatient.poli,
                     no_hp: this.detailPatient.no_hp,
                     tempat_lahir: this.detailPatient.tempat_lahir,
                     tanggal_lahir: this.detailPatient.tanggal_lahir,
-                    poli: this.detailPatient.poli,
                     jenis_penanganan: this.detailPatient.jenis_penanganan
                 })
                 this.load()

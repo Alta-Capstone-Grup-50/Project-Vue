@@ -5,7 +5,7 @@ import createPersistedState from "vuex-persistedstate"
 Vue.use(Vuex)
 
 const persistedDataState = createPersistedState({
-  paths: ["noUmum", "noGigi", "noKulit", "noTht"],
+  paths: ["noUmum", "noGigi", "noKulit", "noTht", "userID"],
 })
 
 export default new Vuex.Store({

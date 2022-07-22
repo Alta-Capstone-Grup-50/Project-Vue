@@ -528,34 +528,13 @@
         </b-button>
         
         <b-button v-else 
-        v-b-modal.modal-warning
+        @click="deletePatient(indexSelected)"
         size="md"
         variant="outline-danger">
           Delete
         </b-button>
         <b-button size="md" variant="primary" @click="ok()">
           Simpan
-        </b-button>
-      </template>
-      </b-modal>
-
-      <!-- Modal Warning Delete -->
-      <b-modal id="modal-warning" centered>
-        <div class="text-center">
-          <b-icon-exclamation-triangle-fill 
-          class="h1"
-          variant="warning">
-          </b-icon-exclamation-triangle-fill>
-        </div>
-        <h2 class="text-center">HAPUS DATA</h2>
-        <p class="text-center">Apa Anda yakin akan menghapus data ini?</p>
-
-        <template #modal-footer="{ close }">
-        <b-button size="lg" variant="secondary" @click="close()">
-            Batal
-        </b-button>
-        <b-button size="lg" variant="danger" @click="deletePatient(indexSelected)">
-            Ya, yakin
         </b-button>
       </template>
       </b-modal>
@@ -688,18 +667,18 @@ import navbar from '@/components/navbar.vue'
           }
         },
         async deletePatient(indexId) {
-            try {
-                await axios.delete(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien_hapus/` + indexId)
-
-                this.load()
-            } catch (error) {
-                console.log(error)
-            }
-            this.$nextTick(() => {
-                this.$bvModal.hide('detail-modal-prevent-closing')
-                this.$bvModal.hide('modal-warning')
-                this.editMode = false
-            })
+          if (confirm('Apakah Anda Akan Menghapus Data Ini?') == true) {
+              try {
+                  await axios.delete(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien_hapus/` + indexId)
+                  this.load()
+              } catch (error) {
+                  console.log(error)
+              }
+          }
+          this.$nextTick(() => {
+              this.$bvModal.hide('detail-modal-prevent-closing')
+              this.editMode = false
+          })
         },
 
         async updatePatient() {
