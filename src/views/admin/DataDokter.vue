@@ -41,10 +41,6 @@
         {{ row.index + 1 }}
       </template>
 
-      <template #cell(dokter)="row">
-       {{ row.item.dokter + 1 }} {{ row.item.dokter }} {{ row.item.last }}
-      </template>
-
       <template #cell(actions)="row">
         <b-link class="text-decoration-none" size="sm" @click="getIndex(row.item)" v-b-modal.detail-modal-prevent-closing>
           Detail
@@ -71,6 +67,8 @@
     @ok="handleOkEditDokter"
     size="md"
     >
+
+      <!-- Detail View Mode -->
       <form v-if="editMode === false" ref="form" @submit.stop.prevent="handleSubmitAddDokter()">
       <!-- Data SIP -->
       <b-form-group
@@ -88,24 +86,25 @@
       ></b-form-input>
       </b-form-group>
 
-        <!-- Data nama_dokter -->
+        <!-- Data nama -->
         <b-form-group
         label="Nama"
-        label-for="nama_dokter-input"
-        invalid-feedback="Name is required"
+        label-for="nama-input"
+        invalid-feedback="Nama is required"
         :state="namaState"
         >
         <b-form-input
-            id="nama_dokter-input"
-            v-model="detailDokter.nama_dokter"
+            id="nama-input"
+            v-model="detailDokter.nama"
             :state="namaState"
             required
             disabled
         ></b-form-input>
         </b-form-group>
+
         <!-- Data No HP -->
         <b-form-group
-        label="Nomor Telefon"
+        label="Nomor Telepon"
         label-for="hp-input"
         invalid-feedback="Nomor Telefon is required"
         :state="nomor_telfonState"
@@ -139,18 +138,16 @@
 
         <!-- Data poli -->
         <b-form-group
-        label="Poli"
-        label-for="poli-input"
-        invalid-feedback="Poli is required"
-        :state="poliState"
+          label="Poli"
+          label-for="disease-input"
+          invalid-feedback="Poli is required"
+          :state="poliState"
         >
-        <b-form-input
-            id="poli-input"
-            v-model="detailDokter.poli"
-            :state="poliState"
-            required
-            disabled
-        ></b-form-input>
+        <b-form-select
+        v-model="detailDokter.poli"
+        :options="optionpoli"
+        disabled>
+        </b-form-select>
         </b-form-group>
 
         <!-- Data jadwal_praktek -->
@@ -203,7 +200,7 @@
       ></b-form-input>
       </b-form-group>
 
-        <!-- nama_dokter -->
+        <!-- nama -->
         <b-form-group
         label="Nama"
         label-for="name-input"
@@ -212,7 +209,7 @@
         >
         <b-form-input
             id="name-input"
-            v-model="detailDokter.nama_dokter"
+            v-model="detailDokter.nama"
             :state="namaState"
             required
 
@@ -252,18 +249,16 @@
 
         <!-- poli -->
         <b-form-group
-        label="Poli"
-        label-for="poli-input"
-        invalid-feedback="Poli is required"
-        :state="poliState"
+          label="Poli"
+          label-for="disease-input"
+          invalid-feedback="Poli is required"
+          :state="poliState"
         >
-        <b-form-input
-            id="poli-input"
-            v-model="detailDokter.poli"
-            :state="poliState"
-            required
-
-        ></b-form-input>
+        <b-form-select
+        v-model="detailDokter.poli"
+        :options="optionpoli"
+        >
+        </b-form-select>
         </b-form-group>
 
         <!-- jadwal_praktek -->
@@ -281,6 +276,7 @@
 
         ></b-form-input>
         </b-form-group>
+        
 
         <!-- STR -->
         <b-form-group
@@ -337,7 +333,7 @@
         indexSelected: '',
         form : {
           sip: '',
-          nama_dokter: '',
+          nama: '',
           nomor_telfon: '',
           jenis_kelamin:'',
           poli: '',
@@ -356,16 +352,22 @@
             { text: 'Laki-laki', value: 'L' },
             { text: 'Perempuan', value: 'P' },
         ],
+        optionpoli: [
+          { value: 'Umum', text: 'Umum' },
+          { value: 'Gigi', text: 'Gigi' },
+          { value: 'Kulit', text: 'Kulit' },
+          { value: 'THT', text: 'THT' }
+        ],
         items: [],
         fields: [
           
           { key: 'index', label: 'No'},
-          { key: 'Sip', label: 'SIP'},
-          { key: 'Nama', label: 'Nama'},
-          { key: 'Jenis_kelamin', label: 'Jenis Kelamin'},
-          { key: 'Poli', label: 'Poli'},
-          { key: 'Jadwal_praktek', label: 'Jadwal Praktek'},
-          { key: 'Nomor_str', label: 'Nomor STR'},
+          { key: 'sip', label: 'SIP'},
+          { key: 'nama', label: 'Nama'},
+          { key: 'jenis_kelamin', label: 'Jenis Kelamin'},
+          { key: 'poli', label: 'Poli'},
+          { key: 'jadwal_praktek', label: 'Jadwal Praktek'},
+          { key: 'nomor_str', label: 'Nomor STR'},
           { key: 'actions', label: 'Actions' }
         ],
         totalRows: 1,
@@ -421,21 +423,14 @@
             this.detailDokter = this.dokter[this.indexNumber]
             this.indexSelected = this.detailDokter.id
         },
-        async addDokter() {
-          try {
-              await axios.post(`http://localhost:3000/dokter/`, this.form)
-              this.load()
-          } catch (error) {
-              console.log(error)
-          }
-        },
         async deleteDokter(indexId) {
             if (confirm('Apakah Anda Akan Menghapus Data Ini?') == true) {
                 try {
-                    await axios.delete(`https://api-capstone-heroku.herokuapp.com/admin/data_dokter_hapus` + indexId)
+                    await axios.delete(`https://api-capstone-heroku.herokuapp.com/admin/data_dokter_hapus/` + indexId)
                     this.load()
                 } catch (error) {
                     console.log(error)
+                    alert(error.response.data.message)
                 }
             }
             this.$nextTick(() => {
@@ -446,17 +441,18 @@
         async updateDokter() {
             try {
                 await axios.put(`https://api-capstone-heroku.herokuapp.com/admin/data_dokter_edit/` + this.indexSelected, {
+                    nama: this.detailDokter.nama,
                     sip: this.detailDokter.sip,
-                    nama: this.detailDokter.nama_dokter,
-                    nomor_telfon: this.detailDokter.nomor_telfon,
                     jenis_kelamin: this.detailDokter.jenis_kelamin,
-                    poli: this.detailDokter.poli,
                     jadwal_praktek: this.detailDokter.jadwal_praktek,
+                    poli: this.detailDokter.poli,
+                    nomor_telfon: this.detailDokter.nomor_telfon,
                     nomor_str: this.detailDokter.nomor_str,
                 })
                 this.load()
             } catch (error) {
                 console.log(error)
+                alert(error.response.data.message)
             }
         },
         checkFormValidity() {
@@ -484,6 +480,7 @@
           this.poliState = null
           this.jadwalState = null
           this.editMode = false
+          this.load()
         },
         selectionHandeOk(){
             if (this.editMode === false) {

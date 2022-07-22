@@ -40,8 +40,9 @@
       <template v-slot:cell(index)="row">
         {{ row.index + 1 }}
       </template>
-      <template #cell(perawat)="row">
-       {{ row.item.perawat + 1 }} {{ row.item.perawat }} {{ row.item.perawat }}
+
+      <template #cell(sipp)="row">
+        {{ row.item }}
       </template>
 
       <template #cell(actions)="row">
@@ -267,8 +268,8 @@
         this.currentPage = 1
       },
       async load() {
-            const response = await axios.get(`https://62b483cfda3017eabb0c415b.mockapi.io/perawat`)
-            this.perawat = response.data
+            const response = await axios.get(`https://api-capstone-heroku.herokuapp.com/admin/data_perawat_lihat`)
+            this.perawat = response.data.data
             
             // Set the initial number of patients
             this.totalRows = this.perawat.length
@@ -278,18 +279,11 @@
             this.detailPerawat = this.perawat[this.indexNumber]
             this.indexSelected = this.detailPerawat.id
         },
-        async addPerawat() {
-          try {
-              await axios.post(`https://62b483cfda3017eabb0c415b.mockapi.io/perawat`, this.form)
-              this.load()
-          } catch (error) {
-              console.log(error)
-          }
-        },
+
         async deletePerawat(indexId) {
             if (confirm('Apakah Anda Akan Menghapus Data Ini?') == true) {
                 try {
-                    await axios.delete(`https://62b483cfda3017eabb0c415b.mockapi.io/perawat/` + indexId)
+                    await axios.delete(`https://api-capstone-heroku.herokuapp.com/admin/data_perawat_hapus/` + indexId)
                     this.load()
                 } catch (error) {
                     console.log(error)
@@ -302,7 +296,7 @@
         },
         async updatePerawat() {
             try {
-                await axios.put(`https://62b483cfda3017eabb0c415b.mockapi.io/perawat/` + this.indexSelected, {
+                await axios.put(`https://api-capstone-heroku.herokuapp.com/admin/data_perawat_edit/` + this.indexSelected, {
                     sipp: this.detailPerawat.sipp,
                     nama: this.detailPerawat.nama,
                     gender: this.detailPerawat.gender,

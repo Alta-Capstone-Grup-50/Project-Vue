@@ -46,11 +46,11 @@
             <!-- Detail View Mode -->
             <form ref="form" @submit.stop.prevent="handleSubmitAddakun()">
 
-              <!-- Input nama -->
+              <!-- Input Nama -->
               <b-form-group
-              label="nama"
+              label="Nama"
               label-for="nama-input"
-              invalid-feedback="nama is required"
+              invalid-feedback="Nama is required"
               :state="namaState"
               >
               <b-form-input
@@ -161,7 +161,7 @@
         <form v-if="editMode === false" ref="form" @submit.stop.prevent="handleSubmitAddakun()">
         <!-- Input nama -->
               <b-form-group
-              label="nama"
+              label="Nama"
               label-for="nama-input"
               invalid-feedback="nama is required"
               :state="namaState"
@@ -277,7 +277,7 @@
 
                 <!-- Input Level -->
                 <b-form-group
-                label="Pekerejaan"
+                label="Pekerjaan"
                 label-for="level-input"
                 invalid-feedback="Pekerjaan is required"
                 :state="levelState"
@@ -293,6 +293,8 @@
                     required
                 ></b-form-radio-group>
                 </b-form-group>
+
+                
         </form>
 
       <template #modal-footer="{ ok }">
@@ -371,8 +373,8 @@ import navbar from '@/components/navbar.vue'
             { text: 'Perempuan', value: 'P' },
         ],
         optionsLevel: [
-            { text: 'Dokter', value: 'dokter' },
-            { text: 'Perawat', value: 'perawat' },
+            { text: 'Dokter', value: 'Dokter' },
+            { text: 'Perawat', value: 'Perawat' },
         ],
 
         items: [],

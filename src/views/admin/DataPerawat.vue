@@ -40,9 +40,6 @@
         <template v-slot:cell(index)="row">
           {{ row.index + 1 }}
         </template>
-        <template #cell(perawat)="row">
-        {{ row.item.perawat + 1 }} {{ row.item.perawat }} {{ row.item.perawat }}
-        </template>
 
         <template #cell(actions)="row">
           <b-link class="text-decoration-none" size="sm" @click="getIndex(row.item)" v-b-modal.detail-modal-prevent-closing>
@@ -70,18 +67,19 @@
       @ok="handleOkEditPerawat"
       size="md"
       >
+        <!-- Detail View Mode -->
         <form v-if="editMode === false" ref="form" @submit.stop.prevent="handleSubmitAddPerawat()">
         <!-- Data SIP -->
         <b-form-group
         label="SIPP"
-        label-for="sipp-input"
+        label-for="sip-input"
         invalid-feedback="SIPP is required"
-        :state="sippState"
+        :state="sipState"
         >
         <b-form-input
-            id="sipp-input"
-            v-model="detailPerawat.sipp"
-            :state="sippState"
+            id="sip-input"
+            v-model="detailPerawat.sip"
+            :state="sipState"
             required
             disabled
         ></b-form-input>
@@ -106,13 +104,13 @@
           <!-- Data Jenis Kelamin -->
           <b-form-group
           label="Jenis Kelamin"
-          label-for="gender-input"
+          label-for="jenis_kelamin-input"
           invalid-feedback="Jenis Kelamin is required"
-          :state="genderState"
+          :state="jenis_kelaminState"
           >
           <b-form-radio-group
               id="btn-radios-2"
-              v-model="detailPerawat.gender"
+              v-model="detailPerawat.jenis_kelamin"
               :options="options"
               class="mb-3"
               required
@@ -120,39 +118,37 @@
           ></b-form-radio-group>
           </b-form-group>
 
-          <!-- Data Spesialis -->
+          <!-- Data poli -->
+        <b-form-group
+          label="Poli"
+          label-for="disease-input"
+          invalid-feedback="Poli is required"
+          :state="poliState"
+        >
+        <b-form-select
+        v-model="detailPerawat.poli"
+        :options="optionpoli"
+        disabled>
+        </b-form-select>
+        </b-form-group>
+
+          <!-- Data jadwal_kerja -->
           <b-form-group
-          label="Bagian"
-          label-for="bagian-input"
-          invalid-feedback="Bagian is required"
-          :state="bagianState"
+          label="Jadwal Kerja"
+          label-for="jadwal_kerja-input"
+          invalid-feedback="Jadwal Kerja is required"
+          :state="jadwal_kerjaState"
           >
           <b-form-input
-              id="bagian-input"
-              v-model="detailPerawat.bagian"
-              :state="bagianState"
+              id="jadwal_kerja-input"
+              v-model="detailPerawat.jadwal_kerja"
+              :state="jadwal_kerjaState"
               required
               disabled
           ></b-form-input>
           </b-form-group>
 
-          <!-- Data Jadwal -->
-          <b-form-group
-          label="Jadwal Praktek"
-          label-for="jadwal-input"
-          invalid-feedback="Jadwal is required"
-          :state="jadwalState"
-          >
-          <b-form-input
-              id="jadwal-input"
-              v-model="detailPerawat.jadwal"
-              :state="jadwalState"
-              required
-              disabled
-          ></b-form-input>
-          </b-form-group>
-
-          <!-- Data STRh -->
+          <!-- Data Jabatan -->
           <b-form-group
           label="Jabatan"
           label-for="jabatan-input"
@@ -167,21 +163,55 @@
               disabled
           ></b-form-input>
           </b-form-group>
+
+          <!-- Data No HP -->
+          <b-form-group
+          label="Nomor Telepon"
+          label-for="hp-input"
+          invalid-feedback="Nomor Telefon is required"
+          :state="nomor_telfonState"
+          >
+          <b-form-input
+              id="hp-input"
+              v-model="detailPerawat.nomor_telfon"
+              :state="nomor_telfonState"
+              required
+              disabled
+          ></b-form-input>
+          </b-form-group>
+          
+          <!-- Data No STR -->
+          <b-form-group
+          label="Nomor STR"
+          label-for="nomor_str-input"
+          invalid-feedback="Nomor STR is required"
+          :state="nomor_strState"
+          >
+          <b-form-input
+              id="hp-input"
+              v-model="detailPerawat.nomor_str"
+              :state="nomor_strState"
+              required
+              disabled
+          ></b-form-input>
+          </b-form-group>
+
         </form>
+        
 
       <!-- Detail Edit Mode -->
         <form v-else ref="form" @submit.stop.prevent="handleSubmitAddPerawat()">
         <!-- SIP -->
         <b-form-group
         label="SIPP"
-        label-for="sipp-input"
+        label-for="sip-input"
         invalid-feedback="SIPP is required"
-        :state="sippState"
+        :state="sipState"
         >
         <b-form-input
-            id="sipp-input"
-            v-model="detailPerawat.sipp"
-            :state="sippState"
+            id="sip-input"
+            v-model="detailPerawat.sip"
+            :state="sipState"
             required
         ></b-form-input>
         </b-form-group>
@@ -205,13 +235,13 @@
           <!-- Jenis Kelamin -->
           <b-form-group
           label="Jenis Kelamin"
-          label-for="gender-input"
+          label-for="jenis_kelamin-input"
           invalid-feedback="Jenis Kelamin is required"
-          :state="genderState"
+          :state="jenis_kelaminState"
           >
           <b-form-radio-group
-              id="gender-input"
-              v-model="detailPerawat.gender"
+              id="jenis_kelamin-input"
+              v-model="detailPerawat.jenis_kelamin"
               :options="options"
               size="md"
               required
@@ -219,39 +249,37 @@
           ></b-form-radio-group>
           </b-form-group>
 
-          <!-- Spesialis -->
+          <!-- Data poli -->
           <b-form-group
-          label="Bagian"
-          label-for="bagian-input"
-          invalid-feedback="Bagian is required"
-          :state="bagianState"
+            label="Poli"
+            label-for="disease-input"
+            invalid-feedback="Poli is required"
+            :state="poliState"
+          >
+          <b-form-select
+          v-model="detailPerawat.poli"
+          :options="optionpoli"
+          >
+          </b-form-select>
+          </b-form-group>
+
+          <!-- jadwal_kerja -->
+          <b-form-group
+          label="Jadwal Kerja"
+          label-for="jadwal_kerja-input"
+          invalid-feedback="jadwal_kerja is required"
+          :state="jadwal_kerjaState"
           >
           <b-form-input
-              id="spesialis-input"
-              v-model="detailPerawat.bagian"
-              :state="bagianState"
+              id="jadwal_kerja-input"
+              v-model="detailPerawat.jadwal_kerja"
+              :state="jadwal_kerjaState"
               required
 
           ></b-form-input>
           </b-form-group>
 
-          <!-- Jadwal -->
-          <b-form-group
-          label="Jadwal"
-          label-for="jadwal-input"
-          invalid-feedback="Jadwal is required"
-          :state="jadwalState"
-          >
-          <b-form-input
-              id="jadwal-input"
-              v-model="detailPerawat.jadwal"
-              :state="jadwalState"
-              required
-
-          ></b-form-input>
-          </b-form-group>
-
-          <!-- STR -->
+          <!-- Data Jabatan -->
           <b-form-group
           label="Jabatan"
           label-for="jabatan-input"
@@ -264,6 +292,36 @@
               :state="jabatanState"
               required
 
+          ></b-form-input>
+          </b-form-group>
+
+          <!-- Data No HP -->
+          <b-form-group
+          label="Nomor Telepon"
+          label-for="hp-input"
+          invalid-feedback="Nomor Telefon is required"
+          :state="nomor_telfonState"
+          >
+          <b-form-input
+              id="hp-input"
+              v-model="detailPerawat.nomor_telfon"
+              :state="nomor_telfonState"
+              required
+          ></b-form-input>
+          </b-form-group>
+
+          <!-- Data No STR -->
+          <b-form-group
+          label="Nomor STR"
+          label-for="nomor_str-input"
+          invalid-feedback="Nomor STR is required"
+          :state="nomor_strState"
+          >
+          <b-form-input
+              id="hp-input"
+              v-model="detailPerawat.nomor_str"
+              :state="nomor_strState"
+              required
           ></b-form-input>
           </b-form-group>
         </form>
@@ -306,34 +364,43 @@
         indexNumber: '',
         indexSelected: '',
         form : {
-          sipp: '',
+          sip: '',
           nama: '',
-          gender:'',
-          bagian: '',
-          jadwal: '',
+          jenis_kelamin:'',
+          poli: '',
+          jadwal_kerja: '',
           jabatan: '',
-          handling: ''
+          nomor_telfon: '',
+          nomor_str: ''
         },
-        sippState: null,
+        sipState: null,
         namaState: null,
-        genderState: null,
-        bagianState: null,
-        jadwalState: null,
+        jenis_kelaminState: null,
+        poliState: null,
+        jadwal_kerjaState: null,
         jabatanState: null,
+        nomor_telfonState: null,
+        nomor_strState: null,
         selected: '',
         options: [
             { text: 'Laki-laki', value: 'L' },
             { text: 'Perempuan', value: 'P' },
         ],
+        optionpoli: [
+          { value: 'Umum', text: 'Umum' },
+          { value: 'Gigi', text: 'Gigi' },
+          { value: 'Kulit', text: 'Kulit' },
+          { value: 'THT', text: 'THT' }
+        ],
         items: [],
         fields: [
           
           { key: 'index', label: 'No'},
-          { key: 'sipp', label: 'SIPP'},
+          { key: 'sip', label: 'SIPP'},
           { key: 'nama', label: 'Nama'},
-          { key: 'gender', label: 'Jenis Kelamin'},
-          { key: 'bagian', label: 'Bagian Kerja'},
-          { key: 'jadwal', label: 'Jadwal Praktek'},
+          { key: 'jenis_kelamin', label: 'Jenis Kelamin'},
+          { key: 'poli', label: 'poli Kerja'},
+          { key: 'jadwal_kerja', label: 'Jadwal Kerja'},
           { key: 'jabatan', label: 'Jabatan'},
           { key: 'actions', label: 'Actions' }
         ],
@@ -379,8 +446,8 @@
         this.currentPage = 1
       },
       async load() {
-            const response = await axios.get(`https://62b483cfda3017eabb0c415b.mockapi.io/perawat`)
-            this.perawat = response.data
+            const response = await axios.get(`https://api-capstone-heroku.herokuapp.com/admin/data_perawat_lihat`)
+            this.perawat = response.data.data
             
             // Set the initial number of patients
             this.totalRows = this.perawat.length
@@ -390,18 +457,10 @@
             this.detailPerawat = this.perawat[this.indexNumber]
             this.indexSelected = this.detailPerawat.id
         },
-        async addPerawat() {
-          try {
-              await axios.post(`https://62b483cfda3017eabb0c415b.mockapi.io/perawat`, this.form)
-              this.load()
-          } catch (error) {
-              console.log(error)
-          }
-        },
         async deletePerawat(indexId) {
             if (confirm('Apakah Anda Akan Menghapus Data Ini?') == true) {
                 try {
-                    await axios.delete(`https://62b483cfda3017eabb0c415b.mockapi.io/perawat/` + indexId)
+                    await axios.delete(`https://api-capstone-heroku.herokuapp.com/admin/data_perawat_hapus/` + indexId)
                     this.load()
                 } catch (error) {
                     console.log(error)
@@ -414,44 +473,54 @@
         },
         async updatePerawat() {
             try {
-                await axios.put(`https://62b483cfda3017eabb0c415b.mockapi.io/perawat/` + this.indexSelected, {
-                    sipp: this.detailPerawat.sipp,
+                await axios.put(`https://api-capstone-heroku.herokuapp.com/admin/data_perawat_edit/` + this.indexSelected, {
                     nama: this.detailPerawat.nama,
-                    gender: this.detailPerawat.gender,
-                    bagian: this.detailPerawat.bagian,
-                    jadwal: this.detailPerawat.jadwal,
+                    sip: this.detailPerawat.sip,
+                    jenis_kelamin: this.detailPerawat.jenis_kelamin,
+                    poli: this.detailPerawat.poli,
+                    jadwal_kerja: this.detailPerawat.jadwal_kerja,
                     jabatan: this.detailPerawat.jabatan,
-                    handling: this.detailPerawat.handling
+                    nomor_telfon: this.detailPerawat.nomor_telfon,
+                    nomor_str: this.detailPerawat.nomor_str
                 })
                 this.load()
             } catch (error) {
                 console.log(error)
+                alert(error.response.data.message)
             }
         },
         checkFormValidity() {
             const valid = this.$refs.form.checkValidity()
-            this.sippState = valid
+            this.sipState = valid
             this.namaState = valid
-            this.genderState = valid
-            this.bagianState = valid
-            this.jadwalState = valid
+            this.jenis_kelaminState = valid
+            this.poliState = valid
+            this.jadwal_kerjaState = valid
             this.jabatanState = valid
+            this.nomor_telfonState = valid
+            this.nomor_strState = valid
             return valid
         },
         resetModal() {
-          this.form.sipp = ''
+          this.form.sip = ''
           this.form.nama = ''
-          this.form.gender = ''
-          this.form.bagian = ''
-          this.form.jadwal = ''
+          this.form.jenis_kelamin = ''
+          this.form.poli = ''
+          this.form.jadwal_kerja = ''
           this.form.jabatan = ''
-          this.sippState = null
+          this.form.nomor_telfon = ''
+          this.form.nomor_str = ''
+          this.sipState = null
           this.namaState = null
-          this.genderState = null
-          this.bagianState = null
-          this.jadwalState = null
+          this.jenis_kelaminState = null
+          this.poliState = null
+          this.jadwal_kerjaState = null
           this.jabatanState = null
+          this.nomor_telfonState = null
+          this.nomor_strState = null
           this.editMode = false
+
+          this.load()
         },
         selectionHandeOk(){
             if (this.editMode === false) {

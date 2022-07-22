@@ -3,6 +3,7 @@
     <navbar />
     <b-container class="mt-5">
         <h3 class="margintop"><strong>Data Pasien Rawat Jalan</strong></h3>
+        <p>Umum : {{ noUmum }}</p>
         <div class="d-flex">
           <b-form-group
             label-for="filter-input"
@@ -41,10 +42,6 @@
 
         <template v-slot:cell(no)="row">
           {{ row.index + 1 }}
-        </template>
-
-        <template #cell(jenis_penanganan)="row">
-          {{ row.item }}
         </template>
 
         <template #cell(proses)="row">
@@ -396,6 +393,20 @@
   import navbar from '@/components/NavbarDokter.vue'
 
   export default {
+    computed: {
+      noUmum() {
+        return this.$store.state.noUmum
+      },
+      noGigi() {
+        return this.$store.state.noGigi
+      },
+      noKulit() {
+        return this.$store.state.noKulit
+      },
+      noTht() {
+        return this.$store.state.noTht
+      }
+    },
   components: { 
     navbar 
   },
