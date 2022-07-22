@@ -42,6 +42,10 @@
         {{ row.index + 1 }}
       </template>
 
+      <template #cell(nik)="row">
+        {{ row.item }}
+      </template>
+
       <template #cell(actions)="row">
         <b-link class="text-decoration-none text-muted"
         v-b-modal.detail-modal-prevent-closing 
@@ -392,7 +396,7 @@
         </b-button>
 
         <b-button size="lg" variant="success" @click="ok()">
-            Kembali
+            Simpan
         </b-button>
         
       </template>
@@ -508,7 +512,7 @@ import navbar from '@/components/NavbarDokter.vue'
       },
 
         async load() {
-            const response = await axios.get(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien`)
+            const response = await axios.get(`https://api-capstone-heroku.herokuapp.com/dokter/rawat_jalan/`)
             this.patients = response.data.data
             
             // Set the initial number of patients

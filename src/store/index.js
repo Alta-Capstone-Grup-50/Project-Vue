@@ -15,6 +15,7 @@ export default new Vuex.Store({
     noGigi: '',
     noKulit: '',
     noTht: '',
+    userID: 0,
   },
   mutations: {
     setNoUmum(state, payload){
@@ -29,6 +30,9 @@ export default new Vuex.Store({
     setNoTht(state, payload){
       state.noTht = payload
     },
+    setUserID(state, payload){
+      state.userID = payload
+    },
   },
   actions: {
     changeNoUmum(store, payload){
@@ -42,6 +46,9 @@ export default new Vuex.Store({
     },
     changeNoTht(store, payload){
       store.commit("setNoTht", payload)
+    },
+    changeUserID(store, payload){
+      store.commit("setUserID", payload)
     }
   },
   modules: {

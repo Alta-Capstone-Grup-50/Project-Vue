@@ -4,6 +4,7 @@
     <b-container class="mt-5">
         <h3 class="margintop"><strong>Data Pasien Rawat Jalan</strong></h3>
         <p>Umum : {{ noUmum }}</p>
+        <p>User ID : {{ userID }}</p>
         <div class="d-flex">
           <b-form-group
             label-for="filter-input"
@@ -405,6 +406,9 @@
       },
       noTht() {
         return this.$store.state.noTht
+      },
+      userID() {
+        return this.$store.state.userID
       }
     },
   components: { 
@@ -502,7 +506,7 @@
       },
 
         async load() {
-            const response = await axios.get(`https://api-capstone-heroku.herokuapp.com/admin/rawat_jalan_lihat`)
+            const response = await axios.get(`https://api-capstone-heroku.herokuapp.com/dokter/rawat_jalan/` + this.userID)
             this.patients = response.data.data
             
             // Set the initial number of patients
@@ -523,37 +527,12 @@
               console.log(error)
           }
         },
-        async deletePatient(indexId) {
-            if (confirm('Apakah Anda Akan Menghapus Data Ini?') == true) {
-                try {
-                    await axios.delete(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien_hapus/` + indexId)
-                    this.load()
-                } catch (error) {
-                    console.log(error)
-                }
-            }
-            this.$nextTick(() => {
-                this.$bvModal.hide('detail-modal-prevent-closing')
-                this.editMode = false
-            })
-        },
 
         async updatePatient() {
             try {
-                await axios.put(`https://api-capstone-heroku.herokuapp.com/admin/data_pasien_edit/` + this.indexSelected, {
-                    nik: this.detailPatient.nik,
-                    nama: this.detailPatient.nama,
-                    alamat: this.detailPatient.alamat,
-                    jenis_kelamin: this.detailPatient.jenis_kelamin,
-                    no_hp: this.detailPatient.no_hp,
-                    tempat_lahir: this.detailPatient.tempat_lahir,
-                    tanggal_lahir: this.detailPatient.tanggal_lahir,
-                    jenis_penyakit: this.detailPatient.jenis_penyakit,
-                    jenis_penanganan: this.detailPatient.jenis_penanganan,
-                    jadwal_rawat_jalan: this.detailPatient.jadwal_rawat_jalan,
-                    nomer_antrian: this.detailPatient.nomer_antrian,
+                await axios.put(`https://api-capstone-heroku.herokuapp.com/dokter/rawat_jalan_ubah_proses/` + this.indexSelected, {
                     keterangan: this.detailPatient.keterangan,
-                    proses: this.detailPatient.proses
+                    proses: false
                 })
                 this.load()
             } catch (error) {
@@ -617,6 +596,7 @@
           this.keteranganState = null
 
           this.editMode = false
+          this.load()
         },
 
         selectionHandeOk(){
