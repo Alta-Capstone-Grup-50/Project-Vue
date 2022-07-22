@@ -526,6 +526,18 @@
           }
         },
 
+        async updateKeteranganPatient() {
+            try {
+                await axios.put(`https://api-capstone-heroku.herokuapp.com/dokter/rawat_jalan_ubah_proses/` + this.indexSelected, {
+                    keterangan: this.detailPatient.keterangan,
+                    proses: this.detailPatient.proses
+                })
+                this.load()
+            } catch (error) {
+                console.log(error)
+            }
+        },
+
         async updatePatient() {
             try {
                 await axios.put(`https://api-capstone-heroku.herokuapp.com/dokter/rawat_jalan_ubah_proses/` + this.indexSelected, {
@@ -636,7 +648,7 @@
             if (!this.checkFormValidity()) {
                 return
             }
-            this.updatePatient()
+            this.updateKeteranganPatient()
             this.indexNumber = ''
             // Hide the modal manually
             this.$nextTick(() => {

@@ -598,7 +598,7 @@ import navbar from '@/components/navbar.vue'
         optionpoli: [
           { value: 'Umum', text: 'Umum' },
           { value: 'Gigi', text: 'Gigi' },
-          { value: 'Kulit', text: 'Kulit' },
+          { value: 'Kandungan', text: 'Kandungan' },
           { value: 'THT', text: 'THT' }
         ],
         items: [],

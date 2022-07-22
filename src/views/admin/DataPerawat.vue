@@ -389,7 +389,7 @@
         optionpoli: [
           { value: 'Umum', text: 'Umum' },
           { value: 'Gigi', text: 'Gigi' },
-          { value: 'Kulit', text: 'Kulit' },
+          { value: 'Kandungan', text: 'Kandungan' },
           { value: 'THT', text: 'THT' }
         ],
         items: [],
@@ -474,8 +474,8 @@
         async updatePerawat() {
             try {
                 await axios.put(`https://api-capstone-heroku.herokuapp.com/admin/data_perawat_edit/` + this.indexSelected, {
-                    nama: this.detailPerawat.nama,
                     sip: this.detailPerawat.sip,
+                    nama: this.detailPerawat.nama,
                     jenis_kelamin: this.detailPerawat.jenis_kelamin,
                     poli: this.detailPerawat.poli,
                     jadwal_kerja: this.detailPerawat.jadwal_kerja,
