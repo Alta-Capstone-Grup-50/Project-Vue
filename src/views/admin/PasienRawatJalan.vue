@@ -4,7 +4,6 @@
     <b-container class="mt-5 margintop">
       <div>
         <h3 class="margintop"><strong>Nomor Antri</strong></h3>
-        <p>User ID: {{ userID }}</p>
         <b-card-group>
     <b-card title="Poli Umum" class="text-center">
       <b-card-text>

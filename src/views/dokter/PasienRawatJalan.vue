@@ -3,8 +3,6 @@
     <navbar />
     <b-container class="mt-5">
         <h3 class="margintop"><strong>Data Pasien Rawat Jalan</strong></h3>
-        <p>Gigi : {{ noGigi }}</p>
-        <p>User ID : {{ userID }}</p>
         <div class="d-flex">
           <b-form-group
             label-for="filter-input"
@@ -233,9 +231,9 @@
 
           <!-- Input nama -->
           <b-form-group
-          label="nama"
+          label="Nama"
           label-for="nama-input"
-          invalid-feedback="nama is required"
+          invalid-feedback="Nama is required"
           :state="namaState"
           >
           <b-form-input
@@ -249,9 +247,9 @@
 
           <!-- Input alamat -->
           <b-form-group
-          label="alamat"
+          label="Alamat"
           label-for="alamat-input"
-          invalid-feedback="alamat is required"
+          invalid-feedback="Alamat is required"
           :state="alamatState"
           >
           <b-form-input
@@ -285,9 +283,9 @@
 
           <!-- Input no_hp -->
           <b-form-group
-          label="no_hp"
+          label="Nomor Telepon"
           label-for="no_hp-input"
-          invalid-feedback="no_hp is required"
+          invalid-feedback="Nomor Telepon is required"
           :state="no_hpState"
           >
           <b-form-input
@@ -301,9 +299,9 @@
 
           <!-- Input Place of Birth -->
           <b-form-group
-          label="Place of Birth"
+          label="Tempat Lahir"
           label-for="tempat_lahir-input"
-          invalid-feedback="Place of Birth is required"
+          invalid-feedback="Tempat Lahir is required"
           :state="tempat_lahirState"
           >
           <b-form-input
@@ -317,9 +315,9 @@
 
           <!-- Input Date of Birth -->
           <b-form-group
-          label="Date of Birth"
+          label="Tanggal Lahir"
           label-for="tanggal_lahir-input"
-          invalid-feedback="Date of Birth is required"
+          invalid-feedback="Tanggal Lahir is required"
           :state="tanggal_lahirState"
           >
           <b-form-datepicker
@@ -532,7 +530,7 @@
             try {
                 await axios.put(`https://api-capstone-heroku.herokuapp.com/dokter/rawat_jalan_ubah_proses/` + this.indexSelected, {
                     keterangan: this.detailPatient.keterangan,
-                    proses: false
+                    proses: true
                 })
                 this.load()
             } catch (error) {
@@ -663,21 +661,25 @@
         changeStatusUmum(item){
           this.getIndex(item)
           this.finishedTreatmentUmum(item.nomer_antrian)
+          this.updatePatient()
         },
 
         changeStatusGigi(item){
           this.getIndex(item)
           this.finishedTreatmentGigi(item.nomer_antrian)
+          this.updatePatient()
         },
 
         changeStatusKulit(item){
           this.getIndex(item)
           this.finishedTreatmentKulit(item.nomer_antrian)
+          this.updatePatient()
         },
 
         changeStatusTht(item){
           this.getIndex(item)
           this.finishedTreatmentTht(item.nomer_antrian)
+          this.updatePatient()
         },
 
         finishedTreatmentUmum(payload) {
